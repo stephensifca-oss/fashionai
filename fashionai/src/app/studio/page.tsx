@@ -60,6 +60,26 @@ export default function StudioLandingKitPage() {
   const [galleryFilter, setGalleryFilter] = useState<"all" | "angles" | "details">("all");
   const [gallerySlideIndex, setGallerySlideIndex] = useState(0);
   const [isGalleryAutoPlay, setIsGalleryAutoPlay] = useState(true);
+  const [cardsPerView, setCardsPerView] = useState(1);
+  const touchStartXRef = useRef<number | null>(null);
+
+  // Responsive cardsPerView listener
+  useEffect(() => {
+    const updateCardsPerView = () => {
+      if (typeof window !== "undefined") {
+        if (window.innerWidth >= 1024) {
+          setCardsPerView(3);
+        } else if (window.innerWidth >= 640) {
+          setCardsPerView(2);
+        } else {
+          setCardsPerView(1);
+        }
+      }
+    };
+    updateCardsPerView();
+    window.addEventListener("resize", updateCardsPerView);
+    return () => window.removeEventListener("resize", updateCardsPerView);
+  }, []);
 
   const proofItems: LightboxItem[] = [
     {
@@ -154,24 +174,43 @@ export default function StudioLandingKitPage() {
     setGallerySlideIndex(0);
   };
 
+  const maxGallerySlideIndex = Math.max(0, filteredGalleryItems.length - cardsPerView);
+
   const nextGallerySlide = () => {
     if (filteredGalleryItems.length === 0) return;
-    setGallerySlideIndex((prev) => (prev + 1) % filteredGalleryItems.length);
+    setGallerySlideIndex((prev) => (prev >= maxGallerySlideIndex ? 0 : prev + 1));
   };
 
   const prevGallerySlide = () => {
     if (filteredGalleryItems.length === 0) return;
-    setGallerySlideIndex((prev) => (prev - 1 + filteredGalleryItems.length) % filteredGalleryItems.length);
+    setGallerySlideIndex((prev) => (prev <= 0 ? maxGallerySlideIndex : prev - 1));
   };
 
   // Auto-scroll the gallery slider
   useEffect(() => {
-    if (!isGalleryAutoPlay || filteredGalleryItems.length <= 1) return;
+    if (!isGalleryAutoPlay || filteredGalleryItems.length <= cardsPerView) return;
     const interval = setInterval(() => {
-      setGallerySlideIndex((prev) => (prev + 1) % filteredGalleryItems.length);
-    }, 2600);
+      setGallerySlideIndex((prev) => (prev >= maxGallerySlideIndex ? 0 : prev + 1));
+    }, 2800);
     return () => clearInterval(interval);
-  }, [isGalleryAutoPlay, filteredGalleryItems.length]);
+  }, [isGalleryAutoPlay, filteredGalleryItems.length, cardsPerView, maxGallerySlideIndex]);
+
+  const handleTouchStart = (e: React.TouchEvent) => {
+    setIsGalleryAutoPlay(false);
+    touchStartXRef.current = e.touches[0].clientX;
+  };
+
+  const handleTouchEnd = (e: React.TouchEvent) => {
+    if (touchStartXRef.current === null) return;
+    const diff = touchStartXRef.current - e.changedTouches[0].clientX;
+    if (diff > 35) {
+      nextGallerySlide();
+    } else if (diff < -35) {
+      prevGallerySlide();
+    }
+    touchStartXRef.current = null;
+    setIsGalleryAutoPlay(true);
+  };
 
   // Close modals on Escape key or handle lightbox arrows
   useEffect(() => {
@@ -685,23 +724,30 @@ export default function StudioLandingKitPage() {
 
           {/* ── AUTO-PLAYING IMAGE SLIDER (NO HEAVY TEXT) ─────────────── */}
           <div 
-            className="relative overflow-hidden bg-white border border-[#DCDCE2] p-3 md:p-4 shadow-sm group"
+            className="relative overflow-hidden bg-white border border-[#DCDCE2] p-3 md:p-4 shadow-sm group select-none"
             onMouseEnter={() => setIsGalleryAutoPlay(false)}
             onMouseLeave={() => setIsGalleryAutoPlay(true)}
+            onTouchStart={handleTouchStart}
+            onTouchEnd={handleTouchEnd}
           >
             {/* Carousel Container */}
             <div className="overflow-hidden">
               <div
                 className="flex transition-transform duration-700 ease-out gap-3 md:gap-4"
                 style={{
-                  transform: `translateX(-${gallerySlideIndex * (100 / (filteredGalleryItems.length > 3 ? 3 : filteredGalleryItems.length))}%)`,
+                  transform:
+                    cardsPerView === 1
+                      ? `translateX(calc(-${gallerySlideIndex} * (100% + 12px)))`
+                      : cardsPerView === 2
+                      ? `translateX(calc(-${gallerySlideIndex} * (50% + 6px)))`
+                      : `translateX(calc(-${gallerySlideIndex} * (33.333% + 5.33px)))`,
                 }}
               >
                 {filteredGalleryItems.map((item, index) => (
                   <div
                     key={item.id}
                     onClick={() => setActiveLightbox({ items: filteredGalleryItems, index })}
-                    className="w-full sm:w-[calc(50%-8px)] lg:w-[calc(33.333%-11px)] shrink-0 aspect-[3/4] bg-[#121214] relative border border-[#DCDCE2] overflow-hidden cursor-pointer group/card flex items-center justify-center"
+                    className="w-full sm:w-[calc(50%-6px)] lg:w-[calc(33.333%-10.66px)] shrink-0 aspect-[3/4] bg-[#121214] relative border border-[#DCDCE2] overflow-hidden cursor-pointer group/card flex items-center justify-center"
                   >
                     <img
                       src={item.img}
