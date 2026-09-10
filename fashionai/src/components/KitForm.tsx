@@ -46,7 +46,7 @@ export default function KitForm({
   initialPlatform = "google"
 }: { 
   slug?: string;
-  initialPlatform?: "google" | "chatgpt" | "autres";
+  initialPlatform?: "google" | "chatgpt" | "claude" | "autres";
 }) {
   const router = useRouter();
   const [loading, setLoading] = useState(false);
@@ -60,7 +60,7 @@ export default function KitForm({
   const [socialUrl, setSocialUrl] = useState("");
   const [hasNoSocial, setHasNoSocial] = useState(false);
   const [consent, setConsent] = useState(true);
-  const [platform, setPlatform] = useState<"google" | "chatgpt" | "autres">(initialPlatform);
+  const [platform, setPlatform] = useState<"google" | "chatgpt" | "claude" | "autres">(initialPlatform);
 
   // 4. Auto-remplissage lors des prochaines visites
   useEffect(() => {
@@ -153,27 +153,35 @@ export default function KitForm({
 
       {/* 0. Choix de la plateforme */}
       <div className="flex flex-col gap-1.5 border border-[#DCDCE2] p-3 bg-[#F6F6F8]">
-        <label className="font-mono text-[11px] uppercase tracking-wider text-[#0B0B0D] font-bold">
-          Plateforme / Outil utilisé :
-        </label>
-        <div className="grid grid-cols-3 gap-2">
+        <div className="flex justify-between items-center">
+          <label className="font-mono text-[11px] uppercase tracking-wider text-[#0B0B0D] font-bold">
+            01 · Votre outil / modèle IA préféré :
+          </label>
+          <span className="font-mono text-[9px] text-[#56565F] uppercase bg-white px-1.5 py-0.5 border border-[#DCDCE2]">
+            Format adapté
+          </span>
+        </div>
+        <div className="grid grid-cols-2 sm:grid-cols-4 gap-2">
           {[
             { id: "google", label: "Google", desc: "Imagen 3 / Gemini" },
-            { id: "chatgpt", label: "ChatGPT", desc: "GPT-4o Vision" },
-            { id: "autres", label: "Claude & Autres", desc: "Claude / Midjourney / Flux" },
+            { id: "chatgpt", label: "ChatGPT / OpenAI", desc: "GPT-4o Vision" },
+            { id: "claude", label: "Claude", desc: "Claude 3.7 Sonnet" },
+            { id: "autres", label: "Midjourney & +", desc: "Flux / Midjourney" },
           ].map((item) => (
             <button
               type="button"
               key={item.id}
-              onClick={() => setPlatform(item.id as "google" | "chatgpt" | "autres")}
-              className={`p-2 text-left border font-mono transition-all rounded-none cursor-pointer ${
+              onClick={() => setPlatform(item.id as "google" | "chatgpt" | "claude" | "autres")}
+              className={`p-2.5 text-left border font-mono transition-all rounded-none cursor-pointer flex flex-col justify-between ${
                 platform === item.id
-                  ? "bg-[#0B0B0D] text-white border-[#0B0B0D]"
+                  ? "bg-[#0B0B0D] text-white border-[#0B0B0D] shadow-xs"
                   : "bg-white text-[#56565F] border-[#DCDCE2] hover:border-[#0B0B0D]"
               }`}
             >
               <div className="font-bold text-xs">{item.label}</div>
-              <div className="text-[9px] opacity-80">{item.desc}</div>
+              <div className={`text-[9px] mt-1 ${platform === item.id ? "text-neutral-300" : "text-[#868691]"}`}>
+                {item.desc}
+              </div>
             </button>
           ))}
         </div>

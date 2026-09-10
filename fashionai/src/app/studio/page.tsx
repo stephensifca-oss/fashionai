@@ -6,8 +6,8 @@ import KitForm from "@/components/KitForm";
 export default function StudioLandingKitPage() {
   const [isVideoModalOpen, setIsVideoModalOpen] = useState(false);
   const [isFormModalOpen, setIsFormModalOpen] = useState(false);
-  const [currentSlide, setCurrentSlide] = useState(0);
-  const [selectedPlatform, setSelectedPlatform] = useState<"google" | "chatgpt" | "autres">("google");
+  const [currentMethodSlide, setCurrentMethodSlide] = useState(0);
+  const [selectedPlatform, setSelectedPlatform] = useState<"google" | "chatgpt" | "claude" | "autres">("google");
   
   // Header Video Player state
   const headerVideoRef = useRef<HTMLVideoElement>(null);
@@ -42,6 +42,7 @@ export default function StudioLandingKitPage() {
       }
     }
   };
+
   type LightboxItem = {
     tag: string;
     title: string;
@@ -54,7 +55,10 @@ export default function StudioLandingKitPage() {
     items: LightboxItem[];
     index: number;
   } | null>(null);
+
+  // Gallery slider state & filtering
   const [galleryFilter, setGalleryFilter] = useState<"all" | "angles" | "details">("all");
+  const [gallerySlideIndex, setGallerySlideIndex] = useState(0);
 
   const proofItems: LightboxItem[] = [
     {
@@ -139,6 +143,26 @@ export default function StudioLandingKitPage() {
     },
   ];
 
+  const filteredGalleryItems = studioGalleryItems.filter(
+    (item) => galleryFilter === "all" || item.category === galleryFilter
+  );
+
+  // Reset slide index when filter changes
+  const handleFilterChange = (filter: "all" | "angles" | "details") => {
+    setGalleryFilter(filter);
+    setGallerySlideIndex(0);
+  };
+
+  const nextGallerySlide = () => {
+    if (filteredGalleryItems.length === 0) return;
+    setGallerySlideIndex((prev) => (prev + 1) % filteredGalleryItems.length);
+  };
+
+  const prevGallerySlide = () => {
+    if (filteredGalleryItems.length === 0) return;
+    setGallerySlideIndex((prev) => (prev - 1 + filteredGalleryItems.length) % filteredGalleryItems.length);
+  };
+
   // Close modals on Escape key or handle lightbox arrows
   useEffect(() => {
     const handleKeyDown = (e: KeyboardEvent) => {
@@ -147,25 +171,28 @@ export default function StudioLandingKitPage() {
         setIsVideoModalOpen(false);
         setActiveLightbox(null);
       } else if (e.key === "ArrowLeft") {
-        setActiveLightbox((prev) =>
-          prev ? { ...prev, index: (prev.index - 1 + prev.items.length) % prev.items.length } : null
-        );
+        if (activeLightbox) {
+          setActiveLightbox((prev) =>
+            prev ? { ...prev, index: (prev.index - 1 + prev.items.length) % prev.items.length } : null
+          );
+        }
       } else if (e.key === "ArrowRight") {
-        setActiveLightbox((prev) =>
-          prev ? { ...prev, index: (prev.index + 1) % prev.items.length } : null
-        );
+        if (activeLightbox) {
+          setActiveLightbox((prev) =>
+            prev ? { ...prev, index: (prev.index + 1) % prev.items.length } : null
+          );
+        }
       }
     };
     window.addEventListener("keydown", handleKeyDown);
     return () => window.removeEventListener("keydown", handleKeyDown);
-  }, []);
+  }, [activeLightbox]);
 
-
-  const carouselSlides = [
+  const methodSlides = [
     {
       id: "video",
       type: "video",
-      tag: "01 · DÉMONSTRATION",
+      tag: "01 · DÉMONSTRATION VIDÉO",
       title: "Le tutoriel complet en 8 minutes",
       description: "Visionnez le flux de travail complet : de l'import d'une photo brute à la génération du prompt maître et au rendu final.",
       image: "/templates/studio_blanc_reference.png",
@@ -203,39 +230,15 @@ export default function StudioLandingKitPage() {
     },
   ];
 
-  const platformsInfo = {
-    google: {
-      name: "Google",
-      models: "Imagen 3 / Gemini Image / Vertex AI",
-      cost: "Gratuit / Pay-as-you-go (~0.03$/image)",
-      badge: "Édition Google (Recommandée)",
-      description: "Syntaxe optimisée pour Google AI Studio et Vertex AI avec conditionnement multi-images direct.",
-    },
-    chatgpt: {
-      name: "ChatGPT / OpenAI",
-      models: "GPT-4o Vision & DALL-E / GPT Image",
-      cost: "Inclus dans ChatGPT Plus (~20$/mois)",
-      badge: "Édition ChatGPT",
-      description: "Prompts conversationnels et descriptifs avec balises @source, @tenue et @perso prêtes à l'emploi.",
-    },
-    autres: {
-      name: "Claude et autres",
-      models: "Claude 3.7 / 3.5 Sonnet, Midjourney, Flux.1, Seedream",
-      cost: "Inclus Claude Pro / API ou local",
-      badge: "Édition Claude & Autres",
-      description: "Directives adaptées aux modèles multimodaux Claude (Anthropic), Midjourney v6 (--cref/--sref), et générateurs Flux/Seedream.",
-    },
+  const nextMethodSlide = () => {
+    setCurrentMethodSlide((prev) => (prev + 1) % methodSlides.length);
   };
 
-  const nextSlide = () => {
-    setCurrentSlide((prev) => (prev + 1) % carouselSlides.length);
+  const prevMethodSlide = () => {
+    setCurrentMethodSlide((prev) => (prev - 1 + methodSlides.length) % methodSlides.length);
   };
 
-  const prevSlide = () => {
-    setCurrentSlide((prev) => (prev - 1 + carouselSlides.length) % carouselSlides.length);
-  };
-
-  const activeSlide = carouselSlides[currentSlide];
+  const activeMethodSlide = methodSlides[currentMethodSlide];
 
   return (
     <div className="min-h-screen bg-[#F6F6F8] text-[#0B0B0D] flex flex-col font-sans selection:bg-[#0B0B0D] selection:text-white">
@@ -254,7 +257,7 @@ export default function StudioLandingKitPage() {
         <div className="flex items-center space-x-4">
           <button
             onClick={() => setIsFormModalOpen(true)}
-            className="px-5 py-2.5 bg-[#0B0B0D] text-white font-mono text-xs uppercase tracking-wider hover:bg-neutral-800 transition-colors"
+            className="px-5 py-2.5 bg-[#0B0B0D] text-white font-mono text-xs uppercase tracking-wider hover:bg-neutral-800 transition-colors cursor-pointer"
           >
             Télécharger le kit
           </button>
@@ -265,7 +268,7 @@ export default function StudioLandingKitPage() {
       <main className="flex-1 w-full max-w-5xl mx-auto px-4 md:px-8 py-8 md:py-16 space-y-16 md:space-y-24">
 
         {/* ═════════════════════════════════════════════════════════════════
-            01. SECTION PROMESSE & VIDÉO HEADER (Hero Showcase)
+            00. SECTION PROMESSE & VIDÉO HEADER (Hero Showcase)
             ═════════════════════════════════════════════════════════════════ */}
         <section className="space-y-8 pt-4">
           <div className="text-center space-y-4 max-w-3xl mx-auto">
@@ -283,7 +286,7 @@ export default function StudioLandingKitPage() {
             <div className="pt-2 flex flex-wrap justify-center items-center gap-3">
               <button
                 onClick={() => setIsFormModalOpen(true)}
-                className="px-6 py-3 bg-[#0B0B0D] text-white font-mono text-xs uppercase tracking-wider hover:bg-neutral-800 transition-colors shadow-sm"
+                className="px-6 py-3 bg-[#0B0B0D] text-white font-mono text-xs uppercase tracking-wider hover:bg-neutral-800 transition-colors shadow-sm cursor-pointer"
               >
                 Télécharger le kit gratuit →
               </button>
@@ -291,7 +294,7 @@ export default function StudioLandingKitPage() {
                 href="#preuve"
                 className="px-6 py-3 border border-[#DCDCE2] bg-white text-[#0B0B0D] font-mono text-xs uppercase tracking-wider hover:border-[#0B0B0D] transition-colors"
               >
-                Découvrir les résultats ↓
+                Découvrir la preuve ↓
               </a>
             </div>
           </div>
@@ -338,21 +341,21 @@ export default function StudioLandingKitPage() {
                 <button
                   onClick={toggleHeaderPlay}
                   aria-label={isHeaderPlaying ? "Mettre en pause" : "Lire la vidéo"}
-                  className="px-3 py-1.5 bg-white/15 hover:bg-white/25 text-white border border-white/30 font-mono text-[10px] uppercase tracking-wider transition-colors backdrop-blur-xs flex items-center gap-1.5"
+                  className="px-3 py-1.5 bg-white/15 hover:bg-white/25 text-white border border-white/30 font-mono text-[10px] uppercase tracking-wider transition-colors backdrop-blur-xs flex items-center gap-1.5 cursor-pointer"
                 >
                   {isHeaderPlaying ? "⏸ Pause" : "▶ Lecture"}
                 </button>
                 <button
                   onClick={toggleHeaderMute}
                   aria-label={isHeaderMuted ? "Activer le son" : "Couper le son"}
-                  className="px-3 py-1.5 bg-white/15 hover:bg-white/25 text-white border border-white/30 font-mono text-[10px] uppercase tracking-wider transition-colors backdrop-blur-xs flex items-center gap-1.5"
+                  className="px-3 py-1.5 bg-white/15 hover:bg-white/25 text-white border border-white/30 font-mono text-[10px] uppercase tracking-wider transition-colors backdrop-blur-xs flex items-center gap-1.5 cursor-pointer"
                 >
                   {isHeaderMuted ? "🔇 Activer le son" : "🔊 Son activé"}
                 </button>
                 <button
                   onClick={toggleFullscreen}
                   aria-label="Plein écran"
-                  className="px-2.5 py-1.5 bg-white/15 hover:bg-white/25 text-white border border-white/30 font-mono text-[10px] uppercase transition-colors backdrop-blur-xs"
+                  className="px-2.5 py-1.5 bg-white/15 hover:bg-white/25 text-white border border-white/30 font-mono text-[10px] uppercase transition-colors backdrop-blur-xs cursor-pointer"
                 >
                   ⛶
                 </button>
@@ -362,7 +365,7 @@ export default function StudioLandingKitPage() {
         </section>
 
         {/* ═════════════════════════════════════════════════════════════════
-            02. SECTION AVANT / APRÈS (LA PREUVE — Fond perdu, sans cadre)
+            01. SECTION AVANT / APRÈS (LA PREUVE)
             ═════════════════════════════════════════════════════════════════ */}
         <section id="preuve" className="space-y-3">
           <div className="flex justify-between items-center font-mono text-[11px] uppercase tracking-wider text-[#56565F] px-1">
@@ -413,102 +416,70 @@ export default function StudioLandingKitPage() {
         </section>
 
         {/* ═════════════════════════════════════════════════════════════════
-            03. GALERIE D'EXEMPLES (SÉRIE MULTI-ANGLES COHÉRENTE)
+            02. SECTION ÉPURÉE : TÉLÉCHARGER LE KIT STUDIO (CONVERSION DIRECTE)
             ═════════════════════════════════════════════════════════════════ */}
-        <section className="space-y-6">
-          <div className="border-b border-[#DCDCE2] pb-3 flex flex-col md:flex-row justify-between items-start md:items-end gap-3">
-            <div>
-              <p className="font-mono text-[11px] uppercase tracking-widest text-[#56565F]">
-                02 · Galerie de Résultats Studio
-              </p>
-              <h2 className="font-mono text-xl font-bold uppercase tracking-tight text-[#0B0B0D]">
-                Exemples issus du même kit (Série Multi-Angles)
-              </h2>
-            </div>
-            <div className="flex flex-wrap items-center gap-2">
-              <span className="font-mono text-[11px] text-[#56565F] mr-1 hidden sm:inline">
-                Série Complète · {studioGalleryItems.length} Vues Cohérentes
+        <section className="bg-white border border-[#0B0B0D] p-6 md:p-10 shadow-lg space-y-6">
+          <div className="flex flex-col md:flex-row md:items-center justify-between gap-4 border-b border-[#DCDCE2] pb-6">
+            <div className="space-y-1 max-w-xl">
+              <span className="font-mono text-[10px] uppercase tracking-widest text-[#B7410E] font-bold">
+                02 · TÉLÉCHARGEMENT GRATUIT DU KIT
               </span>
-              <div className="inline-flex border border-[#DCDCE2] bg-white p-0.5 font-mono text-[10px] uppercase">
-                <button
-                  onClick={() => setGalleryFilter("all")}
-                  className={`px-2.5 py-1 transition-colors ${
-                    galleryFilter === "all" ? "bg-[#0B0B0D] text-white font-bold" : "text-[#56565F] hover:text-[#0B0B0D]"
-                  }`}
-                >
-                  Tous (7)
-                </button>
-                <button
-                  onClick={() => setGalleryFilter("angles")}
-                  className={`px-2.5 py-1 transition-colors ${
-                    galleryFilter === "angles" ? "bg-[#0B0B0D] text-white font-bold" : "text-[#56565F] hover:text-[#0B0B0D]"
-                  }`}
-                >
-                  Silhouettes (4)
-                </button>
-                <button
-                  onClick={() => setGalleryFilter("details")}
-                  className={`px-2.5 py-1 transition-colors ${
-                    galleryFilter === "details" ? "bg-[#0B0B0D] text-white font-bold" : "text-[#56565F] hover:text-[#0B0B0D]"
-                  }`}
-                >
-                  Gros Plans & Macro (3)
-                </button>
-              </div>
+              <h2 className="font-mono text-2xl md:text-3xl font-bold uppercase tracking-tight text-[#0B0B0D]">
+                Obtenez le Master Template Studio (V1.0)
+              </h2>
+              <p className="font-sans text-xs md:text-sm text-[#56565F] leading-relaxed">
+                Le pack complet comprenant le prompt maître, la matrice 7 angles et les fichiers de conditionnement adaptés à votre modèle d’IA.
+              </p>
+            </div>
+
+            <div className="shrink-0 flex flex-col items-start md:items-end gap-2">
+              <button
+                onClick={() => setIsFormModalOpen(true)}
+                className="w-full md:w-auto px-8 py-4 bg-[#0B0B0D] hover:bg-neutral-800 text-white font-mono text-xs uppercase tracking-widest font-bold transition-all shadow-md flex items-center justify-center gap-3 cursor-pointer"
+              >
+                <span>Télécharger le kit gratuit</span>
+                <span>→</span>
+              </button>
+              <span className="font-mono text-[10px] text-[#56565F] uppercase">
+                Livraison immédiate · Choix de l'outil dans le formulaire
+              </span>
             </div>
           </div>
 
-          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-4">
-            {studioGalleryItems
-              .map((item, originalIndex) => ({ item, originalIndex }))
-              .filter(({ item }) => galleryFilter === "all" || item.category === galleryFilter)
-              .map(({ item, originalIndex }) => (
-                <div
-                  key={item.id}
-                  onClick={() => setActiveLightbox({ items: studioGalleryItems, index: originalIndex })}
-                  className="bg-white border border-[#DCDCE2] p-3 space-y-3 group hover:border-[#0B0B0D] transition-all cursor-pointer flex flex-col justify-between shadow-xs hover:shadow-md"
-                >
-                  <div className="aspect-[3/4] bg-[#121214] overflow-hidden relative">
-                    <img
-                      src={item.img}
-                      alt={item.title}
-                      className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-[1.03]"
-                    />
-                    <div className="absolute top-2 left-2 bg-[#0B0B0D]/85 text-white font-mono text-[9px] uppercase tracking-wider px-2 py-0.5 border border-white/20">
-                      {item.tag}
-                    </div>
-                    <div className="absolute bottom-2 right-2 bg-black/70 text-white/90 font-mono text-[8px] uppercase tracking-widest px-2 py-0.5 opacity-0 group-hover:opacity-100 transition-opacity backdrop-blur-xs">
-                      🔍 Agrandir
-                    </div>
-                  </div>
-                  <div className="px-1 space-y-1">
-                    <div className="flex items-center justify-between">
-                      <span className="font-mono text-xs font-bold text-[#0B0B0D]">{item.title}</span>
-                      <span className="font-mono text-[9px] text-[#56565F] bg-[#F6F6F8] px-1.5 py-0.5 border border-[#DCDCE2]">
-                        {item.format}
-                      </span>
-                    </div>
-                    <p className="font-sans text-[11px] text-[#56565F] leading-tight line-clamp-2">
-                      {item.subtitle}
-                    </p>
-                  </div>
-                </div>
-              ))}
-          </div>
+          {/* Badges de ce qui est inclus */}
+          <div className="grid grid-cols-2 sm:grid-cols-4 gap-3 pt-2">
+            <div className="bg-[#F6F6F8] border border-[#DCDCE2] p-3 space-y-1">
+              <div className="font-mono text-xs font-bold text-[#0B0B0D] flex items-center gap-1.5">
+                <span className="text-[#25D366]">✓</span> Master Template
+              </div>
+              <p className="font-sans text-[11px] text-[#56565F]">Syntaxe normalisée (.md & .json)</p>
+            </div>
 
-          <div className="bg-white border border-[#DCDCE2] p-3 flex items-center justify-between font-mono text-[11px] text-[#56565F]">
-            <span className="flex items-center gap-2">
-              <span className="text-[#25D366]">✓</span>
-              Même mannequin (Fatou), même studio lumière diffuse cyclorama, même ensemble textile asymétrique.
-            </span>
-            <span className="hidden md:inline text-[10px] uppercase text-[#56565F]">
-              Cliquez sur un visuel pour l’inspecter en haute définition
-            </span>
+            <div className="bg-[#F6F6F8] border border-[#DCDCE2] p-3 space-y-1">
+              <div className="font-mono text-xs font-bold text-[#0B0B0D] flex items-center gap-1.5">
+                <span className="text-[#25D366]">✓</span> 7 Prompts Multi-Angles
+              </div>
+              <p className="font-sans text-[11px] text-[#56565F]">Silhouettes & gros plans cohérents</p>
+            </div>
+
+            <div className="bg-[#F6F6F8] border border-[#DCDCE2] p-3 space-y-1">
+              <div className="font-mono text-xs font-bold text-[#0B0B0D] flex items-center gap-1.5">
+                <span className="text-[#25D366]">✓</span> Fiche Mannequin Fatou
+              </div>
+              <p className="font-sans text-[11px] text-[#56565F]">Fiche d’incarnation & éclairage studio</p>
+            </div>
+
+            <div className="bg-[#F6F6F8] border border-[#DCDCE2] p-3 space-y-1">
+              <div className="font-mono text-xs font-bold text-[#0B0B0D] flex items-center gap-1.5">
+                <span className="text-[#25D366]">✓</span> Multi-Modèles IA
+              </div>
+              <p className="font-sans text-[11px] text-[#56565F]">Google, ChatGPT, Claude, Midjourney</p>
+            </div>
           </div>
         </section>
 
         {/* ═════════════════════════════════════════════════════════════════
-            04. CARROUSEL INTERACTIF : VIDÉO & ÉTAPES DE LA MÉTHODE
+            03. CARROUSEL INTERACTIF : VIDÉO & ÉTAPES DE LA MÉTHODE
             ═════════════════════════════════════════════════════════════════ */}
         <section className="space-y-4">
           <div className="border-b border-[#DCDCE2] pb-2 flex justify-between items-end">
@@ -524,19 +495,19 @@ export default function StudioLandingKitPage() {
             {/* Slide Navigation Buttons */}
             <div className="flex items-center gap-2">
               <span className="font-mono text-xs text-[#56565F] mr-2">
-                {currentSlide + 1} / {carouselSlides.length}
+                {currentMethodSlide + 1} / {methodSlides.length}
               </span>
               <button
-                onClick={prevSlide}
+                onClick={prevMethodSlide}
                 aria-label="Diapositive précédente"
-                className="w-8 h-8 border border-[#DCDCE2] bg-white hover:border-[#0B0B0D] flex items-center justify-center font-mono text-xs transition-colors"
+                className="w-8 h-8 border border-[#DCDCE2] bg-white hover:border-[#0B0B0D] flex items-center justify-center font-mono text-xs transition-colors cursor-pointer"
               >
                 ←
               </button>
               <button
-                onClick={nextSlide}
+                onClick={nextMethodSlide}
                 aria-label="Diapositive suivante"
-                className="w-8 h-8 border border-[#DCDCE2] bg-white hover:border-[#0B0B0D] flex items-center justify-center font-mono text-xs transition-colors"
+                className="w-8 h-8 border border-[#DCDCE2] bg-white hover:border-[#0B0B0D] flex items-center justify-center font-mono text-xs transition-colors cursor-pointer"
               >
                 →
               </button>
@@ -545,12 +516,12 @@ export default function StudioLandingKitPage() {
 
           {/* Slide Tab Strip */}
           <div className="grid grid-cols-2 md:grid-cols-4 gap-1.5 font-mono text-[11px] uppercase tracking-wider">
-            {carouselSlides.map((slide, idx) => (
+            {methodSlides.map((slide, idx) => (
               <button
                 key={slide.id}
-                onClick={() => setCurrentSlide(idx)}
-                className={`py-2 px-3 text-left border transition-all ${
-                  currentSlide === idx
+                onClick={() => setCurrentMethodSlide(idx)}
+                className={`py-2 px-3 text-left border transition-all cursor-pointer ${
+                  currentMethodSlide === idx
                     ? "bg-[#0B0B0D] text-white border-[#0B0B0D] font-bold"
                     : "bg-white text-[#56565F] border-[#DCDCE2] hover:border-[#0B0B0D] hover:text-[#0B0B0D]"
                 }`}
@@ -567,17 +538,17 @@ export default function StudioLandingKitPage() {
               {/* Media Left */}
               <div className="md:col-span-6 relative aspect-video bg-[#121214] border border-[#DCDCE2] overflow-hidden group flex items-center justify-center">
                 <img
-                  src={activeSlide.image}
-                  alt={activeSlide.title}
+                  src={activeMethodSlide.image}
+                  alt={activeMethodSlide.title}
                   className={`w-full h-full ${
-                    activeSlide.objectFit === "contain" ? "object-contain p-4" : "object-cover"
-                  } ${activeSlide.type === "video" ? "opacity-60 group-hover:opacity-75" : ""} transition-opacity duration-500`}
+                    activeMethodSlide.objectFit === "contain" ? "object-contain p-4" : "object-cover"
+                  } ${activeMethodSlide.type === "video" ? "opacity-60 group-hover:opacity-75" : ""} transition-opacity duration-500`}
                 />
 
-                {activeSlide.type === "video" ? (
+                {activeMethodSlide.type === "video" ? (
                   <button
                     onClick={() => setIsVideoModalOpen(true)}
-                    className="absolute inset-0 flex flex-col items-center justify-center gap-2 text-white bg-black/40 hover:bg-black/20 transition-colors"
+                    className="absolute inset-0 flex flex-col items-center justify-center gap-2 text-white bg-black/40 hover:bg-black/20 transition-colors cursor-pointer"
                   >
                     <div className="w-14 h-14 bg-white text-[#0B0B0D] flex items-center justify-center shadow-md group-hover:scale-105 transition-transform">
                       <span className="font-mono text-lg pl-1">▶</span>
@@ -588,7 +559,7 @@ export default function StudioLandingKitPage() {
                   </button>
                 ) : (
                   <div className="absolute bottom-3 left-3 bg-[#0B0B0D]/80 text-white font-mono text-[9px] uppercase tracking-widest px-2 py-0.5 border border-white/20">
-                    {activeSlide.tag}
+                    {activeMethodSlide.tag}
                   </div>
                 )}
               </div>
@@ -596,18 +567,18 @@ export default function StudioLandingKitPage() {
               {/* Text / Details Right */}
               <div className="md:col-span-6 space-y-4">
                 <div className="font-mono text-xs font-bold uppercase tracking-wider text-[#B7410E]">
-                  {activeSlide.tag}
+                  {activeMethodSlide.tag}
                 </div>
                 <h3 className="font-mono text-lg md:text-xl font-bold text-[#0B0B0D] leading-snug">
-                  {activeSlide.title}
+                  {activeMethodSlide.title}
                 </h3>
                 <p className="font-sans text-xs md:text-sm text-[#56565F] leading-relaxed">
-                  {activeSlide.description}
+                  {activeMethodSlide.description}
                 </p>
 
-                {activeSlide.details && (
+                {activeMethodSlide.details && (
                   <ul className="space-y-1.5 border-t border-[#DCDCE2] pt-3 font-mono text-[11px] text-[#56565F]">
-                    {activeSlide.details.map((d, i) => (
+                    {activeMethodSlide.details.map((d, i) => (
                       <li key={i} className="flex items-center gap-2">
                         <span className="text-[#25D366]">✓</span>
                         <span>{d}</span>
@@ -617,19 +588,19 @@ export default function StudioLandingKitPage() {
                 )}
 
                 <div className="pt-2 flex items-center gap-4">
-                  {activeSlide.type === "video" ? (
+                  {activeMethodSlide.type === "video" ? (
                     <button
                       onClick={() => setIsVideoModalOpen(true)}
-                      className="px-5 py-2.5 bg-[#0B0B0D] text-white font-mono text-xs uppercase tracking-wider hover:bg-neutral-800 transition-colors"
+                      className="px-5 py-2.5 bg-[#0B0B0D] text-white font-mono text-xs uppercase tracking-wider hover:bg-neutral-800 transition-colors cursor-pointer"
                     >
                       Lancer la vidéo →
                     </button>
                   ) : (
                     <button
-                      onClick={nextSlide}
-                      className="px-5 py-2.5 border border-[#0B0B0D] font-mono text-xs uppercase tracking-wider hover:bg-[#0B0B0D] hover:text-white transition-colors"
+                      onClick={nextMethodSlide}
+                      className="px-5 py-2.5 border border-[#0B0B0D] font-mono text-xs uppercase tracking-wider hover:bg-[#0B0B0D] hover:text-white transition-colors cursor-pointer"
                     >
-                      {currentSlide === carouselSlides.length - 1 ? "Revoir depuis le début" : "Étape suivante →"}
+                      {currentMethodSlide === methodSlides.length - 1 ? "Revoir depuis le début" : "Étape suivante →"}
                     </button>
                   )}
                 </div>
@@ -640,86 +611,191 @@ export default function StudioLandingKitPage() {
         </section>
 
         {/* ═════════════════════════════════════════════════════════════════
-            05. SÉLECTION DE LA PLATEFORME / MODÈLE UTILISÉ
+            04. GALERIE DE RÉSULTATS STUDIO — SLIDER ANIMÉ PAR GROUPE
             ═════════════════════════════════════════════════════════════════ */}
-        <section className="space-y-4">
-          <div className="border-b border-[#DCDCE2] pb-2 flex justify-between items-end">
+        <section className="space-y-6">
+          <div className="border-b border-[#DCDCE2] pb-3 flex flex-col md:flex-row justify-between items-start md:items-end gap-3">
             <div>
               <p className="font-mono text-[11px] uppercase tracking-widest text-[#56565F]">
-                04 · Choix du Modèle & Outils
+                04 · Galerie de Résultats Studio
               </p>
               <h2 className="font-mono text-xl font-bold uppercase tracking-tight text-[#0B0B0D]">
-                Sélectionnez votre outil pour obtenir la version adaptée
+                Exemples issus du même kit (Série Multi-Angles)
               </h2>
             </div>
-            <span className="font-mono text-[11px] text-[#56565F]">3 Versions Disponibles</span>
-          </div>
 
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
-            {(["google", "chatgpt", "autres"] as const).map((pKey) => {
-              const info = platformsInfo[pKey];
-              const isSelected = selectedPlatform === pKey;
-              return (
-                <div
-                  key={pKey}
-                  onClick={() => setSelectedPlatform(pKey)}
-                  className={`cursor-pointer p-5 border transition-all flex flex-col justify-between space-y-4 rounded-none ${
-                    isSelected
-                      ? "bg-white border-[#0B0B0D] shadow-md ring-1 ring-[#0B0B0D]"
-                      : "bg-[#F6F6F8] border-[#DCDCE2] hover:border-[#0B0B0D] hover:bg-white"
+            {/* Filter Tabs : TOUS / Silhouettes / Gros plan */}
+            <div className="flex flex-wrap items-center gap-2">
+              <div className="inline-flex border border-[#DCDCE2] bg-white p-0.5 font-mono text-[11px] uppercase">
+                <button
+                  onClick={() => handleFilterChange("all")}
+                  className={`px-3 py-1.5 transition-colors cursor-pointer ${
+                    galleryFilter === "all" ? "bg-[#0B0B0D] text-white font-bold" : "text-[#56565F] hover:text-[#0B0B0D]"
                   }`}
                 >
-                  <div className="space-y-2">
-                    <div className="flex justify-between items-center">
-                      <span className="font-mono text-sm font-bold uppercase text-[#0B0B0D]">
-                        {info.name}
-                      </span>
-                      <span className={`font-mono text-[9px] uppercase px-2 py-0.5 border ${
-                        isSelected ? "bg-[#0B0B0D] text-white border-[#0B0B0D]" : "text-[#56565F] border-[#DCDCE2]"
-                      }`}>
-                        {isSelected ? "Sélectionné" : "Choisir"}
-                      </span>
-                    </div>
+                  Tous (7)
+                </button>
+                <button
+                  onClick={() => handleFilterChange("angles")}
+                  className={`px-3 py-1.5 transition-colors cursor-pointer ${
+                    galleryFilter === "angles" ? "bg-[#0B0B0D] text-white font-bold" : "text-[#56565F] hover:text-[#0B0B0D]"
+                  }`}
+                >
+                  Silhouettes (4)
+                </button>
+                <button
+                  onClick={() => handleFilterChange("details")}
+                  className={`px-3 py-1.5 transition-colors cursor-pointer ${
+                    galleryFilter === "details" ? "bg-[#0B0B0D] text-white font-bold" : "text-[#56565F] hover:text-[#0B0B0D]"
+                  }`}
+                >
+                  Gros plan (3)
+                </button>
+              </div>
 
-                    <div className="font-mono text-[10px] text-[#25D366] font-bold">
-                      {info.cost}
-                    </div>
-
-                    <div className="font-mono text-[11px] text-[#0B0B0D] font-medium">
-                      {info.models}
-                    </div>
-
-                    <p className="font-sans text-xs text-[#56565F] leading-relaxed pt-1">
-                      {info.description}
-                    </p>
-                  </div>
-
-                  <div className="pt-2 border-t border-[#DCDCE2] font-mono text-[10px] uppercase text-[#56565F] flex items-center justify-between">
-                    <span>Format kit : .md</span>
-                    <span className="text-[#0B0B0D] font-bold">Édition {info.name.split(" ")[0]} →</span>
-                  </div>
-                </div>
-              );
-            })}
+              {/* Slider Controls */}
+              <div className="flex items-center gap-1.5 pl-2">
+                <button
+                  onClick={prevGallerySlide}
+                  aria-label="Image précédente"
+                  className="w-8 h-8 border border-[#DCDCE2] bg-white hover:border-[#0B0B0D] flex items-center justify-center font-mono text-xs transition-colors cursor-pointer"
+                >
+                  ←
+                </button>
+                <button
+                  onClick={nextGallerySlide}
+                  aria-label="Image suivante"
+                  className="w-8 h-8 border border-[#DCDCE2] bg-white hover:border-[#0B0B0D] flex items-center justify-center font-mono text-xs transition-colors cursor-pointer"
+                >
+                  →
+                </button>
+              </div>
+            </div>
           </div>
 
-          {/* Bouton direct lié à la plateforme sélectionnée */}
-          <div className="bg-white border border-[#DCDCE2] p-4 flex flex-col sm:flex-row justify-between items-center gap-3">
-            <div className="font-mono text-xs text-[#0B0B0D]">
-              <span className="text-[#56565F]">Version configurée :</span>{" "}
-              <strong>{platformsInfo[selectedPlatform].badge}</strong>
-            </div>
-            <button
-              onClick={() => setIsFormModalOpen(true)}
-              className="px-6 py-3 bg-[#0B0B0D] text-white font-mono text-xs uppercase tracking-wider hover:bg-neutral-800 transition-colors"
+          {/* ── ANIMATED SLIDER / CAROUSEL ────────────────────────────── */}
+          <div className="relative overflow-hidden bg-white border border-[#DCDCE2] p-4 md:p-6 shadow-sm">
+            <div
+              className="flex transition-transform duration-500 ease-out"
+              style={{
+                transform: `translateX(-${gallerySlideIndex * 100}%)`,
+              }}
             >
-              Télécharger cette version ({platformsInfo[selectedPlatform].name}) →
-            </button>
+              {filteredGalleryItems.map((item, index) => (
+                <div
+                  key={item.id}
+                  className="w-full shrink-0 px-2 sm:px-3"
+                >
+                  <div className="grid grid-cols-1 md:grid-cols-12 gap-6 items-center">
+                    {/* Visual Media */}
+                    <div
+                      onClick={() => setActiveLightbox({ items: filteredGalleryItems, index })}
+                      className="md:col-span-7 aspect-[3/4] sm:aspect-[4/5] md:aspect-[3/4] max-h-[480px] bg-[#121214] overflow-hidden relative cursor-pointer group flex items-center justify-center border border-[#DCDCE2]"
+                    >
+                      <img
+                        src={item.img}
+                        alt={item.title}
+                        className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-[1.03]"
+                      />
+                      <div className="absolute top-3 left-3 bg-[#0B0B0D]/85 text-white font-mono text-[10px] uppercase tracking-wider px-2.5 py-1 border border-white/20">
+                        {item.tag}
+                      </div>
+                      <div className="absolute bottom-3 right-3 bg-black/75 text-white font-mono text-[9px] uppercase tracking-widest px-2.5 py-1 opacity-0 group-hover:opacity-100 transition-opacity backdrop-blur-xs flex items-center gap-1.5 border border-white/20">
+                        <span>🔍 Agrandir (Plein écran)</span>
+                      </div>
+                    </div>
+
+                    {/* Card Info & Details */}
+                    <div className="md:col-span-5 space-y-4">
+                      <div className="space-y-1">
+                        <div className="flex items-center gap-2">
+                          <span className="font-mono text-xs font-bold text-[#B7410E] uppercase tracking-wider">
+                            {item.tag}
+                          </span>
+                          <span className="font-mono text-[10px] text-[#56565F] bg-[#F6F6F8] px-2 py-0.5 border border-[#DCDCE2]">
+                            {item.format}
+                          </span>
+                        </div>
+                        <h3 className="font-mono text-xl md:text-2xl font-bold text-[#0B0B0D]">
+                          {item.title}
+                        </h3>
+                      </div>
+
+                      <p className="font-sans text-sm text-[#56565F] leading-relaxed">
+                        {item.subtitle}
+                      </p>
+
+                      <div className="border-t border-[#DCDCE2] pt-4 space-y-2 font-mono text-[11px] text-[#56565F]">
+                        <div className="flex items-center gap-2">
+                          <span className="text-[#25D366]">✓</span>
+                          <span>Mannequin virtuel Fatou (Fidélité constante)</span>
+                        </div>
+                        <div className="flex items-center gap-2">
+                          <span className="text-[#25D366]">✓</span>
+                          <span>Cyclorama studio blanc pur sans retouche manuelle</span>
+                        </div>
+                        <div className="flex items-center gap-2">
+                          <span className="text-[#25D366]">✓</span>
+                          <span>Texture textile & tombé asymétrique fidèles</span>
+                        </div>
+                      </div>
+
+                      <div className="pt-2 flex items-center gap-3">
+                        <button
+                          onClick={() => setActiveLightbox({ items: filteredGalleryItems, index })}
+                          className="px-5 py-2.5 bg-[#0B0B0D] text-white font-mono text-xs uppercase tracking-wider hover:bg-neutral-800 transition-colors cursor-pointer"
+                        >
+                          Inspecter en HD →
+                        </button>
+                        <button
+                          onClick={nextGallerySlide}
+                          className="px-4 py-2.5 border border-[#DCDCE2] bg-white font-mono text-xs uppercase text-[#56565F] hover:border-[#0B0B0D] hover:text-[#0B0B0D] transition-colors cursor-pointer"
+                        >
+                          Vue suivante →
+                        </button>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              ))}
+            </div>
+
+            {/* Pagination Thumbnails / Dots */}
+            <div className="mt-6 pt-4 border-t border-[#DCDCE2] flex flex-wrap items-center justify-between gap-3">
+              <div className="flex items-center gap-1.5">
+                {filteredGalleryItems.map((item, idx) => (
+                  <button
+                    key={item.id}
+                    onClick={() => setGallerySlideIndex(idx)}
+                    aria-label={`Aller à la vue ${idx + 1}`}
+                    className={`h-2 transition-all rounded-none cursor-pointer ${
+                      gallerySlideIndex === idx
+                        ? "w-8 bg-[#0B0B0D]"
+                        : "w-2 bg-[#DCDCE2] hover:bg-[#56565F]"
+                    }`}
+                  />
+                ))}
+              </div>
+
+              <div className="font-mono text-[11px] text-[#56565F]">
+                Vue {gallerySlideIndex + 1} sur {filteredGalleryItems.length} · {galleryFilter === "all" ? "Toutes les vues" : galleryFilter === "angles" ? "Silhouettes" : "Gros plans"}
+              </div>
+            </div>
+          </div>
+
+          <div className="bg-white border border-[#DCDCE2] p-3 flex items-center justify-between font-mono text-[11px] text-[#56565F]">
+            <span className="flex items-center gap-2">
+              <span className="text-[#25D366]">✓</span>
+              Même mannequin (Fatou), même studio lumière diffuse cyclorama, même ensemble textile asymétrique.
+            </span>
+            <span className="hidden md:inline text-[10px] uppercase text-[#56565F]">
+              Faites défiler ou cliquez pour agrandir
+            </span>
           </div>
         </section>
 
         {/* ═════════════════════════════════════════════════════════════════
-            06. SECTION NOUVELLE : UN SHOOTING PERSONNALISÉ POUR VOTRE MARQUE ?
+            05. SECTION NOUVELLE : UN SHOOTING PERSONNALISÉ POUR VOTRE MARQUE ?
             ═════════════════════════════════════════════════════════════════ */}
         <section className="bg-[#0B0B0D] text-white p-8 md:p-12 border border-[#0B0B0D] space-y-8 shadow-xl">
           <div className="space-y-3 max-w-2xl">
@@ -853,7 +929,7 @@ export default function StudioLandingKitPage() {
 
             <div className="mb-4">
               <div className="font-mono text-[10px] uppercase tracking-widest text-[#56565F] mb-1">
-                Formulaire d’accès · {platformsInfo[selectedPlatform].badge}
+                Formulaire d’accès immédiat · Master Template Studio
               </div>
               <h2 className="font-mono text-lg md:text-xl font-bold uppercase text-[#0B0B0D]">
                 Recevoir le Kit Shooting Mode V1.0
