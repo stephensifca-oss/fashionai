@@ -197,7 +197,7 @@ export default function StudioLandingKitPage() {
       tag: "04 · ÉTAPE 03 (RENDU FINAL)",
       title: "Synthèse Haute Définition du Plan Maître",
       description: "Votre moteur d'image génère le plan de mode maître au ratio 2:3, prêt pour votre e-commerce, lookbook ou campagnes sponsorisées.",
-      image: "/Studio_template/MAIN%20FULL-BODY%20VIEW.png",
+      image: "/Studio_template/main-full-body-view.png",
       objectFit: "cover" as const,
       details: ["Rendu éditorial 2:3 haute fidélité", "Tombé naturel du tissu", "Prêt pour catalogue et boutique en ligne"],
     },
@@ -395,7 +395,7 @@ export default function StudioLandingKitPage() {
               className="relative bg-[#121214] aspect-[3/4] group flex items-center justify-center overflow-hidden cursor-pointer"
             >
               <img
-                src="/Studio_template/MAIN%20FULL-BODY%20VIEW.png"
+                src="/Studio_template/main-full-body-view.png"
                 alt="Plan Maître Haute Définition"
                 className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-[1.02]"
               />
