@@ -1,6 +1,3 @@
-import fs from "fs";
-import path from "path";
-
 export interface LeadRecord {
   id: string;
   prenom: string;
@@ -23,8 +20,7 @@ export interface LeadRecord {
   updated_at: string;
 }
 
-const DATA_DIR = path.join(process.cwd(), ".data");
-const LEADS_FILE = path.join(DATA_DIR, "leads.json");
+let inMemoryLeads: LeadRecord[] | null = null;
 
 // Sample initial leads for demo/testing if file does not exist
 const INITIAL_DEMO_LEADS: LeadRecord[] = [
@@ -114,40 +110,58 @@ const INITIAL_DEMO_LEADS: LeadRecord[] = [
   }
 ];
 
-function ensureDataFile() {
+function getFs() {
   try {
-    if (!fs.existsSync(DATA_DIR)) {
-      fs.mkdirSync(DATA_DIR, { recursive: true });
+    return {
+      fs: require("fs"),
+      path: require("path"),
+    };
+  } catch {
+    return null;
+  }
+}
+
+function ensureDataFile() {
+  const node = getFs();
+  if (!node) return;
+  try {
+    const dataDir = node.path.join(process.cwd(), ".data");
+    const leadsFile = node.path.join(dataDir, "leads.json");
+    if (!node.fs.existsSync(dataDir)) {
+      node.fs.mkdirSync(dataDir, { recursive: true });
     }
-    if (!fs.existsSync(LEADS_FILE)) {
-      fs.writeFileSync(LEADS_FILE, JSON.stringify(INITIAL_DEMO_LEADS, null, 2), "utf-8");
+    if (!node.fs.existsSync(leadsFile)) {
+      node.fs.writeFileSync(leadsFile, JSON.stringify(INITIAL_DEMO_LEADS, null, 2), "utf-8");
     }
-  } catch (err) {
-    console.error("Error initializing leads data file:", err);
+  } catch {
+    // ignore in serverless
   }
 }
 
 export function getAllLeads(): LeadRecord[] {
-  try {
-    ensureDataFile();
-    if (!fs.existsSync(LEADS_FILE)) {
-      return INITIAL_DEMO_LEADS;
+  if (inMemoryLeads) return inMemoryLeads;
+  const node = getFs();
+  if (node) {
+    try {
+      ensureDataFile();
+      const leadsFile = node.path.join(process.cwd(), ".data", "leads.json");
+      if (node.fs.existsSync(leadsFile)) {
+        const data = node.fs.readFileSync(leadsFile, "utf-8");
+        inMemoryLeads = JSON.parse(data || "[]");
+        return (inMemoryLeads || []).sort((a, b) => new Date(b.created_at).getTime() - new Date(a.created_at).getTime());
+      }
+    } catch {
+      // ignore
     }
-    const data = fs.readFileSync(LEADS_FILE, "utf-8");
-    const leads: LeadRecord[] = JSON.parse(data || "[]");
-    return leads.sort((a, b) => new Date(b.created_at).getTime() - new Date(a.created_at).getTime());
-  } catch (err) {
-    console.error("Error reading leads:", err);
-    return [];
   }
+  inMemoryLeads = [...INITIAL_DEMO_LEADS];
+  return inMemoryLeads;
 }
 
 export function saveLead(leadData: Omit<LeadRecord, "id" | "created_at" | "updated_at" | "status" | "notes" | "downloads_count">): LeadRecord {
-  ensureDataFile();
   const leads = getAllLeads();
   const now = new Date().toISOString();
   
-  // Check if lead with same whatsapp already exists
   const existingIndex = leads.findIndex((l) => l.whatsapp === leadData.whatsapp);
   
   const newLead: LeadRecord = {
@@ -165,18 +179,22 @@ export function saveLead(leadData: Omit<LeadRecord, "id" | "created_at" | "updat
   } else {
     leads.unshift(newLead);
   }
+  inMemoryLeads = leads;
 
-  try {
-    fs.writeFileSync(LEADS_FILE, JSON.stringify(leads, null, 2), "utf-8");
-  } catch (err) {
-    console.error("Error writing lead to file:", err);
+  const node = getFs();
+  if (node) {
+    try {
+      const leadsFile = node.path.join(process.cwd(), ".data", "leads.json");
+      node.fs.writeFileSync(leadsFile, JSON.stringify(leads, null, 2), "utf-8");
+    } catch {
+      // ignore
+    }
   }
 
   return newLead;
 }
 
 export function updateLeadStatus(id: string, status: LeadRecord["status"], notes?: string): LeadRecord | null {
-  ensureDataFile();
   const leads = getAllLeads();
   const index = leads.findIndex((l) => l.id === id);
   if (index === -1) return null;
@@ -186,40 +204,52 @@ export function updateLeadStatus(id: string, status: LeadRecord["status"], notes
     leads[index].notes = notes;
   }
   leads[index].updated_at = new Date().toISOString();
+  inMemoryLeads = leads;
 
-  try {
-    fs.writeFileSync(LEADS_FILE, JSON.stringify(leads, null, 2), "utf-8");
-  } catch (err) {
-    console.error("Error updating lead status:", err);
+  const node = getFs();
+  if (node) {
+    try {
+      const leadsFile = node.path.join(process.cwd(), ".data", "leads.json");
+      node.fs.writeFileSync(leadsFile, JSON.stringify(leads, null, 2), "utf-8");
+    } catch {
+      // ignore
+    }
   }
 
   return leads[index];
 }
 
 export function incrementLeadDownloads(token: string): void {
-  try {
-    ensureDataFile();
-    const leads = getAllLeads();
-    const index = leads.findIndex((l) => l.token === token);
-    if (index !== -1) {
-      leads[index].downloads_count = (leads[index].downloads_count || 0) + 1;
-      leads[index].updated_at = new Date().toISOString();
-      fs.writeFileSync(LEADS_FILE, JSON.stringify(leads, null, 2), "utf-8");
+  const leads = getAllLeads();
+  const index = leads.findIndex((l) => l.token === token);
+  if (index !== -1) {
+    leads[index].downloads_count = (leads[index].downloads_count || 0) + 1;
+    leads[index].updated_at = new Date().toISOString();
+    inMemoryLeads = leads;
+    const node = getFs();
+    if (node) {
+      try {
+        const leadsFile = node.path.join(process.cwd(), ".data", "leads.json");
+        node.fs.writeFileSync(leadsFile, JSON.stringify(leads, null, 2), "utf-8");
+      } catch {
+        // ignore
+      }
     }
-  } catch (err) {
-    console.error("Error incrementing downloads:", err);
   }
 }
 
 export function deleteLead(id: string): boolean {
-  try {
-    ensureDataFile();
-    const leads = getAllLeads();
-    const filtered = leads.filter((l) => l.id !== id);
-    fs.writeFileSync(LEADS_FILE, JSON.stringify(filtered, null, 2), "utf-8");
-    return true;
-  } catch (err) {
-    console.error("Error deleting lead:", err);
-    return false;
+  const leads = getAllLeads();
+  const filtered = leads.filter((l) => l.id !== id);
+  inMemoryLeads = filtered;
+  const node = getFs();
+  if (node) {
+    try {
+      const leadsFile = node.path.join(process.cwd(), ".data", "leads.json");
+      node.fs.writeFileSync(leadsFile, JSON.stringify(filtered, null, 2), "utf-8");
+    } catch {
+      // ignore
+    }
   }
+  return true;
 }

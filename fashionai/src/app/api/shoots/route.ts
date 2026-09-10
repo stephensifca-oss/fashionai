@@ -3,6 +3,8 @@ import { getAgent, AgentSlug } from '@/lib/agents/registry';
 import { llm, image, LLMMessage } from '@/lib/providers';
 import { validateInversion, validateContamination, validateMannequinConformity } from '@/lib/validators';
 
+export const runtime = 'edge';
+
 const encoder = new TextEncoder();
 
 function sseMsg(event: string, data: any) {

@@ -53,23 +53,7 @@ export class GeminiLLMProvider implements LLMProvider {
                 }
               }
               if (url.startsWith('/')) {
-                try {
-                  const fs = await import('fs');
-                  const path = await import('path');
-                  const publicPath = path.join(process.cwd(), 'public', url);
-                  if (fs.existsSync(publicPath)) {
-                    const buf = fs.readFileSync(publicPath);
-                    const mimeType = url.endsWith('.png') ? 'image/png' : 'image/jpeg';
-                    return {
-                      inlineData: {
-                        mimeType,
-                        data: buf.toString('base64'),
-                      },
-                    };
-                  }
-                } catch {
-                  return { text: `[Image reference: ${url}]` };
-                }
+                return { text: `[Local image reference: ${url}]` };
               }
               if (url.startsWith('http')) {
                 try {

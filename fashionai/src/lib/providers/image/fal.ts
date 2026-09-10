@@ -42,28 +42,12 @@ export class FalImageProvider implements ImageProvider {
 
     if (input.referenceImages && input.referenceImages.length > 0) {
       const urls: string[] = [];
-      const fs = require('fs');
-      const path = require('path');
-      
       for (const r of input.referenceImages) {
-        let finalUrl = r.url || r.base64;
-        if (!finalUrl) continue;
-        
-        if (finalUrl.startsWith('/')) {
-          try {
-            const publicPath = path.join(process.cwd(), 'public', finalUrl);
-            if (fs.existsSync(publicPath)) {
-              const buf = fs.readFileSync(publicPath);
-              const mimeType = finalUrl.endsWith('.png') ? 'image/png' : 'image/jpeg';
-              finalUrl = `data:${mimeType};base64,${buf.toString('base64')}`;
-            }
-          } catch (err) {
-            console.error('Error reading local file for Fal.ai:', err);
-          }
+        const finalUrl = r.url || r.base64;
+        if (finalUrl) {
+          urls.push(finalUrl);
         }
-        urls.push(finalUrl);
       }
-      
       if (urls.length > 0) {
         body.image_urls = urls;
         body.image_url = urls[0];

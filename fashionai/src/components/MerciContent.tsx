@@ -3,6 +3,7 @@
 import { useEffect, useState, useRef } from "react";
 import { useSearchParams } from "next/navigation";
 import Link from "next/link";
+import { generateKitMarkdown } from "@/lib/kit-generator";
 
 export default function MerciContent() {
   const searchParams = useSearchParams();
@@ -12,18 +13,29 @@ export default function MerciContent() {
   
   const hasAutoDownloaded = useRef(false);
   const [waCode] = useState(initialCode);
+  const [kitBlobUrl, setKitBlobUrl] = useState<string>("#");
 
-  const dlKitUrl = token ? `/api/dl/${token}?platform=${platform}&type=kit` : "#";
-  const dlModelUrl = token ? `/api/dl/${token}?type=model` : "/models/fatou_character_sheet.png";
+  useEffect(() => {
+    const md = generateKitMarkdown(platform);
+    const blob = new Blob([md], { type: "text/markdown;charset=utf-8" });
+    const url = URL.createObjectURL(blob);
+    setKitBlobUrl(url);
+
+    return () => {
+      URL.revokeObjectURL(url);
+    };
+  }, [platform]);
+
+  const dlModelUrl = "/models/fatou_character_sheet.png";
 
   // 6. Lancement automatique et simultané du double téléchargement (Kit .md + Image Mannequin Fatou)
   useEffect(() => {
-    if (token && !hasAutoDownloaded.current) {
+    if (token && kitBlobUrl !== "#" && !hasAutoDownloaded.current) {
       hasAutoDownloaded.current = true;
 
       // 1. Lancement du Kit .md
       const linkKit = document.createElement("a");
-      linkKit.href = dlKitUrl;
+      linkKit.href = kitBlobUrl;
       linkKit.download = `kit-shooting-mode-${platform}-v1.0.md`;
       document.body.appendChild(linkKit);
       linkKit.click();
@@ -41,7 +53,7 @@ export default function MerciContent() {
 
       return () => clearTimeout(timer);
     }
-  }, [token, dlKitUrl, dlModelUrl, platform]);
+  }, [token, kitBlobUrl, dlModelUrl, platform]);
 
   return (
     <div className="min-h-screen bg-[#F6F6F8] text-[#0B0B0D] flex flex-col font-sans selection:bg-[#0B0B0D] selection:text-white">
@@ -98,7 +110,7 @@ export default function MerciContent() {
             </p>
             <div className="flex flex-wrap justify-center items-center gap-3 font-mono text-xs">
               <a
-                href={dlKitUrl}
+                href={kitBlobUrl}
                 download={`kit-shooting-mode-${platform}-v1.0.md`}
                 className="px-5 py-3 bg-[#0B0B0D] text-white hover:bg-neutral-800 transition-colors uppercase tracking-wider text-[11px] font-bold flex items-center gap-2 cursor-pointer"
               >

@@ -3,6 +3,8 @@ import { getAgent, AgentSlug } from '@/lib/agents/registry';
 import { llm, image, LLMMessage } from '@/lib/providers';
 import { validateInversion, validateContamination } from '@/lib/validators';
 
+export const runtime = 'edge';
+
 export async function POST(req: NextRequest) {
   try {
     const body = await req.json();

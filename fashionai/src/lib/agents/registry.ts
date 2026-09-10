@@ -1,6 +1,3 @@
-import fs from 'fs';
-import path from 'path';
-
 export type AgentSlug = 'cloth' | 'swap' | 'transfert_profil' | 'transfert_dos';
 
 export interface AgentDefinition {
@@ -32,24 +29,18 @@ const AGENT_DESCRIPTIONS: Record<AgentSlug, string> = {
   transfert_dos: 'Transfère le plan maître en vue de dos cohérente avec cadrage figé et autorité sur le panneau 3.',
 };
 
+const AGENT_PROMPTS: Record<AgentSlug, string> = {
+  cloth: `Tu es un directeur artistique spécialisé en photographie produit mode, hyperréaliste. Tu combines deux techniques professionnelles dans une seule image en trois panneaux : le ghost mannequin et le mannequin stylisé. À partir d'images de vêtement, tu produis un prompt de génération d'image complet, structuré, et photoréaliste.`,
+  swap: `Tu es le Directeur Artistique du Studio FashionAI. Tu combines un template de cadrage (@source), une tenue normalisée (@tenue), et une identité de mannequin (@perso) pour générer un Plan Maître photographique sans dérive de vêtement ni d'identité.`,
+  transfert_profil: `Tu es le Directeur Artistique spécialisé en Continuité Spatiale 360°. À partir du Plan Maître (@modeA_Shoot), tu génères la vue Profil 3/4 avec un cadrage figé et une fidélité absolue au vêtement.`,
+  transfert_dos: `Tu es le Directeur Artistique spécialisé en Continuité Spatiale 360°. À partir du Plan Maître (@modeA_Shoot) et du triptyque (@tenue), tu génères la vue de Dos épurée avec autorité sur les finitions arrière.`
+};
+
 /**
- * Loads the raw markdown prompt for a given agent
+ * Loads the prompt for a given agent
  */
 export function getAgentPrompt(slug: AgentSlug): string {
-  // Check in project root fashionai/agents or agents/
-  const possiblePaths = [
-    path.join(process.cwd(), 'agents', `${slug}.md`),
-    path.join(process.cwd(), 'fashionai', 'agents', `${slug}.md`),
-    path.join(__dirname, '..', '..', 'agents', `${slug}.md`),
-  ];
-
-  for (const filePath of possiblePaths) {
-    if (fs.existsSync(filePath)) {
-      return fs.readFileSync(filePath, 'utf-8');
-    }
-  }
-
-  throw new Error(`Agent prompt markdown not found for slug: ${slug}`);
+  return AGENT_PROMPTS[slug] || '';
 }
 
 /**

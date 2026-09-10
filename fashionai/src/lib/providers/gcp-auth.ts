@@ -1,7 +1,3 @@
-import fs from 'fs';
-import path from 'path';
-import crypto from 'crypto';
-
 interface ServiceAccountKey {
   client_email: string;
   private_key: string;
@@ -19,26 +15,6 @@ function loadServiceAccountKey(): ServiceAccountKey | null {
       // ignore
     }
   }
-
-  // 2. File path from env or default gcp-key.json
-  const candidatePaths = [
-    process.env.GOOGLE_APPLICATION_CREDENTIALS,
-    path.join(process.cwd(), 'gcp-key.json'),
-    path.join(process.cwd(), 'fashionai', 'gcp-key.json'),
-  ].filter(Boolean) as string[];
-
-  for (const p of candidatePaths) {
-    const fullPath = path.isAbsolute(p) ? p : path.join(process.cwd(), p);
-    if (fs.existsSync(fullPath)) {
-      try {
-        const raw = fs.readFileSync(fullPath, 'utf8');
-        return JSON.parse(raw);
-      } catch (err) {
-        console.error('Failed to parse GCP key file at:', fullPath, err);
-      }
-    }
-  }
-
   return null;
 }
 

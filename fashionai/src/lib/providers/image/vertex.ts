@@ -22,9 +22,6 @@ function mapAspectRatio(ratio?: AspectRatio): '1:1' | '9:16' | '16:9' | '3:4' | 
   }
 }
 
-import fs from 'fs/promises';
-import path from 'path';
-
 async function referenceImagesToParts(
   referenceImages: ImageGenerationInput['referenceImages']
 ): Promise<{ inlineData: { mimeType: string; data: string } }[]> {
@@ -33,7 +30,6 @@ async function referenceImagesToParts(
   const parts = await Promise.all(
     referenceImages.map(async (ref) => {
       if (ref.base64) {
-        // Accept either a raw base64 payload or a data: URL in `base64`.
         if (ref.base64.startsWith('data:')) {
           const [header, data] = ref.base64.split(';base64,');
           return { inlineData: { mimeType: header.replace('data:', ''), data } };
@@ -44,19 +40,6 @@ async function referenceImagesToParts(
         if (ref.url.startsWith('data:')) {
           const [header, data] = ref.url.split(';base64,');
           return { inlineData: { mimeType: header.replace('data:', ''), data } };
-        }
-        // Handle local static paths in /public
-        if (ref.url.startsWith('/')) {
-          try {
-            const filePath = path.join(process.cwd(), 'public', ref.url);
-            const buffer = await fs.readFile(filePath);
-            const ext = path.extname(filePath).toLowerCase();
-            const mimeType = ext === '.png' ? 'image/png' : ext === '.webp' ? 'image/webp' : 'image/jpeg';
-            return { inlineData: { mimeType, data: buffer.toString('base64') } };
-          } catch (fsErr) {
-            console.error('Failed to read local reference image:', ref.url, fsErr);
-            return null;
-          }
         }
         try {
           const res = await fetch(ref.url);
