@@ -1,0 +1,287 @@
+<!DOCTYPE html><html class="light" lang="fr"><head>
+<meta charset="utf-8">
+<meta content="width=device-width, initial-scale=1.0" name="viewport">
+<title>Séance - STUDIO.AI</title>
+<!-- Material Symbols -->
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet">
+<!-- Google Fonts -->
+<link href="https://fonts.googleapis.com" rel="preconnect">
+<link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect">
+<link href="https://fonts.googleapis.com/css2?family=Archivo:wght@400;500&amp;family=Bodoni+Moda:ital,opsz,wght@0,6..96,400;0,6..96,500;1,6..96,400&amp;family=DM+Mono:wght@400;500&amp;display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet">
+<!-- Tailwind CSS -->
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<!-- Theme Configuration -->
+<script id="tailwind-config">
+      tailwind.config = {
+        darkMode: "class",
+        theme: {
+          extend: {
+            "colors": {
+                    "on-surface-variant": "#47464a",
+                    "rule": "#DCDCE2",
+                    "on-error": "#ffffff",
+                    "surface-dim": "#dad9e4",
+                    "tertiary": "#000000",
+                    "surface": "#FFFFFF",
+                    "tertiary-container": "#1e1b18",
+                    "primary-fixed": "#e5e1e4",
+                    "outline-variant": "#c8c5ca",
+                    "error": "#ba1a1a",
+                    "primary-container": "#1c1b1d",
+                    "outline": "#78767b",
+                    "surface-container-high": "#e9e7f2",
+                    "on-secondary-fixed": "#1a1c1d",
+                    "secondary": "#5d5e60",
+                    "on-primary-fixed": "#1c1b1d",
+                    "on-surface": "#1a1b23",
+                    "primary": "#000000",
+                    "primary-fixed-dim": "#c8c6c8",
+                    "secondary-container": "#dfdfe1",
+                    "on-tertiary-fixed-variant": "#4a4642",
+                    "secondary-fixed": "#e2e2e4",
+                    "inverse-surface": "#2f3038",
+                    "surface-container-lowest": "#ffffff",
+                    "background": "#F6F6F8",
+                    "surface-tint": "#5f5e60",
+                    "surface-container-highest": "#e3e1ec",
+                    "on-secondary-container": "#616365",
+                    "on-tertiary-container": "#88837e",
+                    "ink": "#0B0B0D",
+                    "on-primary": "#ffffff",
+                    "surface-variant": "#e3e1ec",
+                    "on-error-container": "#93000a",
+                    "on-tertiary": "#ffffff",
+                    "accent-sienna": "#B7410E",
+                    "surface-container-low": "#f4f2fd",
+                    "surface-bright": "#fbf8ff",
+                    "whatsapp-green": "#25D366",
+                    "on-secondary-fixed-variant": "#454749",
+                    "on-background": "#1a1b23",
+                    "on-primary-fixed-variant": "#474649",
+                    "on-secondary": "#ffffff",
+                    "error-container": "#ffdad6",
+                    "tertiary-fixed-dim": "#ccc5c0",
+                    "secondary-fixed-dim": "#c6c6c8",
+                    "on-tertiary-fixed": "#1e1b18",
+                    "inverse-primary": "#c8c6c8",
+                    "tertiary-fixed": "#e8e1db",
+                    "inverse-on-surface": "#f1effa",
+                    "on-primary-container": "#858386",
+                    "surface-container": "#eeecf8",
+                    "ink-soft": "#56565F"
+            },
+            "borderRadius": {
+                    "DEFAULT": "0.25rem",
+                    "lg": "0.5rem",
+                    "xl": "0.75rem",
+                    "full": "9999px"
+            },
+            "spacing": {
+                    "margin-desktop": "64px",
+                    "margin-mobile": "20px",
+                    "stack-sm": "12px",
+                    "stack-lg": "80px",
+                    "gutter": "1px",
+                    "stack-md": "24px"
+            },
+            "fontFamily": {
+                    "headline-lg": [
+                            "Bodoni Moda"
+                    ],
+                    "body-sm": [
+                            "Archivo"
+                    ],
+                    "headline-lg-mobile": [
+                            "Bodoni Moda"
+                    ],
+                    "display-xl-mobile": [
+                            "Bodoni Moda"
+                    ],
+                    "utility-label": [
+                            "DM Mono"
+                    ],
+                    "body-md": [
+                            "Archivo"
+                    ],
+                    "display-xl": [
+                            "Bodoni Moda"
+                    ]
+            },
+            "fontSize": {
+                    "headline-lg": [
+                            "40px",
+                            {
+                                    "lineHeight": "1.1",
+                                    "letterSpacing": "-0.02em",
+                                    "fontWeight": "400"
+                            }
+                    ],
+                    "body-sm": [
+                            "14px",
+                            {
+                                    "lineHeight": "1.6",
+                                    "fontWeight": "400"
+                            }
+                    ],
+                    "headline-lg-mobile": [
+                            "32px",
+                            {
+                                    "lineHeight": "1.1",
+                                    "fontWeight": "400"
+                            }
+                    ],
+                    "display-xl-mobile": [
+                            "48px",
+                            {
+                                    "lineHeight": "1.0",
+                                    "letterSpacing": "-0.03em",
+                                    "fontWeight": "400"
+                            }
+                    ],
+                    "utility-label": [
+                            "11px",
+                            {
+                                    "lineHeight": "1.2",
+                                    "letterSpacing": "0.14em",
+                                    "fontWeight": "500"
+                            }
+                    ],
+                    "body-md": [
+                            "16px",
+                            {
+                                    "lineHeight": "1.6",
+                                    "fontWeight": "400"
+                            }
+                    ],
+                    "display-xl": [
+                            "72px",
+                            {
+                                    "lineHeight": "1.0",
+                                    "letterSpacing": "-0.04em",
+                                    "fontWeight": "400"
+                            }
+                    ]
+            }
+    },
+        },
+      }
+    </script>
+</head>
+<body class="bg-background text-primary font-body-md text-body-md antialiased selection:bg-ink selection:text-surface">
+<!-- Shared Component: TopAppBar -->
+<nav class="bg-background fixed top-0 w-full h-[56px] border-b border-rule flex flex-row-reverse justify-between items-center px-margin-desktop z-50">
+<div class="cursor-pointer transition-all duration-600 text-on-surface-variant flex items-center hover:text-ink">
+<span class="material-symbols-outlined" style="font-variation-settings: 'FILL' 0;">menu</span>
+</div>
+<div class="font-headline-lg text-headline-lg uppercase tracking-tighter text-ink">STUDIO.AI</div>
+</nav>
+<!-- Main Content Canvas -->
+<main class="pt-[56px] w-full max-w-[1440px] mx-auto px-margin-desktop min-h-screen">
+<!-- Hero Split Section -->
+<section class="grid grid-cols-2 border-b border-rule">
+<!-- Left Column: The Anchor -->
+<div class="border-r border-rule py-stack-lg pr-margin-desktop flex flex-col justify-between">
+<div>
+<h1 class="font-utility-label text-utility-label text-ink mb-stack-md uppercase">La Prochaine Séance</h1>
+<div class="font-display-xl text-display-xl text-ink leading-none mb-stack-sm tracking-tighter" style="word-spacing: -0.1em;">
+                        Jeudi<br>3 septembre
+                    </div>
+<div class="font-utility-label text-utility-label text-on-surface-variant uppercase mt-stack-md">
+                        18H00 - 19H30 (PARIS) / SUR ZOOM
+                    </div>
+</div>
+<div class="mt-stack-lg">
+<button class="w-full bg-whatsapp-green rounded-none py-stack-md px-stack-md flex items-center justify-center gap-stack-sm cursor-pointer hover:bg-ink transition-colors duration-600 text-ink">
+<span class="material-symbols-outlined">forum</span>
+<span class="font-utility-label text-utility-label uppercase">Rejoindre le groupe WhatsApp</span>
+</button>
+</div>
+</div>
+<!-- Right Column: Process -->
+<div class="py-stack-lg pl-margin-desktop flex flex-col">
+<h2 class="font-utility-label text-utility-label text-ink mb-stack-md uppercase">Comment Ça Se Passe</h2>
+<div class="flex flex-col flex-grow">
+<!-- Step 01 -->
+<div class="border-b border-rule py-stack-sm flex gap-stack-sm items-start group">
+<span class="font-utility-label text-utility-label text-on-surface-variant mt-1 group-hover:text-ink transition-colors duration-600">01</span>
+<div>
+<h3 class="font-headline-lg text-headline-lg text-ink mb-2">Le Brief</h3>
+<p class="font-body-md text-body-md text-on-surface-variant">Chaque semaine, un nouveau thème éditorial est annoncé, ancré dans l'esthétique brutaliste et minimaliste du studio.</p>
+</div>
+</div>
+<!-- Step 02 -->
+<div class="border-b border-rule py-stack-sm flex gap-stack-sm items-start group">
+<span class="font-utility-label text-utility-label text-on-surface-variant mt-1 group-hover:text-ink transition-colors duration-600">02</span>
+<div>
+<h3 class="font-headline-lg text-headline-lg text-ink mb-2">La Pratique</h3>
+<p class="font-body-md text-body-md text-on-surface-variant">Démonstration en direct des workflows d'intelligence artificielle, des structures de prompt avancées et de la manipulation de la lumière.</p>
+</div>
+</div>
+<!-- Step 03 -->
+<div class="border-b border-rule py-stack-sm flex gap-stack-sm items-start group">
+<span class="font-utility-label text-utility-label text-on-surface-variant mt-1 group-hover:text-ink transition-colors duration-600">03</span>
+<div>
+<h3 class="font-headline-lg text-headline-lg text-ink mb-2">La Critique</h3>
+<p class="font-body-md text-body-md text-on-surface-variant">Analyse rigoureuse des images générées par les participants. Focus sur la composition, le grain photographique et la direction artistique.</p>
+</div>
+</div>
+<!-- Step 04 -->
+<div class="py-stack-sm flex gap-stack-sm items-start group">
+<span class="font-utility-label text-utility-label text-on-surface-variant mt-1 group-hover:text-ink transition-colors duration-600">04</span>
+<div>
+<h3 class="font-headline-lg text-headline-lg text-ink mb-2">Le Lab</h3>
+<p class="font-body-md text-body-md text-on-surface-variant">Questions, débats ouverts et exploration libre des nouveaux outils génératifs avec la communauté francophone.</p>
+</div>
+</div>
+</div>
+</div>
+</section>
+<!-- Replays Section -->
+<section class="py-stack-lg border-b border-rule">
+<h2 class="font-utility-label text-utility-label text-ink mb-stack-lg uppercase">Les Replays</h2>
+<div class="flex flex-col border-t border-rule">
+<!-- Row 1 -->
+<article class="grid grid-cols-2 border-b border-rule group cursor-pointer hover:bg-surface-container-lowest transition-colors duration-600">
+<div class="border-r border-rule p-stack-md flex flex-col justify-between">
+<div class="w-full aspect-[16/9] bg-cover bg-center bg-no-repeat mb-stack-md bg-surface-variant" data-alt="A striking AI-generated fashion editorial photograph depicting a model in motion blur. The setting is a stark, brutalist concrete studio illuminated by high-key, cold white lighting. The aesthetic is strictly minimal, utilizing a palette of deep blacks, pristine whites, and a single subtle accent of sienna, capturing a sense of avant-garde movement." style="background-image: url('https://lh3.googleusercontent.com/aida-public/AB6AXuDMM2bg8SZNMg6I-PtSk0AxKow3Md0Z5gCvE2htSpC6ulWZZX-DJ_IFk8xDRM03ydQ8hBH-T_eo-aGzihvfq7zgJQjTdB916tvzLNPu215ZU_eZkAlEqPswFuei61UtMzUwHznJ0iy5YEcnhZCDuwh_glaJKh4FF0pSuQCcnzffIXdxrZc9zBqCb8-25qubObJ8ZTMA9OPe5zBG-GYJxQsvf63Y3Hh2pK-JAaoCDooNfoNnEwWT')"></div>
+<div>
+<div class="font-utility-label text-utility-label text-on-surface-variant mb-2">27 AOÛT 2024</div>
+<h3 class="font-headline-lg text-headline-lg text-ink leading-tight">SÉANCE 12: LE FLOU DE MOUVEMENT</h3>
+</div>
+</div>
+<div class="p-stack-md flex flex-col justify-between items-start">
+<p class="font-body-md text-body-md text-on-surface-variant max-w-md">Explorer les paramètres avancés pour simuler la photographie argentique en mouvement lent. Comment injecter du chaos contrôlé dans une composition minimaliste sans perdre la structure du vêtement.</p>
+<span class="font-utility-label text-utility-label text-ink border-b border-ink inline-block pb-1 mt-stack-md group-hover:text-accent-sienna group-hover:border-accent-sienna transition-colors duration-600 uppercase">Voir le replay</span>
+</div>
+</article>
+<!-- Row 2 -->
+<article class="grid grid-cols-2 border-b border-rule group cursor-pointer hover:bg-surface-container-lowest transition-colors duration-600">
+<div class="border-r border-rule p-stack-md flex flex-col justify-between">
+<div class="w-full aspect-[16/9] bg-cover bg-center bg-no-repeat mb-stack-md bg-surface-variant" data-alt="A meticulously crafted AI-generated architectural fashion shot featuring a model posing against massive, brutalist concrete walls. The scene uses hard, directional sunlight to create sharp, geometric shadows. The overall mood is austere, authoritative, and deeply editorial, leaning entirely on the structural contrast of textures and strict monochrome tones." style="background-image: url('https://lh3.googleusercontent.com/aida-public/AB6AXuCZIApHS2LJQwvXDC4nB0_5hd2c9QS4doMUYvhR-NTMVV05LMWQJFv6i8qfwfNEMxNNlAxYdgys-4s4lQn9IpKQj_v3G4XH9RUpWcYOyu2bVnUmRQGWl5jtA5kf48LBcMLIK4xCSZ7j68CNia5irFWyGuWOa0Hiw2jPUuQAzmajKNMqqwAgOBjyV4AAgy1uzxLY8YP-mf5Pd_j41Lba8RneWnh1vRtzcGGvGNt6meovSy5wGoHy')"></div>
+<div>
+<div class="font-utility-label text-utility-label text-on-surface-variant mb-2">20 AOÛT 2024</div>
+<h3 class="font-headline-lg text-headline-lg text-ink leading-tight">SÉANCE 11: L'ARCHITECTURE BRUTALISTE</h3>
+</div>
+</div>
+<div class="p-stack-md flex flex-col justify-between items-start">
+<p class="font-body-md text-body-md text-on-surface-variant max-w-md">Construire des décors virtuels en béton et acier. Apprendre à fusionner l'échelle humaine avec des structures monumentales pour élever la présentation de collections streetwear ou avant-garde.</p>
+<span class="font-utility-label text-utility-label text-ink border-b border-ink inline-block pb-1 mt-stack-md group-hover:text-accent-sienna group-hover:border-accent-sienna transition-colors duration-600 uppercase">Voir le replay</span>
+</div>
+</article>
+</div>
+</section>
+</main>
+<!-- Shared Component: Footer -->
+<footer class="bg-background w-full border-t border-rule grid grid-cols-1 md:grid-cols-2 gap-stack-md px-margin-desktop py-stack-lg mx-auto max-w-[1440px]">
+<div class="font-utility-label text-utility-label text-primary">©2024 STUDIO.AI ALL RIGHTS RESERVED</div>
+<div class="flex gap-stack-md justify-start md:justify-end">
+<a class="font-utility-label text-utility-label text-on-surface-variant transition-colors duration-600 cursor-pointer hover:text-ink" href="#">COLLECTIONS</a>
+<a class="font-utility-label text-utility-label text-on-surface-variant transition-colors duration-600 cursor-pointer hover:text-ink" href="#">PROCESS</a>
+<a class="font-utility-label text-utility-label text-on-surface-variant transition-colors duration-600 cursor-pointer hover:text-ink" href="#">LAB</a>
+<a class="font-utility-label text-utility-label text-on-surface-variant transition-colors duration-600 cursor-pointer hover:text-ink" href="#">CONTACT</a>
+</div>
+</footer>
+
+
+</body></html>

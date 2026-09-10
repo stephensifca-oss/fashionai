@@ -1,0 +1,467 @@
+<!DOCTYPE html>
+
+<html class="light" lang="fr"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>AI FASHION - Admin Console - Leads</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com" rel="preconnect"/>
+<link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect"/>
+<link href="https://fonts.googleapis.com/css2?family=Archivo:wght@400;600&amp;family=Bodoni+Moda:ital,opsz,wght@0,6..96,400;0,6..96,700;1,6..96,400&amp;family=DM+Mono:ital,wght@0,400;0,500;1,400&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    "colors": {
+                        "surface-variant": "#e3e1ec",
+                        "on-secondary-container": "#616365",
+                        "secondary": "#5d5e60",
+                        "inverse-primary": "#c8c6c8",
+                        "secondary-container": "#dfdfe1",
+                        "on-tertiary-fixed": "#1e1b18",
+                        "on-secondary-fixed": "#1a1c1d",
+                        "surface-tint": "#5f5e60",
+                        "surface-container": "#eeecf8",
+                        "primary-container": "#1c1b1d",
+                        "on-primary": "#ffffff",
+                        "surface-container-high": "#e9e7f2",
+                        "tertiary": "#000000",
+                        "on-tertiary-container": "#88837e",
+                        "background": "#F6F6F8",
+                        "tertiary-container": "#1e1b18",
+                        "surface-dim": "#dad9e4",
+                        "primary-fixed": "#e5e1e4",
+                        "error": "#ba1a1a",
+                        "primary": "#000000",
+                        "surface-bright": "#fbf8ff",
+                        "secondary-fixed-dim": "#c6c6c8",
+                        "accent-sienna": "#B7410E",
+                        "on-primary-fixed-variant": "#474649",
+                        "on-tertiary": "#ffffff",
+                        "error-container": "#ffdad6",
+                        "on-surface": "#1a1b23",
+                        "tertiary-fixed-dim": "#ccc5c0",
+                        "inverse-surface": "#2f3038",
+                        "ink": "#0B0B0D",
+                        "on-tertiary-fixed-variant": "#4a4642",
+                        "on-secondary": "#ffffff",
+                        "whatsapp-green": "#25D366",
+                        "inverse-on-surface": "#f1effa",
+                        "rule": "#DCDCE2",
+                        "on-secondary-fixed-variant": "#454749",
+                        "on-error": "#ffffff",
+                        "surface-container-highest": "#e3e1ec",
+                        "outline-variant": "#c8c5ca",
+                        "on-primary-container": "#858386",
+                        "surface": "#FFFFFF",
+                        "on-surface-variant": "#47464a",
+                        "outline": "#78767b",
+                        "primary-fixed-dim": "#c8c6c8",
+                        "secondary-fixed": "#e2e2e4",
+                        "ink-soft": "#56565F",
+                        "on-error-container": "#93000a",
+                        "on-primary-fixed": "#1c1b1d",
+                        "surface-container-low": "#f4f2fd",
+                        "on-background": "#1a1b23",
+                        "tertiary-fixed": "#e8e1db",
+                        "surface-container-lowest": "#ffffff"
+                    },
+                    "borderRadius": {
+                        "DEFAULT": "0px",
+                        "lg": "0px",
+                        "xl": "0px",
+                        "full": "0px"
+                    },
+                    "spacing": {
+                        "margin-desktop": "64px",
+                        "gutter": "1px",
+                        "stack-lg": "80px",
+                        "margin-mobile": "20px",
+                        "stack-md": "24px",
+                        "stack-sm": "12px"
+                    },
+                    "fontFamily": {
+                        "body-sm": ["Archivo"],
+                        "headline-lg-mobile": ["Bodoni Moda"],
+                        "display-xl": ["Bodoni Moda"],
+                        "display-xl-mobile": ["Bodoni Moda"],
+                        "utility-label": ["DM Mono"],
+                        "body-md": ["Archivo"],
+                        "headline-lg": ["Bodoni Moda"]
+                    },
+                    "fontSize": {
+                        "body-sm": ["14px", { "lineHeight": "1.6", "fontWeight": "400" }],
+                        "headline-lg-mobile": ["32px", { "lineHeight": "1.1", "fontWeight": "400" }],
+                        "display-xl": ["72px", { "lineHeight": "1.0", "letterSpacing": "-0.04em", "fontWeight": "400" }],
+                        "display-xl-mobile": ["48px", { "lineHeight": "1.0", "letterSpacing": "-0.03em", "fontWeight": "400" }],
+                        "utility-label": ["11px", { "lineHeight": "1.2", "letterSpacing": "0.14em", "fontWeight": "500" }],
+                        "body-md": ["16px", { "lineHeight": "1.6", "fontWeight": "400" }],
+                        "headline-lg": ["40px", { "lineHeight": "1.1", "letterSpacing": "-0.02em", "fontWeight": "400" }]
+                    }
+                }
+            }
+        }
+    </script>
+<style>
+        /* Base styles enforcing the Brutalist/Minimalist theme */
+        body {
+            background-color: theme('colors.background');
+            color: theme('colors.ink');
+            font-family: 'Archivo', sans-serif;
+            -webkit-font-smoothing: antialiased;
+            -moz-osx-font-smoothing: grayscale;
+        }
+        
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+        }
+
+        .border-rule {
+            border-color: theme('colors.rule');
+        }
+
+        /* Enforce zero border radius everywhere */
+        * {
+            border-radius: 0 !important;
+        }
+        
+        /* Table styles */
+        table {
+            width: 100%;
+            border-collapse: collapse;
+        }
+        th, td {
+            border-bottom: 1px solid theme('colors.rule');
+            padding: 16px 12px;
+            text-align: left;
+            vertical-align: middle;
+        }
+        th {
+            font-family: 'DM Mono', monospace;
+            font-size: 11px;
+            font-weight: 500;
+            text-transform: uppercase;
+            letter-spacing: 0.14em;
+            color: theme('colors.ink-soft');
+        }
+        td {
+            font-size: 14px;
+        }
+        
+        /* Grid transitions for a premium feel */
+        .grid-item-enter {
+            opacity: 0;
+            transform: translateY(10px);
+            animation: glideIn 600ms ease-out forwards;
+        }
+        
+        @keyframes glideIn {
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+        
+        /* Specific delays for stat cards */
+        .stat-card:nth-child(1) { animation-delay: 50ms; }
+        .stat-card:nth-child(2) { animation-delay: 100ms; }
+        .stat-card:nth-child(3) { animation-delay: 150ms; }
+        .stat-card:nth-child(4) { animation-delay: 200ms; }
+        .stat-card:nth-child(5) { animation-delay: 250ms; }
+    </style>
+</head>
+<body class="flex min-h-screen">
+<!-- SideNavBar (JSON Component) -->
+<nav class="fixed left-0 top-0 h-full w-[220px] bg-ink text-surface flex flex-col p-8 gap-stack-sm z-50">
+<div class="mb-stack-lg">
+<h1 class="font-display-xl text-[24px] tracking-tighter text-surface uppercase">STUDIO.AI</h1>
+<p class="font-utility-label text-utility-label text-surface-variant opacity-70 uppercase mt-2">Admin Console</p>
+</div>
+<div class="flex flex-col gap-2 w-full">
+<!-- Active Tab -->
+<a class="flex items-center gap-3 px-3 py-2 font-utility-label text-utility-label uppercase tracking-widest text-surface font-bold border-l-2 border-surface bg-inverse-surface transition-all duration-300" href="#">
+<span class="material-symbols-outlined text-[18px]" data-icon="person_search" data-weight="fill" style="font-variation-settings: 'FILL' 1;">person_search</span>
+                Leads
+            </a>
+<!-- Inactive Tabs -->
+<a class="flex items-center gap-3 px-3 py-2 font-utility-label text-utility-label uppercase tracking-widest text-surface-variant opacity-60 hover:opacity-100 hover:bg-inverse-surface transition-colors duration-200" href="#">
+<span class="material-symbols-outlined text-[18px]" data-icon="style">style</span>
+                Kits
+            </a>
+<a class="flex items-center gap-3 px-3 py-2 font-utility-label text-utility-label uppercase tracking-widest text-surface-variant opacity-60 hover:opacity-100 hover:bg-inverse-surface transition-colors duration-200" href="#">
+<span class="material-symbols-outlined text-[18px]" data-icon="photo_camera">photo_camera</span>
+                Séances
+            </a>
+<a class="flex items-center gap-3 px-3 py-2 font-utility-label text-utility-label uppercase tracking-widest text-surface-variant opacity-60 hover:opacity-100 hover:bg-inverse-surface transition-colors duration-200" href="#">
+<span class="material-symbols-outlined text-[18px]" data-icon="chat">chat</span>
+                Codes WhatsApp
+            </a>
+<a class="flex items-center gap-3 px-3 py-2 font-utility-label text-utility-label uppercase tracking-widest text-surface-variant opacity-60 hover:opacity-100 hover:bg-inverse-surface transition-colors duration-200" href="#">
+<span class="material-symbols-outlined text-[18px]" data-icon="ios_share">ios_share</span>
+                Export
+            </a>
+</div>
+<div class="mt-auto pt-8 border-t border-inverse-surface flex items-center gap-3">
+<div class="w-8 h-8 bg-surface text-ink flex items-center justify-center font-bold text-xs">
+                A
+            </div>
+<div class="flex flex-col">
+<span class="font-utility-label text-[10px] text-surface">ADMINISTRATEUR</span>
+<a class="font-utility-label text-[10px] text-surface-variant opacity-60 hover:opacity-100 underline mt-1" href="#">Déconnexion</a>
+</div>
+</div>
+</nav>
+<!-- Main Content Area -->
+<main class="ml-[220px] flex-1 bg-surface min-h-screen">
+<!-- TopAppBar Context (Integrated into layout) -->
+<header class="flex justify-between items-center h-[80px] px-10 w-full border-b border-rule bg-surface sticky top-0 z-40">
+<h2 class="font-utility-label text-utility-label uppercase text-ink-soft">Tableau de bord / Leads</h2>
+<div class="flex items-center gap-6">
+<button class="text-ink-soft hover:text-ink transition-colors duration-300">
+<span class="material-symbols-outlined">search</span>
+</button>
+<button class="text-ink-soft hover:text-ink transition-colors duration-300">
+<span class="material-symbols-outlined">notifications</span>
+</button>
+<button class="text-ink-soft hover:text-ink transition-colors duration-300">
+<span class="material-symbols-outlined">settings</span>
+</button>
+</div>
+</header>
+<div class="p-10 max-w-[1280px] mx-auto flex flex-col gap-12">
+<!-- 1. TITLE ROW -->
+<div class="flex justify-between items-end border-b border-rule pb-4 grid-item-enter">
+<h1 class="font-headline-lg text-[32px] text-ink m-0 leading-none">Leads</h1>
+<button class="border border-ink px-6 py-3 font-utility-label text-utility-label uppercase text-ink hover:bg-surface-variant transition-colors duration-200 flex items-center gap-2">
+<span class="material-symbols-outlined text-[16px]">download</span>
+                    Exporter en CSV
+                </button>
+</div>
+<!-- 2. STAT ROW -->
+<div class="grid grid-cols-5 gap-[1px] bg-rule border border-rule">
+<!-- Stat 1 -->
+<div class="bg-surface p-6 flex flex-col justify-between h-[140px] stat-card grid-item-enter">
+<span class="font-utility-label text-[10px] uppercase text-ink-soft tracking-wider">Leads Ce Mois</span>
+<div class="flex items-baseline gap-2 mt-auto">
+<span class="font-body-md font-semibold text-[32px] text-ink tabular-nums leading-none">142</span>
+<span class="font-utility-label text-[10px] text-whatsapp-green">+12%</span>
+</div>
+</div>
+<!-- Stat 2 -->
+<div class="bg-surface p-6 flex flex-col justify-between h-[140px] stat-card grid-item-enter">
+<span class="font-utility-label text-[10px] uppercase text-ink-soft tracking-wider">Messages WhatsApp Reçus</span>
+<div class="flex items-baseline gap-2 mt-auto">
+<span class="font-body-md font-semibold text-[32px] text-ink tabular-nums leading-none">89</span>
+<span class="font-utility-label text-[10px] text-whatsapp-green">+5%</span>
+</div>
+</div>
+<!-- Stat 3 -->
+<div class="bg-surface p-6 flex flex-col justify-between h-[140px] stat-card grid-item-enter">
+<span class="font-utility-label text-[10px] uppercase text-ink-soft tracking-wider">Inscrits Séance</span>
+<div class="flex items-baseline gap-2 mt-auto">
+<span class="font-body-md font-semibold text-[32px] text-ink tabular-nums leading-none">64</span>
+<span class="font-utility-label text-[10px] text-whatsapp-green">+8%</span>
+</div>
+</div>
+<!-- Stat 4 -->
+<div class="bg-surface p-6 flex flex-col justify-between h-[140px] stat-card grid-item-enter">
+<span class="font-utility-label text-[10px] uppercase text-ink-soft tracking-wider">Présents Séance</span>
+<div class="flex items-baseline gap-2 mt-auto">
+<span class="font-body-md font-semibold text-[32px] text-ink tabular-nums leading-none">52</span>
+<span class="font-utility-label text-[10px] text-error">-2%</span>
+</div>
+</div>
+<!-- Stat 5 -->
+<div class="bg-surface p-6 flex flex-col justify-between h-[140px] stat-card grid-item-enter">
+<span class="font-utility-label text-[10px] uppercase text-ink-soft tracking-wider">Leads Chauds</span>
+<div class="flex items-baseline gap-2 mt-auto">
+<span class="font-body-md font-semibold text-[32px] text-whatsapp-green tabular-nums leading-none">28</span>
+</div>
+</div>
+</div>
+<!-- 3. CODE RESOLVER & 4. FILTER BAR -->
+<div class="flex flex-col gap-6 grid-item-enter" style="animation-delay: 300ms;">
+<!-- Code Resolver -->
+<div class="border border-ink p-1 flex items-center justify-between bg-surface">
+<div class="flex items-center gap-4 px-4">
+<span class="material-symbols-outlined text-ink-soft">key</span>
+<label class="font-utility-label text-utility-label uppercase text-ink" for="code_resolver">Résoudre un code WhatsApp</label>
+</div>
+<div class="flex w-1/2">
+<input class="w-full bg-surface-container-lowest border-0 border-b border-rule focus:ring-0 focus:border-ink font-utility-label text-[14px] px-4 py-3 placeholder:text-outline-variant" id="code_resolver" placeholder="A7K2M" type="text"/>
+<button class="bg-ink text-surface font-utility-label text-utility-label uppercase px-8 py-3 hover:bg-inverse-surface transition-colors whitespace-nowrap">Retrouver le lead</button>
+</div>
+</div>
+<!-- Filter Bar -->
+<div class="flex justify-between items-center border-b border-rule pb-4 pt-2">
+<div class="flex gap-2">
+<button class="bg-ink text-surface font-utility-label text-utility-label uppercase px-4 py-2">Tous</button>
+<button class="border border-rule text-ink hover:border-ink font-utility-label text-utility-label uppercase px-4 py-2 transition-colors">Chauds</button>
+<button class="border border-rule text-ink hover:border-ink font-utility-label text-utility-label uppercase px-4 py-2 transition-colors">Tièdes</button>
+<button class="border border-rule text-ink hover:border-ink font-utility-label text-utility-label uppercase px-4 py-2 transition-colors">Froids</button>
+</div>
+<div class="flex gap-4">
+<select class="border border-rule bg-surface font-utility-label text-utility-label uppercase px-4 py-2 text-ink focus:ring-0 focus:border-ink cursor-pointer">
+<option>Toutes les sources</option>
+<option>Instagram</option>
+<option>Site Web</option>
+<option>Direct</option>
+</select>
+<select class="border border-rule bg-surface font-utility-label text-utility-label uppercase px-4 py-2 text-ink focus:ring-0 focus:border-ink cursor-pointer">
+<option>Tous les kits</option>
+<option>Lookbook Été</option>
+<option>Catalogue Pro</option>
+</select>
+</div>
+</div>
+</div>
+<!-- 5. LEADS TABLE -->
+<div class="overflow-x-auto grid-item-enter" style="animation-delay: 400ms;">
+<table class="w-full">
+<thead>
+<tr>
+<th>Prénom</th>
+<th>WhatsApp</th>
+<th>Entreprise</th>
+<th>Rôle</th>
+<th>Kits</th>
+<th>Séances</th>
+<th>Source</th>
+<th>Score</th>
+<th class="text-right">Dernière Activité</th>
+</tr>
+</thead>
+<tbody class="font-body-sm text-ink">
+<!-- Row 1 (Hot) -->
+<tr class="hover:bg-surface-container-lowest transition-colors">
+<td class="font-semibold">Awa</td>
+<td class="font-utility-label">+225 07...</td>
+<td>Maison Bley</td>
+<td class="text-ink-soft">Dir. Artistique</td>
+<td>2</td>
+<td>1</td>
+<td>IG Ad</td>
+<td>
+<span class="inline-block bg-ink text-surface font-utility-label px-2 py-1 text-[10px]">85</span>
+</td>
+<td class="text-right text-ink-soft font-utility-label">Il y a 2h</td>
+</tr>
+<!-- Row 2 (Warm) -->
+<tr class="hover:bg-surface-container-lowest transition-colors">
+<td class="font-semibold">Koffi</td>
+<td class="font-utility-label">+225 05...</td>
+<td>Abidjan Style</td>
+<td class="text-ink-soft">Fondateur</td>
+<td>1</td>
+<td>0</td>
+<td>Organique</td>
+<td>
+<span class="inline-block border border-ink text-ink font-utility-label px-2 py-1 text-[10px]">62</span>
+</td>
+<td class="text-right text-ink-soft font-utility-label">Hier</td>
+</tr>
+<!-- Row 3 (Cold) -->
+<tr class="hover:bg-surface-container-lowest transition-colors">
+<td class="font-semibold">Mariam</td>
+<td class="font-utility-label">+225 01...</td>
+<td>Atelier M</td>
+<td class="text-ink-soft">Styliste</td>
+<td>1</td>
+<td>0</td>
+<td>Direct</td>
+<td>
+<span class="inline-block text-ink-soft font-utility-label px-2 py-1 text-[10px]">30</span>
+</td>
+<td class="text-right text-ink-soft font-utility-label">04 Mars</td>
+</tr>
+<!-- Row 4 (Hot) -->
+<tr class="hover:bg-surface-container-lowest transition-colors">
+<td class="font-semibold">Yao</td>
+<td class="font-utility-label">+225 07...</td>
+<td>Ivoiri Couture</td>
+<td class="text-ink-soft">CEO</td>
+<td>3</td>
+<td>2</td>
+<td>IG Ad</td>
+<td>
+<span class="inline-block bg-ink text-surface font-utility-label px-2 py-1 text-[10px]">92</span>
+</td>
+<td class="text-right text-ink-soft font-utility-label">Il y a 10m</td>
+</tr>
+<!-- Row 5 (Warm) -->
+<tr class="hover:bg-surface-container-lowest transition-colors">
+<td class="font-semibold">Fatou</td>
+<td class="font-utility-label">+221 77...</td>
+<td>Dakar Mode</td>
+<td class="text-ink-soft">Acheteuse</td>
+<td>2</td>
+<td>1</td>
+<td>Web</td>
+<td>
+<span class="inline-block border border-ink text-ink font-utility-label px-2 py-1 text-[10px]">55</span>
+</td>
+<td class="text-right text-ink-soft font-utility-label">28 Fév</td>
+</tr>
+<!-- Row 6 (Cold) -->
+<tr class="hover:bg-surface-container-lowest transition-colors">
+<td class="font-semibold">Cédric</td>
+<td class="font-utility-label">+225 05...</td>
+<td>Indépendant</td>
+<td class="text-ink-soft">Designer</td>
+<td>1</td>
+<td>0</td>
+<td>Organique</td>
+<td>
+<span class="inline-block text-ink-soft font-utility-label px-2 py-1 text-[10px]">22</span>
+</td>
+<td class="text-right text-ink-soft font-utility-label">15 Fév</td>
+</tr>
+<!-- Row 7 (Hot) -->
+<tr class="hover:bg-surface-container-lowest transition-colors">
+<td class="font-semibold">Adjoua</td>
+<td class="font-utility-label">+225 07...</td>
+<td>Luxe Ebène</td>
+<td class="text-ink-soft">Resp. Com</td>
+<td>4</td>
+<td>1</td>
+<td>IG Ad</td>
+<td>
+<span class="inline-block bg-ink text-surface font-utility-label px-2 py-1 text-[10px]">78</span>
+</td>
+<td class="text-right text-ink-soft font-utility-label">Aujourd'hui</td>
+</tr>
+<!-- Row 8 (Warm) -->
+<tr class="hover:bg-surface-container-lowest transition-colors">
+<td class="font-semibold">Seydou</td>
+<td class="font-utility-label">+223 76...</td>
+<td>Bamak'Art</td>
+<td class="text-ink-soft">Gérant</td>
+<td>1</td>
+<td>1</td>
+<td>Direct</td>
+<td>
+<span class="inline-block border border-ink text-ink font-utility-label px-2 py-1 text-[10px]">48</span>
+</td>
+<td class="text-right text-ink-soft font-utility-label">20 Fév</td>
+</tr>
+</tbody>
+</table>
+</div>
+<!-- 6. PAGINATION -->
+<div class="flex justify-end items-center gap-4 mt-4 grid-item-enter" style="animation-delay: 500ms;">
+<span class="font-utility-label text-utility-label text-ink-soft uppercase">1 - 8 sur 142</span>
+<div class="flex gap-1">
+<button class="w-8 h-8 flex items-center justify-center border border-rule text-ink-soft hover:border-ink hover:text-ink transition-colors disabled:opacity-30 disabled:hover:border-rule" disabled="">
+<span class="material-symbols-outlined text-[16px]">chevron_left</span>
+</button>
+<button class="w-8 h-8 flex items-center justify-center border border-rule text-ink hover:border-ink transition-colors">
+<span class="material-symbols-outlined text-[16px]">chevron_right</span>
+</button>
+</div>
+</div>
+</div>
+</main>
+</body></html>

@@ -1,0 +1,201 @@
+<!DOCTYPE html>
+
+<html class="light" lang="fr"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" name="viewport"/>
+<title>Le Mannequin</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com" rel="preconnect"/>
+<link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect"/>
+<link href="https://fonts.googleapis.com/css2?family=Archivo+Narrow:ital,wght@0,400..700;1,400..700&amp;family=Bodoni+Moda:ital,opsz,wght@0,6..96,400..900;1,6..96,400..900&amp;family=DM+Mono:ital,wght@0,300;0,400;0,500;1,300;1,400;1,500&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    "colors": {
+                        "background": "#f9f9fb",
+                        "surface-container-high": "#e8e8ea",
+                        "surface": "#FFFFFF",
+                        "on-secondary": "#ffffff",
+                        "primary-container": "#1c1b1d",
+                        "inverse-primary": "#c8c6c8",
+                        "on-surface": "#1a1c1d",
+                        "on-surface-variant": "#47464a",
+                        "surface-dim": "#d9dadc",
+                        "error": "#ba1a1a",
+                        "secondary-fixed": "#ffdbcf",
+                        "tertiary-fixed": "#e8e1db",
+                        "secondary-container": "#fe7440",
+                        "on-background": "#1a1c1d",
+                        "primary-fixed-dim": "#c8c6c8",
+                        "rule": "#DCDCE2",
+                        "primary-fixed": "#e5e1e4",
+                        "whatsapp": "#25D366",
+                        "surface-container-highest": "#e2e2e4",
+                        "primary": "#000000",
+                        "surface-tint": "#5f5e60",
+                        "surface-container-lowest": "#ffffff",
+                        "secondary-fixed-dim": "#ffb59c",
+                        "on-primary": "#ffffff",
+                        "outline-variant": "#c8c5ca",
+                        "on-error-container": "#93000a",
+                        "on-error": "#ffffff",
+                        "on-tertiary-fixed": "#1e1b18",
+                        "error-container": "#ffdad6",
+                        "surface-container-low": "#f3f3f5",
+                        "tertiary": "#000000",
+                        "on-primary-fixed": "#1c1b1d",
+                        "on-tertiary-fixed-variant": "#4a4642",
+                        "tertiary-container": "#1e1b18",
+                        "on-secondary-container": "#641d00",
+                        "outline": "#78767b",
+                        "inverse-surface": "#2f3132",
+                        "on-secondary-fixed-variant": "#822800",
+                        "on-tertiary": "#ffffff",
+                        "surface-container": "#edeef0",
+                        "surface-bright": "#f9f9fb",
+                        "on-primary-container": "#858386",
+                        "on-secondary-fixed": "#380c00",
+                        "tertiary-fixed-dim": "#ccc5c0",
+                        "ink-soft": "#56565F",
+                        "inverse-on-surface": "#f0f0f2",
+                        "on-tertiary-container": "#88837e",
+                        "on-primary-fixed-variant": "#474649",
+                        "secondary": "#a93702",
+                        "surface-variant": "#e2e2e4",
+                        "ink": "#000000",
+                        "accent-sienna": "#B7410E"
+                    },
+                    "borderRadius": {
+                        "DEFAULT": "0px",
+                        "lg": "0px",
+                        "xl": "0px",
+                        "full": "0px"
+                    },
+                    "spacing": {
+                        "gutter": "1px",
+                        "margin-mobile": "20px",
+                        "margin-desktop": "64px",
+                        "stack-md": "40px",
+                        "stack-sm": "16px",
+                        "stack-lg": "80px"
+                    },
+                    "fontFamily": {
+                        "body-md": ["Archivo Narrow"],
+                        "headline-lg": ["Bodoni Moda"],
+                        "display-xl": ["Bodoni Moda"],
+                        "caption-tiny": ["DM Mono"],
+                        "utility-label": ["DM Mono"],
+                        "headline-lg-mobile": ["Bodoni Moda"]
+                    },
+                    "fontSize": {
+                        "body-md": ["16px", { "lineHeight": "1.6", "fontWeight": "400" }],
+                        "headline-lg": ["40px", { "lineHeight": "1.2", "letterSpacing": "-0.01em", "fontWeight": "400" }],
+                        "display-xl": ["64px", { "lineHeight": "1.1", "letterSpacing": "-0.02em", "fontWeight": "400" }],
+                        "caption-tiny": ["10px", { "lineHeight": "1.2", "fontWeight": "400" }],
+                        "utility-label": ["11px", { "lineHeight": "1", "letterSpacing": "0.14em", "fontWeight": "500" }],
+                        "headline-lg-mobile": ["32px", { "lineHeight": "1.2", "fontWeight": "400" }]
+                    }
+                }
+            }
+        }
+    </script>
+<style>
+        body { background-color: #F6F6F8; }
+        .grid-bg { background-color: theme('colors.rule'); gap: 1px; }
+        .grid-cell { background-color: theme('colors.background'); }
+        /* Hide scrollbar for horizontal scroll */
+        .no-scrollbar::-webkit-scrollbar { display: none; }
+        .no-scrollbar { -ms-overflow-style: none; scrollbar-width: none; }
+    </style>
+</head>
+<body class="text-ink min-h-screen flex flex-col relative w-full md:w-[390px] md:mx-auto border-x border-rule bg-background overflow-x-hidden">
+<!-- TOP BAR -->
+<header class="fixed top-0 w-full md:w-[390px] h-[56px] border-b border-rule bg-background z-50 flex justify-between items-center px-margin-mobile">
+<span class="font-utility-label text-utility-label text-ink">CHOISIR UN MANNEQUIN</span>
+<button class="font-utility-label text-utility-label text-ink hover:opacity-70 transition-opacity uppercase">Fermer</button>
+</header>
+<!-- MAIN CONTENT PADDING -->
+<main class="flex-1 pt-[56px] pb-[80px] w-full flex flex-col">
+<!-- FILTERS -->
+<section class="w-full border-b border-rule bg-background">
+<div class="flex flex-row overflow-x-auto no-scrollbar py-stack-sm px-margin-mobile gap-stack-sm">
+<button class="flex-shrink-0 h-[32px] px-4 border border-ink bg-ink text-surface font-utility-label text-utility-label flex items-center justify-center uppercase">TOUS</button>
+<button class="flex-shrink-0 h-[32px] px-4 border border-rule bg-transparent text-ink font-utility-label text-utility-label flex items-center justify-center hover:border-ink transition-colors uppercase">FEMME</button>
+<button class="flex-shrink-0 h-[32px] px-4 border border-rule bg-transparent text-ink font-utility-label text-utility-label flex items-center justify-center hover:border-ink transition-colors uppercase">HOMME</button>
+</div>
+</section>
+<!-- GRID -->
+<section class="w-full grid-bg grid grid-cols-2 flex-1">
+<!-- MODEL 1 (Selected) -->
+<article class="grid-cell flex flex-col p-2 gap-2 cursor-pointer relative">
+<div class="w-full aspect-[3/4] relative overflow-hidden border-[2px] border-ink">
+<img class="absolute inset-0 w-full h-full object-cover" data-alt="High fashion portrait of a West African female model, striking pose, minimal neutral backdrop, bright high-contrast natural lighting, highly detailed, photorealistic editorial photography, elegant monochromatic aesthetic." src="https://lh3.googleusercontent.com/aida-public/AB6AXuDc9jx5ndBH6bISoLhJ9veUF7-HyaL3yrfwixzVLSyaGXCAdsoebvgCipdHi_jC_gcRa6MZ2XrHDNyNhyyE5_OwvPWvs-CiHmdnbIjkFoK1qShJqic9kFd0sWUU8nmRF5pkdvRYP7P5Hn_XhN2yRmgpZHGalGMDppZl3NA4GAsmNVdvLm4IoCzwACQ4dnTfU-9v2MSYDTdRukSzuTx7ouPjqgnITolU-zC4knORL9MHtyBx9_tG"/>
+</div>
+<div class="flex flex-col mt-[8px]">
+<span class="font-caption-tiny text-caption-tiny text-accent-sienna uppercase">AMINATA</span>
+<span class="font-caption-tiny text-caption-tiny text-ink-soft uppercase mt-1">TAILLE 38 — 1M76</span>
+</div>
+</article>
+<!-- MODEL 2 -->
+<article class="grid-cell flex flex-col p-2 gap-2 cursor-pointer hover:bg-surface transition-colors">
+<div class="w-full aspect-[3/4] relative overflow-hidden border-[2px] border-transparent hover:border-rule transition-colors">
+<img class="absolute inset-0 w-full h-full object-cover" data-alt="High fashion portrait of a Francophone African male model, strong angular features, wearing minimalist structured garment, stark white background, crisp high-key lighting, editorial style photography, highly detailed." src="https://lh3.googleusercontent.com/aida-public/AB6AXuA7WXEd0DKG79HyKYgRZ2dgerb381vLR9w1id5QoVfX7JuYSEu7UIUWJY1EQJZdhWarWNSu7uu5-HZyTpamUNA6P_wOUoJuJ3a5XbbN9gIl7hEz4JDixryC6rI0BassCLgmvbY4JFTPuFFD43yyOjsbdprEdYM0zS2VMYhm6bfcWDF2qXp_n1k6ujIpToSFWdgQZec5_nK369E5eVRjggwCGQjodS83755UlSuyvqQB52ewjh3t"/>
+</div>
+<div class="flex flex-col mt-[8px]">
+<span class="font-caption-tiny text-caption-tiny text-ink uppercase">KOFFI</span>
+<span class="font-caption-tiny text-caption-tiny text-ink-soft uppercase mt-1">TAILLE 50 — 1M88</span>
+</div>
+</article>
+<!-- MODEL 3 -->
+<article class="grid-cell flex flex-col p-2 gap-2 cursor-pointer hover:bg-surface transition-colors">
+<div class="w-full aspect-[3/4] relative overflow-hidden border-[2px] border-transparent hover:border-rule transition-colors">
+<img class="absolute inset-0 w-full h-full object-cover" data-alt="Elegant close-up portrait of a dark-skinned female model with shaved head, striking bone structure, soft minimal makeup, stark white environment, dramatic minimalist lighting, high-end fashion campaign aesthetic." src="https://lh3.googleusercontent.com/aida-public/AB6AXuBNr5-TAUqHhy0LnK4tyjw6C8Jg5d8UOgJMSFdUbImWy38jgv4nB8v1hX-nfyJexGXgacO0Sh6t0Tcj5DkkXOb_mv2wf3PvXWtjFy1_AzyiG2aAsVZkzaWvmJlijjXs6Bb1BKzMHonf_1XYrmQdeuUmC8EG2nRLz60bPxTzmIdPLkYQZecx5Ol6omarkm751V700vj1DFKpuogJYk2nMrUGe1fq11PDbqmaG8g9lH99EY_j617l"/>
+</div>
+<div class="flex flex-col mt-[8px]">
+<span class="font-caption-tiny text-caption-tiny text-ink uppercase">FATOU</span>
+<span class="font-caption-tiny text-caption-tiny text-ink-soft uppercase mt-1">TAILLE 36 — 1M78</span>
+</div>
+</article>
+<!-- MODEL 4 -->
+<article class="grid-cell flex flex-col p-2 gap-2 cursor-pointer hover:bg-surface transition-colors">
+<div class="w-full aspect-[3/4] relative overflow-hidden border-[2px] border-transparent hover:border-rule transition-colors">
+<img class="absolute inset-0 w-full h-full object-cover" data-alt="Mid-shot portrait of a stylish young Senegalese male model, natural relaxed pose, wearing simple black turtleneck, bright white studio setting, clean sharp focus, contemporary minimalist editorial style." src="https://lh3.googleusercontent.com/aida-public/AB6AXuBNKHU4_3i-QD-K3T-WwNGrtRVCr4qDwtGrzPSO0ptfDzHKvYa7xjtqSydvbJ0wkKV8bmzqdKbxDoAZSL-Mfv3K1ecHol_XAFOZVH7WfEM92-5NnAIx8mufZkNLVbuAIng8nFlcJGh8_UC9v7dRXugiSNWiaYNcHJJe89XRNzaHOMabipCwOjELxS601ieCRGd13WubbFLKo_ut6A4oUpG-HgBi_6kRvJ6lKll0DygqEaPrh2Cd"/>
+</div>
+<div class="flex flex-col mt-[8px]">
+<span class="font-caption-tiny text-caption-tiny text-ink uppercase">IDRISSA</span>
+<span class="font-caption-tiny text-caption-tiny text-ink-soft uppercase mt-1">TAILLE 48 — 1M85</span>
+</div>
+</article>
+<!-- MODEL 5 -->
+<article class="grid-cell flex flex-col p-2 gap-2 cursor-pointer hover:bg-surface transition-colors">
+<div class="w-full aspect-[3/4] relative overflow-hidden border-[2px] border-transparent hover:border-rule transition-colors">
+<img class="absolute inset-0 w-full h-full object-cover" data-alt="Full body shot of elegant black female model in flowing minimal white dress, dynamic pose, pure white cyclorama background, high fashion lighting setup, cinematic and refined editorial look." src="https://lh3.googleusercontent.com/aida-public/AB6AXuCuxuvbAHCB2EHYLRt3dbHLOE02fYs_gKDUa_tnIcBLE5UYOTvgepNGbPHNHWnKsvgbFDGx9u-svKFccsGfgbt6ldOlLPUgxooe9jeGbTsFA_d452EmRIcOprbZd-PzaJ-482Z1A0rTzzU0RxKqJJb8aIdrw29QJHFlx64hivxEua2yUVfZGFp-4hJPr1h8Agq_is0_FeDorcI08O2coBZSozklaZOrxvdubn_vZMu4BupSFtQv"/>
+</div>
+<div class="flex flex-col mt-[8px]">
+<span class="font-caption-tiny text-caption-tiny text-ink uppercase">BINTA</span>
+<span class="font-caption-tiny text-caption-tiny text-ink-soft uppercase mt-1">TAILLE 40 — 1M80</span>
+</div>
+</article>
+<!-- MODEL 6 -->
+<article class="grid-cell flex flex-col p-2 gap-2 cursor-pointer hover:bg-surface transition-colors">
+<div class="w-full aspect-[3/4] relative overflow-hidden border-[2px] border-transparent hover:border-rule transition-colors">
+<img class="absolute inset-0 w-full h-full object-cover" data-alt="Portrait of a young Ivorian male model with distinct facial structure, subtle expressive look, wearing architectural black outerwear, pristine minimal white studio backdrop, precise lighting, luxury aesthetic." src="https://lh3.googleusercontent.com/aida-public/AB6AXuB_q9Va-WUoWk1YE0RJSOOeak5pstBFYj21fpyFyovNhEwXe9U4Cz_uiAx_w6kWpqQ821tmR1XGIsPGuPaZ4GsPLZqbsH64X7hVV4JjUtiaqTkAzpp_J045ljWP31a_PBjkTXzDgwj7kIbYmhOV0gHoi5R1aRMs7Puks3Nu_P_vS01GT0th3F_-EWM7yxWPRuZQu9RI2TpahuejlXw54R0G1_dhPcTsQh5nV4IyNgWI3LNzwVNM"/>
+</div>
+<div class="flex flex-col mt-[8px]">
+<span class="font-caption-tiny text-caption-tiny text-ink uppercase">YAO</span>
+<span class="font-caption-tiny text-caption-tiny text-ink-soft uppercase mt-1">TAILLE 46 — 1M82</span>
+</div>
+</article>
+</section>
+</main>
+<!-- BOTTOM BAR -->
+<footer class="fixed bottom-0 w-full md:w-[390px] border-t border-rule bg-background p-4 z-50">
+<button class="w-full bg-ink text-surface font-utility-label text-utility-label h-[48px] flex items-center justify-center uppercase hover:bg-surface-tint transition-colors">
+            Valider ce choix
+        </button>
+</footer>
+</body></html>

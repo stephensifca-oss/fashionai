@@ -1,0 +1,239 @@
+<!DOCTYPE html><html lang="fr"><head>
+<meta charset="utf-8">
+<meta content="width=device-width, initial-scale=1.0" name="viewport">
+<title>Work with us - STUDIO.AI</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com" rel="preconnect">
+<link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect">
+<link href="https://fonts.googleapis.com/css2?family=Archivo:wght@400;500&amp;family=Bodoni+Moda:wght@400;500;700&amp;family=DM+Mono:wght@400;500&amp;display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet">
+<script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    "colors": {
+                        "tertiary-fixed": "#e8e1db",
+                        "surface-container-high": "#e9e7f2",
+                        "on-surface-variant": "#47464a",
+                        "on-secondary": "#ffffff",
+                        "ink-soft": "#56565F",
+                        "on-secondary-fixed": "#1a1c1d",
+                        "background": "#F6F6F8",
+                        "error": "#ba1a1a",
+                        "on-secondary-fixed-variant": "#454749",
+                        "secondary-fixed": "#e2e2e4",
+                        "on-background": "#1a1b23",
+                        "primary-container": "#1c1b1d",
+                        "on-secondary-container": "#616365",
+                        "outline-variant": "#c8c5ca",
+                        "surface-dim": "#dad9e4",
+                        "accent-sienna": "#B7410E",
+                        "primary": "#000000",
+                        "inverse-on-surface": "#f1effa",
+                        "surface": "#FFFFFF",
+                        "surface-container": "#eeecf8",
+                        "inverse-primary": "#c8c6c8",
+                        "on-primary-fixed-variant": "#474649",
+                        "tertiary": "#000000",
+                        "outline": "#78767b",
+                        "secondary-container": "#dfdfe1",
+                        "surface-tint": "#5f5e60",
+                        "secondary": "#5d5e60",
+                        "primary-fixed": "#e5e1e4",
+                        "ink": "#0B0B0D",
+                        "on-tertiary-fixed-variant": "#4a4642",
+                        "inverse-surface": "#2f3038",
+                        "secondary-fixed-dim": "#c6c6c8",
+                        "on-error": "#ffffff",
+                        "on-surface": "#1a1b23",
+                        "on-tertiary": "#ffffff",
+                        "whatsapp-green": "#25D366",
+                        "surface-variant": "#e3e1ec",
+                        "on-tertiary-fixed": "#1e1b18",
+                        "on-error-container": "#93000a",
+                        "tertiary-container": "#1e1b18",
+                        "primary-fixed-dim": "#c8c6c8",
+                        "on-tertiary-container": "#88837e",
+                        "error-container": "#ffdad6",
+                        "surface-container-highest": "#e3e1ec",
+                        "on-primary-fixed": "#1c1b1d",
+                        "tertiary-fixed-dim": "#ccc5c0",
+                        "surface-bright": "#fbf8ff",
+                        "surface-container-low": "#f4f2fd",
+                        "rule": "#DCDCE2",
+                        "on-primary-container": "#858386",
+                        "surface-container-lowest": "#ffffff",
+                        "on-primary": "#ffffff"
+                    },
+                    "borderRadius": {
+                        "DEFAULT": "0px",
+                        "lg": "0px",
+                        "xl": "0px",
+                        "full": "0px"
+                    },
+                    "spacing": {
+                        "stack-md": "24px",
+                        "stack-lg": "80px",
+                        "margin-mobile": "20px",
+                        "stack-sm": "12px",
+                        "gutter": "1px",
+                        "margin-desktop": "64px"
+                    },
+                    "fontFamily": {
+                        "display-xl-mobile": ["Bodoni Moda"],
+                        "headline-lg": ["Bodoni Moda"],
+                        "utility-label": ["DM Mono"],
+                        "headline-lg-mobile": ["Bodoni Moda"],
+                        "display-xl": ["Bodoni Moda"],
+                        "body-md": ["Archivo"],
+                        "body-sm": ["Archivo"]
+                    },
+                    "fontSize": {
+                        "display-xl-mobile": ["48px", { "lineHeight": "1.0", "letterSpacing": "-0.03em", "fontWeight": "400" }],
+                        "headline-lg": ["40px", { "lineHeight": "1.1", "letterSpacing": "-0.02em", "fontWeight": "400" }],
+                        "utility-label": ["11px", { "lineHeight": "1.2", "letterSpacing": "0.14em", "fontWeight": "500" }],
+                        "headline-lg-mobile": ["32px", { "lineHeight": "1.1", "fontWeight": "400" }],
+                        "display-xl": ["72px", { "lineHeight": "1.0", "letterSpacing": "-0.04em", "fontWeight": "400" }],
+                        "body-md": ["16px", { "lineHeight": "1.6", "fontWeight": "400" }],
+                        "body-sm": ["14px", { "lineHeight": "1.6", "fontWeight": "400" }]
+                    }
+                }
+            }
+        }
+    </script>
+<style>
+        body { background-color: #F6F6F8; color: #0B0B0D; }
+        .transition-600 { transition: all 600ms cubic-bezier(0.25, 1, 0.5, 1); }
+        .hover-lift:hover { transform: translateY(-10px); }
+    </style>
+</head>
+<body class="antialiased min-h-screen flex flex-col">
+<!-- HEADER (JSON Shared Component Style) -->
+<header class="fixed top-0 w-full h-[56px] bg-background border-b border-rule flex flex-row-reverse justify-between items-center px-margin-desktop z-50">
+<nav class="flex gap-8">
+<a class="font-utility-label text-utility-label text-on-surface-variant hover:text-accent-sienna transition-colors duration-600 cursor-pointer" href="#">KITS</a>
+<a class="font-utility-label text-utility-label text-on-surface-variant hover:text-accent-sienna transition-colors duration-600 cursor-pointer" href="#">SÉANCE</a>
+<a class="font-utility-label text-utility-label text-ink font-bold hover:text-accent-sienna transition-colors duration-600 cursor-pointer" href="#">TRAVAILLER ENSEMBLE</a>
+</nav>
+<div class="font-headline-lg text-headline-lg uppercase tracking-tighter text-ink flex items-center gap-2">
+<span class="material-symbols-outlined text-[24px]">menu</span>
+            STUDIO.AI
+        </div>
+</header>
+<!-- MAIN CONTENT -->
+<main class="flex-grow pt-[56px] px-margin-desktop max-w-[1280px] mx-auto w-full">
+<!-- POSITION -->
+<section class="py-stack-lg border-b border-rule">
+<div class="max-w-3xl">
+<p class="font-utility-label text-utility-label text-ink mb-4">TRAVAILLER ENSEMBLE</p>
+<h1 class="font-headline-lg text-headline-lg mb-6">Les kits sont l'entrée.<br>La chaîne complète, on en parle.</h1>
+<p class="font-body-md text-body-md text-ink-soft">Notre studio de production AI mode s'adresse aux directeurs de marque qui recherchent non seulement des visuels éditoriaux, mais un flux de travail structuré et prédictible, inspiré par les standards des magazines physiques et des grandes boutiques de design.</p>
+</div>
+</section>
+<!-- TROIS FAÇONS -->
+<section class="py-stack-lg border-b border-rule">
+<h2 class="font-headline-lg text-[28px] mb-12">Trois façons d'avancer</h2>
+<div class="grid grid-cols-3 gap-0 border-t border-b border-l border-rule">
+<div class="p-8 border-r border-rule h-full flex flex-col">
+<h3 class="font-utility-label text-utility-label text-ink mb-4">ON LE FAIT POUR VOUS</h3>
+<p class="font-body-md text-body-md text-ink-soft">Délégation complète de votre production visuelle. Nous générons, trions et éditons chaque image selon votre direction artistique, livrant des campagnes prêtes à l'emploi.</p>
+</div>
+<div class="p-8 border-r border-rule h-full flex flex-col">
+<h3 class="font-utility-label text-utility-label text-ink mb-4">ON FORME VOTRE ÉQUIPE</h3>
+<p class="font-body-md text-body-md text-ink-soft">Transfert de compétences pour internaliser la création. Sessions intensives sur le prompt engineering mode et l'utilisation de nos modèles affinés.</p>
+</div>
+<div class="p-8 border-r border-rule h-full flex flex-col">
+<h3 class="font-utility-label text-utility-label text-ink mb-4">ON CONSTRUIT VOTRE CHAÎNE</h3>
+<p class="font-body-md text-body-md text-ink-soft">Développement d'un pipeline sur mesure intégrant l'IA dans votre processus existant, de la conception à l'e-commerce, avec des modèles entraînés sur vos archives.</p>
+</div>
+</div>
+</section>
+<!-- UN CAS CHIFFRÉ -->
+<section class="py-stack-lg border-b border-rule">
+<div class="bg-surface border border-rule p-8 relative overflow-hidden">
+<div class="absolute top-0 right-0 w-32 h-32 bg-background border-b border-l border-rule opacity-50 flex items-center justify-center">
+<span class="material-symbols-outlined text-[48px] text-rule">monitoring</span>
+</div>
+<h3 class="font-utility-label text-utility-label text-ink mb-8 relative z-10">MARQUE DE PRÊT-À-PORTER — ABIDJAN</h3>
+<div class="overflow-x-auto relative z-10">
+<table class="w-full text-left border-collapse">
+<thead>
+<tr class="border-b border-ink">
+<th class="py-4 font-utility-label text-utility-label font-normal text-ink-soft">MÉTRIQUE</th>
+<th class="py-4 font-utility-label text-utility-label font-normal text-ink-soft">AVANT</th>
+<th class="py-4 font-utility-label text-utility-label font-normal text-ink-soft">APRÈS</th>
+</tr>
+</thead>
+<tbody class="font-body-md text-body-md text-ink">
+<tr class="border-b border-rule">
+<td class="py-6">Coût par visuel</td>
+<td class="py-6 text-ink-soft">...</td>
+<td class="py-6 font-medium">...</td>
+</tr>
+<tr class="border-b border-rule">
+<td class="py-6">Délai</td>
+<td class="py-6 text-ink-soft">...</td>
+<td class="py-6 font-medium">...</td>
+</tr>
+<tr>
+<td class="py-6">Visuels par mois</td>
+<td class="py-6 text-ink-soft">...</td>
+<td class="py-6 font-medium">...</td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+</section>
+</main>
+<!-- NOTRE ENGAGEMENT (Full Width) -->
+<section class="w-full bg-ink text-surface py-stack-lg border-b border-surface-tint">
+<div class="max-w-[1280px] mx-auto px-margin-desktop grid grid-cols-2 gap-stack-md">
+<div>
+<h2 class="font-headline-lg text-[28px]">Ce qu'on ne fait jamais</h2>
+</div>
+<div class="flex flex-col gap-6 font-body-md text-[15px] text-surface-dim">
+<div class="flex items-start gap-4">
+<div class="w-2 h-2 bg-ink mt-2 shrink-0 border border-surface-tint"></div>
+<p class="">Produire des visuels génériques sans âme éditoriale.</p>
+</div>
+<div class="flex items-start gap-4">
+<div class="w-2 h-2 bg-ink mt-2 shrink-0 border border-surface-tint"></div>
+<p class="">Oublier la direction artistique derrière la technologie.</p>
+</div>
+<div class="flex items-start gap-4">
+<div class="w-2 h-2 bg-ink mt-2 shrink-0 border border-surface-tint"></div>
+<p class="">Faire des compromis sur l'alignement et la précision.</p>
+</div>
+</div>
+</div>
+</section>
+<!-- CONTACT -->
+<section class="py-stack-lg max-w-[1280px] mx-auto w-full px-margin-desktop text-center flex flex-col items-center justify-center min-h-[400px]">
+<h2 class="font-headline-lg text-[32px] mb-4">On en parle ?</h2>
+<p class="font-body-md text-[15px] text-ink-soft mb-8">Un message, une réponse dans la journée...</p>
+<button class="bg-whatsapp-green text-surface font-utility-label text-utility-label uppercase px-8 py-4 flex items-center gap-3 transition-600 hover-lift border border-transparent hover:border-surface">
+<span class="material-symbols-outlined text-[18px]">chat</span>
+            Écrire sur WhatsApp
+        </button>
+</section>
+<!-- FOOTER (JSON Shared Component Style) -->
+<footer class="w-full border-t border-rule bg-background grid grid-cols-1 md:grid-cols-2 gap-stack-md px-margin-desktop py-stack-lg mt-auto">
+<div class="font-headline-lg text-headline-lg uppercase text-ink">STUDIO.AI</div>
+<div class="flex flex-col items-end gap-6">
+<nav class="flex gap-4 font-utility-label text-utility-label text-on-surface-variant">
+<a class="hover:text-accent-sienna transition-colors duration-600 cursor-pointer" href="#">COLLECTIONS</a>
+<a class="hover:text-accent-sienna transition-colors duration-600 cursor-pointer" href="#">PROCESS</a>
+<a class="hover:text-accent-sienna transition-colors duration-600 cursor-pointer" href="#">LAB</a>
+<a class="text-ink underline underline-offset-4 hover:text-accent-sienna transition-colors duration-600 cursor-pointer" href="#">CONTACT</a>
+</nav>
+<div class="font-utility-label text-utility-label text-on-surface-variant">
+                ©2024 STUDIO.AI ALL RIGHTS RESERVED
+            </div>
+</div>
+</footer>
+
+
+</body></html>

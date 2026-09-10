@@ -1,0 +1,349 @@
+<!DOCTYPE html>
+
+<html class="light" lang="fr"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Maison AI - Generation Studio</title>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Bodoni+Moda:ital,opsz,wght@0,6..96,400..900;1,6..96,400..900&amp;family=DM+Mono:ital,wght@0,300;0,400;0,500;1,300;1,400;1,500&amp;family=Archivo+Narrow:ital,wght@0,400..700;1,400..700&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<script id="tailwind-config">
+      tailwind.config = {
+        darkMode: "class",
+        theme: {
+          extend: {
+            "colors": {
+                    "on-error": "#ffffff",
+                    "on-primary": "#ffffff",
+                    "error-container": "#ffdad6",
+                    "ink-soft": "#56565F",
+                    "inverse-on-surface": "#f0f0f2",
+                    "surface-container-high": "#e8e8ea",
+                    "on-tertiary": "#ffffff",
+                    "secondary-fixed-dim": "#ffb59c",
+                    "primary": "#000000",
+                    "on-primary-fixed": "#1c1b1d",
+                    "surface-container-lowest": "#ffffff",
+                    "tertiary-container": "#1e1b18",
+                    "whatsapp": "#25D366",
+                    "background": "#f9f9fb",
+                    "primary-fixed-dim": "#c8c6c8",
+                    "on-background": "#1a1c1d",
+                    "on-error-container": "#93000a",
+                    "surface-container-highest": "#e2e2e4",
+                    "on-primary-fixed-variant": "#474649",
+                    "surface-bright": "#f9f9fb",
+                    "on-tertiary-fixed-variant": "#4a4642",
+                    "tertiary-fixed-dim": "#ccc5c0",
+                    "on-secondary": "#ffffff",
+                    "on-tertiary-fixed": "#1e1b18",
+                    "inverse-primary": "#c8c6c8",
+                    "on-surface-variant": "#47464a",
+                    "on-surface": "#1a1c1d",
+                    "tertiary": "#000000",
+                    "rule": "#DCDCE2",
+                    "error": "#ba1a1a",
+                    "surface-dim": "#d9dadc",
+                    "surface-container": "#edeef0",
+                    "outline-variant": "#c8c5ca",
+                    "inverse-surface": "#2f3132",
+                    "outline": "#78767b",
+                    "on-secondary-fixed": "#380c00",
+                    "secondary-fixed": "#ffdbcf",
+                    "on-primary-container": "#858386",
+                    "on-secondary-container": "#641d00",
+                    "surface": "#FFFFFF",
+                    "tertiary-fixed": "#e8e1db",
+                    "primary-container": "#1c1b1d",
+                    "on-tertiary-container": "#88837e",
+                    "on-secondary-fixed-variant": "#822800",
+                    "surface-variant": "#e2e2e4",
+                    "surface-container-low": "#f3f3f5",
+                    "secondary-container": "#fe7440",
+                    "primary-fixed": "#e5e1e4",
+                    "secondary": "#a93702",
+                    "surface-tint": "#5f5e60"
+            },
+            "borderRadius": {
+                    "DEFAULT": "0px",
+                    "lg": "0px",
+                    "xl": "0px",
+                    "full": "0px"
+            },
+            "spacing": {
+                    "margin-mobile": "20px",
+                    "stack-lg": "80px",
+                    "margin-desktop": "64px",
+                    "stack-sm": "16px",
+                    "stack-md": "40px",
+                    "gutter": "1px"
+            },
+            "fontFamily": {
+                    "display-xl": [
+                            "Bodoni Moda", "serif"
+                    ],
+                    "headline-lg-mobile": [
+                            "Bodoni Moda", "serif"
+                    ],
+                    "utility-label": [
+                            "DM Mono", "monospace"
+                    ],
+                    "caption-tiny": [
+                            "DM Mono", "monospace"
+                    ],
+                    "headline-lg": [
+                            "Bodoni Moda", "serif"
+                    ],
+                    "body-md": [
+                            "Archivo Narrow", "sans-serif"
+                    ]
+            },
+            "fontSize": {
+                    "display-xl": [
+                            "64px",
+                            {
+                                    "lineHeight": "1.1",
+                                    "letterSpacing": "-0.02em",
+                                    "fontWeight": "400"
+                            }
+                    ],
+                    "headline-lg-mobile": [
+                            "32px",
+                            {
+                                    "lineHeight": "1.2",
+                                    "fontWeight": "400"
+                            }
+                    ],
+                    "utility-label": [
+                            "11px",
+                            {
+                                    "lineHeight": "1",
+                                    "letterSpacing": "0.14em",
+                                    "fontWeight": "500"
+                            }
+                    ],
+                    "caption-tiny": [
+                            "10px",
+                            {
+                                    "lineHeight": "1.2",
+                                    "fontWeight": "400"
+                            }
+                    ],
+                    "headline-lg": [
+                            "40px",
+                            {
+                                    "lineHeight": "1.2",
+                                    "letterSpacing": "-0.01em",
+                                    "fontWeight": "400"
+                            }
+                    ],
+                    "body-md": [
+                            "16px",
+                            {
+                                    "lineHeight": "1.6",
+                                    "fontWeight": "400"
+                            }
+                    ]
+            }
+          }
+        }
+      }
+    </script>
+<style>
+        /* Base overrides to enforce absolute squareness and no shadows */
+        * {
+            border-radius: 0 !important;
+            box-shadow: none !important;
+        }
+        
+        /* Custom scrollbar for a cleaner editorial look if needed, though scroll is minimized */
+        ::-webkit-scrollbar {
+            width: 4px;
+        }
+        ::-webkit-scrollbar-track {
+            background: transparent;
+        }
+        ::-webkit-scrollbar-thumb {
+            background: #DCDCE2;
+        }
+        ::-webkit-scrollbar-thumb:hover {
+            background: #56565F;
+        }
+    </style>
+</head>
+<body class="bg-background text-on-background min-h-screen flex flex-col font-body-md selection:bg-primary selection:text-surface">
+<!-- TopAppBar -->
+<header class="bg-surface h-[56px] w-full border-b border-rule flex justify-between items-center px-margin-desktop sticky top-0 z-50">
+<div class="flex items-center gap-4">
+<span class="material-symbols-outlined text-primary cursor-pointer active:scale-95 transition-transform" data-icon="menu">menu</span>
+<span class="font-display-xl text-headline-lg-mobile font-black tracking-tighter text-primary">MAISON AI</span>
+</div>
+<div class="cursor-pointer hover:opacity-70 transition-opacity duration-200 active:scale-95">
+<span class="font-utility-label text-utility-label uppercase tracking-widest text-primary">12 CRÉDITS</span>
+</div>
+</header>
+<!-- Main Content Area -->
+<main class="w-full max-w-7xl mx-auto px-[5rem] py-stack-md flex-1 flex flex-col">
+<!-- Page Header -->
+<header class="flex flex-col gap-4 max-w-[40rem] mb-stack-md">
+<span class="font-utility-label text-utility-label uppercase tracking-widest text-secondary">NOUVEAU SHOOTING</span>
+<h1 class="font-headline-lg text-headline-lg text-primary">Votre shooting</h1>
+<p class="font-body-md text-body-md text-ink-soft">Configurez les paramètres de la scène. Les éléments sélectionnés serviront de base à la génération de votre série d'images haut de gamme.</p>
+</header>
+<!-- Two-Column Layout -->
+<div class="grid grid-cols-12 gap-8 items-start relative pb-stack-lg">
+<!-- LEFT COLUMN: Steps -->
+<div class="col-span-12 md:col-span-8 max-w-[40rem] flex flex-col gap-stack-lg">
+<!-- Step 01: Vêtement / Drop Zone -->
+<section class="flex flex-col gap-6">
+<div class="flex gap-4 items-baseline border-b border-rule pb-2">
+<span class="font-utility-label text-utility-label text-ink-soft">01</span>
+<h2 class="font-utility-label text-utility-label uppercase tracking-widest text-primary w-full">Vêtement (Input)</h2>
+</div>
+<div class="border border-dashed border-outline bg-surface p-16 flex flex-col items-center justify-center cursor-pointer hover:bg-surface-container-low transition-colors duration-300 group">
+<span class="material-symbols-outlined text-outline text-[32px] mb-4 group-hover:text-primary transition-colors" data-icon="upload_file">upload_file</span>
+<span class="font-utility-label text-utility-label text-ink-soft uppercase text-center group-hover:text-primary transition-colors leading-relaxed">
+                            Glissez votre patron ou vêtement ici<br/>
+                            ou cliquez pour parcourir
+                        </span>
+</div>
+<!-- Collapsed Precisions -->
+<div class="border-t border-rule pt-4 flex justify-between items-center cursor-pointer hover:opacity-70 transition-opacity">
+<span class="font-utility-label text-utility-label uppercase text-ink-soft tracking-widest">Précisions (Optionnel)</span>
+<span class="material-symbols-outlined text-ink-soft" data-icon="add">add</span>
+</div>
+</section>
+<!-- Step 02: Modèle Grid -->
+<section class="flex flex-col gap-6">
+<div class="flex gap-4 items-baseline border-b border-rule pb-2">
+<span class="font-utility-label text-utility-label text-ink-soft">02</span>
+<h2 class="font-utility-label text-utility-label uppercase tracking-widest text-primary w-full">Modèle</h2>
+</div>
+<div class="grid grid-cols-6 gap-gutter bg-rule border border-rule">
+<!-- Model 1 -->
+<div class="bg-surface aspect-[3/4] cursor-pointer relative group overflow-hidden">
+<img class="w-full h-full object-cover grayscale opacity-60 group-hover:grayscale-0 group-hover:opacity-100 transition-all duration-500 transform group-hover:scale-105" data-alt="High fashion editorial portrait of a slender female model of West African descent with sharp, striking facial features. She wears a minimalist, stark white mock-neck top. Shot against a pristine, solid white studio backdrop with harsh, dramatic lighting creating deep, architectural shadows. Monochrome aesthetic with profound contrast and crisp, hyper-detailed texture, exuding calm authority and editorial rigor." src="https://lh3.googleusercontent.com/aida-public/AB6AXuDanpPlJYO0hGfl2IHdt38igFe_GtmVyOt2r53h0KqKqvCe94AGitpMh9T8qvk-cadI_6BrvHbAx1zkfBYtIIquh2Qn7kO1hxpw17LiHF7CYzxxtspzRn3fwE94qnNzqeR4AN1D7O8Is9LbsXOzhJc97e8mvYPK2NkJ2Cc7UD8q-nDwFtt1JpfSqWLMTJiUUjJSr6cLW3MtW0OdJhcVEbBX3mqxvV-vfiXHq3dBFyNKCa7xRwCe"/>
+<div class="absolute inset-0 border-[2px] border-transparent group-hover:border-primary transition-colors"></div>
+</div>
+<!-- Model 2 -->
+<div class="bg-surface aspect-[3/4] cursor-pointer relative group overflow-hidden">
+<img class="w-full h-full object-cover grayscale opacity-60 group-hover:grayscale-0 group-hover:opacity-100 transition-all duration-500 transform group-hover:scale-105" data-alt="High-end editorial portrait of an androgynous model with pale skin and slicked-back dark hair, looking directly into the camera with an intense, calm gaze. The lighting is soft and diffused, characteristic of overcast studio lighting. The background is a stark, textured light gray concrete wall. The image features a minimalist, monochromatic color palette focusing on subtle tonal shifts between white, light grey, and deep black." src="https://lh3.googleusercontent.com/aida-public/AB6AXuAPiCgo40NMUuPQT-zwWg5J7VC0iU-lXDlDAl48MwlroF-vERnJgvbMnWlskvwiomoCQbREMM96GRCobAt5eBydl32st135hjo80DNrgt7wGQX2c1ry203tCvxeS-TNdHZ_rAwgZ6xhCg1XhkqX0ALAqBCZIORKwiyi0JLIJOeTmgM8_grZ01hzg_5SavFTTXE9tAvKjnVqDCviT3Fx7AOzXs5JVhSUcJEyFXBA-xxtQ6BZ3_Yo"/>
+<div class="absolute inset-0 border-[2px] border-transparent group-hover:border-primary transition-colors"></div>
+</div>
+<!-- Model 3 -->
+<div class="bg-surface aspect-[3/4] cursor-pointer relative group overflow-hidden border-[2px] border-primary">
+<img class="w-full h-full object-cover" data-alt="Close-up fashion beauty shot of a mature male model with a sculpted jawline and salt-and-pepper beard. He is lit by a single, high-contrast spotlight against a completely black void background. The texture of his skin and the subtle weave of his dark garment are rendered with microscopic clarity. The mood is authoritative, minimalist, and intensely focused, embodying a luxurious neo-editorial style." src="https://lh3.googleusercontent.com/aida-public/AB6AXuBTDZVmjjSTLvgEfogTGOgjMZcQc9UnpyvjrabXfPSHRdp5uj5kaIGhGmkLs89pCccoEXu7NgT2oc0gfuCvFRrARgYFO9CWqSc50EDaxVP_RQ78vJvUSLIO3cfHedIly33Cv9iKMHhzOQCFfg9ISx9Np5q2345fmAHcaIzGLzPRGtIgsSaRgQkAPmoVnyVMsnWW7kv-ecxiCiDTGy7dKMFQ1yvkm9EsYfEgyjt4L1QXa91PnZ1E"/>
+<div class="absolute bottom-2 left-2 bg-primary w-2 h-2"></div>
+</div>
+<!-- Model 4 -->
+<div class="bg-surface aspect-[3/4] cursor-pointer relative group overflow-hidden">
+<img class="w-full h-full object-cover grayscale opacity-60 group-hover:grayscale-0 group-hover:opacity-100 transition-all duration-500 transform group-hover:scale-105" data-alt="Minimalist fashion photography featuring a female model standing in profile against an expansive white cyclorama wall. She wears an avant-garde, voluminous black silk garment that dominates the frame. The lighting is extremely bright and even, eliminating all shadows on the background and emphasizing the sharp silhouette of the clothing. High contrast, austere, and highly architectural." src="https://lh3.googleusercontent.com/aida-public/AB6AXuBW2Tx9Sa7FhNbiO6lAYDrD-MNqHkQH0mU5vjZ9c4RGdmrL5UQZb83ul-EnWlBKnaValOvQr8eYKsksVsop6esP-jNEG0OED8reujurxff4SpOhccBngDdXNQVj2s4HPZHXHgWF8M9wHpcRcUvJi_KQts7D94ObLD3YGM7xJJiwRUgXChX3AmglwRO3F8HOtoLidp4qCgMsTiTQXw-1ruchnqvHoxeNnvDQLPZGz_xAt6GOnkvb"/>
+<div class="absolute inset-0 border-[2px] border-transparent group-hover:border-primary transition-colors"></div>
+</div>
+<!-- Model 5 -->
+<div class="bg-surface aspect-[3/4] cursor-pointer relative group overflow-hidden">
+<img class="w-full h-full object-cover grayscale opacity-60 group-hover:grayscale-0 group-hover:opacity-100 transition-all duration-500 transform group-hover:scale-105" data-alt="Striking portrait of a young male fashion model with striking blue eyes and a buzz cut, positioned off-center in the frame. The background is a pale, cool-toned grey canvas. He is lit with a soft, ethereal light source that highlights the subtle contours of his face. The overall aesthetic is incredibly clean, clinical, and high-fashion, with strict adherence to a monochromatic palette and vast negative space." src="https://lh3.googleusercontent.com/aida-public/AB6AXuC5OQW0P_EzRJTMyPHra87nscrvB-HWLQ7HKlWiSjVpBRpbwhs_hsu93BmIycQVLc1NVM4XEwai6rumuKFDItbBsFINgxUgaDvoTztrN9sdrNKRTn8rJG63i0lflFKMHfL4SeCXwZFnlqd3lTMhCStTYlPde0v0TLUhFI-jbDMj9HfLZpxlwnC_P4mvP7n1XnCc_ISdykcopInEQw7yxNjdTW1NxyRxYoLpiHh86IdeKpAmZzLY"/>
+<div class="absolute inset-0 border-[2px] border-transparent group-hover:border-primary transition-colors"></div>
+</div>
+<!-- Model 6 -->
+<div class="bg-surface aspect-[3/4] cursor-pointer relative group overflow-hidden">
+<div class="w-full h-full flex flex-col items-center justify-center bg-surface-container-low hover:bg-surface-container-high transition-colors">
+<span class="material-symbols-outlined text-ink-soft mb-2" data-icon="person_add">person_add</span>
+<span class="font-caption-tiny text-caption-tiny text-ink-soft uppercase text-center">Nouveau</span>
+</div>
+</div>
+</div>
+</section>
+<!-- Step 03: Lieu / Paysage Grid -->
+<section class="flex flex-col gap-6">
+<div class="flex gap-4 items-baseline border-b border-rule pb-2">
+<span class="font-utility-label text-utility-label text-ink-soft">03</span>
+<h2 class="font-utility-label text-utility-label uppercase tracking-widest text-primary w-full">Lieu</h2>
+</div>
+<div class="grid grid-cols-6 gap-gutter bg-rule border border-rule">
+<!-- Landscape 1 -->
+<div class="bg-surface aspect-[4/3] cursor-pointer relative group overflow-hidden border-[2px] border-primary">
+<img class="w-full h-full object-cover" data-alt="Vast, minimalist brutalist architectural space rendered in a strict light-mode aesthetic. A stark, perfectly smooth concrete platform sits amidst pale, desolate white sand dunes under an overcast, bright white sky. Soft, diffused lighting eliminates all harsh shadows. Shot in the style of high-end, austere architectural photography. Symmetrical composition, profound silence, serene and meticulously composed, creating a calm authority." src="https://lh3.googleusercontent.com/aida-public/AB6AXuC-jed8lW_hKPE_CIHgYX94D42txOoyIM3SjWLRarQ77bZQrVG0GWgOEFxdxZTA4LiWMVSXVkMMCGfprR_ysPmGdusvRFwEpbrH60ecwNRPHKKX2iYqEhysqwsXuHuNP-00v9Am3Rhu1j8Dq5xLqyQQtVsiYnAq5sbmpzQiT0qsJl-1O4VZc-Oas8DwUrdyY4MGl2jESjxTSQitg6Bk-EBgRpdXGujK0moLlt8D2tmoNcsHyNlf"/>
+<div class="absolute bottom-2 left-2 bg-primary w-2 h-2"></div>
+</div>
+<!-- Landscape 2 -->
+<div class="bg-surface aspect-[4/3] cursor-pointer relative group overflow-hidden">
+<img class="w-full h-full object-cover grayscale opacity-60 group-hover:grayscale-0 group-hover:opacity-100 transition-all duration-500 transform group-hover:scale-105" data-alt="Interior of an ultra-modern, vast minimalist gallery space with pristine white walls and pale polished concrete floors. A single, large rectangular window lets in a shaft of harsh, purely white natural light that creates a sharp geometric shadow across the floor. The space is completely empty, serving as a blank, highly structured canvas. Monochromatic white and light grey palette, sharp 1px lines, absolute strictness in composition." src="https://lh3.googleusercontent.com/aida-public/AB6AXuC2_qIztBV1ZPVIaRSLr13kKDpVD_FnZ5rcquvxdG-WjuiN9Yzq9EPaSyAtxXkhiG9aFjhOLWOLbYCdzHwlkJ_iOmVW92uGIaOYMyQ7OmD0szoAdlVye6C07KEhf4JlNhhmR9Znw2i9ao_qetKL3NwlyuxUHGf8EAkJusEzu4xJlwLkMyh1Wq0W_Skw9wVH7RskjTq_E1Th4Wl_aBb071Tw6YO7biEcNT_DzeHeK_wBmkldNVoB"/>
+<div class="absolute inset-0 border-[2px] border-transparent group-hover:border-primary transition-colors"></div>
+</div>
+<!-- Landscape 3 -->
+<div class="bg-surface aspect-[4/3] cursor-pointer relative group overflow-hidden">
+<img class="w-full h-full object-cover grayscale opacity-60 group-hover:grayscale-0 group-hover:opacity-100 transition-all duration-500 transform group-hover:scale-105" data-alt="Abstract, high-contrast studio set consisting solely of massive, intersecting geometric planes painted in matte white and stark black. The lighting is completely artificial and clinical, highlighting the sharp edges and corners of the structures. No natural elements are present. The image reads as a minimalist, neo-editorial framing device designed to highlight high fashion silhouettes without any visual distraction." src="https://lh3.googleusercontent.com/aida-public/AB6AXuDGpYwC8WLgr8jlGErUvKWyn3QQEMas9m9p0ZgeS4iDGqHBLrBKMlG2wxiRVPvIn9I7OD84x2JELm7lsvUJwEKTrktOVWrL3NfwjvVf7dW-9Qvn6oXQB5jtEkLcLpBPgw_-7sbd1nQVBcaGp5INbTiIar9RzGCjuqeUEFIDdewIXyORoZp0VVOZoyxakHSkzw4Qkvffd9v5OVY6VCWOLP0vyDjZR0LMelq9wxhxbwfhQidVAnyJ"/>
+<div class="absolute inset-0 border-[2px] border-transparent group-hover:border-primary transition-colors"></div>
+</div>
+<!-- Landscape 4 -->
+<div class="bg-surface aspect-[4/3] cursor-pointer relative group overflow-hidden">
+<img class="w-full h-full object-cover grayscale opacity-60 group-hover:grayscale-0 group-hover:opacity-100 transition-all duration-500 transform group-hover:scale-105" data-alt="A sparse, desolate expanse of cracked, pale grey earth stretching toward a perfectly flat, featureless horizon line. Above, the sky is a solid gradient of white to very light grey. A single, thin, perfectly vertical black metal pole stands in the mid-ground, providing scale and an anchor for the rigid composition. Minimalist landscape photography, high key lighting, quiet and authoritative mood." src="https://lh3.googleusercontent.com/aida-public/AB6AXuCNihw8TjgIfnR6Rt6Oco-WhCe2tk9QjiKm2L5QgUrCfSRe477mpAtTGY27A2J5tGhRBhZZ-UsYWxx2tfd5e6-KIOd6LnIf18zgbwv4N1Vq7k50iFYaJ0h8yXAsWt4voezbop0urQKF4HUNpIo_pTh94M-BRWOa5p6KUDGqTZyP7ZFW4g_t-PJIWzRwq2coBhzCFvlR-TAq7LVgCqecuwPHEq9n2gFBSKmBRSeTUi2GLCGJBHen"/>
+<div class="absolute inset-0 border-[2px] border-transparent group-hover:border-primary transition-colors"></div>
+</div>
+<!-- Landscape 5 -->
+<div class="bg-surface aspect-[4/3] cursor-pointer relative group overflow-hidden">
+<img class="w-full h-full object-cover grayscale opacity-60 group-hover:grayscale-0 group-hover:opacity-100 transition-all duration-500 transform group-hover:scale-105" data-alt="Close-up of highly textured, raw concrete stairs leading nowhere, shot against a stark white backdrop. The composition is strictly grid-based, focusing on the perpendicular lines of the steps. The image is rendered entirely in greyscale with extremely high contrast, pushing the mid-tones out. It feels like a fragment of brutalist architecture isolated as an artifact in a sterile, white laboratory environment." src="https://lh3.googleusercontent.com/aida-public/AB6AXuBdJTbRuw87bJvuHqHKweh46SGrRu8EOAc9_FRzv4TZAO3VPgfNf-YdDyWOfFtqGVekPntf2EsAjDhfChalkIlx46Sh7_i-L7I26Gbqaon0QviNK8rG7aNElYGYCcHi9xywrwAVSoubWZhIGmb-MsCKwk7rV8bbICXQsFVM0PmanqnRlfH2rpdxulcvuvQyuJn_l2TR5IkwX0pherXlBPWPbumFc7keFC14F2PKDdgVnspR06cf"/>
+<div class="absolute inset-0 border-[2px] border-transparent group-hover:border-primary transition-colors"></div>
+</div>
+<!-- Landscape 6 -->
+<div class="bg-surface aspect-[4/3] cursor-pointer relative group overflow-hidden">
+<div class="w-full h-full flex flex-col items-center justify-center bg-surface-container-low hover:bg-surface-container-high transition-colors">
+<span class="material-symbols-outlined text-ink-soft mb-2" data-icon="add_location">add_location</span>
+<span class="font-caption-tiny text-caption-tiny text-ink-soft uppercase text-center">Studio</span>
+</div>
+</div>
+</div>
+</section>
+<!-- Adjustments (Collapsed Row) -->
+<section class="border-t border-b border-rule py-6 flex justify-between items-center cursor-pointer hover:bg-surface-container-low transition-colors group px-2 -mx-2">
+<div class="flex gap-4 items-baseline">
+<span class="font-utility-label text-utility-label text-ink-soft">04</span>
+<h2 class="font-utility-label text-utility-label uppercase tracking-widest text-primary">Ajustements Lumière &amp; Grain</h2>
+</div>
+<span class="material-symbols-outlined text-ink-soft group-hover:text-primary transition-colors" data-icon="tune">tune</span>
+</section>
+</div>
+<!-- RIGHT COLUMN: Sticky Action Box -->
+<aside class="col-span-12 md:col-span-4 md:sticky md:top-24 flex flex-col border border-rule bg-surface">
+<!-- Cost Breakdown -->
+<div class="p-8 flex flex-col gap-8 border-b border-rule">
+<div class="flex justify-between items-end border-b border-rule pb-4">
+<span class="font-utility-label text-utility-label uppercase text-ink-soft tracking-widest">CETTE SÉRIE</span>
+<span class="font-headline-lg-mobile text-headline-lg-mobile text-primary leading-none">3 CRÉDITS</span>
+</div>
+<ul class="flex flex-col gap-4">
+<li class="flex justify-between items-center group">
+<span class="flex items-center gap-3 font-utility-label text-utility-label text-primary uppercase tracking-widest">
+<span class="material-symbols-outlined text-[16px] text-ink-soft" data-icon="check">check</span>
+                                4 Variations
+                            </span>
+<span class="font-utility-label text-utility-label text-ink-soft">2 CR</span>
+</li>
+<li class="flex justify-between items-center group">
+<span class="flex items-center gap-3 font-utility-label text-utility-label text-primary uppercase tracking-widest">
+<span class="material-symbols-outlined text-[16px] text-ink-soft" data-icon="check">check</span>
+                                Haute Résolution (4K)
+                            </span>
+<span class="font-utility-label text-utility-label text-ink-soft">1 CR</span>
+</li>
+</ul>
+</div>
+<!-- Action Button & Warning -->
+<div class="flex flex-col bg-background">
+<button class="w-full bg-primary text-on-primary font-utility-label text-utility-label uppercase tracking-widest py-8 hover:bg-surface-tint transition-colors flex justify-center items-center gap-3 group border-b border-rule">
+                        Générer le shooting
+                        <span class="material-symbols-outlined text-[16px] group-hover:translate-x-1 transition-transform" data-icon="arrow_forward">arrow_forward</span>
+</button>
+<div class="py-4 text-center">
+<span class="font-caption-tiny text-caption-tiny text-ink-soft uppercase tracking-widest flex items-center justify-center gap-2">
+<span class="material-symbols-outlined text-[14px]" data-icon="timer">timer</span>
+                            Temps estimé : ~3 minutes
+                        </span>
+</div>
+</div>
+</aside>
+</div>
+</main>
+</body></html>

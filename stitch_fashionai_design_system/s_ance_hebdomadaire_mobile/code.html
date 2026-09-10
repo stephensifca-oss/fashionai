@@ -1,0 +1,245 @@
+<!DOCTYPE html>
+
+<html class="light" lang="fr"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Séance - STUDIO.AI</title>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com" rel="preconnect"/>
+<link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect"/>
+<link href="https://fonts.googleapis.com/css2?family=Archivo:wght@400;500&amp;family=Bodoni+Moda:ital,opsz,wght@0,6..96,400;0,6..96,700;1,6..96,400&amp;family=DM+Mono:wght@400;500&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    "colors": {
+                        "on-surface-variant": "#47464a",
+                        "rule": "#DCDCE2",
+                        "on-error": "#ffffff",
+                        "surface-dim": "#dad9e4",
+                        "tertiary": "#000000",
+                        "surface": "#FFFFFF",
+                        "tertiary-container": "#1e1b18",
+                        "primary-fixed": "#e5e1e4",
+                        "outline-variant": "#c8c5ca",
+                        "error": "#ba1a1a",
+                        "primary-container": "#1c1b1d",
+                        "outline": "#78767b",
+                        "surface-container-high": "#e9e7f2",
+                        "on-secondary-fixed": "#1a1c1d",
+                        "secondary": "#5d5e60",
+                        "on-primary-fixed": "#1c1b1d",
+                        "on-surface": "#1a1b23",
+                        "primary": "#000000",
+                        "primary-fixed-dim": "#c8c6c8",
+                        "secondary-container": "#dfdfe1",
+                        "on-tertiary-fixed-variant": "#4a4642",
+                        "secondary-fixed": "#e2e2e4",
+                        "inverse-surface": "#2f3038",
+                        "surface-container-lowest": "#ffffff",
+                        "background": "#F6F6F8",
+                        "surface-tint": "#5f5e60",
+                        "surface-container-highest": "#e3e1ec",
+                        "on-secondary-container": "#616365",
+                        "on-tertiary-container": "#88837e",
+                        "ink": "#0B0B0D",
+                        "on-primary": "#ffffff",
+                        "surface-variant": "#e3e1ec",
+                        "on-error-container": "#93000a",
+                        "on-tertiary": "#ffffff",
+                        "accent-sienna": "#B7410E",
+                        "surface-container-low": "#f4f2fd",
+                        "surface-bright": "#fbf8ff",
+                        "whatsapp-green": "#25D366",
+                        "on-secondary-fixed-variant": "#454749",
+                        "on-background": "#1a1b23",
+                        "on-primary-fixed-variant": "#474649",
+                        "on-secondary": "#ffffff",
+                        "error-container": "#ffdad6",
+                        "tertiary-fixed-dim": "#ccc5c0",
+                        "secondary-fixed-dim": "#c6c6c8",
+                        "on-tertiary-fixed": "#1e1b18",
+                        "inverse-primary": "#c8c6c8",
+                        "tertiary-fixed": "#e8e1db",
+                        "inverse-on-surface": "#f1effa",
+                        "on-primary-container": "#858386",
+                        "surface-container": "#eeecf8",
+                        "ink-soft": "#56565F"
+                    },
+                    "borderRadius": {
+                        "DEFAULT": "0.25rem",
+                        "lg": "0.5rem",
+                        "xl": "0.75rem",
+                        "full": "9999px"
+                    },
+                    "spacing": {
+                        "margin-desktop": "64px",
+                        "margin-mobile": "20px",
+                        "stack-sm": "12px",
+                        "stack-lg": "80px",
+                        "gutter": "1px",
+                        "stack-md": "24px"
+                    },
+                    "fontFamily": {
+                        "headline-lg": ["Bodoni Moda"],
+                        "body-sm": ["Archivo"],
+                        "headline-lg-mobile": ["Bodoni Moda"],
+                        "display-xl-mobile": ["Bodoni Moda"],
+                        "utility-label": ["DM Mono"],
+                        "body-md": ["Archivo"],
+                        "display-xl": ["Bodoni Moda"]
+                    },
+                    "fontSize": {
+                        "headline-lg": ["40px", { "lineHeight": "1.1", "letterSpacing": "-0.02em", "fontWeight": "400" }],
+                        "body-sm": ["14px", { "lineHeight": "1.6", "fontWeight": "400" }],
+                        "headline-lg-mobile": ["32px", { "lineHeight": "1.1", "fontWeight": "400" }],
+                        "display-xl-mobile": ["48px", { "lineHeight": "1.0", "letterSpacing": "-0.03em", "fontWeight": "400" }],
+                        "utility-label": ["11px", { "lineHeight": "1.2", "letterSpacing": "0.14em", "fontWeight": "500" }],
+                        "body-md": ["16px", { "lineHeight": "1.6", "fontWeight": "400" }],
+                        "display-xl": ["72px", { "lineHeight": "1.0", "letterSpacing": "-0.04em", "fontWeight": "400" }]
+                    }
+                }
+            }
+        }
+    </script>
+</head>
+<body class="bg-background text-on-background font-body-md antialiased selection:bg-ink selection:text-surface">
+<!-- Mobile Constraint Wrapper -->
+<div class="mx-auto max-w-[390px] border-x border-rule min-h-screen relative flex flex-col">
+<!-- TopAppBar -->
+<header class="fixed top-0 w-full max-w-[388px] h-[56px] bg-background dark:bg-background border-b border-rule dark:border-on-surface-variant flex flex-row-reverse justify-between items-center px-margin-mobile z-50">
+<h1 class="font-headline-lg text-headline-lg uppercase tracking-tighter text-ink dark:text-on-background cursor-pointer transition-all duration-600 hover:text-accent-sienna">STUDIO.AI</h1>
+<span class="material-symbols-outlined text-primary dark:text-on-background cursor-pointer transition-all duration-600 hover:text-accent-sienna" data-icon="menu">menu</span>
+</header>
+<div class="h-[56px] shrink-0"></div> <!-- Spacer for fixed header -->
+<main class="flex-grow">
+<!-- LA PROCHAINE SÉANCE -->
+<section class="px-margin-mobile py-stack-lg flex flex-col items-start w-full">
+<span class="font-utility-label text-utility-label text-ink-soft uppercase block mb-stack-sm">PROCHAINE SÉANCE</span>
+<h2 class="font-display-xl-mobile text-display-xl-mobile text-ink w-full">Jeudi 3 septembre</h2>
+<p class="font-body-md text-body-md text-ink mt-4 mb-stack-md w-full">18h00 — heure d'Abidjan (GMT)</p>
+<button class="w-full bg-whatsapp-green text-surface font-utility-label text-utility-label uppercase py-4 px-6 flex items-center justify-center transition-opacity hover:opacity-90">
+                    Je m'inscris sur WhatsApp
+                </button>
+<span class="font-utility-label text-utility-label text-ink-soft uppercase w-full text-center mt-3 opacity-70 block">GRATUIT — 1 HEURE — EN LIGNE</span>
+</section>
+<!-- COMMENT ÇA SE PASSE -->
+<section class="w-full border-t border-rule pt-stack-md">
+<h3 class="font-headline-lg-mobile text-headline-lg-mobile text-ink px-margin-mobile mb-6">COMMENT ÇA SE PASSE</h3>
+<div class="flex flex-col border-t border-rule">
+<div class="flex flex-row items-start px-margin-mobile py-6 border-b border-rule hover:bg-surface transition-colors duration-600">
+<span class="font-utility-label text-utility-label text-ink w-8 shrink-0 pt-1 block">01</span>
+<p class="font-body-md text-body-md text-ink">
+<span class="font-utility-label text-utility-label uppercase block mb-1">VOUS VOUS INSCRIVEZ</span>
+                            un message WhatsApp suffit, vous recevez le lien la veille
+                        </p>
+</div>
+<div class="flex flex-row items-start px-margin-mobile py-6 border-b border-rule hover:bg-surface transition-colors duration-600">
+<span class="font-utility-label text-utility-label text-ink w-8 shrink-0 pt-1 block">02</span>
+<p class="font-body-md text-body-md text-ink">
+<span class="font-utility-label text-utility-label uppercase block mb-1">VOUS VENEZ AVEC VOTRE CAS</span>
+                            un visuel qui ne marche pas, une étape qui bloque
+                        </p>
+</div>
+<div class="flex flex-row items-start px-margin-mobile py-6 border-b border-rule hover:bg-surface transition-colors duration-600">
+<span class="font-utility-label text-utility-label text-ink w-8 shrink-0 pt-1 block">03</span>
+<p class="font-body-md text-body-md text-ink">
+<span class="font-utility-label text-utility-label uppercase block mb-1">ON REGARDE ENSEMBLE</span>
+                            en direct, sur votre exemple, devant les autres participants
+                        </p>
+</div>
+<div class="flex flex-row items-start px-margin-mobile py-6 hover:bg-surface transition-colors duration-600">
+<span class="font-utility-label text-utility-label text-ink w-8 shrink-0 pt-1 block">04</span>
+<p class="font-body-md text-body-md text-ink">
+<span class="font-utility-label text-utility-label uppercase block mb-1">VOUS REPARTEZ AVEC LA SOLUTION</span>
+                            et la séance est enregistrée si vous voulez la revoir
+                        </p>
+</div>
+</div>
+</section>
+<!-- CE QU'ON A VU LA SEMAINE DERNIÈRE -->
+<section class="px-margin-mobile py-stack-lg w-full">
+<div class="border border-ink bg-surface p-6 w-full shadow-none relative">
+<!-- Subtle decorative corner ticks (brutalist detail) -->
+<div class="absolute top-0 left-0 w-2 h-2 border-t border-l border-ink"></div>
+<div class="absolute bottom-0 right-0 w-2 h-2 border-b border-r border-ink"></div>
+<span class="font-utility-label text-utility-label text-ink-soft uppercase block mb-4 tracking-widest">SÉANCE DU 27 AOÛT</span>
+<ul class="flex flex-col gap-4">
+<li class="flex items-start">
+<div class="w-1.5 h-1.5 bg-ink mt-1.5 mr-3 shrink-0"></div>
+<span class="font-body-sm text-body-sm text-ink leading-tight">Pourquoi vos tissus imprimés perdent leurs motifs</span>
+</li>
+<li class="flex items-start">
+<div class="w-1.5 h-1.5 bg-ink mt-1.5 mr-3 shrink-0"></div>
+<span class="font-body-sm text-body-sm text-ink leading-tight">Le cadrage qui déforme les proportions</span>
+</li>
+<li class="flex items-start">
+<div class="w-1.5 h-1.5 bg-ink mt-1.5 mr-3 shrink-0"></div>
+<span class="font-body-sm text-body-sm text-ink leading-tight">Verrouiller un mannequin sur plusieurs visuels</span>
+</li>
+</ul>
+</div>
+</section>
+<!-- LES REPLAYS -->
+<section class="w-full border-t border-rule pt-stack-md mb-stack-lg">
+<h3 class="font-headline-lg-mobile text-headline-lg-mobile text-ink px-margin-mobile mb-6">Les séances précédentes</h3>
+<div class="flex flex-col border-t border-rule w-full">
+<!-- Replay Item 1 -->
+<div class="flex items-center justify-between px-margin-mobile py-4 border-b border-rule hover:bg-surface transition-colors duration-600 cursor-pointer group">
+<span class="font-utility-label text-utility-label text-ink w-16 shrink-0 block">20 AOÛT</span>
+<span class="font-body-sm text-body-sm text-ink flex-1 truncate px-4 group-hover:text-accent-sienna transition-colors">Textures complexes en IA</span>
+<span class="font-utility-label text-utility-label text-ink-soft w-12 text-right shrink-0 block">58 MIN</span>
+</div>
+<!-- Replay Item 2 -->
+<div class="flex items-center justify-between px-margin-mobile py-4 border-b border-rule hover:bg-surface transition-colors duration-600 cursor-pointer group">
+<span class="font-utility-label text-utility-label text-ink w-16 shrink-0 block">13 AOÛT</span>
+<span class="font-body-sm text-body-sm text-ink flex-1 truncate px-4 group-hover:text-accent-sienna transition-colors">Direction éditoriale</span>
+<span class="font-utility-label text-utility-label text-ink-soft w-12 text-right shrink-0 block">62 MIN</span>
+</div>
+<!-- Replay Item 3 -->
+<div class="flex items-center justify-between px-margin-mobile py-4 border-b border-rule hover:bg-surface transition-colors duration-600 cursor-pointer group">
+<span class="font-utility-label text-utility-label text-ink w-16 shrink-0 block">06 AOÛT</span>
+<span class="font-body-sm text-body-sm text-ink flex-1 truncate px-4 group-hover:text-accent-sienna transition-colors">Éclairage studio Midjourney</span>
+<span class="font-utility-label text-utility-label text-ink-soft w-12 text-right shrink-0 block">55 MIN</span>
+</div>
+<!-- Replay Item 4 -->
+<div class="flex items-center justify-between px-margin-mobile py-4 border-b border-rule hover:bg-surface transition-colors duration-600 cursor-pointer group">
+<span class="font-utility-label text-utility-label text-ink w-16 shrink-0 block">30 JUIL</span>
+<span class="font-body-sm text-body-sm text-ink flex-1 truncate px-4 group-hover:text-accent-sienna transition-colors">Cohérence des visages</span>
+<span class="font-utility-label text-utility-label text-ink-soft w-12 text-right shrink-0 block">60 MIN</span>
+</div>
+<!-- Replay Item 5 -->
+<div class="flex items-center justify-between px-margin-mobile py-4 border-b border-rule hover:bg-surface transition-colors duration-600 cursor-pointer group">
+<span class="font-utility-label text-utility-label text-ink w-16 shrink-0 block">23 JUIL</span>
+<span class="font-body-sm text-body-sm text-ink flex-1 truncate px-4 group-hover:text-accent-sienna transition-colors">Upscaling pour l'impression</span>
+<span class="font-utility-label text-utility-label text-ink-soft w-12 text-right shrink-0 block">45 MIN</span>
+</div>
+<!-- Replay Item 6 -->
+<div class="flex items-center justify-between px-margin-mobile py-4 border-b border-rule hover:bg-surface transition-colors duration-600 cursor-pointer group">
+<span class="font-utility-label text-utility-label text-ink w-16 shrink-0 block">16 JUIL</span>
+<span class="font-body-sm text-body-sm text-ink flex-1 truncate px-4 group-hover:text-accent-sienna transition-colors">Création de moodboards</span>
+<span class="font-utility-label text-utility-label text-ink-soft w-12 text-right shrink-0 block">50 MIN</span>
+</div>
+</div>
+</section>
+</main>
+<!-- Footer -->
+<footer class="w-full border-t border-rule dark:border-on-surface-variant bg-background dark:bg-background grid grid-cols-1 md:grid-cols-2 gap-stack-md px-margin-mobile py-stack-lg shrink-0">
+<div class="flex flex-col gap-6 w-full">
+<div class="font-headline-lg text-headline-lg uppercase text-ink dark:text-on-background tracking-tighter">STUDIO.AI</div>
+<div class="flex flex-col gap-4">
+<a class="font-utility-label text-utility-label text-on-surface-variant dark:text-outline hover:text-accent-sienna transition-colors duration-600 cursor-pointer block" href="#">COLLECTIONS</a>
+<a class="font-utility-label text-utility-label text-on-surface-variant dark:text-outline hover:text-accent-sienna transition-colors duration-600 cursor-pointer block" href="#">PROCESS</a>
+<a class="font-utility-label text-utility-label text-on-surface-variant dark:text-outline hover:text-accent-sienna transition-colors duration-600 cursor-pointer block" href="#">LAB</a>
+<a class="font-utility-label text-utility-label text-on-surface-variant dark:text-outline hover:text-accent-sienna transition-colors duration-600 cursor-pointer block" href="#">CONTACT</a>
+</div>
+<div class="font-utility-label text-utility-label text-primary dark:text-on-background opacity-50 mt-4">
+                    ©2024 STUDIO.AI ALL RIGHTS RESERVED
+                </div>
+</div>
+</footer>
+</div>
+</body></html>

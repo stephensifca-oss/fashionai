@@ -1,0 +1,303 @@
+<!DOCTYPE html>
+
+<html class="light" lang="fr"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" name="viewport"/>
+<title>STUDIO.AI - Shooting Terminé</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com" rel="preconnect"/>
+<link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect"/>
+<link href="https://fonts.googleapis.com/css2?family=Archivo+Narrow:ital,wght@0,400..700;1,400..700&amp;family=Bodoni+Moda:ital,opsz,wght@0,6..96,400..900;1,6..96,400..900&amp;family=DM+Mono:ital,wght@0,300;0,400;0,500;1,300;1,400;1,500&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+        tailwind.config = {
+          darkMode: "class",
+          theme: {
+            extend: {
+              "colors": {
+                      "tertiary-fixed": "#e8e1db",
+                      "background": "#f9f9fb",
+                      "on-secondary-fixed-variant": "#822800",
+                      "tertiary": "#000000",
+                      "on-tertiary-fixed-variant": "#4a4642",
+                      "error-container": "#ffdad6",
+                      "primary": "#000000",
+                      "on-secondary-fixed": "#380c00",
+                      "surface-container-high": "#e8e8ea",
+                      "on-primary": "#ffffff",
+                      "primary-fixed-dim": "#c8c6c8",
+                      "surface-tint": "#5f5e60",
+                      "surface-container-highest": "#e2e2e4",
+                      "surface-container-lowest": "#ffffff",
+                      "secondary-container": "#fe7440",
+                      "whatsapp": "#25D366",
+                      "surface-dim": "#d9dadc",
+                      "on-primary-fixed-variant": "#474649",
+                      "secondary": "#a93702",
+                      "surface-container-low": "#f3f3f5",
+                      "on-primary-container": "#858386",
+                      "on-surface": "#1a1c1d",
+                      "ink-soft": "#56565F",
+                      "rule": "#DCDCE2",
+                      "inverse-primary": "#c8c6c8",
+                      "on-tertiary-fixed": "#1e1b18",
+                      "on-error": "#ffffff",
+                      "on-tertiary-container": "#88837e",
+                      "primary-fixed": "#e5e1e4",
+                      "inverse-on-surface": "#f0f0f2",
+                      "surface-bright": "#f9f9fb",
+                      "outline": "#78767b",
+                      "error": "#ba1a1a",
+                      "secondary-fixed": "#ffdbcf",
+                      "surface-container": "#edeef0",
+                      "on-secondary": "#ffffff",
+                      "tertiary-container": "#1e1b18",
+                      "outline-variant": "#c8c5ca",
+                      "inverse-surface": "#2f3132",
+                      "on-error-container": "#93000a",
+                      "secondary-fixed-dim": "#ffb59c",
+                      "surface-variant": "#e2e2e4",
+                      "on-primary-fixed": "#1c1b1d",
+                      "primary-container": "#1c1b1d",
+                      "on-background": "#1a1c1d",
+                      "on-surface-variant": "#47464a",
+                      "on-secondary-container": "#641d00",
+                      "surface": "#FFFFFF",
+                      "tertiary-fixed-dim": "#ccc5c0",
+                      "on-tertiary": "#ffffff"
+              },
+              "borderRadius": {
+                      "DEFAULT": "0.25rem",
+                      "lg": "0.5rem",
+                      "xl": "0.75rem",
+                      "full": "9999px"
+              },
+              "spacing": {
+                      "stack-sm": "16px",
+                      "stack-md": "40px",
+                      "margin-mobile": "20px",
+                      "stack-lg": "80px",
+                      "margin-desktop": "64px",
+                      "gutter": "1px"
+              },
+              "fontFamily": {
+                      "utility-label": [
+                              "DM Mono"
+                      ],
+                      "display-xl": [
+                              "Bodoni Moda"
+                      ],
+                      "headline-lg-mobile": [
+                              "Bodoni Moda"
+                      ],
+                      "caption-tiny": [
+                              "DM Mono"
+                      ],
+                      "body-md": [
+                              "Archivo Narrow"
+                      ],
+                      "headline-lg": [
+                              "Bodoni Moda"
+                      ]
+              },
+              "fontSize": {
+                      "utility-label": [
+                              "11px",
+                              {
+                                      "lineHeight": "1",
+                                      "letterSpacing": "0.14em",
+                                      "fontWeight": "500"
+                              }
+                      ],
+                      "display-xl": [
+                              "64px",
+                              {
+                                      "lineHeight": "1.1",
+                                      "letterSpacing": "-0.02em",
+                                      "fontWeight": "400"
+                              }
+                      ],
+                      "headline-lg-mobile": [
+                              "32px",
+                              {
+                                      "lineHeight": "1.2",
+                                      "fontWeight": "400"
+                              }
+                      ],
+                      "caption-tiny": [
+                              "10px",
+                              {
+                                      "lineHeight": "1.2",
+                                      "fontWeight": "400"
+                              }
+                      ],
+                      "body-md": [
+                              "16px",
+                              {
+                                      "lineHeight": "1.6",
+                                      "fontWeight": "400"
+                              }
+                      ],
+                      "headline-lg": [
+                              "40px",
+                              {
+                                      "lineHeight": "1.2",
+                                      "letterSpacing": "-0.01em",
+                                      "fontWeight": "400"
+                              }
+                      ]
+              }
+      },
+          },
+        }
+    </script>
+<style>
+        body {
+            background-color: #F6F6F8;
+            color: #000000;
+        }
+        
+        .image-fade-in {
+            animation: fadeInRise 600ms ease-out forwards;
+            opacity: 0;
+            transform: translateY(10px);
+        }
+
+        @keyframes fadeInRise {
+            from {
+                opacity: 0;
+                transform: translateY(10px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+    </style>
+<style>
+    body {
+      min-height: max(884px, 100dvh);
+    }
+  </style>
+  </head>
+<body class="antialiased min-h-screen flex flex-col items-center">
+<div class="w-full max-w-[390px] bg-background flex flex-col min-h-screen relative overflow-hidden">
+<!-- HEADER -->
+<header class="flex justify-between items-center px-margin-mobile py-4 w-full bg-background dark:bg-background font-utility-label text-utility-label w-full border-b border-rule flat no shadows transition-all duration-200 cursor-pointer">
+<div class="flex items-center gap-4">
+<span class="material-symbols-outlined text-primary dark:text-primary">menu</span>
+<span class="font-display-xl text-headline-lg-mobile dark:text-primary uppercase tracking-tighter">STUDIO.AI</span>
+</div>
+<span class="text-primary dark:text-primary hover:opacity-70 transition-opacity">12 CRÉDITS</span>
+</header>
+<!-- MAIN CONTENT CANVAS -->
+<main class="flex-grow flex flex-col w-full">
+<!-- CONFIRMATION -->
+<section class="px-margin-mobile pt-stack-md pb-stack-sm flex flex-col gap-2">
+<span class="font-utility-label text-utility-label text-secondary">SHOOTING TERMINÉ</span>
+<h1 class="font-headline-lg-mobile text-headline-lg-mobile text-primary">Votre série est prête</h1>
+</section>
+<!-- LE PLAN PRINCIPAL -->
+<section class="w-full flex flex-col mt-stack-sm border-t border-rule">
+<div class="w-full aspect-[2/3] relative overflow-hidden image-fade-in" style="animation-delay: 100ms;">
+<img class="w-full h-full object-cover" data-alt="A striking high-fashion editorial photograph of a model in avant-garde minimalist clothing, shot against a stark white studio backdrop. The lighting is crisp, high-key, and meticulously controlled, casting sharp, intentional shadows that emphasize the architectural silhouette of the garment. The overall aesthetic is strictly monochromatic with a focus on form, texture, and uncompromising premium quality, perfectly suited for a luxury editorial spread." src="https://lh3.googleusercontent.com/aida-public/AB6AXuAkhV7f7IKIuLteNCvgK2PFxtPw7dye-vboqT4agK6EDX-nCKsZjAAnuI-_9pyXCpKEynkdITqqasLU2TL4Ijr_feeKR8-JfQ_kM3MKn979qpVNPgFmeIJTHi6VdGamOqGIJljIAIM6z-I90DAO8egHvcKzd36NAq-8e-6HqMf0ZH6uYv5d3vWinxWOT4jQ89pMu-ZOYrfozJ_R4JjPHWrVMQznYGcN4_Hc_SL0KqhUTkAhW2SE"/>
+</div>
+<div class="flex justify-between items-start px-margin-mobile pt-2 pb-stack-md">
+<span class="font-caption-tiny text-caption-tiny text-primary">PLAN PRINCIPAL — 2:3</span>
+<a class="font-utility-label text-utility-label text-primary underline underline-offset-4 hover:opacity-70 transition-opacity" href="#">TÉLÉCHARGER</a>
+</div>
+</section>
+<!-- LES DEUX VUES -->
+<section class="w-full grid grid-cols-2 border-t border-rule">
+<!-- Vue 1 -->
+<div class="flex flex-col border-r border-rule">
+<div class="w-full aspect-square relative overflow-hidden image-fade-in" style="animation-delay: 200ms;">
+<img class="w-full h-full object-cover" data-alt="A three-quarter angle high-fashion editorial shot of the same model and avant-garde minimalist clothing. The high-key white studio lighting maintains the stark, high-contrast monochromatic visual style. The composition is tightly cropped to highlight the garment's construction and fabric drape, echoing the strict, premium, and authoritative aesthetic of a top-tier fashion magazine." src="https://lh3.googleusercontent.com/aida-public/AB6AXuAOxs452__47Ue8F4u1P4xk6zGVLh25X3YY7KR0ct8gWyVzgChOViOAuzat8CPrds3g_G6SGu3rzFFbkry9i6jKz0IMetZxfW90C24kJ4lfL-0s-gwCLwg3zRBcTqmYhsSdki57ixu9f-D7Ec4Mb7y3vGwYfBapSb_AWB5dQ6JTtmJBYQeb9BfWB90uIzzpTGpjPjAM3K9rHpb9I9U0UYncl1b0nPr7otW95JKe-D_g_FkwuK4R"/>
+</div>
+<div class="flex justify-between items-start p-2 pb-stack-sm">
+<span class="font-caption-tiny text-caption-tiny text-primary">TROIS-QUARTS — 1:1</span>
+<a class="font-utility-label text-utility-label text-primary hover:opacity-70 transition-opacity" href="#">
+<span class="material-symbols-outlined" style="font-size: 14px;">download</span>
+</a>
+</div>
+</div>
+<!-- Vue 2 -->
+<div class="flex flex-col">
+<div class="w-full aspect-square relative overflow-hidden image-fade-in" style="animation-delay: 300ms;">
+<img class="w-full h-full object-cover" data-alt="A back-view high-fashion editorial shot of the model in the avant-garde minimalist garment. Set against a pure white studio backdrop, the high-key lighting creates deep, precise blacks and brilliant whites. The focus is entirely on the rear detailing and structural form of the clothing, reinforcing the calm, artistic rigor and premium monochromatic style of the overarching visual identity." src="https://lh3.googleusercontent.com/aida-public/AB6AXuAC5sxjCmvvMFfJ24sua40jTTdr8NDXDIuXVvleb4ahJtox57xBcnYY-MRIf659TI3EpaUquWNetIj0pn0NOfWWaxeoUyJ9Rg7hQfwZNnUCV2MRpKpaYLuKOhYyxgXmGkZWfDHmgQNP5w95f8SUFqtQDSiETLx-ZYqCwHqGBCTj6vzrgkwyUApYiHFaGxZqyPoaX1IE4DVNwke_rIw-T_egAIuYkrNv4-3v9gpmnABpGi5JjjYn"/>
+</div>
+<div class="flex justify-between items-start p-2 pb-stack-sm">
+<span class="font-caption-tiny text-caption-tiny text-primary">DOS — 1:1</span>
+<a class="font-utility-label text-utility-label text-primary hover:opacity-70 transition-opacity" href="#">
+<span class="material-symbols-outlined" style="font-size: 14px;">download</span>
+</a>
+</div>
+</div>
+</section>
+<!-- LA TENUE NORMALISÉE -->
+<section class="w-full flex flex-col border-t border-rule">
+<div class="w-full aspect-[16/9] relative overflow-hidden image-fade-in" style="animation-delay: 400ms;">
+<img class="w-full h-full object-cover" data-alt="A cinematic 16:9 triptych layout featuring three distinct, closely cropped views of the minimalist avant-garde garment. The images are seamlessly composed side-by-side against a stark white background. The high-contrast, strictly monochromatic aesthetic is maintained, with crisp, high-key lighting emphasizing the intricate textures and rigorous geometry of the fashion design, exuding a calm, authoritative luxury." src="https://lh3.googleusercontent.com/aida-public/AB6AXuAmdF1gFqk8aLgOMeIS7bRN3SBZMmc20SXcnuAnuXtAZNiOQ0BWjyymoKe5H_JgXoWwebMDViaupiFdQL4qd_JzzHo-lXpePfuGED6ESPTLIwc0Pe9GFXcF2cnxwAZiPr5mtmBy9QZGE5f_0FfWl3kkLWD_SVZqDaO6nAxlxHt8bWFpQSH6SdRO00hhA3XxeAgnRnZOyQOTygHQz8_rBv6UdvqzAgWz8JyuCqmkPSyAwOibXydh"/>
+</div>
+<div class="flex justify-between items-start px-margin-mobile pt-2 pb-stack-md">
+<span class="font-caption-tiny text-caption-tiny text-primary">VOTRE TENUE, NORMALISÉE — 16:9</span>
+<a class="font-utility-label text-utility-label text-primary hover:opacity-70 transition-opacity" href="#">
+<span class="material-symbols-outlined" style="font-size: 14px;">download</span>
+</a>
+</div>
+</section>
+<!-- RECOMMENCER -->
+<section class="w-full px-margin-mobile py-stack-md border-t border-rule flex flex-col gap-4">
+<div class="grid grid-cols-2 gap-4">
+<button class="w-full aspect-square border border-primary bg-transparent text-primary flex flex-col justify-center items-center gap-2 hover:bg-surface-container-low transition-colors duration-200">
+<span class="material-symbols-outlined">wallpaper</span>
+<span class="font-utility-label text-utility-label text-center px-2">Refaire avec un autre décor</span>
+</button>
+<button class="w-full aspect-square border border-primary bg-transparent text-primary flex flex-col justify-center items-center gap-2 hover:bg-surface-container-low transition-colors duration-200">
+<span class="material-symbols-outlined">add_circle</span>
+<span class="font-utility-label text-utility-label text-center px-2">Nouveau shooting</span>
+</button>
+</div>
+<span class="font-caption-tiny text-caption-tiny text-ink-soft text-center mt-2">IL VOUS RESTE 9 CRÉDITS</span>
+</section>
+<!-- BANDEAU WHATSAPP -->
+<section class="w-full bg-primary text-on-primary p-margin-mobile py-stack-md flex flex-col gap-4">
+<span class="font-utility-label text-utility-label">TOUTE VOTRE COLLECTION?</span>
+<h2 class="font-display-xl text-[26px] leading-tight tracking-tight">On peut le faire pour tout votre catalogue</h2>
+<p class="font-body-md text-body-md text-surface-dim opacity-90">Envoyez-nous vos références, on vous renvoie la série complète.</p>
+<button class="mt-4 w-full bg-whatsapp text-primary font-utility-label text-utility-label py-4 flex justify-center items-center gap-2 hover:opacity-90 transition-opacity rounded-none">
+<span class="material-symbols-outlined" style="font-variation-settings: 'FILL' 1;">forum</span>
+                    En parler sur WhatsApp
+                </button>
+</section>
+</main>
+<!-- FOOTER -->
+<footer class="flex flex-col md:flex-row justify-between items-start md:items-center px-margin-mobile py-stack-sm w-full gap-4 bg-background dark:bg-background font-caption-tiny text-caption-tiny w-full border-t border-rule flat no shadows transition-colors duration-300">
+<span class="font-utility-label text-utility-label text-primary font-bold">©2024 STUDIO.AI — ALL RIGHTS RESERVED</span>
+<div class="flex flex-wrap gap-4">
+<a class="text-ink-soft hover:text-secondary" href="#">TERMS</a>
+<a class="text-ink-soft hover:text-secondary" href="#">PRIVACY</a>
+<a class="text-ink-soft hover:text-secondary" href="#">WHATSAPP SUPPORT</a>
+</div>
+</footer>
+</div>
+<script>
+        // Simple intersection observer to trigger fade-in animations on scroll
+        document.addEventListener("DOMContentLoaded", () => {
+            const observer = new IntersectionObserver((entries) => {
+                entries.forEach(entry => {
+                    if (entry.isIntersecting) {
+                        entry.target.style.animationPlayState = 'running';
+                        observer.unobserve(entry.target);
+                    }
+                });
+            }, { threshold: 0.1 });
+
+            document.querySelectorAll('.image-fade-in').forEach(el => {
+                el.style.animationPlayState = 'paused';
+                observer.observe(el);
+            });
+        });
+    </script>
+</body></html>

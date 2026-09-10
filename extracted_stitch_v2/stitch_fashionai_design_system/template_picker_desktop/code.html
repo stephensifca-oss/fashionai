@@ -1,0 +1,262 @@
+<!DOCTYPE html>
+
+<html class="light" lang="fr"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Le Décor - STUDIO.AI</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com" rel="preconnect"/>
+<link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect"/>
+<link href="https://fonts.googleapis.com/css2?family=Archivo+Narrow:ital,wght@0,400..700;1,400..700&amp;family=Bodoni+Moda:ital,opsz,wght@0,6..96,400..900;1,6..96,400..900&amp;family=DM+Mono:ital,wght@0,300;0,400;0,500;1,300;1,400;1,500&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    "colors": {
+                        "background": "#f9f9fb",
+                        "surface-container-high": "#e8e8ea",
+                        "surface": "#FFFFFF",
+                        "on-secondary": "#ffffff",
+                        "primary-container": "#1c1b1d",
+                        "inverse-primary": "#c8c6c8",
+                        "on-surface": "#1a1c1d",
+                        "on-surface-variant": "#47464a",
+                        "surface-dim": "#d9dadc",
+                        "error": "#ba1a1a",
+                        "secondary-fixed": "#ffdbcf",
+                        "tertiary-fixed": "#e8e1db",
+                        "secondary-container": "#fe7440",
+                        "on-background": "#1a1c1d",
+                        "primary-fixed-dim": "#c8c6c8",
+                        "rule": "#DCDCE2",
+                        "primary-fixed": "#e5e1e4",
+                        "whatsapp": "#25D366",
+                        "surface-container-highest": "#e2e2e4",
+                        "primary": "#000000",
+                        "surface-tint": "#5f5e60",
+                        "surface-container-lowest": "#ffffff",
+                        "secondary-fixed-dim": "#ffb59c",
+                        "on-primary": "#ffffff",
+                        "outline-variant": "#c8c5ca",
+                        "on-error-container": "#93000a",
+                        "on-error": "#ffffff",
+                        "on-tertiary-fixed": "#1e1b18",
+                        "error-container": "#ffdad6",
+                        "surface-container-low": "#f3f3f5",
+                        "tertiary": "#000000",
+                        "on-primary-fixed": "#1c1b1d",
+                        "on-tertiary-fixed-variant": "#4a4642",
+                        "tertiary-container": "#1e1b18",
+                        "on-secondary-container": "#641d00",
+                        "outline": "#78767b",
+                        "inverse-surface": "#2f3132",
+                        "on-secondary-fixed-variant": "#822800",
+                        "on-tertiary": "#ffffff",
+                        "surface-container": "#edeef0",
+                        "surface-bright": "#f9f9fb",
+                        "on-primary-container": "#858386",
+                        "on-secondary-fixed": "#380c00",
+                        "tertiary-fixed-dim": "#ccc5c0",
+                        "ink-soft": "#56565F",
+                        "inverse-on-surface": "#f0f0f2",
+                        "on-tertiary-container": "#88837e",
+                        "on-primary-fixed-variant": "#474649",
+                        "secondary": "#a93702",
+                        "surface-variant": "#e2e2e4",
+                        "ink": "#000000",
+                        "accent-sienna": "#a93702"
+                    },
+                    "borderRadius": {
+                        "DEFAULT": "0px",
+                        "lg": "0px",
+                        "xl": "0px",
+                        "full": "0px"
+                    },
+                    "spacing": {
+                        "gutter": "1px",
+                        "margin-mobile": "20px",
+                        "margin-desktop": "64px",
+                        "stack-md": "40px",
+                        "stack-sm": "16px",
+                        "stack-lg": "80px"
+                    },
+                    "fontFamily": {
+                        "body-md": ["Archivo Narrow", "sans-serif"],
+                        "headline-lg": ["Bodoni Moda", "serif"],
+                        "display-xl": ["Bodoni Moda", "serif"],
+                        "caption-tiny": ["DM Mono", "monospace"],
+                        "utility-label": ["DM Mono", "monospace"],
+                        "headline-lg-mobile": ["Bodoni Moda", "serif"]
+                    },
+                    "fontSize": {
+                        "body-md": ["16px", { "lineHeight": "1.6", "fontWeight": "400" }],
+                        "headline-lg": ["40px", { "lineHeight": "1.2", "letterSpacing": "-0.01em", "fontWeight": "400" }],
+                        "display-xl": ["64px", { "lineHeight": "1.1", "letterSpacing": "-0.02em", "fontWeight": "400" }],
+                        "caption-tiny": ["10px", { "lineHeight": "1.2", "fontWeight": "400" }],
+                        "utility-label": ["11px", { "lineHeight": "1", "letterSpacing": "0.14em", "fontWeight": "500" }],
+                        "headline-lg-mobile": ["32px", { "lineHeight": "1.2", "fontWeight": "400" }]
+                    }
+                }
+            }
+        }
+    </script>
+<style>
+        body {
+            background-color: #F6F6F8;
+            color: #000000;
+        }
+        .panel-overlay {
+            background-color: rgba(246, 246, 248, 0.8);
+            backdrop-filter: blur(10px);
+        }
+        .decor-item {
+            cursor: pointer;
+            transition: opacity 0.3s ease;
+        }
+        .decor-item:hover {
+            opacity: 0.8;
+        }
+        .decor-item.selected .image-container {
+            border: 2px solid #000000;
+            padding: 2px;
+        }
+        
+        /* Custom Archivo 13px override based on prompt */
+        .text-archivo-13 {
+            font-family: 'Archivo Narrow', sans-serif;
+            font-size: 13px;
+            font-weight: 300;
+            line-height: 1.4;
+        }
+
+        .scroll-fade-in {
+            opacity: 0;
+            transform: translateY(10px);
+            animation: fadeInRise 600ms forwards ease-out;
+        }
+
+        @keyframes fadeInRise {
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+        
+        .stagger-1 { animation-delay: 100ms; }
+        .stagger-2 { animation-delay: 200ms; }
+        .stagger-3 { animation-delay: 300ms; }
+        .stagger-4 { animation-delay: 400ms; }
+    </style>
+</head>
+<body class="min-h-screen w-full relative overflow-x-hidden font-body-md">
+<!-- Top Navigation (JSON) -->
+<nav class="fixed top-0 w-full h-[56px] bg-background text-primary font-headline-lg text-headline-lg border-b border-rule flex flex-row-reverse justify-between items-center px-margin-desktop md:px-margin-desktop z-40 transition-all duration-600">
+<div class="flex items-center gap-stack-sm cursor-pointer transition-all duration-600 text-on-surface-variant hover:text-accent-sienna">
+<span class="material-symbols-outlined" style="font-variation-settings: 'FILL' 0;">menu</span>
+</div>
+<div class="font-headline-lg text-headline-lg uppercase tracking-tighter text-ink text-on-background cursor-pointer">STUDIO.AI</div>
+</nav>
+<!-- Main Content Area (Background Simulation) -->
+<main class="w-full h-screen pt-[56px] px-[5rem] flex flex-col justify-center items-start">
+<h1 class="font-display-xl text-display-xl text-ink max-w-3xl mb-stack-lg scroll-fade-in">L'Élégance de la Production Assistée par IA.</h1>
+<p class="font-body-md text-body-md text-ink-soft max-w-xl scroll-fade-in stagger-1">Sélectionnez les paramètres de votre prochaine campagne éditoriale. Notre système de génération haute-fidélité s'assure d'une cohérence visuelle parfaite pour le marché francophone.</p>
+</main>
+<!-- Right Side Panel Overlay -->
+<aside class="fixed top-0 right-0 h-full w-[56px] md:w-[560px] bg-surface z-50 flex flex-col shadow-[rgba(0,0,0,0.05)_0px_0px_0px_1px,rgba(0,0,0,0.1)_0px_0px_24px] transform transition-transform duration-500 ease-in-out translate-x-0 border-l border-rule">
+<!-- Panel Top Bar -->
+<div class="h-[56px] w-full border-b border-rule flex justify-between items-center px-stack-md shrink-0">
+<span class="font-utility-label text-utility-label text-ink uppercase">CHOISIR UN DÉCOR</span>
+<a class="font-utility-label text-utility-label text-ink uppercase underline underline-offset-4 hover:text-accent-sienna transition-colors duration-300" href="#">Fermer</a>
+</div>
+<!-- Panel Scrollable Grid -->
+<div class="flex-grow overflow-y-auto p-stack-md bg-surface">
+<div class="grid grid-cols-2 gap-x-stack-sm gap-y-stack-md">
+<!-- Decor Item 1 (Selected) -->
+<div class="decor-item selected scroll-fade-in stagger-1">
+<div class="image-container w-full aspect-[3/2] mb-2 bg-surface">
+<img class="w-full h-full object-cover" data-alt="A luxurious Parisian apartment living room interior, bathed in soft, diffused morning sunlight. Haussmann architecture with ornate wall moldings, a high ceiling, and herringbone parquet flooring. Minimalist modern furniture in pale tones, emphasizing a neo-editorial, high-status aesthetic. Monochromatic palette with bright whites and subtle warm greys." src="https://lh3.googleusercontent.com/aida-public/AB6AXuCtd32rxMFhU6I1KQCSSSjCxCffF3EtuWPQwZpPLDsS9z6ycXDbCRD1nMkCkmXGMrhPk8G6lWmjOR9Z0UHSCZNqabL9_1GMhut535Qgk5a5tKoAexTWHg8dQGWvvJVIychdC9WZfzZim9dAHDQwWnw3TEL6xgjF7j0qiyBuLoB5YYqWe-SBwQZZXqJeTFxL2QLqc5TNoRgeiKzMPH2e8RO8M36SEWq8c4Xmm-HM3BU5aBXaPR3k"/>
+</div>
+<div class="flex flex-col gap-[4px] mt-[8px]">
+<span class="font-caption-tiny text-caption-tiny text-ink uppercase">Appartement Haussmannien</span>
+<span class="text-archivo-13 text-ink-soft">Lumière naturelle, moulures classiques, parquet point de Hongrie.</span>
+</div>
+</div>
+<!-- Decor Item 2 -->
+<div class="decor-item scroll-fade-in stagger-2">
+<div class="image-container w-full aspect-[3/2] mb-2">
+<img class="w-full h-full object-cover" data-alt="A stark, minimalist concrete gallery space. Brutalist architecture with smooth, sweeping curved walls. Natural light filtering from a skylight above, creating dramatic architectural shadows. The aesthetic is strict minimalism, high-end editorial fashion setting. Monochromatic cool greys and stark whites." src="https://lh3.googleusercontent.com/aida-public/AB6AXuA0VZgpf8vJm_005HCvnKceZ0WGCDSwUWIjfBJQ7dHY-wVo2wawPfd88IIZQt8CBx9cNxvPhUw6DGZM_98aCp9Cg3AQu0Lwo04vzXLldcThs7KI6nIvMY2kxrmEvW2Os7euEQucN7v6QaF2ICOvQzlzlA4En-qKqA36L6dhq3kgTM8V_Qww5bnKUkfVIqAOeCZ3G4QGK5blI8f1_6gj-WEvNYsHaMcB3zsokSv83Dfe-GsiSjhn"/>
+</div>
+<div class="flex flex-col gap-[4px] mt-[8px]">
+<span class="font-caption-tiny text-caption-tiny text-ink uppercase">Galerie Brutaliste</span>
+<span class="text-archivo-13 text-ink-soft">Béton brut, espace minimaliste, éclairage zénithal dramatique.</span>
+</div>
+</div>
+<!-- Decor Item 3 -->
+<div class="decor-item scroll-fade-in stagger-3">
+<div class="image-container w-full aspect-[3/2] mb-2">
+<img class="w-full h-full object-cover" data-alt="An opulent, dimly lit Moroccan riad courtyard serving as a fashion set. Geometric tilework on the walls, a small reflective central pool, surrounded by lush palm fronds. The lighting is moody and cinematic, emphasizing deep shadows and rich textures. High-contrast, luxurious editorial style." src="https://lh3.googleusercontent.com/aida-public/AB6AXuC6vqyg3y_wF6V1ZUNTIFsOLP_TA_3aDR_prSw0Vvnclbob1ccMff463mfIXDL3Uoquymm_o4HucLC4XHe8qFq2a-RDScnJ4sPXn_hRj7hQXsIaahg5HAXwJj8sOgLTPzjRBojdH6_QiLJ9JcN8IPelyjCr3f0L5pk5B8nEpdlbDXH0TYS7kNmys0cX8iySvht8kO0pleTKYJQJ8HIaFWwJaaR4FGIcHC8V8Uns6AI_pBDOOxeg"/>
+</div>
+<div class="flex flex-col gap-[4px] mt-[8px]">
+<span class="font-caption-tiny text-caption-tiny text-ink uppercase">Riad Contemporain</span>
+<span class="text-archivo-13 text-ink-soft">Architecture mauresque épurée, patio central, ombres portées.</span>
+</div>
+</div>
+<!-- Decor Item 4 -->
+<div class="decor-item scroll-fade-in stagger-4">
+<div class="image-container w-full aspect-[3/2] mb-2">
+<img class="w-full h-full object-cover" data-alt="A vast, empty professional photography cyclorama studio. Pure white infinity curve background. Tall industrial windows on one side letting in bright, even daylight. Heavy steel studio equipment faintly visible in the foreground out of focus. Utilitarian, rigorous, high-status production environment." src="https://lh3.googleusercontent.com/aida-public/AB6AXuBX-_78CGt7jyCGwG1UIApO3ySnb3d30zGxHizAJR_vxyUTTEgqJ2O21hFh8-F3pEpJ7ADoD6DqnfMazI24Qlv_PTyCbnjIHaZI-oaf2jswlRrxrOL2EZHqu0RWicFo4oyOGRVHrwwVp2y9G6p4lNIXqSpOx2CSJC4DADiHPKhYbX4C8dr7btpDWeaxQ4vJtilRhfOk-wb75znWBGmYPGCwjMS8pWE1062vngpXKZY67oNCt6ZB"/>
+</div>
+<div class="flex flex-col gap-[4px] mt-[8px]">
+<span class="font-caption-tiny text-caption-tiny text-ink uppercase">Studio Cyclorama</span>
+<span class="text-archivo-13 text-ink-soft">Fond blanc infini, lumière contrôlée, espace de production neutre.</span>
+</div>
+</div>
+<!-- Decor Item 5 -->
+<div class="decor-item scroll-fade-in stagger-1">
+<div class="image-container w-full aspect-[3/2] mb-2">
+<img class="w-full h-full object-cover" data-alt="A sleek, modern corporate rooftop terrace overlooking a West African metropolis like Dakar or Abidjan. Glass balustrades, sleek minimal outdoor furniture. Bright, high-sun midday lighting. The mood is confident, authoritative, and contemporary business editorial." src="https://lh3.googleusercontent.com/aida-public/AB6AXuCjT_owgglOHLhf6S-EyEsTlfwlmFrfAnEuwYLL60KqSVXgCq9641DB76z6ZiTz0duLuy35qIwPQZuhCZAT6cR6f0heLlSfQGE62zdImMlLA02-LtNVJrWMzgWFs0-Zjso4-qinuBcOlguofWf8V0hkasKWC_rbqpQ1bx-6j51YZs4RGAE3-z75VZaThE_ALi0-HF0j4SS1onRgig_kvcnsnzsav9PGsOd9Pdn6CNsvV66U8JWe"/>
+</div>
+<div class="flex flex-col gap-[4px] mt-[8px]">
+<span class="font-caption-tiny text-caption-tiny text-ink uppercase">Rooftop Métropole</span>
+<span class="text-archivo-13 text-ink-soft">Vue urbaine dégagée, verre et acier, lumière crue de milieu de journée.</span>
+</div>
+</div>
+<!-- Decor Item 6 -->
+<div class="decor-item scroll-fade-in stagger-2">
+<div class="image-container w-full aspect-[3/2] mb-2">
+<img class="w-full h-full object-cover" data-alt="An expansive, arid desert dune landscape under a clear, pale sky. Minimalist, surreal aesthetic. A single, crisp structural element like a stark white frame placed in the sand for a fashion shoot context. High contrast, extreme minimalism, editorial purity." src="https://lh3.googleusercontent.com/aida-public/AB6AXuCuJNtt6SArNWvmio297OmzAj06MnJ1UycJGX5BlO2D34n8F834_OODQvI4reNvejjk6PBiBBnU7FqkomSVKeRcI3oM6MQfD_AI1ebWsN23a_mWqjcM0nh9KcNYaFq2vfSkDLhNp2EO6K61cQZhl18RneRdHcz925tuR1ZWjLFNJo-DH6ZYse2oFe1iVAJHrlDkro6qRV_vypKN98z7Ddzk5NUn6thvoX1n-VCC8a8qFOBWWCVL"/>
+</div>
+<div class="flex flex-col gap-[4px] mt-[8px]">
+<span class="font-caption-tiny text-caption-tiny text-ink uppercase">Désert Minéral</span>
+<span class="text-archivo-13 text-ink-soft">Paysage aride expansif, minimalisme absolu, horizon dégagé.</span>
+</div>
+</div>
+</div>
+<div class="h-24"></div> <!-- Spacer for sticky button -->
+</div>
+<!-- Sticky Bottom Bar -->
+<div class="absolute bottom-0 left-0 w-full p-stack-md bg-surface border-t border-rule">
+<button class="w-full h-[48px] bg-ink text-surface font-utility-label text-utility-label uppercase tracking-widest hover:bg-ink-soft transition-colors duration-300">
+                Valider ce choix
+            </button>
+</div>
+</aside>
+<script>
+        // Simple script to handle selection
+        document.addEventListener('DOMContentLoaded', () => {
+            const items = document.querySelectorAll('.decor-item');
+            
+            items.forEach(item => {
+                item.addEventListener('click', () => {
+                    // Remove selected class from all
+                    items.forEach(i => i.classList.remove('selected'));
+                    // Add to clicked
+                    item.classList.add('selected');
+                });
+            });
+        });
+    </script>
+</body></html>

@@ -1,0 +1,244 @@
+<!DOCTYPE html>
+
+<html class="light" lang="fr"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" name="viewport"/>
+<title>MAISON AI - NOUVEAU SHOOTING</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Bodoni+Moda:ital,opsz,wght@0,6..96,400..900;1,6..96,400..900&amp;family=DM+Mono:ital,wght@0,300;0,400;0,500;1,300;1,400;1,500&amp;family=Archivo+Narrow:ital,wght@0,400..700;1,400..700&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    colors: {
+                        "on-error": "#ffffff",
+                        "on-primary": "#ffffff",
+                        "error-container": "#ffdad6",
+                        "ink-soft": "#56565F",
+                        "inverse-on-surface": "#f0f0f2",
+                        "surface-container-high": "#e8e8ea",
+                        "on-tertiary": "#ffffff",
+                        "secondary-fixed-dim": "#ffb59c",
+                        "primary": "#000000",
+                        "on-primary-fixed": "#1c1b1d",
+                        "surface-container-lowest": "#ffffff",
+                        "tertiary-container": "#1e1b18",
+                        "whatsapp": "#25D366",
+                        "background": "#F6F6F8", // Updated to match prompt
+                        "primary-fixed-dim": "#c8c6c8",
+                        "on-background": "#1a1c1d",
+                        "on-error-container": "#93000a",
+                        "surface-container-highest": "#e2e2e4",
+                        "on-primary-fixed-variant": "#474649",
+                        "surface-bright": "#f9f9fb",
+                        "on-tertiary-fixed-variant": "#4a4642",
+                        "tertiary-fixed-dim": "#ccc5c0",
+                        "on-secondary": "#ffffff",
+                        "on-tertiary-fixed": "#1e1b18",
+                        "inverse-primary": "#c8c6c8",
+                        "on-surface-variant": "#47464a",
+                        "on-surface": "#1a1c1d",
+                        "tertiary": "#000000",
+                        "rule": "#DCDCE2",
+                        "error": "#ba1a1a",
+                        "surface-dim": "#d9dadc",
+                        "surface-container": "#edeef0",
+                        "outline-variant": "#c8c5ca",
+                        "inverse-surface": "#2f3132",
+                        "outline": "#78767b",
+                        "on-secondary-fixed": "#380c00",
+                        "secondary-fixed": "#ffdbcf",
+                        "on-primary-container": "#858386",
+                        "on-secondary-container": "#641d00",
+                        "surface": "#FFFFFF",
+                        "tertiary-fixed": "#e8e1db",
+                        "primary-container": "#1c1b1d",
+                        "on-tertiary-container": "#88837e",
+                        "on-secondary-fixed-variant": "#822800",
+                        "surface-variant": "#e2e2e4",
+                        "surface-container-low": "#f3f3f5",
+                        "secondary-container": "#fe7440",
+                        "primary-fixed": "#e5e1e4",
+                        "secondary": "#a93702",
+                        "surface-tint": "#5f5e60",
+                        "accent": "#B7410E" // Added accent from prompt
+                    },
+                    borderRadius: {
+                        "DEFAULT": "0px",
+                        "lg": "0px",
+                        "xl": "0px",
+                        "full": "0px"
+                    },
+                    spacing: {
+                        "margin-mobile": "20px",
+                        "stack-lg": "80px",
+                        "margin-desktop": "64px",
+                        "stack-sm": "16px",
+                        "stack-md": "40px",
+                        "gutter": "1px"
+                    },
+                    fontFamily: {
+                        "display-xl": ["Bodoni Moda"],
+                        "headline-lg-mobile": ["Bodoni Moda"],
+                        "utility-label": ["DM Mono"],
+                        "caption-tiny": ["DM Mono"],
+                        "headline-lg": ["Bodoni Moda"],
+                        "body-md": ["Archivo Narrow"]
+                    },
+                    fontSize: {
+                        "display-xl": ["64px", { lineHeight: "1.1", letterSpacing: "-0.02em", fontWeight: "400" }],
+                        "headline-lg-mobile": ["34px", { lineHeight: "1.2", fontWeight: "400" }], // Adjusted to 34px for this specific prompt
+                        "utility-label": ["11px", { lineHeight: "1", letterSpacing: "0.14em", fontWeight: "500" }],
+                        "caption-tiny": ["10px", { lineHeight: "1.2", fontWeight: "400" }],
+                        "headline-lg": ["40px", { lineHeight: "1.2", letterSpacing: "-0.01em", fontWeight: "400" }],
+                        "body-md": ["15px", { lineHeight: "1.6", fontWeight: "400" }] // Adjusted to 15px for this specific prompt
+                    }
+                }
+            }
+        };
+    </script>
+<style type="text/tailwindcss">
+        @layer utilities {
+            .no-scrollbar::-webkit-scrollbar {
+                display: none;
+            }
+            .no-scrollbar {
+                -ms-overflow-style: none;
+                scrollbar-width: none;
+            }
+        }
+    </style>
+</head>
+<body class="bg-background text-primary font-body-md min-h-screen max-w-[390px] mx-auto overflow-x-hidden border-x border-rule relative">
+<!-- 1. HEADER -->
+<header class="flex justify-between items-center px-margin-mobile w-full h-[56px] bg-surface border-b border-rule shrink-0 sticky top-0 z-50">
+<h1 class="font-display-xl text-xl font-black tracking-tighter text-primary">MAISON AI</h1>
+<div class="font-utility-label text-utility-label uppercase tracking-widest text-primary cursor-pointer hover:opacity-70 transition-opacity duration-200">
+            12 CRÉDITS
+        </div>
+</header>
+<main class="w-full pb-stack-lg">
+<!-- 2. PAGE HEADER -->
+<section class="px-margin-mobile pt-stack-md pb-stack-md border-b border-rule bg-background">
+<span class="font-utility-label text-[10px] text-accent uppercase tracking-widest block mb-4">NOUVEAU SHOOTING</span>
+<h2 class="font-headline-lg-mobile text-headline-lg-mobile text-primary mb-4 leading-tight">Votre shooting</h2>
+<p class="font-body-md text-body-md text-ink-soft leading-relaxed max-w-[280px]">Trois choix, trois minutes. Vos visuels sont générés sur votre propre vêtement.</p>
+</section>
+<div class="px-margin-mobile py-stack-md flex flex-col gap-stack-md">
+<!-- 3. ÉTAPE 01 — LA TENUE -->
+<section class="border border-primary bg-surface p-4 flex flex-col gap-4">
+<h3 class="font-utility-label text-utility-label uppercase text-primary">01 — LA TENUE</h3>
+<div class="h-[180px] w-full border border-dashed border-primary flex flex-col items-center justify-center p-4 bg-background cursor-pointer hover:bg-surface-container-low transition-colors">
+<span class="material-symbols-outlined text-primary mb-2" style="font-variation-settings: 'FILL' 0;">upload</span>
+<span class="font-body-md text-body-md text-primary mb-1">Glissez vos photos ici</span>
+<span class="font-caption-tiny text-caption-tiny text-ink-soft uppercase text-center">1 À 4 PHOTOS — FACE ET DOS RECOMMANDÉS</span>
+</div>
+<div class="border-t border-rule pt-3 mt-1 cursor-pointer flex justify-between items-center group">
+<span class="font-utility-label text-utility-label uppercase text-ink-soft group-hover:text-primary transition-colors">PRÉCISIONS SUR LE VÊTEMENT (FACULTATIF)</span>
+<span class="material-symbols-outlined text-ink-soft group-hover:text-primary transition-colors text-sm" style="font-variation-settings: 'FILL' 0;">expand_more</span>
+</div>
+</section>
+<!-- 4. ÉTAPE 02 — LE MANNEQUIN -->
+<section class="border border-primary bg-surface p-4 flex flex-col gap-4">
+<h3 class="font-utility-label text-utility-label uppercase text-primary">02 — LE MANNEQUIN</h3>
+<div class="flex overflow-x-auto gap-3 no-scrollbar pb-2 -mx-4 px-4 snap-x">
+<!-- Selected Thumbnail -->
+<div class="shrink-0 w-[96px] snap-start cursor-pointer group">
+<div class="aspect-[3/4] w-full border-2 border-primary p-0.5 mb-2 relative">
+<div class="w-full h-full bg-cover bg-center" data-alt="A portrait of a beautiful young African woman with natural short hair, looking directly at the camera. Professional studio lighting, soft box, plain white background, high end editorial fashion photography style, sharp focus." style="background-image: url('https://lh3.googleusercontent.com/aida-public/AB6AXuDw83_gVesLBCYquu_F5ZIdRh8A-4urx18GIM0VWa4874VSwIcgTO5ukpTVfZnJgtuQxR9ZQ0onmS12gcRZfLFTiMXWsgSzsjkpD54fb8wpQ0QFHCm82Q9PWnGGbbl8l1mXdcLGaRBK4003tZgNeyIUpSU1dfZY8r-ikNqtIYN-9a6SM8fuKexEDWj949QX5LK8eIlXfnvwqhdw_4QsGhC-oM0ZM1n6B_37QUqPCphPLQN-ADLT')"></div>
+<div class="absolute inset-0 bg-primary/10 group-hover:bg-transparent transition-colors"></div>
+</div>
+<span class="font-caption-tiny text-caption-tiny uppercase block text-primary font-bold">AMINATA</span>
+</div>
+<!-- Unselected Thumbnail 1 -->
+<div class="shrink-0 w-[96px] snap-start cursor-pointer group opacity-80 hover:opacity-100 transition-opacity">
+<div class="aspect-[3/4] w-full border border-rule mb-2 relative overflow-hidden">
+<div class="w-full h-full bg-cover bg-center grayscale group-hover:grayscale-0 transition-all duration-300" data-alt="A portrait of an elegant Senegalese woman with a sleek low bun, slight profile turn but eyes on camera. Professional studio lighting, plain light grey background, high end fashion editorial aesthetic, high contrast." style="background-image: url('https://lh3.googleusercontent.com/aida-public/AB6AXuDimvvokUMkbVPlrWrZLcqqOsVJThcIS3g_JYuV-xsw3yggutLRgGHfNVpqQFFafcaGNLuNjIhl6y1Qvqhjyo36v7dB2KDIFZlwIfx8EpY0wqzPtJiK4mm1jYwcR5qQH5lxxJNSu1Vsozi9lHFW9tt89dQ_ffrzjZs8WF9tlA218B67aueuuNgCz7fFWeOekOY4rPNce2xMFubBRgZnpJ-izO7GaGQg_ZI6UjRhCJE9Hz6BuhXb')"></div>
+</div>
+<span class="font-caption-tiny text-caption-tiny uppercase block text-ink-soft">FATOU</span>
+</div>
+<!-- Unselected Thumbnail 2 -->
+<div class="shrink-0 w-[96px] snap-start cursor-pointer group opacity-80 hover:opacity-100 transition-opacity">
+<div class="aspect-[3/4] w-full border border-rule mb-2 relative overflow-hidden">
+<div class="w-full h-full bg-cover bg-center grayscale group-hover:grayscale-0 transition-all duration-300" data-alt="A striking portrait of a North African female model with curly hair, strong jawline, intense gaze. Cinematic studio lighting, subtle shadow play, plain beige background, contemporary fashion style." style="background-image: url('https://lh3.googleusercontent.com/aida-public/AB6AXuBIfrE4z2SazMLErLb7XVbVSyqfkqPlEDcFHVvj1y8GttMKZDT8javEm-dtS5R61qEl5VyPoNZJ4XkH83sjGuHFAScd0YMsfRXC0zJQJry6tnuPmGYB657faXT-gqm0JAZiilCKf9JCN9WLY5PHAtLQglsmPL1WrWUAy90CffP9H0pr07P1dhioeVWOMSpW_9_Dnh4-2TB9DuWjq4EOjlYOffm1_jqGeel_ct5FsjpwVoZHTDnT')"></div>
+</div>
+<span class="font-caption-tiny text-caption-tiny uppercase block text-ink-soft">NAÏMA</span>
+</div>
+<!-- Unselected Thumbnail 3 -->
+<div class="shrink-0 w-[96px] snap-start cursor-pointer group opacity-80 hover:opacity-100 transition-opacity">
+<div class="aspect-[3/4] w-full border border-rule mb-2 relative overflow-hidden">
+<div class="w-full h-full bg-cover bg-center grayscale group-hover:grayscale-0 transition-all duration-300" data-alt="Close up portrait of a confident young black woman with braided hair. Soft, diffused professional studio lighting, neutral background, minimalist editorial aesthetic." style="background-image: url('https://lh3.googleusercontent.com/aida-public/AB6AXuA0GVLj9CbLbk8HmA6rGLg_Rrc6xcuK3yEaPPFUsPlpcUy6SLBFAiqUJQp1pOWpxH0V07cjzqeK48npbmsenS9-NIjXx9eeTub2PUHDKmQNOcCNzWPwHWJGMfBCC3PNQ_E_8QNmwyDKCN9z8BnmD_PwcgEgUVSPyfLPM2L4FTdS1o_Bfz30CrG43YqQlRlsNUSuIFK-Y48dZ2I9sarQFr8qSdpIuI1N4uWQIkF79BEBLJEGYM8N')"></div>
+</div>
+<span class="font-caption-tiny text-caption-tiny uppercase block text-ink-soft">CHLOÉ</span>
+</div>
+<!-- See All Tile -->
+<div class="shrink-0 w-[96px] snap-start cursor-pointer group">
+<div class="aspect-[3/4] w-full border border-rule bg-background flex flex-col items-center justify-center mb-2 hover:bg-surface-container-high transition-colors">
+<span class="material-symbols-outlined text-ink-soft group-hover:text-primary transition-colors mb-1" style="font-variation-settings: 'FILL' 0;">add</span>
+<span class="font-utility-label text-[9px] uppercase text-ink-soft group-hover:text-primary">VOIR TOUS</span>
+</div>
+</div>
+</div>
+</section>
+<!-- 5. ÉTAPE 03 — LE DÉCOR -->
+<section class="border border-primary bg-surface p-4 flex flex-col gap-4">
+<h3 class="font-utility-label text-utility-label uppercase text-primary">03 — LE DÉCOR</h3>
+<div class="flex overflow-x-auto gap-3 no-scrollbar pb-2 -mx-4 px-4 snap-x">
+<!-- Selected Decor -->
+<div class="shrink-0 w-[140px] snap-start cursor-pointer group">
+<div class="aspect-[3/2] w-full border-2 border-primary p-0.5 mb-2 relative">
+<div class="w-full h-full bg-white border border-rule"></div>
+</div>
+<span class="font-caption-tiny text-caption-tiny uppercase block text-primary font-bold">STUDIO BLANC</span>
+</div>
+<!-- Unselected Decor 1 -->
+<div class="shrink-0 w-[140px] snap-start cursor-pointer group opacity-80 hover:opacity-100 transition-opacity">
+<div class="aspect-[3/2] w-full border border-rule mb-2 relative overflow-hidden">
+<div class="w-full h-full bg-gray-200"></div>
+</div>
+<span class="font-caption-tiny text-caption-tiny uppercase block text-ink-soft">STUDIO GRIS</span>
+</div>
+<!-- Unselected Decor 2 -->
+<div class="shrink-0 w-[140px] snap-start cursor-pointer group opacity-80 hover:opacity-100 transition-opacity">
+<div class="aspect-[3/2] w-full border border-rule mb-2 relative overflow-hidden">
+<div class="w-full h-full bg-cover bg-center" data-alt="A blurred, golden hour outdoor setting. Soft warm sunlight filtering through abstract architectural elements. High end fashion editorial outdoor background, out of focus bokeh." style="background-image: url('https://lh3.googleusercontent.com/aida-public/AB6AXuAX6dbQtuYZTY5ZO9OsCqHvRbEfwfZijXA-3N9bMTZJKbrg6YTO1ecTCa4yHGGFd3sXPhP2UHtY0sj7g2CUikQ3ayP1fSFD_gTfYg-KPutKPMzF4M3ujeAdE1Q41Pxn8MqsnHYrmxUB35w3feTtDMfAHkEsDnac0D1ijTo7G2h-ZASwMwkgV_qTnvNbWF-iwvf6T8z6OJ3g5RnCp7PEYonexCq3_oZs15-JW90UuZd7RAlLhGN4')"></div>
+</div>
+<span class="font-caption-tiny text-caption-tiny uppercase block text-ink-soft">EXTÉRIEUR DORÉ</span>
+</div>
+<!-- Unselected Decor 3 -->
+<div class="shrink-0 w-[140px] snap-start cursor-pointer group opacity-80 hover:opacity-100 transition-opacity">
+<div class="aspect-[3/2] w-full border border-rule mb-2 relative overflow-hidden">
+<div class="w-full h-full bg-cover bg-center" data-alt="A blurred interior of a minimalist brutalist concrete apartment with large windows. High contrast lighting, sparse setting, architectural editorial background." style="background-image: url('https://lh3.googleusercontent.com/aida-public/AB6AXuDfkp_FTRJyrpzhSNentOUvRUytxRWDIjCIQG5PgKJwDerFMFMmpyP5VwxJzfEIo6B94huZ_a09hI8EzLOeZveLk0jgipFIDsez70VgwPiqngG43mOdIBjCFTi_xPbOjz0J_MG6PR9fCNSR0LaKBavd--Xwp_rSiYNDORspIAB9CmasF_kigXrfDaUYbMT0oYGMxVIwBQ2YFSX1p1MbnO23kWRY3bDl_R5UmfNb2UkE3sfbL_Ow')"></div>
+</div>
+<span class="font-caption-tiny text-caption-tiny uppercase block text-ink-soft">INTÉRIEUR</span>
+</div>
+</div>
+</section>
+<!-- 6. AJUSTEMENTS -->
+<section class="border-y border-rule py-4 cursor-pointer flex justify-between items-center group bg-background">
+<span class="font-utility-label text-utility-label uppercase text-primary group-hover:opacity-70 transition-opacity">AJUSTEMENTS (FACULTATIF)</span>
+<span class="material-symbols-outlined text-primary group-hover:opacity-70 transition-opacity" style="font-variation-settings: 'FILL' 0;">expand_more</span>
+</section>
+<!-- 7. COÛT -->
+<section class="bg-surface border border-rule p-4 mt-2">
+<h4 class="font-utility-label text-utility-label uppercase text-ink-soft mb-2">CETTE SÉRIE</h4>
+<p class="font-body-md text-body-md text-primary leading-relaxed">
+                    3 crédits — 1 pour le plan principal, 1 par vue supplémentaire. La normalisation de votre vêtement est offerte.
+                </p>
+</section>
+</div>
+</main>
+<!-- 8. ACTION (Sticky Bottom) -->
+<div class="fixed bottom-0 left-0 right-0 max-w-[390px] mx-auto bg-background border-t border-rule border-x p-4 pt-4 pb-6 z-50 shadow-[0_-10px_30px_rgba(246,246,248,0.9)]">
+<button class="w-full bg-primary text-surface font-body-md font-bold text-[16px] py-4 uppercase tracking-wide hover:opacity-90 active:scale-[0.98] transition-all flex items-center justify-center gap-2">
+            Générer le shooting
+            <span class="material-symbols-outlined text-sm" style="font-variation-settings: 'FILL' 0;">arrow_forward</span>
+</button>
+<p class="font-utility-label text-[10px] text-ink-soft text-center mt-3 uppercase tracking-widest">
+            ENVIRON 3 MINUTES — VOUS POUVEZ FERMER LA PAGE
+        </p>
+</div>
+</body></html>

@@ -1,0 +1,295 @@
+<!DOCTYPE html>
+
+<html class="light" lang="fr"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Studio AI - Le Mannequin</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<script id="tailwind-config">
+      tailwind.config = {
+        darkMode: "class",
+        theme: {
+          extend: {
+            "colors": {
+                    "background": "#f9f9fb",
+                    "surface-container-high": "#e8e8ea",
+                    "surface": "#FFFFFF",
+                    "on-secondary": "#ffffff",
+                    "primary-container": "#1c1b1d",
+                    "inverse-primary": "#c8c6c8",
+                    "on-surface": "#1a1c1d",
+                    "on-surface-variant": "#47464a",
+                    "surface-dim": "#d9dadc",
+                    "error": "#ba1a1a",
+                    "secondary-fixed": "#ffdbcf",
+                    "tertiary-fixed": "#e8e1db",
+                    "secondary-container": "#fe7440",
+                    "on-background": "#1a1c1d",
+                    "primary-fixed-dim": "#c8c6c8",
+                    "rule": "#DCDCE2",
+                    "primary-fixed": "#e5e1e4",
+                    "whatsapp": "#25D366",
+                    "surface-container-highest": "#e2e2e4",
+                    "primary": "#000000",
+                    "surface-tint": "#5f5e60",
+                    "surface-container-lowest": "#ffffff",
+                    "secondary-fixed-dim": "#ffb59c",
+                    "on-primary": "#ffffff",
+                    "outline-variant": "#c8c5ca",
+                    "on-error-container": "#93000a",
+                    "on-error": "#ffffff",
+                    "on-tertiary-fixed": "#1e1b18",
+                    "error-container": "#ffdad6",
+                    "surface-container-low": "#f3f3f5",
+                    "tertiary": "#000000",
+                    "on-primary-fixed": "#1c1b1d",
+                    "on-tertiary-fixed-variant": "#4a4642",
+                    "tertiary-container": "#1e1b18",
+                    "on-secondary-container": "#641d00",
+                    "outline": "#78767b",
+                    "inverse-surface": "#2f3132",
+                    "on-secondary-fixed-variant": "#822800",
+                    "on-tertiary": "#ffffff",
+                    "surface-container": "#edeef0",
+                    "surface-bright": "#f9f9fb",
+                    "on-primary-container": "#858386",
+                    "on-secondary-fixed": "#380c00",
+                    "tertiary-fixed-dim": "#ccc5c0",
+                    "ink-soft": "#56565F",
+                    "inverse-on-surface": "#f0f0f2",
+                    "on-tertiary-container": "#88837e",
+                    "on-primary-fixed-variant": "#474649",
+                    "secondary": "#a93702",
+                    "surface-variant": "#e2e2e4"
+            },
+            "borderRadius": {
+                    "DEFAULT": "0px",
+                    "lg": "0px",
+                    "xl": "0px",
+                    "full": "0px"
+            },
+            "spacing": {
+                    "gutter": "1px",
+                    "margin-mobile": "20px",
+                    "margin-desktop": "64px",
+                    "stack-md": "40px",
+                    "stack-sm": "16px",
+                    "stack-lg": "80px"
+            },
+            "fontFamily": {
+                    "body-md": [
+                            "Archivo Narrow"
+                    ],
+                    "headline-lg": [
+                            "Bodoni Moda"
+                    ],
+                    "display-xl": [
+                            "Bodoni Moda"
+                    ],
+                    "caption-tiny": [
+                            "DM Mono"
+                    ],
+                    "utility-label": [
+                            "DM Mono"
+                    ],
+                    "headline-lg-mobile": [
+                            "Bodoni Moda"
+                    ]
+            },
+            "fontSize": {
+                    "body-md": [
+                            "16px",
+                            {
+                                    "lineHeight": "1.6",
+                                    "fontWeight": "400"
+                            }
+                    ],
+                    "headline-lg": [
+                            "40px",
+                            {
+                                    "lineHeight": "1.2",
+                                    "letterSpacing": "-0.01em",
+                                    "fontWeight": "400"
+                            }
+                    ],
+                    "display-xl": [
+                            "64px",
+                            {
+                                    "lineHeight": "1.1",
+                                    "letterSpacing": "-0.02em",
+                                    "fontWeight": "400"
+                            }
+                    ],
+                    "caption-tiny": [
+                            "10px",
+                            {
+                                    "lineHeight": "1.2",
+                                    "fontWeight": "400"
+                            }
+                    ],
+                    "utility-label": [
+                            "11px",
+                            {
+                                    "lineHeight": "1",
+                                    "letterSpacing": "0.14em",
+                                    "fontWeight": "500"
+                            }
+                    ],
+                    "headline-lg-mobile": [
+                            "32px",
+                            {
+                                    "lineHeight": "1.2",
+                                    "fontWeight": "400"
+                            }
+                    ]
+            }
+        },
+        },
+      }
+    </script>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Archivo+Narrow:wght@400;500;600&amp;family=Bodoni+Moda:ital,opsz,wght@0,6..96,400;0,6..96,700;1,6..96,400&amp;family=DM+Mono:wght@400;500&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<style>
+        /* Ensures strict grid lines */
+        .bg-grid {
+            background-size: 8.333333% 100%;
+            background-image: linear-gradient(to right, theme('colors.rule') 1px, transparent 1px);
+        }
+        /* Custom scrollbar for panel */
+        .panel-scroll::-webkit-scrollbar {
+            width: 4px;
+        }
+        .panel-scroll::-webkit-scrollbar-track {
+            background: theme('colors.background');
+        }
+        .panel-scroll::-webkit-scrollbar-thumb {
+            background: theme('colors.rule');
+        }
+    </style>
+</head>
+<body class="bg-background text-primary font-body-md h-screen w-full overflow-hidden flex selection:bg-secondary selection:text-surface">
+<!-- MAIN STUDIO CANVAS (LEFT) -->
+<main class="flex-1 relative flex flex-col h-full border-r border-rule z-0 overflow-hidden">
+<!-- TopAppBar Shared Component -->
+<header class="bg-background dark:bg-background fixed top-0 w-[calc(100%-560px)] h-[56px] border-b border-rule dark:border-on-surface-variant flex flex-row-reverse justify-between items-center px-margin-desktop md:px-margin-desktop z-50">
+<span class="material-symbols-outlined text-primary dark:text-on-background cursor-pointer hover:text-secondary transition-colors duration-600">menu</span>
+<div class="font-headline-lg text-headline-lg uppercase tracking-tighter text-primary dark:text-on-background">STUDIO.AI</div>
+</header>
+<!-- Canvas Area -->
+<div class="flex-1 mt-[56px] bg-grid w-full h-full flex items-center justify-center p-margin-desktop relative">
+<div class="absolute inset-0 flex items-center justify-center opacity-10 pointer-events-none">
+<span class="font-display-xl text-display-xl tracking-tighter">STUDIO</span>
+</div>
+<!-- Active Composition Placeholder -->
+<div class="w-[400px] aspect-[3/4] border border-rule bg-surface p-4 flex flex-col items-center justify-center relative group">
+<div class="absolute inset-4 border border-dashed border-rule flex flex-col items-center justify-center text-on-surface-variant">
+<span class="material-symbols-outlined text-[32px] mb-4">person_add</span>
+<span class="font-utility-label text-utility-label">SÉLECTIONNEZ UN MANNEQUIN</span>
+</div>
+</div>
+</div>
+</main>
+<!-- RIGHT SIDE PANEL - LE MANNEQUIN -->
+<aside class="w-[560px] h-full bg-surface flex flex-col flex-shrink-0 z-40 relative shadow-[-20px_0_40px_rgba(0,0,0,0.03)] border-l border-rule">
+<!-- 1. PANEL TOP BAR -->
+<div class="h-[56px] flex-shrink-0 flex items-center justify-between px-6 border-b border-rule bg-surface sticky top-0 z-10">
+<h2 class="font-utility-label text-utility-label text-primary">CHOISIR UN MANNEQUIN</h2>
+<button class="font-utility-label text-utility-label text-on-surface-variant hover:text-primary transition-colors flex items-center gap-2 group">
+                Fermer
+                <span class="material-symbols-outlined text-[16px] group-hover:rotate-90 transition-transform duration-500">close</span>
+</button>
+</div>
+<!-- 2. FILTERS -->
+<div class="flex border-b border-rule bg-background flex-shrink-0">
+<button class="flex-1 py-3 text-center border-r border-rule bg-primary text-surface font-utility-label text-utility-label transition-colors">
+                TOUS
+            </button>
+<button class="flex-1 py-3 text-center border-r border-rule text-primary hover:bg-surface-container-high font-utility-label text-utility-label transition-colors">
+                FEMME
+            </button>
+<button class="flex-1 py-3 text-center text-primary hover:bg-surface-container-high font-utility-label text-utility-label transition-colors">
+                HOMME
+            </button>
+</div>
+<!-- 3. GRID (Scrollable Area) -->
+<div class="flex-1 overflow-y-auto panel-scroll p-6 bg-surface">
+<div class="grid grid-cols-3 gap-x-4 gap-y-8">
+<!-- Mannequin Card 1 (Active/Selected) -->
+<div class="group cursor-pointer flex flex-col">
+<div class="aspect-[3/4] w-full border-2 border-primary relative overflow-hidden mb-2 p-1 bg-surface">
+<img class="w-full h-full object-cover grayscale transition-transform duration-700 group-hover:scale-105" data-alt="A striking black and white editorial fashion portrait of a female model of African descent with razor-sharp cheekbones and minimalist buzzcut hair. She is wearing an avant-garde structural blazer. Shot against a pure white studio background with high contrast, dramatic architectural lighting. The aesthetic is strictly neo-editorial, reminiscent of luxury Parisian fashion magazines, emphasizing clean geometric lines and sophisticated austere elegance." src="https://lh3.googleusercontent.com/aida-public/AB6AXuB23fJbWqcphCAw_1nPLQefcG_JEfpR1T2XkzIhh7nSmBr7V1HZFfVIobT7_Gx1d8gHpmmXu89SJn_MPAaOvrxKTJa0I_oOJ9YvfT88O5ragCECnF2s4zWWcP7SnApWYsaW3fTTUs4AQRIpt2zS0-oM1GQ1VgKPykYXHF-rH0KXpe6-3Qzfru6hP_ksuTXuP7X8PlDpU6QE8LXu8aLj8H7LX5yXHSFAY8AfoRqfXCvPaE59x4zz"/>
+</div>
+<div class="flex flex-col gap-1">
+<span class="font-caption-tiny text-caption-tiny text-secondary uppercase font-semibold">Amara</span>
+<span class="font-caption-tiny text-caption-tiny text-on-surface-variant uppercase">Androgyne, 1m78</span>
+</div>
+</div>
+<!-- Mannequin Card 2 -->
+<div class="group cursor-pointer flex flex-col">
+<div class="aspect-[3/4] w-full border border-rule relative overflow-hidden mb-2 bg-surface hover:border-primary transition-colors">
+<div class="absolute inset-0 bg-primary/0 group-hover:bg-primary/5 transition-colors z-10"></div>
+<img class="w-full h-full object-cover grayscale transition-transform duration-700 group-hover:scale-105" data-alt="A striking black and white editorial fashion portrait of a tall, very thin female model of European descent with long straight hair parted down the middle. She is wearing a translucent minimalist silk top. Shot against a pure white studio background with high contrast, dramatic directional lighting casting a sharp shadow. The aesthetic is strictly neo-editorial, reminiscent of luxury Parisian fashion magazines, emphasizing fragile elegance." src="https://lh3.googleusercontent.com/aida-public/AB6AXuDq1V_I6FM-LOFubis4XeRoEBU-RFMH9qJaVUrAfmRuVrvbGDHy3Y5XZZT4lDJvAbHDuyGICbQ9flTTdoiUnLZwU9CROGJPBwNClUf15IBB1YwKVYWFBnd6KNT20MT2xU5ijYTTVDUU6WUm6csh-5zwZ_H_bTjL-C2eqgaxwvKKi8zOAA_nuilYdrch8Wl9U0_2HHVtmA4UJRKHe9KqBYexbUJ0Dir5_SIbEJmDYQmGTinL8wCb"/>
+</div>
+<div class="flex flex-col gap-1">
+<span class="font-caption-tiny text-caption-tiny text-primary uppercase group-hover:text-secondary transition-colors">Elodie</span>
+<span class="font-caption-tiny text-caption-tiny text-on-surface-variant uppercase">Slim, 1m82</span>
+</div>
+</div>
+<!-- Mannequin Card 3 -->
+<div class="group cursor-pointer flex flex-col">
+<div class="aspect-[3/4] w-full border border-rule relative overflow-hidden mb-2 bg-surface hover:border-primary transition-colors">
+<div class="absolute inset-0 bg-primary/0 group-hover:bg-primary/5 transition-colors z-10"></div>
+<img class="w-full h-full object-cover grayscale transition-transform duration-700 group-hover:scale-105" data-alt="A striking black and white editorial fashion portrait of a muscular male model of North African descent with strong jawline and short textured hair. He is wearing a heavy minimalist wool coat. Shot against a pure white studio background with high contrast, dramatic rim lighting emphasizing his facial structure. The aesthetic is strictly neo-editorial, reminiscent of luxury Parisian fashion magazines, emphasizing authoritative presence and clean lines." src="https://lh3.googleusercontent.com/aida-public/AB6AXuB7vTfwFcja0jLpdWmgJKWDrKUFEA1_RYcipa2BHaVzgHeoxIeI88fE1RM05uDTSPT_3GX5jaS-CreNhOPxqeqwCu2vtk9-_EnLx5PQtMdXeturRGtiHgpJgkHXwoUUKYtqZSYZDlFIX5dBOszaHqUA3Cee6RkHLr0k5xvyKNEAwWck_2vuolRXCyInBoKlvaDzyLCSGt0Q-DvCkJ10olup0fBDrkmUQ5-4GmsWgdiYAbYkuL-h"/>
+</div>
+<div class="flex flex-col gap-1">
+<span class="font-caption-tiny text-caption-tiny text-primary uppercase group-hover:text-secondary transition-colors">Malik</span>
+<span class="font-caption-tiny text-caption-tiny text-on-surface-variant uppercase">Athlétique, 1m88</span>
+</div>
+</div>
+<!-- Mannequin Card 4 -->
+<div class="group cursor-pointer flex flex-col">
+<div class="aspect-[3/4] w-full border border-rule relative overflow-hidden mb-2 bg-surface hover:border-primary transition-colors">
+<div class="absolute inset-0 bg-primary/0 group-hover:bg-primary/5 transition-colors z-10"></div>
+<img class="w-full h-full object-cover grayscale transition-transform duration-700 group-hover:scale-105" data-alt="A striking black and white editorial fashion portrait of a female model of Asian descent with a sharp bob haircut and intense gaze. She is wearing a high-collared minimalist white shirt. Shot against a pure white studio background with high contrast, soft frontal lighting that flattens features into a graphic silhouette. The aesthetic is strictly neo-editorial, reminiscent of luxury Parisian fashion magazines, emphasizing pure geometry and stoicism." src="https://lh3.googleusercontent.com/aida-public/AB6AXuAsKXzx1ivdYXX111izD8Jrs_bhKdgMc5l4gluOrfR96j6N3UyhjuRBx6o15ftQBRpUbqRSWaQAyRrO716dWgifiJmCTLFd48gxSYygPsBYMLEyVev1TtPeLFSFN2qUc7znLXFR44EF3YMlvY6jw5UF7xusTUrU6mppJe1AiKWGXthDwlV9Gfn8-4wDpJLDxnAKnMRFWdWkhNa3MDqulAYK8fQS7bZzqqLizD6twC28RvA2NtQM"/>
+</div>
+<div class="flex flex-col gap-1">
+<span class="font-caption-tiny text-caption-tiny text-primary uppercase group-hover:text-secondary transition-colors">Jin</span>
+<span class="font-caption-tiny text-caption-tiny text-on-surface-variant uppercase">Petite, 1m65</span>
+</div>
+</div>
+<!-- Mannequin Card 5 -->
+<div class="group cursor-pointer flex flex-col">
+<div class="aspect-[3/4] w-full border border-rule relative overflow-hidden mb-2 bg-surface hover:border-primary transition-colors">
+<div class="absolute inset-0 bg-primary/0 group-hover:bg-primary/5 transition-colors z-10"></div>
+<img class="w-full h-full object-cover grayscale transition-transform duration-700 group-hover:scale-105" data-alt="A striking black and white editorial fashion portrait of a male model with very pale skin and freckles, wearing an oversized minimalist trench coat. Shot against a pure white studio background with high contrast, bright expansive lighting that slightly overexposes the background. The aesthetic is strictly neo-editorial, reminiscent of luxury Parisian fashion magazines, emphasizing unusual proportions and raw texture." src="https://lh3.googleusercontent.com/aida-public/AB6AXuDk2h9Me77aWwxaNSi0oRpmwfKtdLZoLRl0THPD8biZU3gQfN2gz7xAm8b9PK8mcbHnRq-qT3dYth8Jmdz0Jaq4VxjmjzHFfQSDD7hxUeqk0daNpsupmD6x14pYmL3v_Xwrzlb9CbWJOPnCqQQneskLnorf9v6viZmNhaT75nE3ME9E-63Z1N_ZAK4g3Lmu0L5MYz4LoVvgpglKYm1Cu36ZnzBo0z0jPjHaaut33s83yf9LMur_"/>
+</div>
+<div class="flex flex-col gap-1">
+<span class="font-caption-tiny text-caption-tiny text-primary uppercase group-hover:text-secondary transition-colors">Arthur</span>
+<span class="font-caption-tiny text-caption-tiny text-on-surface-variant uppercase">Slim, 1m86</span>
+</div>
+</div>
+<!-- Mannequin Card 6 -->
+<div class="group cursor-pointer flex flex-col">
+<div class="aspect-[3/4] w-full border border-rule relative overflow-hidden mb-2 bg-surface hover:border-primary transition-colors">
+<div class="absolute inset-0 bg-primary/0 group-hover:bg-primary/5 transition-colors z-10"></div>
+<img class="w-full h-full object-cover grayscale transition-transform duration-700 group-hover:scale-105" data-alt="A striking black and white editorial fashion portrait of a mature female model with silver hair swept back, wearing a strictly tailored minimalist suit. Shot against a pure white studio background with high contrast, classic Rembrandt lighting emphasizing experience and grace. The aesthetic is strictly neo-editorial, reminiscent of luxury Parisian fashion magazines, emphasizing timeless authoritative style." src="https://lh3.googleusercontent.com/aida-public/AB6AXuCUUDA4lI6U3vEDWYHDoOZdHDmmZY4CAF_pP2txjrRdQej5-euS8zo5UjI8yfLgLTxcu1Q9555La7oP9h6cF33_1cOdIlvi3TUZJn9o0UZkntUZnlRLCE_CyRijpM8iLhhwdycMrzJ6HyhijclLcDzI_dm8GtBgTSKSvZYBCDG1QyH-RCBXoM6ZJ-GK8xBdxL3Z_o47nZV9iD-ZXGwcK6FrF3D61N5tJyjTx5HIvxgebKBjbCYg"/>
+</div>
+<div class="flex flex-col gap-1">
+<span class="font-caption-tiny text-caption-tiny text-primary uppercase group-hover:text-secondary transition-colors">Sophie</span>
+<span class="font-caption-tiny text-caption-tiny text-on-surface-variant uppercase">Classique, 1m75</span>
+</div>
+</div>
+</div>
+<!-- Spacer for bottom bar -->
+<div class="h-12 w-full"></div>
+</div>
+<!-- 4. STICKY BOTTOM BAR -->
+<div class="border-t border-rule bg-surface p-6 sticky bottom-0 z-10 flex-shrink-0">
+<button class="w-full bg-primary text-surface font-utility-label text-utility-label uppercase py-4 hover:bg-inverse-surface transition-colors duration-300 flex items-center justify-center gap-2">
+                Valider ce choix
+                <span class="material-symbols-outlined text-[16px]">arrow_forward</span>
+</button>
+</div>
+</aside>
+</body></html>

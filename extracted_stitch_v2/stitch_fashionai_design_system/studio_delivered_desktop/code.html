@@ -1,0 +1,213 @@
+<!DOCTYPE html>
+
+<html class="dark" lang="fr"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>STUDIO.AI - Deliverables</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=DM+Mono:wght@400;500&amp;family=Bodoni+Moda:wght@400;700&amp;family=Archivo+Narrow:wght@400;600&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    "colors": {
+                        "tertiary-fixed": "#e8e1db",
+                        "background": "#f9f9fb",
+                        "on-secondary-fixed-variant": "#822800",
+                        "tertiary": "#000000",
+                        "on-tertiary-fixed-variant": "#4a4642",
+                        "error-container": "#ffdad6",
+                        "primary": "#000000",
+                        "on-secondary-fixed": "#380c00",
+                        "surface-container-high": "#e8e8ea",
+                        "on-primary": "#ffffff",
+                        "primary-fixed-dim": "#c8c6c8",
+                        "surface-tint": "#5f5e60",
+                        "surface-container-highest": "#e2e2e4",
+                        "surface-container-lowest": "#ffffff",
+                        "secondary-container": "#fe7440",
+                        "whatsapp": "#25D366",
+                        "surface-dim": "#d9dadc",
+                        "on-primary-fixed-variant": "#474649",
+                        "secondary": "#a93702",
+                        "surface-container-low": "#f3f3f5",
+                        "on-primary-container": "#858386",
+                        "on-surface": "#1a1c1d",
+                        "ink-soft": "#56565F",
+                        "rule": "#DCDCE2",
+                        "inverse-primary": "#c8c6c8",
+                        "on-tertiary-fixed": "#1e1b18",
+                        "on-error": "#ffffff",
+                        "on-tertiary-container": "#88837e",
+                        "primary-fixed": "#e5e1e4",
+                        "inverse-on-surface": "#f0f0f2",
+                        "surface-bright": "#f9f9fb",
+                        "outline": "#78767b",
+                        "error": "#ba1a1a",
+                        "secondary-fixed": "#ffdbcf",
+                        "surface-container": "#edeef0",
+                        "on-secondary": "#ffffff",
+                        "tertiary-container": "#1e1b18",
+                        "outline-variant": "#c8c5ca",
+                        "inverse-surface": "#2f3132",
+                        "on-error-container": "#93000a",
+                        "secondary-fixed-dim": "#ffb59c",
+                        "surface-variant": "#e2e2e4",
+                        "on-primary-fixed": "#1c1b1d",
+                        "primary-container": "#1c1b1d",
+                        "on-background": "#1a1c1d",
+                        "on-surface-variant": "#47464a",
+                        "on-secondary-container": "#641d00",
+                        "surface": "#FFFFFF",
+                        "tertiary-fixed-dim": "#ccc5c0",
+                        "on-tertiary": "#ffffff",
+                        "ink": "#0B0B0D",
+                        "accent": "#B7410E"
+                    },
+                    "borderRadius": {
+                        "DEFAULT": "0px",
+                        "lg": "0px",
+                        "xl": "0px",
+                        "full": "0px"
+                    },
+                    "spacing": {
+                        "stack-sm": "16px",
+                        "stack-md": "40px",
+                        "margin-mobile": "20px",
+                        "stack-lg": "80px",
+                        "margin-desktop": "64px",
+                        "gutter": "1px"
+                    },
+                    "fontFamily": {
+                        "utility-label": ["DM Mono"],
+                        "display-xl": ["Bodoni Moda"],
+                        "headline-lg-mobile": ["Bodoni Moda"],
+                        "caption-tiny": ["DM Mono"],
+                        "body-md": ["Archivo Narrow"],
+                        "headline-lg": ["Bodoni Moda"]
+                    },
+                    "fontSize": {
+                        "utility-label": ["11px", { "lineHeight": "1", "letterSpacing": "0.14em", "fontWeight": "500" }],
+                        "display-xl": ["64px", { "lineHeight": "1.1", "letterSpacing": "-0.02em", "fontWeight": "400" }],
+                        "headline-lg-mobile": ["32px", { "lineHeight": "1.2", "fontWeight": "400" }],
+                        "caption-tiny": ["10px", { "lineHeight": "1.2", "fontWeight": "400" }],
+                        "body-md": ["16px", { "lineHeight": "1.6", "fontWeight": "400" }],
+                        "headline-lg": ["40px", { "lineHeight": "1.2", "letterSpacing": "-0.01em", "fontWeight": "400" }]
+                    }
+                },
+            },
+        }
+    </script>
+<style>
+        body { background-color: #F6F6F8; color: #0B0B0D; }
+        .fade-in-up { animation: fadeInUp 0.6s ease-out forwards; opacity: 0; transform: translateY(10px); }
+        @keyframes fadeInUp { to { opacity: 1; transform: translateY(0); } }
+        /* Force no rounding as per strict instruction despite tailwind config attempt */
+        * { border-radius: 0 !important; }
+    </style>
+</head>
+<body class="antialiased min-h-screen flex flex-col items-center">
+<!-- Wrapper for 1280px max width and 5rem margins -->
+<div class="w-full max-w-[1280px] px-20 flex flex-col flex-grow">
+<!-- HEADER (Shared Component JSON base applied to context) -->
+<header class="w-full border-b border-rule flex justify-between items-center py-4 shrink-0">
+<div class="font-display-xl text-headline-lg uppercase tracking-tighter cursor-pointer transition-all duration-200 hover:opacity-70 text-ink">STUDIO.AI</div>
+<div class="font-utility-label text-utility-label text-ink cursor-pointer transition-all duration-200 hover:opacity-70">12 CRÉDITS</div>
+</header>
+<main class="flex-grow flex flex-col w-full py-stack-md gap-stack-lg">
+<!-- CONFIRMATION -->
+<section class="flex justify-between items-end w-full">
+<div class="flex flex-col gap-4">
+<span class="font-utility-label text-utility-label text-accent uppercase">SHOOTING TERMINÉ</span>
+<h1 class="font-display-xl text-headline-lg text-ink">Votre série est prête</h1>
+</div>
+<button class="border border-ink text-ink font-utility-label text-utility-label px-6 py-3 hover:bg-ink hover:text-white transition-colors uppercase">
+                    Tout télécharger
+                </button>
+</section>
+<!-- GRID LAYOUT -->
+<section class="w-full flex border border-rule h-[800px]">
+<!-- Master image (60%) -->
+<div class="w-[60%] border-r border-rule flex flex-col relative group">
+<img class="w-full h-full object-cover fade-in-up" data-alt="A high-fashion editorial master shot featuring a model posing dramatically. The lighting is crisp, high-key studio illumination against a pure white cyclorama. The composition is expansive, allowing the clothing's silhouette to dominate the frame. The mood is authoritative and minimal, emphasizing stark contrast and artistic rigor. The image exudes calm, high-end sophistication, characteristic of a luxury fashion magazine cover." src="https://lh3.googleusercontent.com/aida-public/AB6AXuA4NJmzQy7OfTj8FE9P_yWciS8HsyFtt4U6rPKqItp0wo8rfFWEi950sPV8kE-4B49-SA_1aC9BqlqaQF8PIxLDU3gMKyb_WlxIb53rLf71hn1tJ0vrxLaFUQlkCLi9XCDhSgb6iod2bUZ7ypnxlDtxCYqZz3pS7wU16FBLy2axgwymytczbyGMrzBHtqAdZOhbB4IqsAWrpdo88mAZfr1bl4lSpnsLLpEmhsd-kZgFRrSkp_kX" style="animation-delay: 0.1s;"/>
+<div class="absolute bottom-0 left-0 w-full p-4 bg-white/90 flex justify-between items-center opacity-0 group-hover:opacity-100 transition-opacity border-t border-rule">
+<span class="font-caption-tiny text-caption-tiny text-ink uppercase">MASTER — 2:3</span>
+<a class="font-utility-label text-utility-label text-ink hover:text-accent transition-colors flex items-center gap-2" href="#">
+<span class="material-symbols-outlined text-[16px]">download</span> TÉLÉCHARGER
+                        </a>
+</div>
+</div>
+<!-- View images (40%) -->
+<div class="w-[40%] flex flex-col">
+<div class="h-1/2 border-b border-rule relative group flex flex-col">
+<img class="w-full h-full object-cover fade-in-up" data-alt="A close-up detail shot of luxury fashion fabric texture and stitching. The lighting is soft but directional, highlighting the intricate details of the material. The background is a pure, desaturated light grey (#F6F6F8). The aesthetic is extremely clinical and precise, focusing entirely on the craftsmanship and quality of the garment without distraction. The image feels timeless and artifact-like." src="https://lh3.googleusercontent.com/aida-public/AB6AXuDAXYoP8vla6kn1rVOlv5VLbaSdDAs9UCb3T8Bu64Zamn-VFxIUEDK-tPX15gNftUHI_SKyzb9dVDkiOJocXQHP53TDtaUkyF8OJabB09ywt3ktYJYxlPdx8E7eimJ3DLSuR39aKTfjiN3LUfe9w2Nypkn_3Y0rSJR_ypRynihaZmYB4Q64mp7uiQ_24D22MPLlr93bPs8G3gtx6r_obQSALFyIRWrH0QOKZpJzsF2LftkaF1U5" style="animation-delay: 0.2s;"/>
+<div class="absolute bottom-0 left-0 w-full p-4 bg-white/90 flex justify-between items-center opacity-0 group-hover:opacity-100 transition-opacity border-t border-rule">
+<span class="font-caption-tiny text-caption-tiny text-ink uppercase">VUE 01 — 1:1</span>
+<a class="font-utility-label text-utility-label text-ink hover:text-accent transition-colors flex items-center gap-2" href="#">
+<span class="material-symbols-outlined text-[16px]">download</span> TÉLÉCHARGER
+                            </a>
+</div>
+</div>
+<div class="h-1/2 relative group flex flex-col">
+<img class="w-full h-full object-cover fade-in-up" data-alt="A medium shot of fashion accessories arranged geometrically on a pristine white surface. The items cast sharp, graphic shadows. The composition adheres strictly to an invisible grid layout, echoing Swiss design principles. The color palette is monochromatic with extreme contrast, emphasizing form over color. The mood is silent, organized, and deeply professional." src="https://lh3.googleusercontent.com/aida-public/AB6AXuAeo-J9fYdeLAJm9Ox58j7rDMGp4jOIG2Xgu-NmQQaznjxv24MaYjfkjIlPZGo317Z_jdGdglQFJVN34_K9rnCgX1bMmJAWPqkeUShBosF4rQ1Wjuch5c9OblLIrbkH3hFGfDs3q9uE-x3P7-K3FpX2eRpA0tkyNkabeVfOI1phHVpsP8vkzcqHu2KSslV2XVLM8yuHoZnvsncpPPLA_A0dugRoleEajOLKI4w3Uk3Gtgw0JxWS" style="animation-delay: 0.3s;"/>
+<div class="absolute bottom-0 left-0 w-full p-4 bg-white/90 flex justify-between items-center opacity-0 group-hover:opacity-100 transition-opacity border-t border-rule">
+<span class="font-caption-tiny text-caption-tiny text-ink uppercase">VUE 02 — 1:1</span>
+<a class="font-utility-label text-utility-label text-ink hover:text-accent transition-colors flex items-center gap-2" href="#">
+<span class="material-symbols-outlined text-[16px]">download</span> TÉLÉCHARGER
+                            </a>
+</div>
+</div>
+</div>
+</section>
+<!-- LA TENUE NORMALISÉE -->
+<section class="w-full flex flex-col gap-2">
+<div class="w-full h-[500px] border border-rule relative group">
+<img class="w-full h-full object-cover fade-in-up" data-alt="A wide cinematic 16:9 panoramic shot of three models walking in a synchronized, rigid formation across a vast, empty concrete plaza. The lighting is bright and even, minimizing shadows to create a surreal, normalized atmosphere. The aesthetic is strictly minimalist, with a monochromatic gray and white palette that evokes high-end editorial layouts. The composition is expansive, breathing with negative space around the subjects." src="https://lh3.googleusercontent.com/aida-public/AB6AXuAWqvaHJ4ak1Pa2lRhNKaQDo93U98PfVTsHt7GoyGiqwYLSP1mHMWwuCynP3ISCe9-14aaToeqtIuCnpBaa9VrzHX1zxm54LjRvTWeVqVh2MSIcTTtQ3QORhfNW-8FTU2D-f2N-ksh1b4Cd6zelm9INIRFXu2iIC0as17tlZDtJjl-lzY8ImySYBEXi75Mm3WpBrlvw4-n5CWauRsGsuKovbgGizrObuO0mOBJ2GZyeMMByQp0p" style="animation-delay: 0.4s;"/>
+<div class="absolute bottom-0 left-0 w-full p-4 bg-white/90 flex justify-end items-center opacity-0 group-hover:opacity-100 transition-opacity border-t border-rule">
+<a class="font-utility-label text-utility-label text-ink hover:text-accent transition-colors flex items-center gap-2" href="#">
+<span class="material-symbols-outlined text-[16px]">download</span> TÉLÉCHARGER
+                        </a>
+</div>
+</div>
+<p class="font-caption-tiny text-caption-tiny text-ink uppercase pl-2">VOTRE TENUE, NORMALISÉE — 16:9</p>
+</section>
+<!-- RECOMMENCER -->
+<section class="w-full border-t border-rule pt-stack-md flex flex-col items-center gap-6">
+<div class="flex gap-4">
+<button class="w-48 h-48 border border-ink flex flex-col items-center justify-center gap-4 hover:bg-ink hover:text-white transition-colors group">
+<span class="material-symbols-outlined text-[32px] group-hover:text-white text-ink transition-colors">refresh</span>
+<span class="font-utility-label text-utility-label uppercase">Nouvelle série</span>
+</button>
+<button class="w-48 h-48 border border-ink flex flex-col items-center justify-center gap-4 hover:bg-ink hover:text-white transition-colors group">
+<span class="material-symbols-outlined text-[32px] group-hover:text-white text-ink transition-colors">tune</span>
+<span class="font-utility-label text-utility-label uppercase">Ajuster paramètres</span>
+</button>
+</div>
+<span class="font-utility-label text-utility-label text-ink-soft uppercase text-center block w-full">Il vous reste 12 CRÉDITS</span>
+</section>
+</main>
+</div> <!-- End 1280px wrapper -->
+<!-- BANDEAU WHATSAPP (Full Width) -->
+<section class="w-full bg-ink text-white py-stack-md px-20 flex flex-col md:flex-row justify-between items-center mt-stack-lg border-t border-rule">
+<div class="w-full max-w-[1280px] mx-auto flex justify-between items-center">
+<h2 class="font-display-xl text-headline-lg-mobile md:text-headline-lg">Besoin d'aide avec cette série ?</h2>
+<button class="bg-whatsapp text-white font-utility-label text-utility-label px-6 py-4 uppercase hover:opacity-90 transition-opacity flex items-center gap-2 border border-whatsapp">
+<span class="material-symbols-outlined text-[16px]">forum</span> En parler sur WhatsApp
+            </button>
+</div>
+</section>
+<!-- FOOTER (Shared Component JSON base applied to context) -->
+<footer class="w-full bg-background flex flex-col md:flex-row justify-between items-start md:items-center px-20 py-stack-sm border-t border-rule mt-auto shrink-0">
+<div class="w-full max-w-[1280px] mx-auto flex flex-col md:flex-row justify-between items-center gap-4">
+<span class="font-utility-label text-utility-label text-ink uppercase">©2024 STUDIO.AI — ALL RIGHTS RESERVED</span>
+<div class="flex gap-6">
+<a class="font-caption-tiny text-caption-tiny text-ink-soft hover:text-ink transition-colors duration-300 uppercase" href="#">TERMS</a>
+<a class="font-caption-tiny text-caption-tiny text-ink-soft hover:text-ink transition-colors duration-300 uppercase" href="#">PRIVACY</a>
+<a class="font-caption-tiny text-caption-tiny text-ink-soft hover:text-ink transition-colors duration-300 uppercase" href="#">WHATSAPP SUPPORT</a>
+</div>
+</div>
+</footer>
+</body></html>

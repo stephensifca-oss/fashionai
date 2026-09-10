@@ -1,0 +1,435 @@
+<!DOCTYPE html>
+
+<html class="light" lang="fr"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Dashboard - Leads | FashionAI Agency</title>
+<!-- Google Fonts -->
+<link href="https://fonts.googleapis.com" rel="preconnect"/>
+<link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect"/>
+<link href="https://fonts.googleapis.com/css2?family=Archivo:wght@400;600&amp;family=Bodoni+Moda:opsz,wght@6..96,400;6..96,700&amp;family=DM+Mono:wght@400;500&amp;display=swap" rel="stylesheet"/>
+<!-- Material Symbols -->
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<style>
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 300, 'GRAD' 0, 'opsz' 24;
+        }
+    </style>
+<!-- Tailwind CSS -->
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<!-- Tailwind Configuration -->
+<script id="tailwind-config">
+      tailwind.config = {
+        darkMode: "class",
+        theme: {
+          extend: {
+            "colors": {
+                    "surface-dim": "#dad9e4",
+                    "outline-variant": "#c8c5ca",
+                    "surface-tint": "#5f5e60",
+                    "error-container": "#ffdad6",
+                    "secondary-fixed-dim": "#c6c6c8",
+                    "surface-bright": "#fbf8ff",
+                    "tertiary-fixed-dim": "#ccc5c0",
+                    "whatsapp-green": "#25D366",
+                    "on-primary": "#ffffff",
+                    "tertiary-fixed": "#e8e1db",
+                    "on-tertiary": "#ffffff",
+                    "accent-sienna": "#B7410E",
+                    "error": "#ba1a1a",
+                    "on-primary-fixed": "#1c1b1d",
+                    "on-secondary-container": "#616365",
+                    "on-secondary-fixed-variant": "#454749",
+                    "on-primary-fixed-variant": "#474649",
+                    "outline": "#78767b",
+                    "on-tertiary-fixed-variant": "#4a4642",
+                    "on-error-container": "#93000a",
+                    "on-error": "#ffffff",
+                    "inverse-primary": "#c8c6c8",
+                    "primary": "#000000",
+                    "tertiary": "#000000",
+                    "ink": "#0B0B0D",
+                    "surface-variant": "#e3e1ec",
+                    "primary-fixed-dim": "#c8c6c8",
+                    "background": "#F6F6F8",
+                    "inverse-surface": "#2f3038",
+                    "surface-container-low": "#f4f2fd",
+                    "on-primary-container": "#858386",
+                    "secondary-fixed": "#e2e2e4",
+                    "surface-container-lowest": "#ffffff",
+                    "on-tertiary-container": "#88837e",
+                    "secondary-container": "#dfdfe1",
+                    "surface-container": "#eeecf8",
+                    "on-secondary": "#ffffff",
+                    "primary-container": "#1c1b1d",
+                    "inverse-on-surface": "#f1effa",
+                    "ink-soft": "#56565F",
+                    "secondary": "#5d5e60",
+                    "surface": "#FFFFFF",
+                    "surface-container-highest": "#e3e1ec",
+                    "primary-fixed": "#e5e1e4",
+                    "on-surface": "#1a1b23",
+                    "on-background": "#1a1b23",
+                    "on-secondary-fixed": "#1a1c1d",
+                    "on-tertiary-fixed": "#1e1b18",
+                    "tertiary-container": "#1e1b18",
+                    "surface-container-high": "#e9e7f2",
+                    "on-surface-variant": "#47464a",
+                    "rule": "#DCDCE2"
+            },
+            "borderRadius": {
+                    "DEFAULT": "0.25rem",
+                    "lg": "0.5rem",
+                    "xl": "0.75rem",
+                    "full": "9999px"
+            },
+            "spacing": {
+                    "stack-md": "24px",
+                    "margin-mobile": "20px",
+                    "stack-sm": "12px",
+                    "stack-lg": "80px",
+                    "gutter": "1px",
+                    "margin-desktop": "64px"
+            },
+            "fontFamily": {
+                    "headline-lg-mobile": ["Bodoni Moda"],
+                    "headline-lg": ["Bodoni Moda"],
+                    "display-xl": ["Bodoni Moda"],
+                    "body-md": ["Archivo"],
+                    "body-sm": ["Archivo"],
+                    "utility-label": ["DM Mono"],
+                    "display-xl-mobile": ["Bodoni Moda"]
+            },
+            "fontSize": {
+                    "headline-lg-mobile": ["32px", {"lineHeight": "1.1", "fontWeight": "400"}],
+                    "headline-lg": ["40px", {"lineHeight": "1.1", "letterSpacing": "-0.02em", "fontWeight": "400"}],
+                    "display-xl": ["72px", {"lineHeight": "1.0", "letterSpacing": "-0.04em", "fontWeight": "400"}],
+                    "body-md": ["16px", {"lineHeight": "1.6", "fontWeight": "400"}],
+                    "body-sm": ["14px", {"lineHeight": "1.6", "fontWeight": "400"}],
+                    "utility-label": ["11px", {"lineHeight": "1.2", "letterSpacing": "0.14em", "fontWeight": "500"}],
+                    "display-xl-mobile": ["48px", {"lineHeight": "1.0", "letterSpacing": "-0.03em", "fontWeight": "400"}]
+            }
+          },
+        },
+      }
+    </script>
+</head>
+<body class="bg-background text-on-background font-body-md min-h-screen flex selection:bg-ink selection:text-on-primary">
+<!-- JSON Component: SideNavBar -->
+<aside class="fixed left-0 top-0 h-screen w-64 bg-ink dark:bg-ink flex flex-col py-stack-md border-r border-rule z-50 rounded-none">
+<div class="px-6 mb-stack-lg flex flex-col">
+<span class="font-display-xl text-headline-lg text-on-primary leading-none">AI STUDIO</span>
+<span class="font-utility-label text-utility-label text-outline-variant mt-2 uppercase">Admin Console</span>
+</div>
+<nav class="flex flex-col w-full font-utility-label text-utility-label tracking-widest uppercase transition-all duration-300 ease-in-out">
+<!-- Active Tab -->
+<a class="flex items-center gap-4 px-6 py-4 text-on-primary border-l-2 border-accent-sienna bg-primary-container hover:bg-surface-tint transition-colors duration-200" href="#">
+<span class="material-symbols-outlined">person_search</span>
+<span>Leads</span>
+</a>
+<!-- Inactive Tabs -->
+<a class="flex items-center gap-4 px-6 py-4 text-outline-variant hover:text-on-primary border-l-2 border-transparent hover:bg-surface-tint transition-colors duration-200" href="#">
+<span class="material-symbols-outlined">style</span>
+<span>Kits</span>
+</a>
+<a class="flex items-center gap-4 px-6 py-4 text-outline-variant hover:text-on-primary border-l-2 border-transparent hover:bg-surface-tint transition-colors duration-200" href="#">
+<span class="material-symbols-outlined">auto_awesome</span>
+<span>Sessions</span>
+</a>
+<a class="flex items-center gap-4 px-6 py-4 text-outline-variant hover:text-on-primary border-l-2 border-transparent hover:bg-surface-tint transition-colors duration-200" href="#">
+<span class="material-symbols-outlined">qr_code_2</span>
+<span>WhatsApp Codes</span>
+</a>
+<a class="flex items-center gap-4 px-6 py-4 text-outline-variant hover:text-on-primary border-l-2 border-transparent hover:bg-surface-tint transition-colors duration-200" href="#">
+<span class="material-symbols-outlined">ios_share</span>
+<span>Export</span>
+</a>
+</nav>
+<div class="mt-auto px-6">
+<div class="w-10 h-10 border border-rule overflow-hidden rounded-none">
+<img alt="Studio Logo" class="w-full h-full object-cover" data-alt="High contrast monochromatic placeholder studio logo icon in dark grey and white" src="https://lh3.googleusercontent.com/aida-public/AB6AXuDlJy1LPHcrxGmlv_H24o_6-M9AzfYqgCGHR4Zt0rZxHIgLq06303_bQw2MiQBPU3MLRmSwCZLMjc-B8S8mnJWWPDLtgEDWBkQXsgD20Or6lFYzPPW2O6SR42egT_M1UdIWwNsRrOHlTOdWJ57vNTBAKnZSCkYtBMEQ9PZg_YcGsj5-pd7FrlBc-RH08w1e_Z8FXQbV0vs5L4DuR9cWZ4eaKuKN12t87rF9PRSqs4LQCC52eVjO"/>
+</div>
+</div>
+</aside>
+<!-- Main Content Area -->
+<main class="ml-64 flex-1 flex flex-col min-w-0">
+<!-- JSON Component: TopNavBar -->
+<header class="docked full-width top-0 sticky flex justify-between items-center h-16 px-margin-desktop bg-surface dark:bg-surface border-b border-rule z-40">
+<div class="flex items-center gap-4 focus-within:border-ink transition-opacity">
+<span class="material-symbols-outlined text-ink">search</span>
+<input class="bg-transparent border-none focus:ring-0 font-utility-label text-utility-label uppercase text-ink placeholder:text-ink-soft w-48 rounded-none" placeholder="Search..." type="text"/>
+</div>
+<div class="font-headline-lg text-headline-lg-mobile md:text-headline-lg text-ink font-bold absolute left-1/2 -translate-x-1/2">
+                DASHBOARD
+            </div>
+<div class="flex items-center gap-6">
+<button class="text-ink-soft hover:text-ink transition-opacity">
+<span class="material-symbols-outlined">notifications</span>
+</button>
+<button class="text-ink-soft hover:text-ink transition-opacity">
+<span class="material-symbols-outlined">settings</span>
+</button>
+<div class="w-8 h-8 border border-rule rounded-none overflow-hidden">
+<img alt="Admin User" class="w-full h-full object-cover" data-alt="Admin user avatar placeholder featuring a single letter A on a dark background" src="https://lh3.googleusercontent.com/aida-public/AB6AXuDIkB5MjFCdw69C1IKlieAmd7KDumixC1OmHrfdRZRT2HqsNcMzAhu6vo7LsfaYafZ0EMu2kq3jj1t7xk8D2MIkS84oVebnSc7EU4qj6kIdNuTBwwy25PFYfG3ESL4W6Wb_B_-5xoW3M7w5ZgaG2gqrFSeY5dMMEAoY0xQkSR0huCaJUhUQ7KtdDMUILLeYzRezR97MzWN4hTpS7Tz-Ot4z_uiAX0JyjYYGACiWLky0wGku-lH-"/>
+</div>
+</div>
+</header>
+<!-- Dashboard Content Grid -->
+<div class="p-margin-desktop flex flex-col gap-stack-md">
+<!-- 1. TITLE ROW -->
+<div class="flex justify-between items-end pb-stack-sm border-b border-rule">
+<h1 class="font-headline-lg-mobile text-headline-lg-mobile text-ink m-0 p-0 leading-none">Leads</h1>
+<button class="border border-ink bg-transparent text-ink font-utility-label text-utility-label uppercase px-6 py-3 hover:bg-ink hover:text-on-primary transition-colors duration-600 rounded-none flex items-center gap-2">
+<span class="material-symbols-outlined text-[16px]">download</span>
+                    Exporter en CSV
+                </button>
+</div>
+<!-- 2. STAT ROW -->
+<div class="grid grid-cols-5 border border-rule bg-surface rounded-none">
+<!-- Stat Tile 1 -->
+<div class="flex flex-col p-6 border-r border-rule last:border-r-0">
+<span class="font-utility-label text-utility-label text-ink-soft uppercase mb-4 tracking-widest">Leads Ce Mois</span>
+<div class="flex items-end gap-2">
+<span class="font-body-md text-[40px] leading-none font-semibold text-ink tabular-nums tracking-tight">1,420</span>
+</div>
+<span class="font-utility-label text-utility-label text-ink mt-2 uppercase">+12% vs mois prec.</span>
+</div>
+<!-- Stat Tile 2 -->
+<div class="flex flex-col p-6 border-r border-rule last:border-r-0">
+<span class="font-utility-label text-utility-label text-ink-soft uppercase mb-4 tracking-widest">Messages WhatsApp Reçus</span>
+<div class="flex items-end gap-2">
+<span class="font-body-md text-[40px] leading-none font-semibold text-ink tabular-nums tracking-tight">8,934</span>
+</div>
+<span class="font-utility-label text-utility-label text-ink mt-2 uppercase">+5% vs mois prec.</span>
+</div>
+<!-- Stat Tile 3 -->
+<div class="flex flex-col p-6 border-r border-rule last:border-r-0">
+<span class="font-utility-label text-utility-label text-ink-soft uppercase mb-4 tracking-widest">Inscrits Séance</span>
+<div class="flex items-end gap-2">
+<span class="font-body-md text-[40px] leading-none font-semibold text-ink tabular-nums tracking-tight">45</span>
+</div>
+<span class="font-utility-label text-utility-label text-ink mt-2 uppercase">-2% vs mois prec.</span>
+</div>
+<!-- Stat Tile 4 -->
+<div class="flex flex-col p-6 border-r border-rule last:border-r-0">
+<span class="font-utility-label text-utility-label text-ink-soft uppercase mb-4 tracking-widest">Présents Séance</span>
+<div class="flex items-end gap-2">
+<span class="font-body-md text-[40px] leading-none font-semibold text-ink tabular-nums tracking-tight">38</span>
+</div>
+<span class="font-utility-label text-utility-label text-ink mt-2 uppercase">+1% vs mois prec.</span>
+</div>
+<!-- Stat Tile 5 -->
+<div class="flex flex-col p-6 border-r border-rule last:border-r-0 bg-surface-container-low">
+<span class="font-utility-label text-utility-label text-ink-soft uppercase mb-4 tracking-widest">Leads Chauds</span>
+<div class="flex items-end gap-2">
+<span class="font-body-md text-[40px] leading-none font-semibold text-accent-sienna tabular-nums tracking-tight">217</span>
+</div>
+<span class="font-utility-label text-utility-label text-accent-sienna mt-2 uppercase">Action Requise</span>
+</div>
+</div>
+<!-- 3. CODE RESOLVER -->
+<div class="flex items-stretch border border-rule bg-surface rounded-none">
+<div class="flex items-center px-6 font-utility-label text-utility-label uppercase text-ink-soft bg-surface-variant border-r border-rule">
+                    RÉSOUDRE UN CODE WHATSAPP
+                </div>
+<input class="flex-1 bg-transparent border-none px-6 py-4 font-utility-label text-[14px] focus:ring-0 text-ink placeholder:text-outline-variant tracking-[0.2em] uppercase rounded-none" type="text" value="A7K2M"/>
+<button class="bg-ink text-on-primary font-utility-label text-utility-label uppercase px-8 hover:bg-surface-tint transition-colors duration-600 rounded-none flex items-center gap-2">
+                    Retrouver le lead
+                    <span class="material-symbols-outlined text-[16px]">arrow_forward</span>
+</button>
+</div>
+<!-- 4. FILTER BAR -->
+<div class="flex items-stretch border border-rule bg-surface rounded-none mt-4">
+<div class="flex border-r border-rule">
+<button class="bg-ink text-on-primary px-6 py-3 font-utility-label text-utility-label uppercase border-r border-rule rounded-none">TOUS</button>
+<button class="text-ink px-6 py-3 font-utility-label text-utility-label uppercase border-r border-rule hover:bg-surface-container-highest transition-colors duration-200 rounded-none">CHAUDS</button>
+<button class="text-ink px-6 py-3 font-utility-label text-utility-label uppercase border-r border-rule hover:bg-surface-container-highest transition-colors duration-200 rounded-none">TIÈDES</button>
+<button class="text-ink px-6 py-3 font-utility-label text-utility-label uppercase hover:bg-surface-container-highest transition-colors duration-200 rounded-none">FROIDS</button>
+</div>
+<div class="flex ml-auto">
+<button class="flex items-center gap-2 px-6 py-3 font-utility-label text-utility-label uppercase text-ink border-l border-rule hover:bg-surface-container-highest transition-colors duration-200 rounded-none">
+                        Toutes les sources
+                        <span class="material-symbols-outlined text-[14px]">expand_more</span>
+</button>
+<button class="flex items-center gap-2 px-6 py-3 font-utility-label text-utility-label uppercase text-ink border-l border-rule hover:bg-surface-container-highest transition-colors duration-200 rounded-none">
+                        Tous les kits
+                        <span class="material-symbols-outlined text-[14px]">expand_more</span>
+</button>
+</div>
+</div>
+<!-- 5. LEADS TABLE -->
+<div class="border border-rule bg-surface rounded-none overflow-x-auto">
+<table class="w-full text-left border-collapse">
+<thead>
+<tr class="border-b border-ink bg-surface-container-lowest">
+<th class="font-utility-label text-utility-label text-ink-soft py-4 px-6 font-normal uppercase tracking-widest whitespace-nowrap border-r border-rule last:border-r-0">Prénom</th>
+<th class="font-utility-label text-utility-label text-ink-soft py-4 px-6 font-normal uppercase tracking-widest whitespace-nowrap border-r border-rule last:border-r-0">WhatsApp</th>
+<th class="font-utility-label text-utility-label text-ink-soft py-4 px-6 font-normal uppercase tracking-widest whitespace-nowrap border-r border-rule last:border-r-0">Entreprise</th>
+<th class="font-utility-label text-utility-label text-ink-soft py-4 px-6 font-normal uppercase tracking-widest whitespace-nowrap border-r border-rule last:border-r-0">Rôle</th>
+<th class="font-utility-label text-utility-label text-ink-soft py-4 px-6 font-normal uppercase tracking-widest whitespace-nowrap border-r border-rule last:border-r-0">Kits</th>
+<th class="font-utility-label text-utility-label text-ink-soft py-4 px-6 font-normal uppercase tracking-widest whitespace-nowrap border-r border-rule last:border-r-0">Séances</th>
+<th class="font-utility-label text-utility-label text-ink-soft py-4 px-6 font-normal uppercase tracking-widest whitespace-nowrap border-r border-rule last:border-r-0">Source</th>
+<th class="font-utility-label text-utility-label text-ink-soft py-4 px-6 font-normal uppercase tracking-widest whitespace-nowrap border-r border-rule last:border-r-0">Score</th>
+<th class="font-utility-label text-utility-label text-ink-soft py-4 px-6 font-normal uppercase tracking-widest whitespace-nowrap">Dernière Activité</th>
+</tr>
+</thead>
+<tbody class="font-body-sm text-body-sm text-ink bg-surface">
+<!-- Row 1 -->
+<tr class="border-b border-rule hover:bg-surface-container-low transition-colors duration-200">
+<td class="py-4 px-6 border-r border-rule whitespace-nowrap font-semibold">Awa</td>
+<td class="py-4 px-6 border-r border-rule whitespace-nowrap font-utility-label text-[12px] text-ink-soft">+225 01 23 45 67</td>
+<td class="py-4 px-6 border-r border-rule whitespace-nowrap">Maison Bley</td>
+<td class="py-4 px-6 border-r border-rule whitespace-nowrap text-ink-soft">Fondatrice</td>
+<td class="py-4 px-6 border-r border-rule whitespace-nowrap tabular-nums">2</td>
+<td class="py-4 px-6 border-r border-rule whitespace-nowrap tabular-nums">1</td>
+<td class="py-4 px-6 border-r border-rule whitespace-nowrap">Instagram</td>
+<td class="py-4 px-6 border-r border-rule whitespace-nowrap">
+<span class="bg-ink text-on-primary px-3 py-1 font-utility-label text-[10px] uppercase tracking-widest inline-block">85 Chaud</span>
+</td>
+<td class="py-4 px-6 whitespace-nowrap text-ink-soft font-utility-label text-[11px] uppercase">Il y a 2h</td>
+</tr>
+<!-- Row 2 -->
+<tr class="border-b border-rule hover:bg-surface-container-low transition-colors duration-200">
+<td class="py-4 px-6 border-r border-rule whitespace-nowrap font-semibold">Koffi</td>
+<td class="py-4 px-6 border-r border-rule whitespace-nowrap font-utility-label text-[12px] text-ink-soft">+225 05 98 76 54</td>
+<td class="py-4 px-6 border-r border-rule whitespace-nowrap">Abidjan Style</td>
+<td class="py-4 px-6 border-r border-rule whitespace-nowrap text-ink-soft">Directeur Artistique</td>
+<td class="py-4 px-6 border-r border-rule whitespace-nowrap tabular-nums">0</td>
+<td class="py-4 px-6 border-r border-rule whitespace-nowrap tabular-nums">0</td>
+<td class="py-4 px-6 border-r border-rule whitespace-nowrap">Direct</td>
+<td class="py-4 px-6 border-r border-rule whitespace-nowrap">
+<span class="border border-ink text-ink px-3 py-1 font-utility-label text-[10px] uppercase tracking-widest inline-block">55 Tiède</span>
+</td>
+<td class="py-4 px-6 whitespace-nowrap text-ink-soft font-utility-label text-[11px] uppercase">Hier</td>
+</tr>
+<!-- Row 3 -->
+<tr class="border-b border-rule hover:bg-surface-container-low transition-colors duration-200">
+<td class="py-4 px-6 border-r border-rule whitespace-nowrap font-semibold">Mariam</td>
+<td class="py-4 px-6 border-r border-rule whitespace-nowrap font-utility-label text-[12px] text-ink-soft">+221 77 123 45 67</td>
+<td class="py-4 px-6 border-r border-rule whitespace-nowrap">Atelier M</td>
+<td class="py-4 px-6 border-r border-rule whitespace-nowrap text-ink-soft">Styliste</td>
+<td class="py-4 px-6 border-r border-rule whitespace-nowrap tabular-nums">1</td>
+<td class="py-4 px-6 border-r border-rule whitespace-nowrap tabular-nums">1</td>
+<td class="py-4 px-6 border-r border-rule whitespace-nowrap">WhatsApp</td>
+<td class="py-4 px-6 border-r border-rule whitespace-nowrap">
+<span class="text-ink-soft font-utility-label text-[10px] uppercase tracking-widest inline-block">20 Froid</span>
+</td>
+<td class="py-4 px-6 whitespace-nowrap text-ink-soft font-utility-label text-[11px] uppercase">Il y a 3 jours</td>
+</tr>
+<!-- Row 4 -->
+<tr class="border-b border-rule hover:bg-surface-container-low transition-colors duration-200">
+<td class="py-4 px-6 border-r border-rule whitespace-nowrap font-semibold">Yao</td>
+<td class="py-4 px-6 border-r border-rule whitespace-nowrap font-utility-label text-[12px] text-ink-soft">+225 07 45 67 89</td>
+<td class="py-4 px-6 border-r border-rule whitespace-nowrap">Ivoire Couture</td>
+<td class="py-4 px-6 border-r border-rule whitespace-nowrap text-ink-soft">Gérant</td>
+<td class="py-4 px-6 border-r border-rule whitespace-nowrap tabular-nums">3</td>
+<td class="py-4 px-6 border-r border-rule whitespace-nowrap tabular-nums">2</td>
+<td class="py-4 px-6 border-r border-rule whitespace-nowrap">Facebook</td>
+<td class="py-4 px-6 border-r border-rule whitespace-nowrap">
+<span class="bg-ink text-on-primary px-3 py-1 font-utility-label text-[10px] uppercase tracking-widest inline-block">92 Chaud</span>
+</td>
+<td class="py-4 px-6 whitespace-nowrap text-ink-soft font-utility-label text-[11px] uppercase">Il y a 1h</td>
+</tr>
+<!-- Row 5 -->
+<tr class="border-b border-rule hover:bg-surface-container-low transition-colors duration-200">
+<td class="py-4 px-6 border-r border-rule whitespace-nowrap font-semibold">Fatou</td>
+<td class="py-4 px-6 border-r border-rule whitespace-nowrap font-utility-label text-[12px] text-ink-soft">+221 76 987 65 43</td>
+<td class="py-4 px-6 border-r border-rule whitespace-nowrap">Dakar Mode</td>
+<td class="py-4 px-6 border-r border-rule whitespace-nowrap text-ink-soft">Créatrice</td>
+<td class="py-4 px-6 border-r border-rule whitespace-nowrap tabular-nums">1</td>
+<td class="py-4 px-6 border-r border-rule whitespace-nowrap tabular-nums">0</td>
+<td class="py-4 px-6 border-r border-rule whitespace-nowrap">Instagram</td>
+<td class="py-4 px-6 border-r border-rule whitespace-nowrap">
+<span class="border border-ink text-ink px-3 py-1 font-utility-label text-[10px] uppercase tracking-widest inline-block">60 Tiède</span>
+</td>
+<td class="py-4 px-6 whitespace-nowrap text-ink-soft font-utility-label text-[11px] uppercase">Hier</td>
+</tr>
+<!-- Row 6 -->
+<tr class="border-b border-rule hover:bg-surface-container-low transition-colors duration-200">
+<td class="py-4 px-6 border-r border-rule whitespace-nowrap font-semibold">Cédric</td>
+<td class="py-4 px-6 border-r border-rule whitespace-nowrap font-utility-label text-[12px] text-ink-soft">+225 01 11 22 33</td>
+<td class="py-4 px-6 border-r border-rule whitespace-nowrap">Studio Babi</td>
+<td class="py-4 px-6 border-r border-rule whitespace-nowrap text-ink-soft">Photographe</td>
+<td class="py-4 px-6 border-r border-rule whitespace-nowrap tabular-nums">0</td>
+<td class="py-4 px-6 border-r border-rule whitespace-nowrap tabular-nums">0</td>
+<td class="py-4 px-6 border-r border-rule whitespace-nowrap">Web</td>
+<td class="py-4 px-6 border-r border-rule whitespace-nowrap">
+<span class="text-ink-soft font-utility-label text-[10px] uppercase tracking-widest inline-block">15 Froid</span>
+</td>
+<td class="py-4 px-6 whitespace-nowrap text-ink-soft font-utility-label text-[11px] uppercase">Il y a 5 jours</td>
+</tr>
+<!-- Row 7 -->
+<tr class="border-b border-rule hover:bg-surface-container-low transition-colors duration-200">
+<td class="py-4 px-6 border-r border-rule whitespace-nowrap font-semibold">Adjoua</td>
+<td class="py-4 px-6 border-r border-rule whitespace-nowrap font-utility-label text-[12px] text-ink-soft">+225 05 55 44 33</td>
+<td class="py-4 px-6 border-r border-rule whitespace-nowrap">Ebony Chic</td>
+<td class="py-4 px-6 border-r border-rule whitespace-nowrap text-ink-soft">Acheteuse</td>
+<td class="py-4 px-6 border-r border-rule whitespace-nowrap tabular-nums">4</td>
+<td class="py-4 px-6 border-r border-rule whitespace-nowrap tabular-nums">1</td>
+<td class="py-4 px-6 border-r border-rule whitespace-nowrap">Event</td>
+<td class="py-4 px-6 border-r border-rule whitespace-nowrap">
+<span class="bg-ink text-on-primary px-3 py-1 font-utility-label text-[10px] uppercase tracking-widest inline-block">78 Chaud</span>
+</td>
+<td class="py-4 px-6 whitespace-nowrap text-ink-soft font-utility-label text-[11px] uppercase">Il y a 4h</td>
+</tr>
+<!-- Row 8 -->
+<tr class="border-b border-rule hover:bg-surface-container-low transition-colors duration-200">
+<td class="py-4 px-6 border-r border-rule whitespace-nowrap font-semibold">Seydou</td>
+<td class="py-4 px-6 border-r border-rule whitespace-nowrap font-utility-label text-[12px] text-ink-soft">+223 76 54 32 10</td>
+<td class="py-4 px-6 border-r border-rule whitespace-nowrap">Bamako Design</td>
+<td class="py-4 px-6 border-r border-rule whitespace-nowrap text-ink-soft">Fondateur</td>
+<td class="py-4 px-6 border-r border-rule whitespace-nowrap tabular-nums">2</td>
+<td class="py-4 px-6 border-r border-rule whitespace-nowrap tabular-nums">1</td>
+<td class="py-4 px-6 border-r border-rule whitespace-nowrap">WhatsApp</td>
+<td class="py-4 px-6 border-r border-rule whitespace-nowrap">
+<span class="border border-ink text-ink px-3 py-1 font-utility-label text-[10px] uppercase tracking-widest inline-block">68 Tiède</span>
+</td>
+<td class="py-4 px-6 whitespace-nowrap text-ink-soft font-utility-label text-[11px] uppercase">Hier</td>
+</tr>
+<!-- Row 9 -->
+<tr class="border-b border-rule hover:bg-surface-container-low transition-colors duration-200">
+<td class="py-4 px-6 border-r border-rule whitespace-nowrap font-semibold">Bintou</td>
+<td class="py-4 px-6 border-r border-rule whitespace-nowrap font-utility-label text-[12px] text-ink-soft">+221 77 777 88 99</td>
+<td class="py-4 px-6 border-r border-rule whitespace-nowrap">La Linguère</td>
+<td class="py-4 px-6 border-r border-rule whitespace-nowrap text-ink-soft">Modéliste</td>
+<td class="py-4 px-6 border-r border-rule whitespace-nowrap tabular-nums">1</td>
+<td class="py-4 px-6 border-r border-rule whitespace-nowrap tabular-nums">0</td>
+<td class="py-4 px-6 border-r border-rule whitespace-nowrap">Instagram</td>
+<td class="py-4 px-6 border-r border-rule whitespace-nowrap">
+<span class="text-ink-soft font-utility-label text-[10px] uppercase tracking-widest inline-block">35 Froid</span>
+</td>
+<td class="py-4 px-6 whitespace-nowrap text-ink-soft font-utility-label text-[11px] uppercase">Il y a 2 jours</td>
+</tr>
+<!-- Row 10 -->
+<tr class="border-b border-transparent hover:bg-surface-container-low transition-colors duration-200">
+<td class="py-4 px-6 border-r border-rule whitespace-nowrap font-semibold">Issa</td>
+<td class="py-4 px-6 border-r border-rule whitespace-nowrap font-utility-label text-[12px] text-ink-soft">+225 07 10 20 30</td>
+<td class="py-4 px-6 border-r border-rule whitespace-nowrap">Zaga Trend</td>
+<td class="py-4 px-6 border-r border-rule whitespace-nowrap text-ink-soft">Marketing</td>
+<td class="py-4 px-6 border-r border-rule whitespace-nowrap tabular-nums">5</td>
+<td class="py-4 px-6 border-r border-rule whitespace-nowrap tabular-nums">3</td>
+<td class="py-4 px-6 border-r border-rule whitespace-nowrap">Direct</td>
+<td class="py-4 px-6 border-r border-rule whitespace-nowrap">
+<span class="bg-ink text-on-primary px-3 py-1 font-utility-label text-[10px] uppercase tracking-widest inline-block">98 Chaud</span>
+</td>
+<td class="py-4 px-6 whitespace-nowrap text-ink-soft font-utility-label text-[11px] uppercase">Maintenant</td>
+</tr>
+</tbody>
+</table>
+</div>
+<!-- 6. PAGINATION -->
+<div class="flex justify-end mt-4 font-utility-label text-utility-label uppercase text-ink items-center gap-4">
+<span class="tracking-widest">PAGE 1 SUR 12</span>
+<div class="flex gap-2">
+<button class="w-10 h-10 border border-rule flex items-center justify-center hover:bg-surface-container-highest transition-colors rounded-none disabled:opacity-50 disabled:cursor-not-allowed" disabled="">
+<span class="material-symbols-outlined text-[18px]">chevron_left</span>
+</button>
+<button class="w-10 h-10 border border-rule flex items-center justify-center hover:bg-surface-container-highest transition-colors rounded-none">
+<span class="material-symbols-outlined text-[18px]">chevron_right</span>
+</button>
+</div>
+</div>
+</div>
+</main>
+</body></html>

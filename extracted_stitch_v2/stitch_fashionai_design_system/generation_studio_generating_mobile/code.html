@@ -1,0 +1,184 @@
+<!DOCTYPE html>
+
+<html class="light" lang="fr"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Studio Generation Screen</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Archivo+Narrow:wght@400;600&amp;family=DM+Mono:wght@400;500&amp;family=Bodoni+Moda:wght@400;700&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    "colors": {
+                        "on-primary-container": "#858386",
+                        "error-container": "#ffdad6",
+                        "tertiary-fixed-dim": "#ccc5c0",
+                        "tertiary-fixed": "#e8e1db",
+                        "on-surface-variant": "#47464a",
+                        "surface-tint": "#5f5e60",
+                        "inverse-on-surface": "#f0f0f2",
+                        "on-tertiary-container": "#88837e",
+                        "on-tertiary-fixed": "#1e1b18",
+                        "primary-fixed": "#e5e1e4",
+                        "secondary-fixed-dim": "#ffb59c",
+                        "on-secondary-container": "#641d00",
+                        "error": "#ba1a1a",
+                        "surface-container": "#edeef0",
+                        "surface": "#FFFFFF",
+                        "on-background": "#1a1c1d",
+                        "on-secondary": "#ffffff",
+                        "tertiary": "#000000",
+                        "inverse-surface": "#2f3132",
+                        "rule": "#DCDCE2",
+                        "on-secondary-fixed-variant": "#822800",
+                        "outline-variant": "#c8c5ca",
+                        "on-tertiary-fixed-variant": "#4a4642",
+                        "inverse-primary": "#c8c6c8",
+                        "on-primary-fixed-variant": "#474649",
+                        "primary-container": "#1c1b1d",
+                        "surface-container-high": "#e8e8ea",
+                        "on-secondary-fixed": "#380c00",
+                        "surface-bright": "#f9f9fb",
+                        "on-tertiary": "#ffffff",
+                        "tertiary-container": "#1e1b18",
+                        "whatsapp": "#25D366",
+                        "on-primary-fixed": "#1c1b1d",
+                        "secondary-fixed": "#ffdbcf",
+                        "secondary": "#a93702",
+                        "on-primary": "#ffffff",
+                        "on-error": "#ffffff",
+                        "surface-container-highest": "#e2e2e4",
+                        "on-error-container": "#93000a",
+                        "on-surface": "#1a1c1d",
+                        "secondary-container": "#fe7440",
+                        "primary": "#000000",
+                        "surface-dim": "#d9dadc",
+                        "outline": "#78767b",
+                        "background": "#f9f9fb",
+                        "surface-container-lowest": "#ffffff",
+                        "ink-soft": "#56565F",
+                        "surface-container-low": "#f3f3f5",
+                        "primary-fixed-dim": "#c8c6c8",
+                        "surface-variant": "#e2e2e4",
+                        "accent": "#B7410E",
+                        "ink": "#000000"
+                    },
+                    "borderRadius": {
+                        "DEFAULT": "0",
+                        "lg": "0",
+                        "xl": "0",
+                        "full": "0"
+                    },
+                    "spacing": {
+                        "margin-desktop": "64px",
+                        "gutter": "1px",
+                        "stack-lg": "80px",
+                        "margin-mobile": "20px",
+                        "stack-sm": "16px",
+                        "stack-md": "40px"
+                    },
+                    "fontFamily": {
+                        "body-md": ["Archivo Narrow"],
+                        "caption-tiny": ["DM Mono"],
+                        "headline-lg-mobile": ["Bodoni Moda"],
+                        "utility-label": ["DM Mono"],
+                        "display-xl": ["Bodoni Moda"],
+                        "headline-lg": ["Bodoni Moda"]
+                    },
+                    "fontSize": {
+                        "body-md": ["16px", { "lineHeight": "1.6", "fontWeight": "400" }],
+                        "caption-tiny": ["10px", { "lineHeight": "1.2", "fontWeight": "400" }],
+                        "headline-lg-mobile": ["32px", { "lineHeight": "1.2", "fontWeight": "400" }],
+                        "utility-label": ["11px", { "lineHeight": "1", "letterSpacing": "0.14em", "fontWeight": "500" }],
+                        "display-xl": ["64px", { "lineHeight": "1.1", "letterSpacing": "-0.02em", "fontWeight": "400" }],
+                        "headline-lg": ["40px", { "lineHeight": "1.2", "letterSpacing": "-0.01em", "fontWeight": "400" }]
+                    },
+                    "animation": {
+                        "pulse-slow": "pulseSlow 1.6s ease-in-out infinite"
+                    },
+                    "keyframes": {
+                        "pulseSlow": {
+                            "0%, 100%": { opacity: 0.3 },
+                            "50%": { opacity: 1 }
+                        }
+                    }
+                }
+            }
+        }
+    </script>
+</head>
+<body class="bg-[#F6F6F8] text-ink antialiased max-w-[390px] mx-auto overflow-x-hidden min-h-screen flex flex-col font-body-md">
+<!-- HEADER -->
+<header class="flex justify-between items-center px-margin-mobile h-14 border-b border-rule shrink-0 sticky top-0 bg-[#F6F6F8] z-10">
+<div class="font-body-md font-semibold text-[15px] tracking-wide uppercase">fashionai.agency</div>
+<div class="font-utility-label text-utility-label">12 CRÉDITS</div>
+</header>
+<main class="flex-grow flex flex-col">
+<!-- STATUS BAR -->
+<section class="px-margin-mobile py-4 border-b border-rule flex flex-col gap-3">
+<div class="flex justify-between items-end">
+<span class="font-utility-label text-utility-label text-accent uppercase">GÉNÉRATION EN COURS</span>
+<span class="font-utility-label text-utility-label text-ink-soft uppercase">ENVIRON 3 MINUTES</span>
+</div>
+<div class="flex gap-1 h-[3px]">
+<div class="flex-1 bg-ink"></div>
+<div class="flex-1 bg-rule relative overflow-hidden">
+<div class="absolute inset-y-0 left-0 w-1/2 bg-ink"></div>
+</div>
+<div class="flex-1 border-t border-rule bg-transparent mt-[1px]"></div>
+</div>
+</section>
+<!-- ZONE 1 - LA TENUE -->
+<section class="py-stack-md flex flex-col gap-2">
+<h2 class="px-margin-mobile font-caption-tiny text-caption-tiny uppercase text-ink-soft">01 — VOTRE TENUE, NORMALISÉE</h2>
+<div class="w-full aspect-video bg-surface border-y border-rule relative">
+<img class="w-full h-full object-cover" data-alt="A meticulously curated fashion flat lay or invisible mannequin shot of an avant-garde ensemble. The garment is highly detailed, featuring complex textures and stark high-contrast lighting against a pure white background. The aesthetic is strictly neo-editorial, conveying high-status luxury fashion in a minimalist context." src="https://lh3.googleusercontent.com/aida-public/AB6AXuAXtnC3f9_czpRExR4EqWkfxnOG14flNyyWifsFNCKqpUk3Kut-jMJYqJcQQsxvq0VR0jMbKWq0qnKqYAe8bw3Y07VOjsvcEhsiFvMfioFZUBWxZkoCIjTo3jnxfgqndED5YiesBQz5JQQO6iFuZbOd3gfLS6LuZUaW78UxZXgQRDFZvZp65xtECKnoYJzmMoSJAsJO2Vd0z3AUSKM0oQT0-pB6y9V0-be_-Xtx9M0Kw_PFvTDK"/>
+</div>
+<div class="px-margin-mobile text-right font-caption-tiny text-caption-tiny text-ink">TERMINÉ</div>
+</section>
+<!-- ZONE 2 - LE PLAN PRINCIPAL -->
+<section class="px-margin-mobile pb-stack-md flex flex-col gap-2">
+<h2 class="font-caption-tiny text-caption-tiny uppercase text-ink-soft">02 — PLAN PRINCIPAL</h2>
+<div class="w-full aspect-[2/3] bg-surface border border-ink flex flex-col items-center justify-center gap-4 relative">
+<div class="w-2 h-2 bg-accent animate-pulse-slow"></div>
+<span class="font-utility-label text-utility-label text-ink uppercase text-center absolute bottom-4">GÉNÉRATION EN COURS</span>
+</div>
+</section>
+<!-- ZONE 3 - LES VUES -->
+<section class="px-margin-mobile pb-stack-lg flex flex-col gap-2">
+<h2 class="font-caption-tiny text-caption-tiny uppercase text-ink-soft">03 — LES VUES</h2>
+<div class="grid grid-cols-2 gap-px bg-rule border border-rule">
+<div class="aspect-square bg-surface flex items-center justify-center p-4 text-center">
+<span class="font-utility-label text-utility-label text-ink-soft uppercase leading-loose">TROIS-QUARTS<br/>·<br/>EN ATTENTE</span>
+</div>
+<div class="aspect-square bg-surface flex items-center justify-center p-4 text-center">
+<span class="font-utility-label text-utility-label text-ink-soft uppercase leading-loose">DOS<br/>·<br/>EN ATTENTE</span>
+</div>
+</div>
+</section>
+<!-- NOTE -->
+<section class="border-t border-rule py-stack-md px-margin-mobile text-center">
+<p class="font-caption-tiny text-caption-tiny uppercase text-ink-soft max-w-[280px] mx-auto leading-relaxed">
+                VOUS POUVEZ FERMER CETTE PAGE — LE SHOOTING CONTINUE ET VOUS RECEVREZ UN MESSAGE
+            </p>
+</section>
+</main>
+<!-- FOOTER -->
+<footer class="bg-ink text-background mt-auto w-full">
+<div class="px-margin-mobile py-stack-md flex flex-col gap-6">
+<div class="font-headline-lg-mobile text-headline-lg-mobile text-background tracking-tighter">STUDIO AI</div>
+<div class="grid grid-cols-2 gap-y-4 font-utility-label text-utility-label uppercase">
+<span class="cursor-pointer hover:opacity-70 transition-opacity">SEANCE</span>
+<span class="cursor-pointer hover:opacity-70 transition-opacity">PREUVE</span>
+</div>
+<div class="border-t border-rule/30 pt-4 flex justify-between items-center">
+<span class="font-caption-tiny text-caption-tiny text-background/80 uppercase">© 2024 STUDIO AI.</span>
+<span class="cursor-pointer font-utility-label text-utility-label text-background hover:text-whatsapp transition-colors">WHATSAPP</span>
+</div>
+</div>
+</footer>
+</body></html>

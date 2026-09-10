@@ -1,0 +1,411 @@
+<!DOCTYPE html><html class="light" lang="fr"><head>
+<meta charset="utf-8">
+<meta content="width=device-width, initial-scale=1.0" name="viewport">
+<title>AI Video Kit | FASHIONAI.AGENCY</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com" rel="preconnect">
+<link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect">
+<link href="https://fonts.googleapis.com/css2?family=Archivo:wght@400;600&amp;family=Bodoni+Moda:opsz,wght@6..96,400&amp;family=DM+Mono:wght@500&amp;display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet">
+<script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    "colors": {
+                        "on-error": "#ffffff",
+                        "rule": "#DCDCE2",
+                        "surface-variant": "#e3e1ec",
+                        "surface-container-high": "#e9e7f2",
+                        "surface": "#FFFFFF",
+                        "ink-soft": "#56565F",
+                        "secondary": "#5d5e60",
+                        "on-surface": "#1a1b23",
+                        "ink": "#0B0B0D",
+                        "inverse-primary": "#c8c6c8",
+                        "surface-container-highest": "#e3e1ec",
+                        "outline": "#78767b",
+                        "on-surface-variant": "#47464a",
+                        "primary-fixed-dim": "#c8c6c8",
+                        "surface-bright": "#fbf8ff",
+                        "on-error-container": "#93000a",
+                        "surface-tint": "#5f5e60",
+                        "on-secondary-container": "#616365",
+                        "accent-sienna": "#B7410E",
+                        "secondary-fixed-dim": "#c6c6c8",
+                        "primary": "#000000",
+                        "surface-container-low": "#f4f2fd",
+                        "primary-container": "#1c1b1d",
+                        "tertiary-container": "#1e1b18",
+                        "on-tertiary-fixed": "#1e1b18",
+                        "on-background": "#1a1b23",
+                        "tertiary": "#000000",
+                        "tertiary-fixed-dim": "#ccc5c0",
+                        "primary-fixed": "#e5e1e4",
+                        "outline-variant": "#c8c5ca",
+                        "error": "#ba1a1a",
+                        "tertiary-fixed": "#e8e1db",
+                        "error-container": "#ffdad6",
+                        "on-tertiary-fixed-variant": "#4a4642",
+                        "on-secondary-fixed": "#1a1c1d",
+                        "secondary-fixed": "#e2e2e4",
+                        "on-secondary-fixed-variant": "#454749",
+                        "on-primary": "#ffffff",
+                        "on-secondary": "#ffffff",
+                        "on-tertiary-container": "#88837e",
+                        "inverse-on-surface": "#f1effa",
+                        "secondary-container": "#dfdfe1",
+                        "on-primary-fixed": "#1c1b1d",
+                        "whatsapp-green": "#25D366",
+                        "surface-container-lowest": "#ffffff",
+                        "on-primary-container": "#858386",
+                        "surface-container": "#eeecf8",
+                        "background": "#F6F6F8",
+                        "on-primary-fixed-variant": "#474649",
+                        "inverse-surface": "#2f3038",
+                        "surface-dim": "#dad9e4",
+                        "on-tertiary": "#ffffff"
+                    },
+                    "borderRadius": {
+                        "DEFAULT": "0px",
+                        "lg": "0px",
+                        "xl": "0px",
+                        "full": "0px"
+                    },
+                    "spacing": {
+                        "stack-md": "24px",
+                        "margin-desktop": "64px",
+                        "stack-lg": "80px",
+                        "margin-mobile": "20px",
+                        "stack-sm": "12px",
+                        "gutter": "1px"
+                    },
+                    "fontFamily": {
+                        "utility-label": [
+                            "DM Mono"
+                        ],
+                        "headline-lg-mobile": [
+                            "Bodoni Moda"
+                        ],
+                        "body-md": [
+                            "Archivo"
+                        ],
+                        "headline-lg": [
+                            "Bodoni Moda"
+                        ],
+                        "display-xl": [
+                            "Bodoni Moda"
+                        ],
+                        "body-sm": [
+                            "Archivo"
+                        ],
+                        "display-xl-mobile": [
+                            "Bodoni Moda"
+                        ]
+                    },
+                    "fontSize": {
+                        "utility-label": [
+                            "11px",
+                            {
+                                "lineHeight": "1.2",
+                                "letterSpacing": "0.14em",
+                                "fontWeight": "500"
+                            }
+                        ],
+                        "headline-lg-mobile": [
+                            "32px",
+                            {
+                                "lineHeight": "1.1",
+                                "fontWeight": "400"
+                            }
+                        ],
+                        "body-md": [
+                            "16px",
+                            {
+                                "lineHeight": "1.6",
+                                "fontWeight": "400"
+                            }
+                        ],
+                        "headline-lg": [
+                            "40px",
+                            {
+                                "lineHeight": "1.1",
+                                "letterSpacing": "-0.02em",
+                                "fontWeight": "400"
+                            }
+                        ],
+                        "display-xl": [
+                            "72px",
+                            {
+                                "lineHeight": "1.0",
+                                "letterSpacing": "-0.04em",
+                                "fontWeight": "400"
+                            }
+                        ],
+                        "body-sm": [
+                            "14px",
+                            {
+                                "lineHeight": "1.6",
+                                "fontWeight": "400"
+                            }
+                        ],
+                        "display-xl-mobile": [
+                            "48px",
+                            {
+                                "lineHeight": "1.0",
+                                "letterSpacing": "-0.03em",
+                                "fontWeight": "400"
+                            }
+                        ]
+                    }
+                }
+            }
+        }
+    </script>
+<style>
+        body {
+            background-color: #F6F6F8;
+            color: #0B0B0D;
+            font-family: 'Archivo', sans-serif;
+            -webkit-font-smoothing: antialiased;
+            -moz-osx-font-smoothing: grayscale;
+        }
+        
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+        }
+        
+        input[type="text"], input[type="tel"], select {
+            border-radius: 0;
+            border-color: #DCDCE2;
+        }
+        
+        input[type="text"]:focus, input[type="tel"]:focus, select:focus {
+            border-color: #0B0B0D;
+            box-shadow: none;
+        }
+        
+        input[type="checkbox"] {
+            border-radius: 0;
+            border-color: #0B0B0D;
+            color: #0B0B0D;
+        }
+        
+        input[type="checkbox"]:focus {
+            box-shadow: none;
+        }
+    </style>
+</head>
+<body class="bg-background text-ink min-h-screen flex flex-col">
+<!-- HEADER -->
+<header class="bg-surface dark:bg-ink h-[56px] w-full sticky top-0 z-50 border-b border-rule dark:border-ink-soft flex items-center justify-between px-margin-mobile w-full scale-100 duration-600 ease-in-out">
+<div class="font-utility-label text-utility-label font-bold text-ink dark:text-surface">
+            FASHIONAI.AGENCY
+        </div>
+<button aria-label="Menu" class="text-ink dark:text-surface hover:opacity-70 transition-opacity duration-600 focus:outline-none">
+<span class="material-symbols-outlined" data-icon="menu">menu</span>
+</button>
+</header>
+<main class="flex-grow flex flex-col">
+<!-- KIT HEADER -->
+<section class="px-margin-mobile pt-stack-md pb-stack-md border-b border-rule flex flex-col gap-stack-sm">
+<div class="font-utility-label text-utility-label text-ink uppercase tracking-widest">FAMILLE / VIDÉO</div>
+<h1 class="font-headline-lg-mobile text-[38px] leading-[1.05] text-ink">
+                Transformez vos photos de collection en films de campagne
+            </h1>
+<p class="font-body-md text-ink-soft mt-2">
+                Le kit qui anime une image éditoriale en clip cinématique de 8 secondes. Identité, morphologie et tenue verrouillées.
+            </p>
+<div class="font-utility-label text-[11px] text-ink mt-4 uppercase tracking-widest border-t border-rule pt-4">
+                NIVEAU INTERMÉDIAIRE — 12 MIN DE TUTO — VEO 3
+            </div>
+</section>
+<!-- HERO -->
+<section class="border-b border-rule relative group">
+<div class="aspect-[4/5] w-full relative overflow-hidden bg-surface-variant">
+<img alt="Hero Fashion Image" class="w-full h-full object-cover grayscale opacity-90 transition-opacity duration-700 hover:opacity-100" data-alt="A striking high-fashion editorial portrait of a West African model wearing avant-garde clothing. The lighting is dramatic and cinematic, reminiscent of high-end fashion photography. The color palette is strictly high contrast, focusing on deep blacks, crisp whites, and a single subtle accent tone. The mood is authoritative and minimal." src="https://lh3.googleusercontent.com/aida-public/AB6AXuCqqsdgGJhsrbIXUZNc64aVKBoIBylfhTfnALzstwWLjOoKBPV7oSC1rn1jeow-18bmeBLNoo0iTJD4CAYDVl08eDJ5HqdiLcPrbX4NdgOxk-f-8eaxGm276SFbdg7WefE4NKbPJ_ZBJ4MMgpXO2ZN-G5l4tBWWMAAy1QLEhBUhA44v1mbLSOxqp7IHSVL6_nhCA1C818MQh4O93lVlLf_NkAktAqxviBQY5FQ7C0HjPavsYrXW">
+</div>
+<div class="px-margin-mobile py-4 bg-background">
+<p class="font-utility-label text-utility-label text-ink-soft uppercase tracking-widest">
+                    RÉSULTAT OBTENU AVEC LE KIT — 01
+                </p>
+</div>
+</section>
+<!-- VIDEO -->
+<section class="border-b border-rule pb-stack-sm">
+<div class="aspect-video w-full relative overflow-hidden bg-ink cursor-pointer group">
+<img alt="Video Thumbnail" class="w-full h-full object-cover opacity-60 transition-opacity duration-700 group-hover:opacity-80" data-alt="A minimalist and brutalist workspace setup showing a high-end laptop with code or a sophisticated interface on the screen. The environment is austere, lit by natural, slightly cold light filtering through unseen windows. The desk is stark and uncluttered. The overall aesthetic is strictly monochromatic with a focus on geometric precision." src="https://lh3.googleusercontent.com/aida-public/AB6AXuBqo9MPwuGebZiNeu-Ano1PlwQCWdNlEaAFfGXKKP4-FWMDjeEiZEe0nrC1wDkAJjEeSWt_9iTo3UUDlLwE8H3QOd03zM8FqeoFpB2_w3s9FvGukGmnWK-hzGqU4_8XnO4rlM6rb-EIRvbpMpKFywwtdz_nj1PvLb-17M5sVdAHn6L7maLyJjOWMNLN6pbJZ35HRcvR0k2z4tH2C-hpMK608-c2evxR6xSXjyRRrIIGnsFamLFl">
+<div class="absolute inset-0 flex items-center justify-center">
+<div class="w-16 h-16 border border-surface flex items-center justify-center bg-ink/20 backdrop-blur-sm transition-transform duration-500 group-hover:scale-110">
+<span class="material-symbols-outlined text-surface text-3xl" data-icon="play_arrow">play_arrow</span>
+</div>
+</div>
+</div>
+<div class="px-margin-mobile py-4 text-center">
+<p class="font-utility-label text-utility-label text-ink uppercase tracking-widest">
+                    TUTORIEL COMPLET — 12 MIN
+                </p>
+</div>
+</section>
+<!-- AVANT / APRÈS -->
+<section class="border-b border-rule pb-stack-lg">
+<div class="px-margin-mobile py-stack-md border-b border-rule">
+<h2 class="font-headline-lg-mobile text-[26px] text-ink">
+                    Ce que ça donne
+                </h2>
+</div>
+<div class="flex flex-col">
+<!-- Pair 1 -->
+<div class="flex w-full border-b border-rule">
+<div class="w-1/2 relative border-r border-rule">
+<div class="aspect-square bg-surface-variant overflow-hidden">
+<img alt="Avant 1" class="w-full h-full object-cover grayscale" data-alt="A raw, unedited fashion photograph of a garment on a neutral background, showing minimal lighting and styling. It represents the 'before' state. The image is clean but lacks dynamic energy, styled in a minimalist, brutalist aesthetic with harsh, direct lighting and high contrast." src="https://lh3.googleusercontent.com/aida-public/AB6AXuAuq-yNPa-lPOQ45g0Wurdm6KViu9he3O9fUZuNzYdVWa5TVwtxSb8T1HJFLZ9iOz7Bj096z-zGbyP1l2lSYheDPUD4ZSQpkRdEvhpIiFAgIa9JT0etCa9EkVjHrVm8Oguwk0YT5jfmYEOnMK8ykI8kkLZLvrmUSoD11qOEUFRQX1Eo6oe8mMLGAWuqzduHkhCesMQ29uFhE7FwOYx5kk2qRjhebuTteYGhBmha-LYLInFj4Xrm">
+</div>
+<div class="absolute top-2 left-2 bg-surface px-2 py-1 border border-ink">
+<span class="font-utility-label text-[10px] text-ink uppercase tracking-widest">AVANT</span>
+</div>
+</div>
+<div class="w-1/2 relative">
+<div class="aspect-square bg-surface-variant overflow-hidden">
+<img alt="Après 1" class="w-full h-full object-cover grayscale" data-alt="The same garment from the previous image, now fully styled and rendered in a dynamic, cinematic shot with high-end editorial lighting. It represents the 'after' state. The aesthetic is extremely polished, luxurious, and minimal, with strong shadows and a sophisticated monochromatic palette." src="https://lh3.googleusercontent.com/aida-public/AB6AXuCte7PjJGh_CCi5lVlmCTvuqSOwU9aIvAUOzzpkxrTkLcVbUSgI_491Jx2hRKP2k-krXdxMGqHZelWlTW15msq3d2RV13otPap8mS6v_s_XH9IpokyBLZV8aq4nozn-2MtFN5gSdwHbqbo8rTKWlL4eb-7oVehuRHsq9oubl4_C4vbUvpv0zWUp_ub9q3bW4HAd6BCE36rxZ87yZwlYLBZytMaZgl7ynamfFmE-XUa9EsZEOi6Y">
+</div>
+<div class="absolute top-2 left-2 bg-ink px-2 py-1">
+<span class="font-utility-label text-[10px] text-surface uppercase tracking-widest">APRÈS</span>
+</div>
+</div>
+</div>
+<!-- Pair 2 -->
+<div class="flex w-full border-b border-rule">
+<div class="w-1/2 relative border-r border-rule">
+<div class="aspect-square bg-surface-variant overflow-hidden">
+<img alt="Avant 2" class="w-full h-full object-cover grayscale" data-alt="A basic static shot of an accessory, presented cleanly but without context or atmosphere. It is the 'before' image. The lighting is flat, emphasizing the brutalist, purely functional nature of the presentation before enhancement. Strict black and white tones." src="https://lh3.googleusercontent.com/aida-public/AB6AXuDPPoKGF15zqFdl9tK0d6Rxsq9mSocptdmSnirJCCRlzIwPIu1y30vS-T671ZC2u9BANU7gkFJ3nRZsvxpwEgzDY29HM37xakZ9kHfmjR2GfG-nG0-TNxlVoEOyHz8sggl0VOc3_0yWkFyZx4C1g0w4xhjqcn9LeE4g3mjNQsN5-VOJtMSGyluoI9fKVCgOoa_sR3tD1JR1bhm9Mvy6cA_JwwTyLVkeC5tFe-JjawoVwvQFzOg0">
+</div>
+<div class="absolute top-2 left-2 bg-surface px-2 py-1 border border-ink">
+<span class="font-utility-label text-[10px] text-ink uppercase tracking-widest">AVANT</span>
+</div>
+</div>
+<div class="w-1/2 relative">
+<div class="aspect-square bg-surface-variant overflow-hidden">
+<img alt="Après 2" class="w-full h-full object-cover grayscale" data-alt="The accessory transformed into a stunning editorial still, appearing as if captured from a high-budget campaign video. The 'after' image. The lighting is complex and atmospheric, yet adheres to a strict, high-contrast minimal aesthetic with sharp lines." src="https://lh3.googleusercontent.com/aida-public/AB6AXuBvcMpf1IbqmpCpXnGnmmC8nUBQ_x0wxND0Z5mgDrSCeegTiHiB63r5IU1Omq-W6hKfDyPzhsb4AWmjnpen9g9g1eQVq2evbQkfGPY8-DePi01shEF9d_iER6kvbicpqyZkPKwQkmUUVljsWSPgbpULqzTTXyQGLBX7euaAaHtt1xxmajLa1P1jWHEAiEi5cKi-Aguc_n0PAAVumDdEaIVMaz4teNz8frEvFicJYQFHUbvsWjkR">
+</div>
+<div class="absolute top-2 left-2 bg-ink px-2 py-1">
+<span class="font-utility-label text-[10px] text-surface uppercase tracking-widest">APRÈS</span>
+</div>
+</div>
+</div>
+</div>
+</section>
+<!-- CE QUE VOUS OBTENEZ -->
+<section class="border-b border-rule">
+<div class="px-margin-mobile py-stack-md border-b border-rule">
+<h2 class="font-headline-lg-mobile text-[26px] text-ink">
+                    Ce que vous obtenez
+                </h2>
+</div>
+<div class="flex flex-col">
+<div class="px-margin-mobile py-6 border-b border-rule flex flex-col gap-2">
+<span class="font-utility-label text-utility-label text-ink uppercase tracking-widest">LE KIT .MD</span>
+<span class="font-body-md text-ink-soft">le moteur, à coller dans votre outil IA</span>
+</div>
+<div class="px-margin-mobile py-6 border-b border-rule flex flex-col gap-2 bg-surface">
+<span class="font-utility-label text-utility-label text-ink uppercase tracking-widest">LE GUIDE PDF</span>
+<span class="font-body-md text-ink-soft">mode d'emploi illustré en français</span>
+</div>
+<div class="px-margin-mobile py-6 flex flex-col gap-2">
+<span class="font-utility-label text-utility-label text-ink uppercase tracking-widest">LE TUTORIEL VIDÉO</span>
+<span class="font-body-md text-ink-soft">la démonstration pas à pas</span>
+</div>
+</div>
+</section>
+<!-- PRÉREQUIS -->
+<section class="px-margin-mobile py-stack-md border-b border-rule bg-surface">
+<div class="border border-ink p-6 flex flex-col gap-4">
+<div class="font-utility-label text-utility-label text-ink uppercase tracking-widest">
+                    CE DONT VOUS AVEZ BESOIN
+                </div>
+<p class="font-body-sm text-[15px] text-ink">
+                    Google Veo 3 — abonnement payant, environ 20 € par mois. Le kit ne fonctionne pas sans.
+                </p>
+</div>
+</section>
+<!-- FORMULAIRE -->
+<section class="px-margin-mobile py-stack-lg border-b border-rule bg-surface">
+<div class="border border-ink p-6 flex flex-col gap-6">
+<h2 class="font-headline-lg-mobile text-[28px] text-ink">
+                    Recevoir le kit
+                </h2>
+<form class="flex flex-col gap-5">
+<div class="flex flex-col gap-2">
+<label class="font-utility-label text-utility-label text-ink-soft uppercase tracking-widest" for="firstname">PRÉNOM</label>
+<input class="w-full border-b border-t-0 border-l-0 border-r-0 border-rule bg-transparent px-0 py-2 font-body-md focus:ring-0 focus:border-ink transition-colors" id="firstname" placeholder="Votre prénom" type="text">
+</div>
+<div class="flex flex-col gap-2">
+<label class="font-utility-label text-utility-label text-ink-soft uppercase tracking-widest" for="whatsapp">WHATSAPP</label>
+<div class="flex w-full">
+<select class="border-b border-t-0 border-l-0 border-r-0 border-rule bg-transparent px-2 py-2 font-body-md focus:ring-0 focus:border-ink w-24 border-r pr-8">
+<option>+225</option>
+<option>+33</option>
+<option>+1</option>
+</select>
+<input class="w-full border-b border-t-0 border-l-0 border-r-0 border-rule bg-transparent px-4 py-2 font-body-md focus:ring-0 focus:border-ink" id="whatsapp" placeholder="Numéro" type="tel">
+</div>
+</div>
+<div class="flex flex-col gap-2">
+<label class="font-utility-label text-utility-label text-ink-soft uppercase tracking-widest" for="email">EMAIL (RECOMMANDÉ)</label>
+<input class="w-full border-b border-t-0 border-l-0 border-r-0 border-rule bg-transparent px-0 py-2 font-body-md focus:ring-0 focus:border-ink transition-colors" id="email" placeholder="votre@email.com" type="text">
+</div>
+<div class="flex items-start gap-3 mt-2">
+<input class="mt-1 w-4 h-4 text-ink bg-transparent border-ink focus:ring-0 cursor-pointer" id="consent" type="checkbox">
+<label class="font-body-sm text-[13px] text-ink-soft leading-tight cursor-pointer" for="consent">
+                            J'accepte de recevoir des conseils et les invitations aux séances. Désinscription en un clic.
+                        </label>
+</div>
+<button class="w-full bg-ink text-surface py-4 font-body-md font-semibold uppercase tracking-wider mt-4 hover:bg-ink-soft transition-colors duration-300" type="button">
+                        Télécharger le kit
+                    </button>
+<div class="text-center mt-2">
+<span class="font-utility-label text-[10px] text-ink-soft uppercase tracking-widest">LIVRAISON IMMÉDIATE — AUCUN SPAM</span>
+</div>
+</form>
+</div>
+</section>
+<!-- ASSISTANCE -->
+<section class="bg-ink text-surface px-margin-mobile py-stack-lg border-b border-ink flex flex-col items-start gap-5 w-full">
+<div class="font-utility-label text-utility-label text-surface-variant uppercase tracking-widest">
+                VOUS BLOQUEZ ?
+            </div>
+<h2 class="font-headline-lg-mobile text-[24px]">
+                Séance de groupe, chaque jeudi
+            </h2>
+<p class="font-body-sm text-[14px] text-surface-variant max-w-md">
+                Une heure en ligne pour débloquer votre cas. Gratuit, sur inscription.
+            </p>
+<button class="w-full bg-whatsapp-green text-ink py-4 font-body-md font-semibold uppercase tracking-wider mt-2 hover:opacity-90 transition-opacity duration-300 font-bold" type="button">
+                Je m'inscris sur WhatsApp
+            </button>
+</section>
+</main>
+<!-- FOOTER -->
+<footer class="bg-surface dark:bg-ink flex flex-col items-start gap-stack-md px-margin-mobile py-stack-lg w-full rounded-none border-t border-rule dark:border-ink-soft">
+<div class="flex flex-col gap-4 w-full">
+<a class="font-utility-label text-utility-label uppercase text-ink dark:text-surface hover:opacity-70 transition-opacity duration-600" href="#">KITS</a>
+<div class="w-full h-px bg-rule"></div>
+<a class="font-utility-label text-utility-label uppercase text-ink dark:text-surface hover:opacity-70 transition-opacity duration-600" href="#">SÉANCE</a>
+<div class="w-full h-px bg-rule"></div>
+<a class="font-utility-label text-utility-label uppercase text-ink dark:text-surface hover:opacity-70 transition-opacity duration-600" href="#">TRAVAILLER ENSEMBLE</a>
+<div class="w-full h-px bg-rule"></div>
+<a class="font-utility-label text-utility-label uppercase text-ink dark:text-surface hover:opacity-70 transition-opacity duration-600" href="#">MENTIONS LÉGALES</a>
+</div>
+<div class="mt-8">
+<div class="font-utility-label text-utility-label font-bold text-ink dark:text-surface mb-stack-sm">
+                FASHIONAI.AGENCY
+            </div>
+<div class="font-utility-label text-utility-label text-ink-soft dark:text-rule uppercase">
+                ©2024 FASHIONAI.AGENCY
+            </div>
+</div>
+</footer>
+
+
+</body></html>

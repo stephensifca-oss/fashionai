@@ -1,0 +1,38 @@
+# Dependencies
+node_modules/
+fashionai/node_modules/
+
+# Next.js & OpenNext build output
+.next/
+fashionai/.next/
+.open-next/
+fashionai/.open-next/
+.wrangler/
+fashionai/.wrangler/
+out/
+fashionai/out/
+
+# Environment and secrets
+.env
+.env*.local
+*.pem
+gcp-key.json
+*-key.json
+fashionai/gcp-key.json
+fashionai/.env*
+
+# Local data & logs
+.data/
+fashionai/.data/
+*.log
+npm-debug.log*
+yarn-debug.log*
+
+# System
+.DS_Store
+Thumbs.db
+
+# TypeScript
+*.tsbuildinfo
+next-env.d.ts
+fashionai/next-env.d.ts

@@ -1,0 +1,291 @@
+<!DOCTYPE html><html class="light" lang="fr"><head>
+<meta charset="utf-8">
+<meta content="width=390, initial-scale=1.0" name="viewport">
+<title>STUDIO AI - Homepage</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Archivo:wght@400;500;600;700&amp;family=Bodoni+Moda:ital,opsz,wght@0,6..96,400..900;1,6..96,400..900&amp;family=DM+Mono:ital,wght@0,300;0,400;0,500;1,300;1,400;1,500&amp;display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet">
+<script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    "colors": {
+                        "error-container": "#ffdad6",
+                        "tertiary-fixed": "#e8e1db",
+                        "on-secondary-fixed": "#1a1c1d",
+                        "on-secondary-fixed-variant": "#454749",
+                        "secondary-container": "#dfdfe1",
+                        "primary-fixed": "#e5e1e4",
+                        "surface-dim": "#dad9e4",
+                        "inverse-on-surface": "#f1effa",
+                        "on-error-container": "#93000a",
+                        "on-error": "#ffffff",
+                        "surface-container-high": "#e9e7f2",
+                        "outline": "#78767b",
+                        "secondary": "#5d5e60",
+                        "on-background": "#1a1b23",
+                        "on-tertiary": "#ffffff",
+                        "on-tertiary-fixed-variant": "#4a4642",
+                        "on-surface-variant": "#47464a",
+                        "on-primary-fixed-variant": "#474649",
+                        "primary-container": "#1c1b1d",
+                        "surface-container-highest": "#e3e1ec",
+                        "tertiary": "#000000",
+                        "whatsapp-green": "#25D366",
+                        "on-primary-fixed": "#1c1b1d",
+                        "on-secondary": "#ffffff",
+                        "on-surface": "#1a1b23",
+                        "surface-variant": "#e3e1ec",
+                        "primary": "#000000",
+                        "on-secondary-container": "#616365",
+                        "rule": "#DCDCE2",
+                        "background": "#F6F6F8",
+                        "tertiary-container": "#1e1b18",
+                        "surface-container-lowest": "#ffffff",
+                        "tertiary-fixed-dim": "#ccc5c0",
+                        "ink": "#0B0B0D",
+                        "secondary-fixed": "#e2e2e4",
+                        "primary-fixed-dim": "#c8c6c8",
+                        "surface-bright": "#fbf8ff",
+                        "inverse-primary": "#c8c6c8",
+                        "accent-sienna": "#B7410E",
+                        "on-tertiary-fixed": "#1e1b18",
+                        "ink-soft": "#56565F",
+                        "inverse-surface": "#2f3038",
+                        "outline-variant": "#c8c5ca",
+                        "surface-container": "#eeecf8",
+                        "surface-container-low": "#f4f2fd",
+                        "surface-tint": "#5f5e60",
+                        "surface": "#FFFFFF",
+                        "on-tertiary-container": "#88837e",
+                        "on-primary-container": "#858386",
+                        "on-primary": "#ffffff",
+                        "error": "#ba1a1a",
+                        "secondary-fixed-dim": "#c6c6c8"
+                    },
+                    "borderRadius": {
+                        "DEFAULT": "0.25rem",
+                        "lg": "0.5rem",
+                        "xl": "0.75rem",
+                        "full": "9999px"
+                    },
+                    "spacing": {
+                        "margin-desktop": "64px",
+                        "stack-lg": "80px",
+                        "margin-mobile": "20px",
+                        "gutter": "1px",
+                        "stack-md": "24px",
+                        "stack-sm": "12px"
+                    },
+                    "fontFamily": {
+                        "body-sm": ["Archivo"],
+                        "headline-lg": ["Bodoni Moda"],
+                        "utility-label": ["DM Mono"],
+                        "headline-lg-mobile": ["Bodoni Moda"],
+                        "display-xl-mobile": ["Bodoni Moda"],
+                        "display-xl": ["Bodoni Moda"],
+                        "body-md": ["Archivo"]
+                    },
+                    "fontSize": {
+                        "body-sm": ["14px", { "lineHeight": "1.6", "fontWeight": "400" }],
+                        "headline-lg": ["40px", { "lineHeight": "1.1", "letterSpacing": "-0.02em", "fontWeight": "400" }],
+                        "utility-label": ["11px", { "lineHeight": "1.2", "letterSpacing": "0.14em", "fontWeight": "500" }],
+                        "headline-lg-mobile": ["32px", { "lineHeight": "1.1", "fontWeight": "400" }],
+                        "display-xl-mobile": ["48px", { "lineHeight": "1.0", "letterSpacing": "-0.03em", "fontWeight": "400" }],
+                        "display-xl": ["72px", { "lineHeight": "1.0", "letterSpacing": "-0.04em", "fontWeight": "400" }],
+                        "body-md": ["16px", { "lineHeight": "1.6", "fontWeight": "400" }]
+                    }
+                }
+            }
+        }
+    </script>
+<style>
+        body { font-family: 'Archivo', sans-serif; background-color: #F6F6F8; color: #0B0B0D; margin: 0; padding: 0; }
+        .material-symbols-outlined { font-family: 'Material Symbols Outlined'; font-weight: normal; font-style: normal; font-size: 24px; line-height: 1; letter-spacing: normal; text-transform: none; display: inline-block; white-space: nowrap; word-wrap: normal; direction: ltr; -webkit-font-feature-settings: 'liga'; -webkit-font-smoothing: antialiased; }
+    </style>
+</head>
+<body class="bg-background text-ink antialiased w-[390px] mx-auto relative border-l border-r border-rule min-h-screen overflow-x-hidden">
+<!-- 1. HEADER (TopAppBar Mobile) -->
+<header class="bg-background dark:bg-ink text-ink dark:text-background w-full top-0 sticky border-b border-rule dark:border-on-surface-variant flex justify-between items-center px-margin-mobile h-16 w-full z-50">
+<div class="flex items-center cursor-pointer hover:opacity-70 transition-opacity duration-600">
+<span class="material-symbols-outlined" data-icon="menu">menu</span>
+</div>
+<div class="font-headline-lg-mobile text-headline-lg-mobile dark:text-background tracking-tighter cursor-pointer hover:opacity-70 transition-opacity duration-600">
+            STUDIO AI
+        </div>
+<div class="font-utility-label text-utility-label uppercase cursor-pointer hover:opacity-70 transition-opacity duration-600">
+            CONTACT
+        </div>
+</header>
+<!-- 2. HERO -->
+<section class="border-b border-rule pt-stack-lg pb-stack-lg">
+<div class="px-margin-mobile flex flex-col gap-stack-md">
+<span class="font-utility-label text-utility-label text-ink">PHOTO ET VIDÉO DE MODE PAR IA</span>
+<h1 class="font-display-xl-mobile text-display-xl-mobile text-ink tracking-tighter" style="font-size: 44px;">Vos collections méritent mieux qu'un shooting par an</h1>
+<p class="font-body-md text-body-md text-ink-soft" style="font-size: 17px;">Des méthodes complètes pour produire vos visuels mode — photo et vidéo — sans studio, sans équipe, sans attendre trois semaines.</p>
+<div class="flex flex-col gap-stack-sm pt-stack-sm">
+<button class="bg-ink text-background w-full py-4 font-utility-label text-utility-label uppercase rounded-none hover:opacity-80 transition-opacity duration-600">Voir les kits</button>
+<button class="bg-transparent border border-ink text-ink w-full py-4 font-utility-label text-utility-label uppercase rounded-none hover:bg-ink/5 transition-colors duration-600">Comment ça marche</button>
+</div>
+</div>
+<div class="mt-stack-lg w-full aspect-[3/2] relative border-t border-b border-rule">
+<img class="w-full h-full object-cover" data-alt="A high-fashion editorial photograph of a model wearing avant-garde clothing in a minimalist concrete studio setting. The lighting is harsh and direct, creating strong shadows typical of premium fashion magazines. High contrast, sharp focus, brutalist aesthetic." src="https://lh3.googleusercontent.com/aida-public/AB6AXuB7Vb-RbwXKbcBRaqBsLQyQzvjdodquodWZ8FcnLJIrxojR5qS6edEagvZa8Z_ymaOZ4SwplEGP0HNgYtJ6vx6lzAnQBL8O3sIuYwVBKBsNM0SM9rnp_hxF0cbgyC9d_2BX3sjhYVPOFgmkv8glS8VNvwg-MM7-xztiQSubcv6HVi1q9nfgNtxH1qeBbKExMBuI-TMnN0dP3_o2cd6PTlLN5Auy9VpWsX73A7ATMTDWY58P2DyG">
+</div>
+<div class="px-margin-mobile pt-stack-sm">
+<span class="font-utility-label text-utility-label text-ink-soft">MODÈLE GÉNÉRÉ PAR IA — COLLECTION A/H 24</span>
+</div>
+</section>
+<!-- 3. DEUX FAMILLES -->
+<section class="flex flex-col border-b border-rule">
+<!-- Famille 1 -->
+<article class="border-b border-rule pb-stack-lg pt-stack-lg">
+<div class="px-margin-mobile flex flex-col gap-stack-sm mb-stack-md">
+<span class="font-utility-label text-utility-label text-ink">KITS PHOTO</span>
+<h2 class="font-headline-lg-mobile text-headline-lg-mobile text-ink tracking-tighter">Fiches produit, packshots, mises en situation. Vos pièces, photographiées sans studio.</h2>
+<p class="font-body-md text-body-md text-ink-soft">Déployez votre direction artistique sur l'ensemble de votre catalogue.</p>
+</div>
+<div class="w-full aspect-[4/5] relative border-t border-b border-rule">
+<img class="w-full h-full object-cover" data-alt="A minimalist flat-lay photograph of a luxury handbag and accessories on a pristine white background. The composition is highly structured and geometric. Lighting is soft but defined, creating a premium e-commerce look. High key lighting, sharp details, brutalist minimalism." src="https://lh3.googleusercontent.com/aida-public/AB6AXuBqoDHb74Iua5YmG58d6fMDPVZqpNzvv6cny3gbPjr7MRVpHuys8czgfP16UT68hLw0RO9URYj3Xduc-HBcWuWAwRXQ4IpLOQ2x0pYGe-fsaRg_LVSteOCbOg8Q9CmHKk4QCJdS0g60C_GmY-wBY6EjsVneA4xDkkg1PttFB9um4GijQo9mOhP7hw02hDR3WjOWGJkv8UgQj6NBuAFP3Ms1ExSIeEkewXiReEl_jkJqT-2iJsoU">
+</div>
+</article>
+<!-- Famille 2 -->
+<article class="pb-stack-lg pt-stack-lg">
+<div class="px-margin-mobile flex flex-col gap-stack-sm mb-stack-md">
+<span class="font-utility-label text-utility-label text-ink">KITS VIDÉO</span>
+<h2 class="font-headline-lg-mobile text-headline-lg-mobile text-ink tracking-tighter">Animez vos visuels en films de campagne et en reels. Le terrain que personne n'occupe encore.</h2>
+<p class="font-body-md text-body-md text-ink-soft">Créez du mouvement là où vos concurrents restent statiques.</p>
+</div>
+<div class="w-full aspect-[4/5] relative border-t border-b border-rule">
+<img class="w-full h-full object-cover" data-alt="A dynamic, slightly motion-blurred still from a fashion film. A model in motion wearing flowing dark fabrics against a stark white architectural background. The mood is moody, avant-garde, and cinematic. High contrast, raw energy, editorial video style." src="https://lh3.googleusercontent.com/aida-public/AB6AXuBUvxRrm4zpA9J7__KB1ry_rkKTHLvGsQOwUNFW3nBSgMigWaUPDggOXieWu8x82jqLuqKpVnbpUWSibio9NGz8VMG_EAUuvHZ_WtH4ErZH2PEhv642E-6LKmPw5mGghKRGg5KW45-OjmkRxoZCAOGmQTBMHFATnVZ4r6wfVkZVcty7WO778nqMyP3MpjLwYQpuqyNeNNEFPoOp2wrb218az9Efz7EUXBeon3-o_9XUypNc_zYz">
+</div>
+</article>
+</section>
+<!-- 4. TROIS KITS EN AVANT -->
+<section class="border-b border-rule pt-stack-lg pb-stack-lg">
+<div class="px-margin-mobile mb-stack-lg">
+<span class="font-utility-label text-utility-label text-ink border-b border-ink pb-1">COMMENCER ICI</span>
+</div>
+<div class="flex flex-col gap-0 border-t border-rule">
+<!-- Kit 1 -->
+<article class="border-b border-rule py-stack-md px-margin-mobile flex flex-col gap-stack-sm hover:bg-black/5 transition-colors duration-600 cursor-pointer">
+<div class="w-full aspect-square relative mb-stack-sm bg-surface-dim">
+<img class="w-full h-full object-cover" data-alt="A close-up studio portrait of a high-end fashion model demonstrating immaculate skin texture and fabric detail. The lighting is clean and professional, suitable for a premium product listing. Neutral background, intense gaze, brutalist simplicity." src="https://lh3.googleusercontent.com/aida-public/AB6AXuBie4lhiHMFHOlvYTIn2iB9ouXd1EktQ1EECjrhtTIyrPkCTTxvcgshtyaI48c2sAcecWoeKCbGygB1a17VtCzKRJZ3vIHXGFp3immksEpj2nBCOV24_NajAbEk_EAwn_FQ35S1Z-xOfcihRMvxRL2C8Xotm86gEXyAvj12vMii_SC-ML_FtFKVTSzpXaXza26cjn-TdKda6N2lie9vJN-WxReXLz5lafZTckVp72J_4SrUOC-B">
+</div>
+<span class="font-utility-label text-utility-label text-ink">KIT 01 / PHOTO</span>
+<h3 class="font-headline-lg-mobile text-headline-lg-mobile text-ink tracking-tighter">Le Lookbook Éditorial</h3>
+<p class="font-body-sm text-body-sm text-ink-soft">Transformez des vêtements à plat en silhouettes incarnées.</p>
+</article>
+<!-- Kit 2 -->
+<article class="border-b border-rule py-stack-md px-margin-mobile flex flex-col gap-stack-sm hover:bg-black/5 transition-colors duration-600 cursor-pointer">
+<div class="w-full aspect-square relative mb-stack-sm bg-surface-dim">
+<img class="w-full h-full object-cover" data-alt="A stark, high-contrast shot of a sneaker placed on a rough concrete block against a pure white background. The composition emphasizes geometry and texture. Editorial product photography, brutalist design language, sharp shadows." src="https://lh3.googleusercontent.com/aida-public/AB6AXuABu1exGYdtIolQJYbA7tkgM2JXzzv_8XiHn6pZmrwz2dsqnh5aCouOPXR7AI4K7Z0smtA5TtPVE6w-FBlCaJqjKU2iPXVZdmy8IqLvAy4uJxKBaqYltOWOoK-TAaI7wO-0sfqy275uqVq7WNVjKgNL6NvuoKMZdB1LTfaivV3SBRrt9PLH96ORf8ZectUs-0yRN2-_U9SEx80x4dNx66AcO1oqJDaD5Oet8ORtEeqzDuouE5O-">
+</div>
+<span class="font-utility-label text-utility-label text-ink">KIT 02 / PHOTO</span>
+<h3 class="font-headline-lg-mobile text-headline-lg-mobile text-ink tracking-tighter">Le Packshot Architectural</h3>
+<p class="font-body-sm text-body-sm text-ink-soft">Vos accessoires dans des environnements impossibles.</p>
+</article>
+<!-- Kit 3 -->
+<article class="py-stack-md px-margin-mobile flex flex-col gap-stack-sm hover:bg-black/5 transition-colors duration-600 cursor-pointer">
+<div class="w-full aspect-square relative mb-stack-sm bg-surface-dim">
+<img class="w-full h-full object-cover" data-alt="A surreal, slow-motion capture style image of fabric draped beautifully mid-air without a model, caught in a gust of wind. The background is a vast, empty studio space painted in off-white. Ethereal, avant-garde fashion video aesthetic." src="https://lh3.googleusercontent.com/aida-public/AB6AXuAhszgpqIe9VjxYY-ImWA1K_e_LXxds1Esr6fT7e_OP4_-WkvS1PZ4wcGPU5qLfKGlQ-SPgrke5iF2JoZcVY2zUHnZc0UzOX9kaWtEdJnBrBTlBsiaVQNnsL8YoRZnUU6PdYR5LCvYJCID8RldakFWENIP-xuqXA2h-0-uRvQPhEcadLS8EAuM0hvv-Y5uab1ih44wHuNEv1J-ARQ6pVqFFOeVDon-_GYSd7CFlsnMxqwtTeEJv">
+</div>
+<span class="font-utility-label text-utility-label text-ink">KIT 03 / VIDÉO</span>
+<h3 class="font-headline-lg-mobile text-headline-lg-mobile text-ink tracking-tighter">La Campagne en Mouvement</h3>
+<p class="font-body-sm text-body-sm text-ink-soft">Donnez vie à une direction artistique complète en 15 secondes.</p>
+</article>
+</div>
+<div class="px-margin-mobile mt-stack-md">
+<a class="font-utility-label text-utility-label text-ink border-b border-ink pb-1 inline-block hover:opacity-70 transition-opacity duration-600" href="#">VOIR LES 6 KITS</a>
+</div>
+</section>
+<!-- 5. LA SÉANCE -->
+<section class="bg-ink text-background pt-stack-lg pb-stack-lg px-margin-mobile">
+<div class="flex flex-col gap-stack-md">
+<span class="font-utility-label text-utility-label text-background opacity-80 border-b border-background/30 pb-1 inline-block self-start">CHAQUE JEUDI, 18H</span>
+<h2 class="font-headline-lg-mobile text-headline-lg-mobile tracking-tighter" style="font-size: 32px;">Une séance par semaine pour débloquer votre cas</h2>
+<p class="font-body-md text-body-md opacity-80" style="font-size: 15px;">Session de travail en direct sur Discord. Nous prenons une problématique de production visuelle et nous la résolvons avec nos workflows IA.</p>
+<button class="bg-whatsapp-green text-ink w-full py-4 font-utility-label text-utility-label uppercase rounded-none mt-stack-sm hover:opacity-90 transition-opacity duration-600">Je m'inscris</button>
+</div>
+</section>
+<!-- 6. PREUVE -->
+<section class="border-b border-rule pt-stack-lg pb-stack-lg">
+<div class="px-margin-mobile mb-stack-md">
+<span class="font-utility-label text-utility-label text-ink border-b border-ink pb-1">RÉSULTATS</span>
+</div>
+<!-- Mobile scrollable row -->
+<div class="flex overflow-x-auto snap-x snap-mandatory hide-scrollbar border-t border-b border-rule">
+<!-- Pair 1 -->
+<div class="min-w-[85vw] snap-center flex flex-col border-r border-rule">
+<div class="grid grid-cols-2 gap-gutter bg-rule">
+<div class="aspect-[3/4] bg-surface relative">
+<img class="w-full h-full object-cover" data-alt="A simple, amateurish flat-lay photo of a plain t-shirt on a slightly wrinkled grey background. Poor lighting, uninspiring composition. Represents a 'before' state for fashion e-commerce." src="https://lh3.googleusercontent.com/aida-public/AB6AXuBOCWKakfUa7WB8c9Az_TJENwsTFzL7fSIPe2pUKYjw6_9_S-uNZ5fWS3BXWfpwegjS0LfqCHbUbPPGCIhd4lRr80xsLaQGK8oxiJQA-7fO-PtLHYQIkzlWHBHDuInpox8gWa_Nkoq4MyLfCO1AJ5Z9Y_IuRYa69JcxlA0yVUXqFN6GNKuGgvuba0NYnk30LUwZmWSq5iTMRdW_o30W0Beg9KROP3_Kt3BqPqSlS3rexzUQadVk">
+<span class="absolute bottom-2 left-2 font-utility-label text-[9px] text-background bg-ink/50 px-1">AVANT</span>
+</div>
+<div class="aspect-[3/4] bg-surface relative">
+<img class="w-full h-full object-cover" data-alt="The same t-shirt from the previous image, now perfectly fitted onto an AI-generated photorealistic model. The model is standing in a premium brutalist concrete setting. Professional studio lighting, high fashion editorial style. Represents the 'after' state." src="https://lh3.googleusercontent.com/aida-public/AB6AXuBvRX4QCQnkisyKMIDTfTeb86AM8ygibgdPa1Ouu34myoktWrZUUVz5l0PjSbpgx5J-GMzWnj6t_YcdUL513hg_u3mw5Z3gJZueL3p9HhvTQS3yUmkZ7JDSVAQYnkdMo1Hn-F15GbmNN_ihsQ-VnXdyt74kYnzpMvrr9-kfciERsAn8y98DOzwh_4YoxRaGR9FIHn4ExUPFbRK_BULRXgY23PhQxyVasV0vm0aL4Hn4nihqmtjI">
+<span class="absolute bottom-2 left-2 font-utility-label text-[9px] text-background bg-ink/50 px-1">APRÈS</span>
+</div>
+</div>
+<div class="p-4 bg-background">
+<span class="font-utility-label text-[10px] text-ink-soft block">T-SHIRT À PLAT → ÉDITORIAL STUDIO</span>
+</div>
+</div>
+<!-- Pair 2 -->
+<div class="min-w-[85vw] snap-center flex flex-col border-r border-rule">
+<div class="grid grid-cols-2 gap-gutter bg-rule">
+<div class="aspect-[3/4] bg-surface relative">
+<img class="w-full h-full object-cover" data-alt="A basic smartphone photo of a handbag sitting on a cluttered wooden desk. Bad indoor lighting, messy background. The 'before' shot." src="https://lh3.googleusercontent.com/aida-public/AB6AXuDUUNL3DGjJWhCC4CAWm6hqblV2mHcVnauZEpG4WkhagkY-tuutqPhad7vtG8XVzF_ZHUm6SHLwVC2hoanGGCPOR19Aqd5pMVrknAUJvW9UrZSj6g_PC_akQuR0j-uhVqUYaGyoWERXtmumIqJQEVX7WcvOvtF2lBRHjeLR4yCwnzmA202b-Q2dnwmfslCx5cFrv8jGuWgzLWuxI1ovGO-FJFVY8e8K-qSm4rmMx5ipZX2hYDaK">
+<span class="absolute bottom-2 left-2 font-utility-label text-[9px] text-background bg-ink/50 px-1">AVANT</span>
+</div>
+<div class="aspect-[3/4] bg-surface relative">
+<img class="w-full h-full object-cover" data-alt="The same handbag, now rendered in a surreal, minimalist desert landscape with dramatic architectural shadows. High-end luxury campaign aesthetic, sharp focus, striking composition. The 'after' shot." src="https://lh3.googleusercontent.com/aida-public/AB6AXuAAUfGT_EIoY4vtRewX9RkPpZVZF5u2KNO7U1zxBjo8EK-L6pdCwAEXlVgSCNPLuXKURcREm6G65V_wDbfqX5xcwXOW7XxxZ1E0JfOZTSlnTJhD5zCkkssePxZsWrAruL3GGpiMTCk7NNxRcRZ5wxMWGyJQeVogUWqdPeQ3k9cBZhJnr8wIsVZkos9O6rTkOWf9XNUsQncx7gsTxFl6fiVlRjUaBos7LlTH48Zqrm08Ovx613mv">
+<span class="absolute bottom-2 left-2 font-utility-label text-[9px] text-background bg-ink/50 px-1">APRÈS</span>
+</div>
+</div>
+<div class="p-4 bg-background">
+<span class="font-utility-label text-[10px] text-ink-soft block">PHOTO AMATEUR → CAMPAGNE 3D</span>
+</div>
+</div>
+<!-- Pair 3 -->
+<div class="min-w-[85vw] snap-center flex flex-col">
+<div class="grid grid-cols-2 gap-gutter bg-rule">
+<div class="aspect-[3/4] bg-surface relative">
+<img class="w-full h-full object-cover" data-alt="A static, lifeless product photo of a pair of sunglasses on a plain white background. Standard e-commerce shot. The 'before' image." src="https://lh3.googleusercontent.com/aida-public/AB6AXuBT_SKLmDbbyvUw01LFQI2ar6qQ3oZ68GbuZzMbSIGuK5XRkhqqgKWDXfzeNnfS1hJFN0C7kbbzwn7gnO_ciCUnq1bzuuXRHpP5EmDxQ9kbln10O0qo7zIoet8BccIkxiv9IPYMyvouckgpz5qvchaPzgmgfr-UF64-madeNx72JqLtlqx7mzGsUbVV5UdW-tfSKU9If_v251h4vz0PxTY6ejKK-_K2qj-Tg3pEfCNRfArXfglK">
+<span class="absolute bottom-2 left-2 font-utility-label text-[9px] text-background bg-ink/50 px-1">AVANT</span>
+</div>
+<div class="aspect-[3/4] bg-surface relative">
+<img class="w-full h-full object-cover" data-alt="A visually striking still from an AI-generated video showing the sunglasses reflecting a dynamic, abstract neon light sequence in a dark, atmospheric setting. Cyberpunk luxury vibe. The 'after' image." src="https://lh3.googleusercontent.com/aida-public/AB6AXuDkBYkFPAHFdgJI3ZGYGTM4z47vdsa5eQN5Ca8_5SJE7wxGXOaiDlExjkeceYXB_u7hQCnZMLTTQtb91L8M9ovEW_gjnmzDxGf2wuIP3JnqO033o4gUBLZSHKrjXmNevxeRlA4MmeFeDvetwh9V_THLNlARs9RL9yoK1mYVdFA7LPPDcEWhjv6rMZ4h4DZ-HURK8JbY35qLYBMoZ61vipYuVhIt-6rV9ieqgP3Qr02Euj5rrF8k">
+<span class="absolute bottom-2 left-2 font-utility-label text-[9px] text-background bg-ink/50 px-1">APRÈS</span>
+</div>
+</div>
+<div class="p-4 bg-background">
+<span class="font-utility-label text-[10px] text-ink-soft block">IMAGE STATIQUE → SÉQUENCE VIDÉO</span>
+</div>
+</div>
+</div>
+<style>
+            .hide-scrollbar::-webkit-scrollbar { display: none; }
+            .hide-scrollbar { -ms-overflow-style: none; scrollbar-width: none; }
+        </style>
+</section>
+<!-- 7. FOOTER -->
+<footer class="bg-ink dark:bg-background text-background dark:text-ink w-full border-t border-rule dark:border-on-surface-variant grid grid-cols-1 md:grid-cols-4 gap-stack-md px-margin-mobile md:px-margin-desktop py-stack-lg">
+<div class="flex flex-col gap-4 col-span-1 md:col-span-2">
+<span class="font-headline-lg text-headline-lg text-background dark:text-ink tracking-tighter">STUDIO AI</span>
+<span class="font-body-sm text-body-sm text-background/80 dark:text-ink/80 mt-auto">© 2024 STUDIO AI. ALL RIGHTS RESERVED.</span>
+</div>
+<div class="flex flex-col gap-2 font-utility-label text-utility-label">
+<a class="text-background/80 dark:text-ink/80 hover:text-whatsapp-green transition-colors duration-600 cursor-pointer">PHOTO KITS</a>
+<a class="text-background/80 dark:text-ink/80 hover:text-whatsapp-green transition-colors duration-600 cursor-pointer">VIDEO KITS</a>
+<a class="text-background/80 dark:text-ink/80 hover:text-whatsapp-green transition-colors duration-600 cursor-pointer">SEANCE</a>
+</div>
+<div class="flex flex-col gap-2 font-utility-label text-utility-label">
+<a class="text-background/80 dark:text-ink/80 hover:text-whatsapp-green transition-colors duration-600 cursor-pointer">PREUVE</a>
+<a class="text-background/80 dark:text-ink/80 hover:text-whatsapp-green transition-colors duration-600 cursor-pointer">WHATSAPP</a>
+</div>
+</footer>
+
+
+</body></html>

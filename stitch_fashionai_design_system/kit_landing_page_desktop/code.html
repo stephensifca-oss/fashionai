@@ -1,0 +1,323 @@
+<!DOCTYPE html><html class="light" lang="fr"><head>
+<meta charset="utf-8">
+<meta content="width=device-width, initial-scale=1.0" name="viewport">
+<title>AI Video Kit | FASHIONAI.AGENCY</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com" rel="preconnect">
+<link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect">
+<link href="https://fonts.googleapis.com/css2?family=Archivo:wght@400;600&amp;family=Bodoni+Moda:opsz,wght@6..96,400&amp;family=DM+Mono:wght@500&amp;display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet">
+<script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    "colors": {
+                        "outline-variant": "#c8c5ca",
+                        "surface-tint": "#5f5e60",
+                        "on-secondary-fixed-variant": "#454749",
+                        "tertiary-container": "#1e1b18",
+                        "accent-sienna": "#B7410E",
+                        "rule": "#DCDCE2",
+                        "surface-container-low": "#f4f2fd",
+                        "on-primary-container": "#858386",
+                        "primary": "#000000",
+                        "on-primary": "#ffffff",
+                        "inverse-on-surface": "#f1effa",
+                        "on-background": "#1a1b23",
+                        "inverse-surface": "#2f3038",
+                        "on-tertiary-container": "#88837e",
+                        "ink": "#0B0B0D",
+                        "tertiary-fixed-dim": "#ccc5c0",
+                        "surface-dim": "#dad9e4",
+                        "tertiary": "#000000",
+                        "on-secondary-fixed": "#1a1c1d",
+                        "on-surface": "#1a1b23",
+                        "error-container": "#ffdad6",
+                        "on-error": "#ffffff",
+                        "on-tertiary-fixed": "#1e1b18",
+                        "surface-container-high": "#e9e7f2",
+                        "on-surface-variant": "#47464a",
+                        "outline": "#78767b",
+                        "primary-fixed-dim": "#c8c6c8",
+                        "error": "#ba1a1a",
+                        "inverse-primary": "#c8c6c8",
+                        "secondary-container": "#dfdfe1",
+                        "secondary-fixed": "#e2e2e4",
+                        "on-tertiary-fixed-variant": "#4a4642",
+                        "surface-variant": "#e3e1ec",
+                        "primary-fixed": "#e5e1e4",
+                        "surface": "#FFFFFF",
+                        "secondary": "#5d5e60",
+                        "surface-bright": "#fbf8ff",
+                        "surface-container-lowest": "#ffffff",
+                        "surface-container-highest": "#e3e1ec",
+                        "on-secondary": "#ffffff",
+                        "on-primary-fixed-variant": "#474649",
+                        "ink-soft": "#56565F",
+                        "on-error-container": "#93000a",
+                        "whatsapp-green": "#25D366",
+                        "tertiary-fixed": "#e8e1db",
+                        "primary-container": "#1c1b1d",
+                        "surface-container": "#eeecf8",
+                        "background": "#F6F6F8",
+                        "on-secondary-container": "#616365",
+                        "on-tertiary": "#ffffff",
+                        "on-primary-fixed": "#1c1b1d",
+                        "secondary-fixed-dim": "#c6c6c8"
+                    },
+                    "borderRadius": {
+                        "DEFAULT": "0px",
+                        "lg": "0px",
+                        "xl": "0px",
+                        "full": "0px"
+                    },
+                    "spacing": {
+                        "stack-md": "24px",
+                        "margin-desktop": "80px", // Updated to 80px (min 5rem) based on prompt
+                        "stack-lg": "80px",
+                        "margin-mobile": "20px",
+                        "gutter": "1px",
+                        "stack-sm": "12px"
+                    },
+                    "fontFamily": {
+                        "body-sm": ["Archivo"],
+                        "display-xl-mobile": ["Bodoni Moda"],
+                        "headline-lg": ["Bodoni Moda"],
+                        "body-md": ["Archivo"],
+                        "display-xl": ["Bodoni Moda"],
+                        "utility-label": ["DM Mono"],
+                        "headline-lg-mobile": ["Bodoni Moda"]
+                    },
+                    "fontSize": {
+                        "body-sm": ["14px", { "lineHeight": "1.6", "fontWeight": "400" }],
+                        "display-xl-mobile": ["48px", { "lineHeight": "1.0", "letterSpacing": "-0.03em", "fontWeight": "400" }],
+                        "headline-lg": ["40px", { "lineHeight": "1.1", "letterSpacing": "-0.02em", "fontWeight": "400" }],
+                        "body-md": ["16px", { "lineHeight": "1.6", "fontWeight": "400" }],
+                        "display-xl": ["72px", { "lineHeight": "1.0", "letterSpacing": "-0.04em", "fontWeight": "400" }],
+                        "utility-label": ["11px", { "lineHeight": "1.2", "letterSpacing": "0.14em", "fontWeight": "500" }],
+                        "headline-lg-mobile": ["32px", { "lineHeight": "1.1", "fontWeight": "400" }]
+                    }
+                },
+            },
+        }
+    </script>
+<style>
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 1, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+        }
+        /* Custom transitions */
+        .hover-lift {
+            transition: opacity 600ms ease, transform 600ms ease;
+        }
+        .hover-lift:hover {
+            opacity: 0.7;
+            transform: translateY(-10px);
+        }
+        .reveal-up {
+            animation: revealUp 600ms ease forwards;
+            opacity: 0;
+            transform: translateY(10px);
+        }
+        @keyframes revealUp {
+            to { opacity: 1; transform: translateY(0); }
+        }
+    </style>
+</head>
+<body class="bg-background text-ink font-body-md antialiased overflow-x-hidden min-h-screen flex flex-col">
+<!-- HEADER (JSON INJECTED - Modified per prompt instructions) -->
+<header class="bg-surface h-[56px] w-full sticky top-0 z-50 border-b border-rule flex items-center justify-between px-margin-desktop">
+<a class="font-body-sm text-[15px] font-semibold text-ink uppercase tracking-widest hover:opacity-70 transition-opacity duration-600" href="#">
+            FASHIONAI.AGENCY
+        </a>
+<nav class="hidden md:flex items-center gap-stack-md">
+<a class="font-utility-label text-utility-label uppercase tracking-widest text-ink hover:opacity-70 transition-opacity duration-600 underline underline-offset-4" href="#">KITS</a>
+<a class="font-utility-label text-utility-label uppercase tracking-widest text-ink-soft hover:text-ink transition-colors duration-600" href="#">SÉANCE</a>
+<a class="font-utility-label text-utility-label uppercase tracking-widest text-ink-soft hover:text-ink transition-colors duration-600" href="#">TRAVAILLER ENSEMBLE</a>
+</nav>
+</header>
+<!-- MAIN CONTENT -->
+<main class="flex-grow w-full max-w-[1280px] mx-auto px-margin-desktop py-stack-lg">
+<!-- HERO SECTION (Split Column) -->
+<section class="grid grid-cols-1 md:grid-cols-2 gap-stack-lg border-b border-rule pb-stack-lg mb-stack-lg reveal-up relative" style="animation-delay: 100ms;">
+<!-- Left Column -->
+<div class="absolute bottom-stack-lg left-0 z-10 flex flex-col justify-end max-w-[34rem] p-stack-md bg-surface/90 border border-rule backdrop-blur-sm">
+    <div class="font-utility-label text-utility-label uppercase mb-stack-sm tracking-widest text-ink">
+        FAMILLE / VIDÉO
+    </div>
+    <h1 class="font-display-xl-mobile md:font-headline-lg text-[32px] md:text-[38px] leading-[1.05] mb-stack-sm text-ink">
+        Transformez vos photos de collection en films de campagne
+    </h1>
+    <p class="font-body-md text-body-sm text-ink-soft mb-stack-md">
+        Le kit qui anime une image éditoriale en clip cinématique de 8 secondes, en préservant l'intégrité des textures et de la lumière.
+    </p>
+    <div class="font-utility-label text-utility-label uppercase text-ink-soft border-t border-rule pt-stack-sm flex items-center gap-2 text-ink">
+        <span class="material-symbols-outlined text-[14px]">videocam</span>
+        NIVEAU INTERMÉDIAIRE — 12 MIN DE TUTO
+    </div>
+</div>
+<!-- Right Column -->
+<div class="flex flex-col md:col-span-2">
+<div class="aspect-[4/5] w-full bg-surface border border-rule relative overflow-hidden group">
+<img class="w-full h-full object-cover group-hover:scale-[1.02] transition-transform duration-[2000ms] ease-out" data-alt="High-fashion editorial portrait of a West African model wearing avant-garde sculptural garments in deep sienna and structured black. The lighting is harsh, direct studio flash creating deep, sharp shadows on a pristine white cyclorama. The mood is powerful, severe, and strictly minimalist, echoing high-end Parisian fashion magazines." src="https://lh3.googleusercontent.com/aida-public/AB6AXuCi8c2-W9VmNGFuOjXZZMdC5KNUTrVUHvPZVAN5q_EAx2lXPNkeFJt71I9EHYIkN0Rx21AjhLNDQbexdcMHxs1tKV4fCaaZ20sb4poABsyW50KKkJlWj-xNF4CcmezYT5fqp8-MGHS-xZt-hOtipJGG6KZH9uR_EA6HnwNKoctk5F9_F8tm3Hr6wpmXeukhKnqBI2oiCbFMpHADJCtrnPRpY9MnPnP2ua43aWdfdm7HcqExJb1P">
+</div>
+<div class="font-utility-label text-utility-label uppercase text-ink-soft mt-stack-sm tracking-widest flex items-center gap-2">
+<span class="material-symbols-outlined text-[14px]" data-weight="fill">play_circle</span>
+                    RÉSULTAT OBTENU AVEC LE KIT — 01
+                </div>
+</div>
+</section>
+<!-- CONTENT & STICKY SIDEBAR GRID -->
+<section class="grid grid-cols-1 lg:grid-cols-12 gap-stack-lg border-b border-rule pb-stack-lg mb-stack-lg reveal-up" style="animation-delay: 200ms;">
+<!-- Main Area (Left) -->
+<div class="lg:col-span-7 flex flex-col gap-stack-lg">
+<!-- Video Section -->
+<div>
+<div class="aspect-video w-full bg-ink relative overflow-hidden group cursor-pointer mb-stack-sm">
+<img class="w-full h-full object-cover opacity-80 group-hover:opacity-100 transition-opacity duration-600" data-alt="Still frame from an upscale fashion video tutorial. A minimalist workstation setup featuring a sleek monitor displaying timeline editing software against a concrete textured background. A single perfectly positioned spotlight illuminates the desk. The aesthetic is brutalist, clean, and highly professional, utilizing stark contrasts between deep blacks and cool greys." src="https://lh3.googleusercontent.com/aida-public/AB6AXuDKkI6qByDXss-ZV6bReOmCkxkc01OharsASG9xki7kStlRa4AF2-uhSYVxD0cACIoXPvM0xmNK3TRYlrNrLe-5ZPfFiC7x22FDDPxA1Z6MuWzRpzjbaBZ0sJ_FEreVY7PG-M6TRDZxXAUdtf2aI408BmqA1cel6W_Bt8gk1v8DQhioPQ0GoIJYTGtxDb2xKjachmwxpvnnaTPAloKiqi-oZoMDUlPkzxIPyr1nVR_Bq7YLuPE9">
+<div class="absolute inset-0 flex items-center justify-center">
+<div class="w-16 h-16 border border-surface flex items-center justify-center text-surface group-hover:bg-surface group-hover:text-ink transition-colors duration-600">
+<span class="material-symbols-outlined text-[32px]">play_arrow</span>
+</div>
+</div>
+</div>
+<div class="font-utility-label text-utility-label uppercase text-ink-soft tracking-widest">
+                        TUTORIEL COMPLET — 12 MIN
+                    </div>
+</div>
+<!-- Avant/Après -->
+<div class="border-t border-rule pt-stack-lg">
+<h2 class="font-headline-lg text-[26px] md:text-[26px] mb-stack-md text-ink">Ce que ça donne</h2>
+<div class="grid grid-cols-1 sm:grid-cols-3 gap-stack-md">
+<!-- Pair 1 -->
+<div class="flex flex-col gap-stack-sm">
+<div class="aspect-square bg-surface border border-rule relative">
+<div class="absolute top-2 left-2 bg-surface px-2 py-1 font-utility-label text-[9px] uppercase z-10 border border-rule">AVANT</div>
+<img class="w-full h-full object-cover" data-alt="A static editorial photograph of a model in motion, frozen mid-stride wearing a flowing silk trench coat. Stark white background, high contrast black and white styling, raw and unpolished aesthetic." src="https://lh3.googleusercontent.com/aida-public/AB6AXuDzBDwMZMianGmu2XLVfE5-gr0-p37Bkb8OVUSzMI3PBhrgtZNpl98yMlekiFYZ8-IeVfPqwxKsdXe8O-N8SjpZ9vkNlgKjBy-PSfbAy_b137Hp7YQuqmMA_u0GKBcMrG8AYH3GEgeOC-YrO_xO1FrwwpSgII8bYbsRTFXpUr1nov5rNmEatplpp1hiUIslEWY_Iclz4sU-nprOOsPxmxCl4cPvk4GDsPoFPNcavTn7vLYandYp">
+</div>
+<div class="aspect-square bg-surface border border-rule relative">
+<div class="absolute top-2 left-2 bg-ink text-surface px-2 py-1 font-utility-label text-[9px] uppercase z-10">APRÈS</div>
+<img class="w-full h-full object-cover" data-alt="The exact same editorial scene as the previous image, but rendered with dynamic motion blur indicating cinematic movement. The silk trench coat appears to be billowing violently in a studio wind machine. Stark white background, brutalist high contrast style." src="https://lh3.googleusercontent.com/aida-public/AB6AXuBUDtPQThhXRhaO4Wdh4wWU1VSYSWXA-rQpiCz_UTFrJj9WlO5npYKmiNcp9e7ULLc5och0iJMSyojMgd14VrbnlMRayhVXSBqKp-E9nR-heIo_k5tlLXERnhCcSiez6JWsXYeDNAgu8mlc6cCo0ErTNcA8sB-mB35k2JFA1Smly_2wVmcIOvJ2vjuy2nhz2Pje2ndCYpQmTY0VHdql3uw1DIfXCzjX48shnN-M9BWVnv-A4Btc">
+</div>
+</div>
+<!-- Pair 2 -->
+<div class="flex flex-col gap-stack-sm">
+<div class="aspect-square bg-surface border border-rule relative">
+<div class="absolute top-2 left-2 bg-surface px-2 py-1 font-utility-label text-[9px] uppercase z-10 border border-rule">AVANT</div>
+<img class="w-full h-full object-cover" data-alt="Close up beauty shot of a model with intricate, structural braided hair and severe contour makeup. The lighting is flat and analytical, capturing every detail of the skin texture. Clean minimalist studio setting." src="https://lh3.googleusercontent.com/aida-public/AB6AXuA9iGKMRntBQuLqgQ9GYEBCTHyegnVyx75V2n8fyw0nbXToW_rqQSau7lcnPY5zrVUbYM2nO_TDKgYWuH0-tbPYXA2QpY7y5rp_f1flYlDDAojXmz7Rcy6jsVNq2FagfXqSfty8ntZudDlFPjzW8PYHOkRfBubTF6OOUL-IkcrNODebQiIct2MiP5FgufdTs4GNQyzNbHEVOkBgmtNL6IXzTTndSZHdyBNfBlT0iro46uyAIEbY">
+</div>
+<div class="aspect-square bg-surface border border-rule relative">
+<div class="absolute top-2 left-2 bg-ink text-surface px-2 py-1 font-utility-label text-[9px] uppercase z-10">APRÈS</div>
+<img class="w-full h-full object-cover" data-alt="The exact same beauty shot, but the lighting has dynamically shifted to a cinematic, moving rim light that casts deep dramatic shadows across the structural hair. A lens flare cuts across the brutalist composition." src="https://lh3.googleusercontent.com/aida-public/AB6AXuCqQJ_5I9TFt3hXsqafVflgcGxukiGHhM6chCmLnuKUsek4-NiNAGYz1s7d3LFl9ezeW4rxjiaMMPpk-0ewGGpNoSTVaEiSAk3oY8pbsAbSM4zFILi_flaqKVWUE25BmdFsv1fl7Zuq3-5o8_1jDQxU2g1zmZvhhaMCWVV1YhneZygW-l6sPwIxsh4wxzm8z6UXZcS1z3CU8hVVdX4xurauwIQSSHqkloAwnfat7aKuce5UEq_j">
+</div>
+</div>
+<!-- Pair 3 -->
+<div class="flex flex-col gap-stack-sm">
+<div class="aspect-square bg-surface border border-rule relative">
+<div class="absolute top-2 left-2 bg-surface px-2 py-1 font-utility-label text-[9px] uppercase z-10 border border-rule">AVANT</div>
+<img class="w-full h-full object-cover" data-alt="Full body shot of a model sitting rigidly on a stark concrete block. Wearing a heavily textured, oversized knit sweater in deep charcoal. The composition is entirely static, severe, and anchored by a visible grid-like background." src="https://lh3.googleusercontent.com/aida-public/AB6AXuC751LWhMtEEwIWIXJZF6Eht5CYiSe-W5GezvWxPMuyZRpYU73Ajk6_hL62Nifi1nWEImUQEU18rGkUb3BdHNTEZzgioalayFsLDpLb-t41BczHlz9FX-aTawP28xIJtUBxYnZpYdCZ8mXvI71jd9Cj3j4YyRlDOh9KIjH4U1WN-gFxE-81BJUCHiHHRjwKXUFmJDIfwdwQWRno_3Kdne0M-uaIrSZ8U02d0-MvsBvTTc2s_3yM">
+</div>
+<div class="aspect-square bg-surface border border-rule relative">
+<div class="absolute top-2 left-2 bg-ink text-surface px-2 py-1 font-utility-label text-[9px] uppercase z-10">APRÈS</div>
+<img class="w-full h-full object-cover" data-alt="The same severe composition, but the camera perspective has shifted, showing an extreme, slow-motion dolly-in effect. The texture of the charcoal knit sweater appears heightened, as if recorded on high-end analog film grain." src="https://lh3.googleusercontent.com/aida-public/AB6AXuB9p4BSQfplSvWEcxj3shvVIXAG7LCn84vI7-gZOembyCcRYMKAc4JQD2fzu5c8IJBbI8vycM4uTkFCMuBCIyFbkKy_kdC-1tTG2rlrTms4wy6oCDMLQ3eL6P1jvLUAfdC1pNp6r3ff-SWyQCoyWrNRiqL68lbvpZ4oMEp6DKEDj-hJ3Ob9XvIHBBcEC7j1V5-SRMC7CNIfXPufcerE-LlhtjRa0orE5ODibcS7HFxrvM8fxYi5">
+</div>
+</div>
+</div>
+</div>
+<!-- Ce que vous obtenez -->
+<div class="border-t border-rule pt-stack-lg">
+<h2 class="font-headline-lg text-[26px] md:text-[26px] mb-stack-md text-ink">Ce que vous obtenez</h2>
+<div class="grid grid-cols-1 md:grid-cols-3 border-y border-rule">
+<div class="p-stack-md md:border-r border-rule flex flex-col gap-stack-sm border-b md:border-b-0">
+<div class="font-utility-label text-utility-label uppercase text-ink">LE KIT .MD</div>
+<p class="font-body-sm text-body-sm text-ink-soft">Le moteur de prompt exact à copier-coller dans l'outil d'IA vidéo, structuré pour une cohérence éditoriale stricte.</p>
+</div>
+<div class="p-stack-md md:border-r border-rule flex flex-col gap-stack-sm border-b md:border-b-0">
+<div class="font-utility-label text-utility-label uppercase text-ink">LE GUIDE PDF</div>
+<p class="font-body-sm text-body-sm text-ink-soft">Mode d'emploi détaillé sur les paramètres de mouvement, de caméra et de texture à privilégier pour éviter l'effet 'IA générique'.</p>
+</div>
+<div class="p-stack-md flex flex-col gap-stack-sm">
+<div class="font-utility-label text-utility-label uppercase text-ink">LE TUTORIEL VIDÉO</div>
+<p class="font-body-sm text-body-sm text-ink-soft">La démonstration de notre flux de travail complet, de l'image fixe au montage final, sans fioritures.</p>
+</div>
+</div>
+</div>
+</div>
+<!-- Sticky Sidebar (Right) -->
+<div class="lg:col-span-5 relative">
+<div class="sticky top-[80px] flex flex-col gap-stack-md w-full max-w-[26rem] ml-auto">
+<!-- Prérequis -->
+<div class="bg-surface border border-ink p-stack-md">
+<div class="font-utility-label text-utility-label uppercase text-ink mb-stack-sm border-b border-rule pb-2 flex items-center gap-2">
+<span class="material-symbols-outlined text-[14px]">info</span>
+                            PRÉREQUIS
+                        </div>
+<p class="font-body-sm text-body-sm text-ink-soft uppercase tracking-wide">
+                            CE DONT VOUS AVEZ BESOIN :<br><br>
+                            — Google Veo 3 (Accès requis)<br>
+                            — Images sources HD<br>
+                            — Connaissances basiques en montage
+                        </p>
+</div>
+<!-- Formulaire -->
+<div class="bg-surface border border-ink p-stack-lg">
+<h3 class="font-headline-lg text-[28px] md:text-[28px] mb-stack-md text-ink">Recevoir le kit</h3>
+<form class="flex flex-col gap-stack-md">
+<div class="flex flex-col gap-1">
+<label class="font-utility-label text-utility-label uppercase text-ink-soft" for="prenom">PRÉNOM</label>
+<input class="w-full bg-transparent border-0 border-b border-rule focus:border-ink focus:ring-0 px-0 py-2 font-body-md text-ink transition-colors" id="prenom" required="" type="text">
+</div>
+<div class="flex flex-col gap-1">
+<label class="font-utility-label text-utility-label uppercase text-ink-soft" for="whatsapp">WHATSAPP (+225)</label>
+<input class="w-full bg-transparent border-0 border-b border-rule focus:border-ink focus:ring-0 px-0 py-2 font-body-md text-ink transition-colors" id="whatsapp" placeholder="+225" required="" type="tel">
+</div>
+<div class="flex flex-col gap-1">
+<label class="font-utility-label text-utility-label uppercase text-ink-soft" for="email">EMAIL</label>
+<input class="w-full bg-transparent border-0 border-b border-rule focus:border-ink focus:ring-0 px-0 py-2 font-body-md text-ink transition-colors" id="email" required="" type="email">
+</div>
+<button class="mt-stack-sm w-full bg-ink text-surface font-utility-label text-utility-label uppercase py-4 border border-ink hover:bg-surface hover:text-ink transition-colors duration-600 flex items-center justify-center gap-2" type="button">
+<span class="material-symbols-outlined text-[16px]">download</span>
+                                Télécharger le kit
+                            </button>
+</form>
+</div>
+</div>
+</div>
+</section>
+</main>
+<!-- ASSISTANCE (Full-width) -->
+<section class="w-full bg-ink text-surface py-stack-lg px-margin-desktop text-center flex flex-col items-center justify-center gap-stack-md reveal-up" style="animation-delay: 300ms;">
+<div class="font-utility-label text-utility-label uppercase text-surface-tint tracking-widest">
+            VOUS BLOQUEZ ?
+        </div>
+<h2 class="font-headline-lg text-[24px] md:text-[24px] max-w-2xl mx-auto">
+            Séance de groupe hebdomadaire pour analyser vos résultats et affiner la méthode.
+        </h2>
+<a class="mt-stack-sm bg-whatsapp-green text-ink font-utility-label text-utility-label uppercase py-4 px-stack-lg border border-whatsapp-green hover:bg-transparent hover:text-whatsapp-green transition-colors duration-600 inline-flex items-center gap-2" href="#">
+<span class="material-symbols-outlined text-[18px]">chat</span>
+            Échanger sur WhatsApp
+        </a>
+</section>
+<!-- FOOTER (JSON INJECTED - Modified per prompt instructions) -->
+<footer class="bg-background text-ink w-full border-t border-rule flex flex-col items-start gap-stack-md px-margin-desktop py-stack-lg relative overflow-hidden">
+<div class="w-full flex flex-col md:flex-row justify-between items-start md:items-center gap-stack-md">
+<nav class="flex flex-wrap items-center gap-stack-sm">
+<a class="font-utility-label text-[10px] uppercase tracking-widest text-ink hover:opacity-70 transition-opacity duration-600 underline underline-offset-4" href="#">KITS</a>
+<span class="text-rule hidden md:inline">|</span>
+<a class="font-utility-label text-[10px] uppercase tracking-widest text-ink-soft hover:text-ink transition-colors duration-600" href="#">SÉANCE</a>
+<span class="text-rule hidden md:inline">|</span>
+<a class="font-utility-label text-[10px] uppercase tracking-widest text-ink-soft hover:text-ink transition-colors duration-600" href="#">TRAVAILLER ENSEMBLE</a>
+<span class="text-rule hidden md:inline">|</span>
+<a class="font-utility-label text-[10px] uppercase tracking-widest text-ink-soft hover:text-ink transition-colors duration-600" href="#">MENTIONS LÉGALES</a>
+</nav>
+</div>
+<div class="w-full border-t border-rule pt-stack-sm mt-stack-sm">
+<div class="font-utility-label text-[10px] font-bold text-ink uppercase tracking-widest">
+                ©2024 FASHIONAI.AGENCY
+            </div>
+</div>
+</footer>
+
+
+</body></html>

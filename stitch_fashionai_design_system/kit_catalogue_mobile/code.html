@@ -1,0 +1,357 @@
+<!DOCTYPE html><html class="light" lang="fr"><head>
+<meta charset="utf-8">
+<meta content="width=390, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" name="viewport">
+<title>fashionai.agency - Le Catalogue (Mobile)</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com" rel="preconnect">
+<link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect">
+<link href="https://fonts.googleapis.com/css2?family=Archivo:ital,wght@0,100..900;1,100..900&amp;family=Bodoni+Moda:ital,opsz,wght@0,6..96,400..900;1,6..96,400..900&amp;family=DM+Mono:ital,wght@0,300;0,400;0,500;1,300;1,400;1,500&amp;display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet">
+<script id="tailwind-config">
+      tailwind.config = {
+        darkMode: "class",
+        theme: {
+          extend: {
+            "colors": {
+                    "on-tertiary-container": "#88837e",
+                    "secondary-fixed-dim": "#c6c6c8",
+                    "on-background": "#1a1b23",
+                    "surface-dim": "#dad9e4",
+                    "primary-fixed-dim": "#c8c6c8",
+                    "background": "#F6F6F8",
+                    "surface-variant": "#e3e1ec",
+                    "whatsapp-green": "#25D366",
+                    "ink": "#0B0B0D",
+                    "inverse-primary": "#c8c6c8",
+                    "on-primary": "#ffffff",
+                    "on-surface-variant": "#47464a",
+                    "ink-soft": "#56565F",
+                    "rule": "#DCDCE2",
+                    "secondary": "#5d5e60",
+                    "on-secondary-container": "#616365",
+                    "on-error-container": "#93000a",
+                    "on-error": "#ffffff",
+                    "surface-tint": "#5f5e60",
+                    "accent-sienna": "#B7410E",
+                    "surface-container-high": "#e9e7f2",
+                    "tertiary-fixed-dim": "#ccc5c0",
+                    "tertiary-fixed": "#e8e1db",
+                    "inverse-on-surface": "#f1effa",
+                    "on-primary-container": "#858386",
+                    "primary": "#000000",
+                    "on-tertiary-fixed": "#1e1b18",
+                    "surface-container": "#eeecf8",
+                    "primary-container": "#1c1b1d",
+                    "on-primary-fixed": "#1c1b1d",
+                    "surface-container-low": "#f4f2fd",
+                    "inverse-surface": "#2f3038",
+                    "primary-fixed": "#e5e1e4",
+                    "tertiary-container": "#1e1b18",
+                    "on-tertiary-fixed-variant": "#4a4642",
+                    "error-container": "#ffdad6",
+                    "outline-variant": "#c8c5ca",
+                    "error": "#ba1a1a",
+                    "on-secondary-fixed-variant": "#454749",
+                    "tertiary": "#000000",
+                    "on-secondary-fixed": "#1a1c1d",
+                    "surface-container-highest": "#e3e1ec",
+                    "surface": "#FFFFFF",
+                    "on-primary-fixed-variant": "#474649",
+                    "on-secondary": "#ffffff",
+                    "surface-container-lowest": "#ffffff",
+                    "outline": "#78767b",
+                    "secondary-container": "#dfdfe1",
+                    "secondary-fixed": "#e2e2e4",
+                    "on-tertiary": "#ffffff",
+                    "surface-bright": "#fbf8ff",
+                    "on-surface": "#1a1b23"
+            },
+            "borderRadius": {
+                    "DEFAULT": "0px",
+                    "lg": "0px",
+                    "xl": "0px",
+                    "full": "0px"
+            },
+            "spacing": {
+                    "gutter": "1px",
+                    "stack-lg": "80px",
+                    "margin-desktop": "64px",
+                    "margin-mobile": "20px",
+                    "stack-md": "24px",
+                    "stack-sm": "12px"
+            },
+            "fontFamily": {
+                    "display-xl-mobile": [
+                            "Bodoni Moda"
+                    ],
+                    "body-md": [
+                            "Archivo"
+                    ],
+                    "utility-label": [
+                            "DM Mono"
+                    ],
+                    "headline-lg": [
+                            "Bodoni Moda"
+                    ],
+                    "display-xl": [
+                            "Bodoni Moda"
+                    ],
+                    "body-sm": [
+                            "Archivo"
+                    ],
+                    "headline-lg-mobile": [
+                            "Bodoni Moda"
+                    ]
+            },
+            "fontSize": {
+                    "display-xl-mobile": [
+                            "48px",
+                            {
+                                    "lineHeight": "1.0",
+                                    "letterSpacing": "-0.03em",
+                                    "fontWeight": "400"
+                            }
+                    ],
+                    "body-md": [
+                            "16px",
+                            {
+                                    "lineHeight": "1.6",
+                                    "fontWeight": "400"
+                            }
+                    ],
+                    "utility-label": [
+                            "11px",
+                            {
+                                    "lineHeight": "1.2",
+                                    "letterSpacing": "0.14em",
+                                    "fontWeight": "500"
+                            }
+                    ],
+                    "headline-lg": [
+                            "40px",
+                            {
+                                    "lineHeight": "1.1",
+                                    "letterSpacing": "-0.02em",
+                                    "fontWeight": "400"
+                            }
+                    ],
+                    "display-xl": [
+                            "72px",
+                            {
+                                    "lineHeight": "1.0",
+                                    "letterSpacing": "-0.04em",
+                                    "fontWeight": "400"
+                            }
+                    ],
+                    "body-sm": [
+                            "14px",
+                            {
+                                    "lineHeight": "1.6",
+                                    "fontWeight": "400"
+                            }
+                    ],
+                    "headline-lg-mobile": [
+                            "32px",
+                            {
+                                    "lineHeight": "1.1",
+                                    "fontWeight": "400"
+                            }
+                    ]
+            }
+    },
+        },
+      }
+    </script>
+<style>
+        /* Smooth scrolling and transitions */
+        html { scroll-behavior: smooth; }
+        body { -webkit-font-smoothing: antialiased; -moz-osx-font-smoothing: grayscale; }
+        
+        /* Entrance animation for elements */
+        .glide-in {
+            opacity: 0;
+            transform: translateY(10px);
+            animation: glideIn 600ms cubic-bezier(0.4, 0, 0.2, 1) forwards;
+        }
+        
+        @keyframes glideIn {
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        /* Staggered animations */
+        .delay-1 { animation-delay: 100ms; }
+        .delay-2 { animation-delay: 200ms; }
+        .delay-3 { animation-delay: 300ms; }
+        
+        /* Hide scrollbar for horizontal scrolling chips */
+        .hide-scrollbar::-webkit-scrollbar {
+            display: none;
+        }
+        .hide-scrollbar {
+            -ms-overflow-style: none;
+            scrollbar-width: none;
+        }
+    </style>
+</head>
+<body class="bg-background text-ink w-full max-w-[390px] mx-auto min-h-screen border-l border-r border-rule">
+<!-- TopAppBar -->
+<header class="fixed top-0 left-0 w-full z-50 flex items-center justify-between px-margin-mobile bg-background h-[56px] border-b border-rule max-w-[390px] mx-auto" style="left: 50%; transform: translateX(-50%);">
+<a class="font-display-xl-mobile text-headline-lg-mobile tracking-tighter text-ink transition-opacity duration-600 hover:opacity-70" href="#">
+            fashionai.agency
+        </a>
+<button aria-label="Menu" class="text-ink hover:opacity-70 transition-opacity duration-600">
+<span class="material-symbols-outlined" style="font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;">menu</span>
+</button>
+</header>
+<!-- Spacer for fixed header -->
+<div class="h-[56px] w-full"></div>
+<main class="w-full flex flex-col">
+<!-- Page Header -->
+<section class="px-margin-mobile py-stack-md flex flex-col gap-4 border-b border-rule glide-in">
+<span class="font-utility-label text-utility-label text-accent-sienna uppercase tracking-[0.14em]">LE CATALOGUE</span>
+<h1 class="font-headline-lg-mobile text-headline-lg-mobile text-ink tracking-tighter leading-tight" style="font-size: 36px;">Photo et vidéo, une seule méthode</h1>
+<p class="font-body-md text-[15px] text-ink-soft max-w-[300px]">Chaque kit est un module de notre chaîne de production. Téléchargeables un par un.</p>
+</section>
+<!-- Filter Chips -->
+<section class="py-4 border-b border-rule glide-in delay-1 overflow-x-auto hide-scrollbar">
+<div class="px-margin-mobile flex items-center gap-3 w-max">
+<button class="h-10 px-4 bg-ink text-on-primary font-utility-label text-[11px] uppercase tracking-[0.14em] flex items-center justify-center transition-opacity hover:opacity-80">
+                    TOUS
+                </button>
+<button class="h-10 px-4 border border-rule bg-transparent text-ink font-utility-label text-[11px] uppercase tracking-[0.14em] flex items-center justify-center transition-colors hover:border-ink">
+                    PHOTO
+                </button>
+<button class="h-10 px-4 border border-rule bg-transparent text-ink font-utility-label text-[11px] uppercase tracking-[0.14em] flex items-center justify-center transition-colors hover:border-ink">
+                    VIDÉO
+                </button>
+</div>
+</section>
+<!-- Kit Grid (Mobile: 1 Column) -->
+<section class="flex flex-col">
+<!-- Kit 1: Photo - Le mannequin invisible -->
+<article class="flex flex-col border-b border-rule glide-in delay-2">
+<div class="w-full aspect-[4/5] bg-surface-dim relative overflow-hidden">
+<img alt="Le mannequin invisible" class="w-full h-full object-cover" data-alt="A high-end editorial fashion photo showing a ghost mannequin effect on a crisp white oversized shirt. The setting is a minimalist, high-key bright photography studio with pure white backgrounds. The lighting is soft and masterfully controlled, creating subtle, luxurious shadows that emphasize the texture of the fabric. The aesthetic is extremely clean, minimalist, and brutalist-inspired, typical of luxury brand product photography." src="https://lh3.googleusercontent.com/aida-public/AB6AXuCOAoBH1seZJjVDz8swxs-uqMY_n_nhHiniOU5cW43IzJHTena0yDoV9TqAxboqbjHP4z_ErLq1bi9IItcGpC1ccHMoEfuWhu35jZm2bJSmORp2C2WyJHxHmYitb_sf2eMtXl_HshoFv63VETbxLC3HsEaVzVs35Lp9fC-xuSuyrrw4RqQWSowL0jIjGfWt4n5dga4xGlwVL160unpS74avbvNqpMGeLa9PLDs27WNlp0TvkbUd">
+</div>
+<div class="p-margin-mobile flex flex-col gap-2">
+<div class="flex items-center gap-2">
+<span class="font-utility-label text-[10px] text-ink uppercase tracking-[0.14em]">PHOTO</span>
+<span class="w-3 h-[1px] bg-rule"></span>
+<span class="font-utility-label text-[10px] text-ink-soft uppercase tracking-[0.14em]">FLUX</span>
+</div>
+<h2 class="font-headline-lg-mobile text-[24px] text-ink leading-[1.1] tracking-tight">Le mannequin invisible</h2>
+<p class="font-body-sm text-[14px] text-ink-soft">ghost mannequin propre pour vos fiches produit</p>
+</div>
+</article>
+<!-- Kit 2: Photo - Le packshot studio -->
+<article class="flex flex-col border-b border-rule glide-in delay-3">
+<div class="w-full aspect-[4/5] bg-surface-dim relative overflow-hidden">
+<img alt="Le packshot studio" class="w-full h-full object-cover" data-alt="A pristine studio packshot of a sleek, minimalist leather handbag resting on a concrete plinth against a neutral grey backdrop. The lighting is incredibly sharp, creating a high-contrast editorial look with deep blacks and stark whites. The composition adheres strictly to a visible grid alignment, embodying a brutalist yet luxurious aesthetic. The mood is authoritative and avant-garde." src="https://lh3.googleusercontent.com/aida-public/AB6AXuCkuGhrORwk7fzKOVUIDHzISWYVqM2jCgvLaomWMK6nPlmCW7MaeMDKy1o8srzB5zXLDkP2jxX6uQexOhxP9BFYUHEgMxXgS7KhoF10Ghwi5US3q-hrwKREVy5OIFcQ5FGfr_a49qgL4B84vhV9psbrEsUfaIm8_rhQWJoBFFYb_IXq--3-XUV0Vx7raYlpWf8kjZM0fY6u2vTOR-qzloDqRVQAgnqZ7BQc2ZIlkPJc0-qflDy2">
+</div>
+<div class="p-margin-mobile flex flex-col gap-2">
+<div class="flex items-center gap-2">
+<span class="font-utility-label text-[10px] text-ink uppercase tracking-[0.14em]">PHOTO</span>
+<span class="w-3 h-[1px] bg-rule"></span>
+<span class="font-utility-label text-[10px] text-ink-soft uppercase tracking-[0.14em]">STUDIO</span>
+</div>
+<h2 class="font-headline-lg-mobile text-[24px] text-ink leading-[1.1] tracking-tight">Le packshot studio</h2>
+<p class="font-body-sm text-[14px] text-ink-soft">fond neutre, lumière maîtrisée, sans studio</p>
+</div>
+</article>
+<!-- Kit 3: Photo - La mise en situation -->
+<article class="flex flex-col border-b border-rule glide-in">
+<div class="w-full aspect-[4/5] bg-surface-dim relative overflow-hidden">
+<img alt="La mise en situation" class="w-full h-full object-cover" data-alt="A striking lifestyle fashion photograph showing an avant-garde black structured coat worn by an anonymous model in a stark, modern architectural setting in West Africa, featuring raw concrete and harsh geometric shadows. The lighting is natural but highly contrasting, emphasizing the brutalist environment. The color palette is strictly restrained to blacks, whites, and raw architectural tones. The image has a cinematic, high-fashion editorial quality." src="https://lh3.googleusercontent.com/aida-public/AB6AXuBjaEVC14Hx8whEUbp8fl3BUfD56ezi-5r3KyeW2A9PKM81QMoq5WR0ql8yJbW4o8dvPLf_KpfR1j6cx47-JFYBOJ_kUQ6rJOyUpt6m0aH37JNjvWJFaATZ9shqqgTkVW_f4KUoosZhxyKHRPveiCcXCBm4zVc7G5TfjxHBmCfUqT4APqSpXRGVQrlcw-ePJHNlkLQQILOv7f67tEQzSYP5jk8ZRGxu2o6XRIF56WQXubUekYvf">
+</div>
+<div class="p-margin-mobile flex flex-col gap-2">
+<div class="flex items-center gap-2">
+<span class="font-utility-label text-[10px] text-ink uppercase tracking-[0.14em]">PHOTO</span>
+<span class="w-3 h-[1px] bg-rule"></span>
+<span class="font-utility-label text-[10px] text-ink-soft uppercase tracking-[0.14em]">LIFESTYLE</span>
+</div>
+<h2 class="font-headline-lg-mobile text-[24px] text-ink leading-[1.1] tracking-tight">La mise en situation</h2>
+<p class="font-body-sm text-[14px] text-ink-soft">votre pièce portée, en décor réel</p>
+</div>
+</article>
+<!-- Kit 4: Vidéo - Transformez vos photos en films de campagne -->
+<article class="flex flex-col border-b border-rule glide-in">
+<div class="w-full aspect-[4/5] bg-ink relative overflow-hidden flex items-center justify-center">
+<!-- Simulating a video thumbnail with a play icon placeholder -->
+<img alt="Video Thumbnail" class="w-full h-full object-cover opacity-80" data-alt="A cinematic, slow-motion still capturing a moment of a fashion film campaign. A model wearing a flowing, vivid red garment against a pure, deep black background. The lighting is dramatic and directional, creating a sense of dynamic movement and avant-garde luxury. The aesthetic is strictly high-contrast ink-on-paper style, with a minimalist, brutalist edge." src="https://lh3.googleusercontent.com/aida-public/AB6AXuD2lENtCeDU7E72O22bcPWHjmQjn84HPRu7tkS1Mcev1MJ6pvczIb5Q40YvIqNFeO6oh4d5kwE3wUOh0H3-gc6d6CbBJ4TaUlsJEqfby38TRdO6yPr7l_EmU-8NJfGE2NnB6bVrLc-9-EnqimPc-59GlVUmfafBVRnO-f9mUO5PwkG6gv5gratdH2U3dSwy-tnmhg6ZbHI45iHd44wrfB63OTAeKkC0y6lcDpgQ4UTL_vKXLlfX">
+<div class="absolute inset-0 flex items-center justify-center pointer-events-none">
+<span class="material-symbols-outlined text-surface opacity-70" style="font-size: 48px; font-variation-settings: 'FILL' 1;">play_circle</span>
+</div>
+</div>
+<div class="p-margin-mobile flex flex-col gap-2">
+<div class="flex items-center gap-2 flex-wrap">
+<span class="font-utility-label text-[10px] text-ink uppercase tracking-[0.14em]">VIDÉO</span>
+<span class="w-3 h-[1px] bg-rule"></span>
+<span class="font-utility-label text-[10px] text-ink-soft uppercase tracking-[0.14em]">VEO 3</span>
+</div>
+<h2 class="font-headline-lg-mobile text-[24px] text-ink leading-[1.1] tracking-tight">Transformez vos photos en films de campagne</h2>
+<p class="font-body-sm text-[14px] text-ink-soft">animation cinématique de 8 secondes</p>
+<span class="font-utility-label text-[10px] text-ink-soft tracking-[0.14em] uppercase mt-1">ABONNEMENT REQUIS</span>
+</div>
+</article>
+<!-- Kit 5: Vidéo - Le reel produit -->
+<article class="flex flex-col border-b border-rule glide-in">
+<div class="w-full aspect-[4/5] bg-surface-dim relative overflow-hidden">
+<img alt="Le reel produit" class="w-full h-full object-cover" data-alt="A vertical format fashion reel still, showcasing a close-up detail of a meticulously crafted luxury sneaker. The background is a stark, untextured pure white, emphasizing the product's sharp lines and premium materials. The aesthetic is aggressively minimalist, resembling a high-end editorial spread. The lighting is completely even, devoid of distracting shadows, highlighting the architectural nature of the design." src="https://lh3.googleusercontent.com/aida-public/AB6AXuCuUlbMUYZoyXrAyrKDnPm6VDm1vMqkxHlbcJsWrbx9BqNa41JlI17NxkWPRXSRFpOKd9FawObxqXD_4ZGOJ5v2fq2N67GqtGI9_qV75XM0g08nkCPL7YeBNgl7za-adkSBQrybIgDT5jkIC5fjtKVLuS_7ypUnTNXTv6bSIn0gOgEFeLS48MyHGf-6fvYmXrRCfuWYr_6M-sRqffZBI8KMexh0v1QuEEKMkOObCowAmnx5zW3F">
+</div>
+<div class="p-margin-mobile flex flex-col gap-2">
+<div class="flex items-center gap-2">
+<span class="font-utility-label text-[10px] text-ink uppercase tracking-[0.14em]">VIDÉO</span>
+<span class="w-3 h-[1px] bg-rule"></span>
+<span class="font-utility-label text-[10px] text-ink-soft uppercase tracking-[0.14em]">SOCIAL</span>
+</div>
+<h2 class="font-headline-lg-mobile text-[24px] text-ink leading-[1.1] tracking-tight">Le reel produit</h2>
+<p class="font-body-sm text-[14px] text-ink-soft">format vertical pour Instagram et TikTok</p>
+</div>
+</article>
+<!-- Kit 6: Photo - Le pagne et le textile africain -->
+<article class="flex flex-col border-b border-rule glide-in">
+<div class="w-full aspect-[4/5] bg-surface-dim relative overflow-hidden">
+<img alt="Le pagne et le textile africain" class="w-full h-full object-cover" data-alt="A highly detailed, macro photograph focusing entirely on the intricate weave and vibrant, contrasting patterns of traditional West African pagne textile. The fabric is sharply in focus, shot against a stark, pure white background to isolate its texture and color. The lighting is clinical and bright, creating a high-fashion, minimalist presentation of traditional material. The overall feel is modern, brutalist, and intensely graphic." src="https://lh3.googleusercontent.com/aida-public/AB6AXuATLtuOt_EXwi1bLzJeR2mB-MhUoibZW-ZkniYYAOist4w5wF--bT0UX-g6TS5LS-Dynx5VyJUpi9_VUOsFLznFD4XMAgsn0D6RxQJgNUVsU-BG-zPGJNT4LG9dXOgJseXLXdni5WBr6GDzPsLBfUN6FhNt9OJSlMDGdUjBwsbhOVLK1nuorl7ZKXSH1al979oUlm-pmlU-MJznqxnmAPX_SCIsrTLoI7v6FTWCezLFWYLzT8l4">
+</div>
+<div class="p-margin-mobile flex flex-col gap-2">
+<div class="flex items-center gap-2">
+<span class="font-utility-label text-[10px] text-ink uppercase tracking-[0.14em]">PHOTO</span>
+<span class="w-3 h-[1px] bg-rule"></span>
+<span class="font-utility-label text-[10px] text-ink-soft uppercase tracking-[0.14em]">DÉTAIL MATIÈRE</span>
+</div>
+<h2 class="font-headline-lg-mobile text-[24px] text-ink leading-[1.1] tracking-tight">Le pagne et le textile africain</h2>
+<p class="font-body-sm text-[14px] text-ink-soft">rendu fidèle des motifs et des matières</p>
+</div>
+</article>
+</section>
+<!-- Bandeau Séance CTA -->
+<section class="bg-ink text-background flex flex-col p-margin-mobile gap-6 border-b border-ink glide-in w-full">
+<div class="flex flex-col gap-2">
+<span class="font-utility-label text-utility-label text-surface-dim tracking-[0.14em] uppercase">CHAQUE JEUDI, 18H</span>
+<h2 class="font-headline-lg-mobile text-[24px] text-background leading-[1.1] tracking-tight">Une séance pour débloquer votre cas</h2>
+</div>
+<button class="bg-whatsapp-green text-ink font-utility-label text-[11px] uppercase tracking-[0.14em] h-12 w-full flex items-center justify-center transition-opacity hover:opacity-90">
+                Je m'inscris
+            </button>
+</section>
+</main>
+<!-- Footer -->
+<footer class="w-full py-stack-lg px-margin-mobile bg-background flex flex-col items-start gap-8 glide-in">
+<nav class="flex flex-col gap-4 w-full">
+<a class="font-utility-label text-[11px] text-ink uppercase tracking-[0.14em] hover:opacity-70 transition-opacity border-b border-rule pb-2" href="#">KITS</a>
+<a class="font-utility-label text-[11px] text-ink uppercase tracking-[0.14em] hover:opacity-70 transition-opacity border-b border-rule pb-2" href="#">SÉANCE</a>
+<a class="font-utility-label text-[11px] text-ink uppercase tracking-[0.14em] hover:opacity-70 transition-opacity border-b border-rule pb-2" href="#">TRAVAILLER ENSEMBLE</a>
+<a class="font-utility-label text-[11px] text-ink uppercase tracking-[0.14em] hover:opacity-70 transition-opacity border-b border-rule pb-2" href="#">MENTIONS LÉGALES</a>
+</nav>
+<div class="flex flex-col gap-2 w-full pt-4">
+<span class="font-display-xl-mobile text-headline-lg-mobile text-ink tracking-tighter">fashionai.agency</span>
+<span class="font-utility-label text-[10px] text-ink-soft uppercase tracking-[0.14em]">© 2024 FASHIONAI.AGENCY</span>
+</div>
+</footer>
+
+
+</body></html>
