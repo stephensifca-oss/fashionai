@@ -2,7 +2,6 @@
   "name": "fashionai",
   "compatibility_date": "2024-04-01",
   "compatibility_flags": ["nodejs_compat"],
-  "account_id": "de35d9293f1d3ba253c4796e39b9f1a2",
   "pages_build_output_dir": ".vercel/output/static",
   "d1_databases": [
     {
