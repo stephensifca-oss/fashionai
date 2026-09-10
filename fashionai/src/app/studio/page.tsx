@@ -68,7 +68,7 @@ export default function StudioLandingKitPage() {
       tag: "APRÈS · PLAN MAÎTRE ÉDITORIAL (2:3)",
       title: "Plan Maître Haute Définition",
       subtitle: "Génération virtuelle Fatou, cyclorama blanc pur et rendu 4K",
-      img: "/Studio_template/MAIN%20FULL-BODY%20VIEW.png",
+      img: "/Studio_template/main-full-body-view.png",
       format: "Plan Maître (2:3)",
     },
   ];
@@ -80,7 +80,7 @@ export default function StudioLandingKitPage() {
       tag: "VUE 01 · MAÎTRE",
       title: "Plan Maître Éditorial",
       subtitle: "Silhouette complète, posture naturelle & sac bordeaux",
-      img: "/Studio_template/MAIN%20FULL-BODY%20VIEW.png",
+      img: "/Studio_template/main-full-body-view.png",
       format: "Plein Pied (9:16)",
     },
     {
@@ -89,7 +89,7 @@ export default function StudioLandingKitPage() {
       tag: "VUE 02 · FACE",
       title: "Plan Face Catalogue",
       subtitle: "Tombé vertical, bustier asymétrique & symétrie e-commerce",
-      img: "/Studio_template/STILL%20FRONT%20VIEW.png",
+      img: "/Studio_template/still-front-view.png",
       format: "Face Studio (9:16)",
     },
     {
@@ -98,7 +98,7 @@ export default function StudioLandingKitPage() {
       tag: "VUE 03 · PROFIL",
       title: "Ligne de Profil 90°",
       subtitle: "Continuité de silhouette, basque drapée et tombé pantalon",
-      img: "/Studio_template/STILL%20PROFILE%20VIEW.png",
+      img: "/Studio_template/still-profile-view.png",
       format: "Profil 90° (9:16)",
     },
     {
@@ -107,7 +107,7 @@ export default function StudioLandingKitPage() {
       tag: "VUE 04 · DOS",
       title: "Finition Dorsale 180°",
       subtitle: "Bretelles croisées & fermeture éclair invisible dos",
-      img: "/Studio_template/STILL%20BACK%20VIEW.png",
+      img: "/Studio_template/still-back-view.png",
       format: "Dos 180° (9:16)",
     },
     {
@@ -116,7 +116,7 @@ export default function StudioLandingKitPage() {
       tag: "VUE 05 · BUSTE",
       title: "Gros Plan Buste & Porté",
       subtitle: "Fidélité d'incarnation (Fatou), grain de peau & découpe col",
-      img: "/Studio_template/BUST%20%26%20FACE%20CLOSE-UP.png",
+      img: "/Studio_template/bust-and-face-closeup.png",
       format: "Gros Plan (1:1)",
     },
     {
@@ -125,7 +125,7 @@ export default function StudioLandingKitPage() {
       tag: "VUE 06 · COUPE",
       title: "Détail Taille & Basque",
       subtitle: "Précision du pli asymétrique & texture textile crêpe",
-      img: "/Studio_template/WAIST%20%26%20CONSTRUCTION%20CLOSE-UP.png",
+      img: "/Studio_template/waist-and-construction-closeup.png",
       format: "Macro Coupe (1:1)",
     },
     {
@@ -134,7 +134,7 @@ export default function StudioLandingKitPage() {
       tag: "VUE 07 · FINITION",
       title: "Détail Dos & Corseterie",
       subtitle: "Structure dorsale, surpiqûres et maintien des bretelles",
-      img: "/Studio_template/SIGNATURE%20DETAIL%20MACRO.png",
+      img: "/Studio_template/signature-detail-macro.png",
       format: "Macro Matière (1:1)",
     },
   ];
