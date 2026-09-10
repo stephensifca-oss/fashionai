@@ -724,54 +724,53 @@ export default function StudioLandingKitPage() {
 
           {/* ── AUTO-PLAYING IMAGE SLIDER (NO HEAVY TEXT) ─────────────── */}
           <div 
-            className="relative overflow-hidden bg-white border border-[#DCDCE2] p-3 md:p-4 shadow-sm group select-none"
+            className="relative overflow-hidden bg-white border border-[#DCDCE2] p-2.5 sm:p-4 shadow-sm group select-none"
             onMouseEnter={() => setIsGalleryAutoPlay(false)}
             onMouseLeave={() => setIsGalleryAutoPlay(true)}
             onTouchStart={handleTouchStart}
             onTouchEnd={handleTouchEnd}
           >
             {/* Carousel Container */}
-            <div className="overflow-hidden">
+            <div className="overflow-hidden w-full">
               <div
-                className="flex transition-transform duration-700 ease-out gap-3 md:gap-4"
+                className="flex transition-transform duration-700 ease-out"
                 style={{
-                  transform:
-                    cardsPerView === 1
-                      ? `translateX(calc(-${gallerySlideIndex} * (100% + 12px)))`
-                      : cardsPerView === 2
-                      ? `translateX(calc(-${gallerySlideIndex} * (50% + 6px)))`
-                      : `translateX(calc(-${gallerySlideIndex} * (33.333% + 5.33px)))`,
+                  transform: `translateX(-${gallerySlideIndex * (100 / cardsPerView)}%)`,
                 }}
               >
                 {filteredGalleryItems.map((item, index) => (
                   <div
                     key={item.id}
-                    onClick={() => setActiveLightbox({ items: filteredGalleryItems, index })}
-                    className="w-full sm:w-[calc(50%-6px)] lg:w-[calc(33.333%-10.66px)] shrink-0 aspect-[3/4] bg-[#121214] relative border border-[#DCDCE2] overflow-hidden cursor-pointer group/card flex items-center justify-center"
+                    className="w-full sm:w-1/2 lg:w-1/3 shrink-0 px-0 sm:px-1.5 lg:px-2"
                   >
-                    <img
-                      src={item.img}
-                      alt={item.title}
-                      className="w-full h-full object-cover transition-transform duration-700 group-hover/card:scale-105"
-                    />
+                    <div
+                      onClick={() => setActiveLightbox({ items: filteredGalleryItems, index })}
+                      className="w-full aspect-[3/4] bg-[#121214] relative border border-[#DCDCE2] overflow-hidden cursor-pointer group/card flex items-center justify-center"
+                    >
+                      <img
+                        src={item.img}
+                        alt={item.title}
+                        className="w-full h-full object-cover transition-transform duration-700 group-hover/card:scale-105"
+                      />
 
-                    {/* Minimalist Badges */}
-                    <div className="absolute top-3 left-3 bg-[#0B0B0D]/90 text-white font-mono text-[9px] uppercase tracking-wider px-2 py-1 border border-white/20 backdrop-blur-xs">
-                      {item.tag}
-                    </div>
-
-                    <div className="absolute top-3 right-3 bg-white/90 text-[#0B0B0D] font-mono text-[9px] uppercase tracking-wider px-2 py-0.5 border border-[#DCDCE2] font-bold">
-                      {item.format}
-                    </div>
-
-                    {/* Bottom subtle title on hover */}
-                    <div className="absolute bottom-0 inset-x-0 bg-gradient-to-t from-black/85 via-black/40 to-transparent p-3 text-white flex justify-between items-end opacity-90 group-hover/card:opacity-100 transition-opacity">
-                      <div className="font-mono text-xs font-bold truncate pr-2">
-                        {item.title}
+                      {/* Minimalist Badges */}
+                      <div className="absolute top-3 left-3 bg-[#0B0B0D]/90 text-white font-mono text-[9px] uppercase tracking-wider px-2 py-1 border border-white/20 backdrop-blur-xs">
+                        {item.tag}
                       </div>
-                      <span className="font-mono text-[9px] uppercase tracking-widest text-neutral-300 bg-white/10 px-1.5 py-0.5 border border-white/20 shrink-0">
-                        🔍 HD
-                      </span>
+
+                      <div className="absolute top-3 right-3 bg-white/90 text-[#0B0B0D] font-mono text-[9px] uppercase tracking-wider px-2 py-0.5 border border-[#DCDCE2] font-bold">
+                        {item.format}
+                      </div>
+
+                      {/* Bottom subtle title on hover */}
+                      <div className="absolute bottom-0 inset-x-0 bg-gradient-to-t from-black/85 via-black/40 to-transparent p-3 text-white flex justify-between items-end opacity-95 group-hover/card:opacity-100 transition-opacity">
+                        <div className="font-mono text-xs font-bold truncate pr-2">
+                          {item.title}
+                        </div>
+                        <span className="font-mono text-[9px] uppercase tracking-widest text-neutral-300 bg-white/10 px-1.5 py-0.5 border border-white/20 shrink-0">
+                          🔍 HD
+                        </span>
+                      </div>
                     </div>
                   </div>
                 ))}
