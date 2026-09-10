@@ -59,6 +59,7 @@ export default function StudioLandingKitPage() {
   // Gallery slider state & filtering
   const [galleryFilter, setGalleryFilter] = useState<"all" | "angles" | "details">("all");
   const [gallerySlideIndex, setGallerySlideIndex] = useState(0);
+  const [isGalleryAutoPlay, setIsGalleryAutoPlay] = useState(true);
 
   const proofItems: LightboxItem[] = [
     {
@@ -162,6 +163,15 @@ export default function StudioLandingKitPage() {
     if (filteredGalleryItems.length === 0) return;
     setGallerySlideIndex((prev) => (prev - 1 + filteredGalleryItems.length) % filteredGalleryItems.length);
   };
+
+  // Auto-scroll the gallery slider
+  useEffect(() => {
+    if (!isGalleryAutoPlay || filteredGalleryItems.length <= 1) return;
+    const interval = setInterval(() => {
+      setGallerySlideIndex((prev) => (prev + 1) % filteredGalleryItems.length);
+    }, 2600);
+    return () => clearInterval(interval);
+  }, [isGalleryAutoPlay, filteredGalleryItems.length]);
 
   // Close modals on Escape key or handle lightbox arrows
   useEffect(() => {
@@ -611,10 +621,10 @@ export default function StudioLandingKitPage() {
         </section>
 
         {/* ═════════════════════════════════════════════════════════════════
-            04. GALERIE DE RÉSULTATS STUDIO — SLIDER ANIMÉ PAR GROUPE
+            04. GALERIE DE RÉSULTATS STUDIO — CARROUSEL DÉFILANT AUTOMATIQUE
             ═════════════════════════════════════════════════════════════════ */}
-        <section className="space-y-6">
-          <div className="border-b border-[#DCDCE2] pb-3 flex flex-col md:flex-row justify-between items-start md:items-end gap-3">
+        <section className="space-y-4">
+          <div className="border-b border-[#DCDCE2] pb-3 flex flex-col sm:flex-row justify-between items-start sm:items-end gap-3">
             <div>
               <p className="font-mono text-[11px] uppercase tracking-widest text-[#56565F]">
                 04 · Galerie de Résultats Studio
@@ -625,7 +635,7 @@ export default function StudioLandingKitPage() {
             </div>
 
             {/* Filter Tabs : TOUS / Silhouettes / Gros plan */}
-            <div className="flex flex-wrap items-center gap-2">
+            <div className="flex items-center gap-2">
               <div className="inline-flex border border-[#DCDCE2] bg-white p-0.5 font-mono text-[11px] uppercase">
                 <button
                   onClick={() => handleFilterChange("all")}
@@ -654,7 +664,7 @@ export default function StudioLandingKitPage() {
               </div>
 
               {/* Slider Controls */}
-              <div className="flex items-center gap-1.5 pl-2">
+              <div className="flex items-center gap-1 pl-1">
                 <button
                   onClick={prevGallerySlide}
                   aria-label="Image précédente"
@@ -673,123 +683,83 @@ export default function StudioLandingKitPage() {
             </div>
           </div>
 
-          {/* ── ANIMATED SLIDER / CAROUSEL ────────────────────────────── */}
-          <div className="relative overflow-hidden bg-white border border-[#DCDCE2] p-4 md:p-6 shadow-sm">
-            <div
-              className="flex transition-transform duration-500 ease-out"
-              style={{
-                transform: `translateX(-${gallerySlideIndex * 100}%)`,
-              }}
-            >
-              {filteredGalleryItems.map((item, index) => (
-                <div
-                  key={item.id}
-                  className="w-full shrink-0 px-2 sm:px-3"
-                >
-                  <div className="grid grid-cols-1 md:grid-cols-12 gap-6 items-center">
-                    {/* Visual Media */}
-                    <div
-                      onClick={() => setActiveLightbox({ items: filteredGalleryItems, index })}
-                      className="md:col-span-7 aspect-[3/4] sm:aspect-[4/5] md:aspect-[3/4] max-h-[480px] bg-[#121214] overflow-hidden relative cursor-pointer group flex items-center justify-center border border-[#DCDCE2]"
-                    >
-                      <img
-                        src={item.img}
-                        alt={item.title}
-                        className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-[1.03]"
-                      />
-                      <div className="absolute top-3 left-3 bg-[#0B0B0D]/85 text-white font-mono text-[10px] uppercase tracking-wider px-2.5 py-1 border border-white/20">
-                        {item.tag}
-                      </div>
-                      <div className="absolute bottom-3 right-3 bg-black/75 text-white font-mono text-[9px] uppercase tracking-widest px-2.5 py-1 opacity-0 group-hover:opacity-100 transition-opacity backdrop-blur-xs flex items-center gap-1.5 border border-white/20">
-                        <span>🔍 Agrandir (Plein écran)</span>
-                      </div>
+          {/* ── AUTO-PLAYING IMAGE SLIDER (NO HEAVY TEXT) ─────────────── */}
+          <div 
+            className="relative overflow-hidden bg-white border border-[#DCDCE2] p-3 md:p-4 shadow-sm group"
+            onMouseEnter={() => setIsGalleryAutoPlay(false)}
+            onMouseLeave={() => setIsGalleryAutoPlay(true)}
+          >
+            {/* Carousel Container */}
+            <div className="overflow-hidden">
+              <div
+                className="flex transition-transform duration-700 ease-out gap-3 md:gap-4"
+                style={{
+                  transform: `translateX(-${gallerySlideIndex * (100 / (filteredGalleryItems.length > 3 ? 3 : filteredGalleryItems.length))}%)`,
+                }}
+              >
+                {filteredGalleryItems.map((item, index) => (
+                  <div
+                    key={item.id}
+                    onClick={() => setActiveLightbox({ items: filteredGalleryItems, index })}
+                    className="w-full sm:w-[calc(50%-8px)] lg:w-[calc(33.333%-11px)] shrink-0 aspect-[3/4] bg-[#121214] relative border border-[#DCDCE2] overflow-hidden cursor-pointer group/card flex items-center justify-center"
+                  >
+                    <img
+                      src={item.img}
+                      alt={item.title}
+                      className="w-full h-full object-cover transition-transform duration-700 group-hover/card:scale-105"
+                    />
+
+                    {/* Minimalist Badges */}
+                    <div className="absolute top-3 left-3 bg-[#0B0B0D]/90 text-white font-mono text-[9px] uppercase tracking-wider px-2 py-1 border border-white/20 backdrop-blur-xs">
+                      {item.tag}
                     </div>
 
-                    {/* Card Info & Details */}
-                    <div className="md:col-span-5 space-y-4">
-                      <div className="space-y-1">
-                        <div className="flex items-center gap-2">
-                          <span className="font-mono text-xs font-bold text-[#B7410E] uppercase tracking-wider">
-                            {item.tag}
-                          </span>
-                          <span className="font-mono text-[10px] text-[#56565F] bg-[#F6F6F8] px-2 py-0.5 border border-[#DCDCE2]">
-                            {item.format}
-                          </span>
-                        </div>
-                        <h3 className="font-mono text-xl md:text-2xl font-bold text-[#0B0B0D]">
-                          {item.title}
-                        </h3>
-                      </div>
+                    <div className="absolute top-3 right-3 bg-white/90 text-[#0B0B0D] font-mono text-[9px] uppercase tracking-wider px-2 py-0.5 border border-[#DCDCE2] font-bold">
+                      {item.format}
+                    </div>
 
-                      <p className="font-sans text-sm text-[#56565F] leading-relaxed">
-                        {item.subtitle}
-                      </p>
-
-                      <div className="border-t border-[#DCDCE2] pt-4 space-y-2 font-mono text-[11px] text-[#56565F]">
-                        <div className="flex items-center gap-2">
-                          <span className="text-[#25D366]">✓</span>
-                          <span>Mannequin virtuel Fatou (Fidélité constante)</span>
-                        </div>
-                        <div className="flex items-center gap-2">
-                          <span className="text-[#25D366]">✓</span>
-                          <span>Cyclorama studio blanc pur sans retouche manuelle</span>
-                        </div>
-                        <div className="flex items-center gap-2">
-                          <span className="text-[#25D366]">✓</span>
-                          <span>Texture textile & tombé asymétrique fidèles</span>
-                        </div>
+                    {/* Bottom subtle title on hover */}
+                    <div className="absolute bottom-0 inset-x-0 bg-gradient-to-t from-black/85 via-black/40 to-transparent p-3 text-white flex justify-between items-end opacity-90 group-hover/card:opacity-100 transition-opacity">
+                      <div className="font-mono text-xs font-bold truncate pr-2">
+                        {item.title}
                       </div>
-
-                      <div className="pt-2 flex items-center gap-3">
-                        <button
-                          onClick={() => setActiveLightbox({ items: filteredGalleryItems, index })}
-                          className="px-5 py-2.5 bg-[#0B0B0D] text-white font-mono text-xs uppercase tracking-wider hover:bg-neutral-800 transition-colors cursor-pointer"
-                        >
-                          Inspecter en HD →
-                        </button>
-                        <button
-                          onClick={nextGallerySlide}
-                          className="px-4 py-2.5 border border-[#DCDCE2] bg-white font-mono text-xs uppercase text-[#56565F] hover:border-[#0B0B0D] hover:text-[#0B0B0D] transition-colors cursor-pointer"
-                        >
-                          Vue suivante →
-                        </button>
-                      </div>
+                      <span className="font-mono text-[9px] uppercase tracking-widest text-neutral-300 bg-white/10 px-1.5 py-0.5 border border-white/20 shrink-0">
+                        🔍 HD
+                      </span>
                     </div>
                   </div>
-                </div>
-              ))}
+                ))}
+              </div>
             </div>
 
-            {/* Pagination Thumbnails / Dots */}
-            <div className="mt-6 pt-4 border-t border-[#DCDCE2] flex flex-wrap items-center justify-between gap-3">
+            {/* Pagination / Status Bar */}
+            <div className="mt-3 pt-3 border-t border-[#DCDCE2] flex items-center justify-between font-mono text-[10px] text-[#56565F]">
               <div className="flex items-center gap-1.5">
-                {filteredGalleryItems.map((item, idx) => (
+                <span className="inline-block w-1.5 h-1.5 rounded-full bg-[#25D366] animate-pulse"></span>
+                <span>Défilement automatique {isGalleryAutoPlay ? "actif (pause au survol)" : "en pause"}</span>
+              </div>
+              <div className="flex items-center gap-1.5">
+                {filteredGalleryItems.map((_, idx) => (
                   <button
-                    key={item.id}
+                    key={idx}
                     onClick={() => setGallerySlideIndex(idx)}
-                    aria-label={`Aller à la vue ${idx + 1}`}
-                    className={`h-2 transition-all rounded-none cursor-pointer ${
-                      gallerySlideIndex === idx
-                        ? "w-8 bg-[#0B0B0D]"
-                        : "w-2 bg-[#DCDCE2] hover:bg-[#56565F]"
+                    aria-label={`Vue ${idx + 1}`}
+                    className={`h-1.5 transition-all rounded-none cursor-pointer ${
+                      gallerySlideIndex === idx ? "w-6 bg-[#0B0B0D]" : "w-2 bg-[#DCDCE2] hover:bg-[#56565F]"
                     }`}
                   />
                 ))}
               </div>
-
-              <div className="font-mono text-[11px] text-[#56565F]">
-                Vue {gallerySlideIndex + 1} sur {filteredGalleryItems.length} · {galleryFilter === "all" ? "Toutes les vues" : galleryFilter === "angles" ? "Silhouettes" : "Gros plans"}
-              </div>
             </div>
           </div>
 
-          <div className="bg-white border border-[#DCDCE2] p-3 flex items-center justify-between font-mono text-[11px] text-[#56565F]">
+          <div className="bg-white border border-[#DCDCE2] p-2.5 flex items-center justify-between font-mono text-[11px] text-[#56565F]">
             <span className="flex items-center gap-2">
               <span className="text-[#25D366]">✓</span>
-              Même mannequin (Fatou), même studio lumière diffuse cyclorama, même ensemble textile asymétrique.
+              Rendu cohérent 7 angles · Même mannequin, même studio cyclorama, même ensemble textile.
             </span>
-            <span className="hidden md:inline text-[10px] uppercase text-[#56565F]">
-              Faites défiler ou cliquez pour agrandir
+            <span className="hidden sm:inline text-[10px] uppercase text-[#56565F]">
+              Cliquez sur une image pour l’afficher en plein écran
             </span>
           </div>
         </section>
