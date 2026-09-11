@@ -20,236 +20,147 @@ export interface LeadRecord {
   updated_at: string;
 }
 
-let inMemoryLeads: LeadRecord[] | null = null;
+import { getRequestContext } from "@cloudflare/next-on-pages";
 
-// Sample initial leads for demo/testing if file does not exist
-const INITIAL_DEMO_LEADS: LeadRecord[] = [
-  {
-    id: "lead-demo-1",
-    prenom: "Fatou",
-    whatsapp: "+2250708091011",
-    country_code: "CI",
-    dial_code: "+225",
-    phone_number: "07 08 09 10 11",
-    email: "fatou.kouame@waxstudio.ci",
-    social_url: "instagram.com/waxstudio_abidjan",
-    social_platform: "instagram",
-    has_no_social: false,
-    platform: "google",
-    wa_code: "FW78K",
-    token: "token-demo-fatou-1",
-    slug: "studio-shooting-mode",
-    status: "audit_reserve",
-    notes: "Créatrice de mode à Abidjan. Recherche 40 visuels pour sa collection capsule d’automne.",
-    downloads_count: 2,
-    created_at: new Date(Date.now() - 1000 * 60 * 45).toISOString(),
-    updated_at: new Date(Date.now() - 1000 * 60 * 15).toISOString(),
-  },
-  {
-    id: "lead-demo-2",
-    prenom: "Awa",
-    whatsapp: "+221771234567",
-    country_code: "SN",
-    dial_code: "+221",
-    phone_number: "77 123 45 67",
-    email: "awa.diop@dakar-elegance.com",
-    social_url: "dakar-elegance.com",
-    social_platform: "site",
-    has_no_social: false,
-    platform: "chatgpt",
-    wa_code: "AW92M",
-    token: "token-demo-awa-2",
-    slug: "studio-shooting-mode",
-    status: "contacte",
-    notes: "E-commerçante mode féminine à Dakar. Intéressée par le plan maître et la série 3 vues.",
-    downloads_count: 1,
-    created_at: new Date(Date.now() - 1000 * 60 * 60 * 3).toISOString(),
-    updated_at: new Date(Date.now() - 1000 * 60 * 60 * 2).toISOString(),
-  },
-  {
-    id: "lead-demo-3",
-    prenom: "Yann",
-    whatsapp: "+33612345678",
-    country_code: "FR",
-    dial_code: "+33",
-    phone_number: "06 12 34 56 78",
-    email: "yann.moreau@studio-paris.fr",
-    social_url: "instagram.com/yann_fashion_photo",
-    social_platform: "instagram",
-    has_no_social: false,
-    platform: "autres",
-    wa_code: "YN44P",
-    token: "token-demo-yann-3",
-    slug: "studio-shooting-mode",
-    status: "nouveau",
-    notes: "Photographe de studio à Paris. Teste l’édition Midjourney / Flux.",
-    downloads_count: 3,
-    created_at: new Date(Date.now() - 1000 * 60 * 60 * 8).toISOString(),
-    updated_at: new Date(Date.now() - 1000 * 60 * 60 * 8).toISOString(),
-  },
-  {
-    id: "lead-demo-4",
-    prenom: "Éric",
-    whatsapp: "+237690112233",
-    country_code: "CM",
-    dial_code: "+237",
-    phone_number: "6 90 11 22 33",
-    email: null,
-    social_url: null,
-    social_platform: "autre",
-    has_no_social: true,
-    platform: "google",
-    wa_code: "ER55X",
-    token: "token-demo-eric-4",
-    slug: "studio-shooting-mode",
-    status: "nouveau",
-    notes: "Lancement de marque street-wear prévu dans 2 mois.",
-    downloads_count: 1,
-    created_at: new Date(Date.now() - 1000 * 60 * 60 * 24).toISOString(),
-    updated_at: new Date(Date.now() - 1000 * 60 * 60 * 24).toISOString(),
-  }
-];
-
-function getFs() {
+// Helper to get D1 DB safely in edge environment
+async function getDB() {
   try {
-    return {
-      fs: require("fs"),
-      path: require("path"),
-    };
-  } catch {
-    return null;
+    const env = getRequestContext().env;
+    if (env && env.DB) {
+      return env.DB;
+    }
+    throw new Error("No DB binding found in getRequestContext().env");
+  } catch (err) {
+    if (process.env.DB) {
+      return process.env.DB as any;
+    }
+    throw new Error("D1 Database non disponible. Le binding 'DB' est manquant.");
   }
 }
 
-function ensureDataFile() {
-  const node = getFs();
-  if (!node) return;
-  try {
-    const dataDir = node.path.join(process.cwd(), ".data");
-    const leadsFile = node.path.join(dataDir, "leads.json");
-    if (!node.fs.existsSync(dataDir)) {
-      node.fs.mkdirSync(dataDir, { recursive: true });
-    }
-    if (!node.fs.existsSync(leadsFile)) {
-      node.fs.writeFileSync(leadsFile, JSON.stringify(INITIAL_DEMO_LEADS, null, 2), "utf-8");
-    }
-  } catch {
-    // ignore in serverless
-  }
+export async function getAllLeads(): Promise<LeadRecord[]> {
+  const db = await getDB();
+  const { results } = await db.prepare("SELECT * FROM leads ORDER BY created_at DESC").all();
+  return results.map(rowToLeadRecord);
 }
 
-export function getAllLeads(): LeadRecord[] {
-  if (inMemoryLeads) return inMemoryLeads;
-  const node = getFs();
-  if (node) {
-    try {
-      ensureDataFile();
-      const leadsFile = node.path.join(process.cwd(), ".data", "leads.json");
-      if (node.fs.existsSync(leadsFile)) {
-        const data = node.fs.readFileSync(leadsFile, "utf-8");
-        inMemoryLeads = JSON.parse(data || "[]");
-        return (inMemoryLeads || []).sort((a, b) => new Date(b.created_at).getTime() - new Date(a.created_at).getTime());
-      }
-    } catch {
-      // ignore
-    }
-  }
-  inMemoryLeads = [...INITIAL_DEMO_LEADS];
-  return inMemoryLeads;
-}
-
-export function saveLead(leadData: Omit<LeadRecord, "id" | "created_at" | "updated_at" | "status" | "notes" | "downloads_count">): LeadRecord {
-  const leads = getAllLeads();
+export async function saveLead(leadData: Omit<LeadRecord, "id" | "created_at" | "updated_at" | "status" | "notes" | "downloads_count">): Promise<LeadRecord> {
+  const db = await getDB();
   const now = new Date().toISOString();
   
-  const existingIndex = leads.findIndex((l) => l.whatsapp === leadData.whatsapp);
+  // Check if existing
+  const existing = await db.prepare("SELECT id FROM leads WHERE whatsapp = ?").bind(leadData.whatsapp).first();
   
-  const newLead: LeadRecord = {
-    ...leadData,
-    id: existingIndex >= 0 ? leads[existingIndex].id : `lead-${Date.now()}-${Math.random().toString(36).substring(2, 7)}`,
-    status: existingIndex >= 0 ? leads[existingIndex].status : "nouveau",
-    notes: existingIndex >= 0 ? leads[existingIndex].notes : "",
-    downloads_count: existingIndex >= 0 ? leads[existingIndex].downloads_count : 0,
-    created_at: existingIndex >= 0 ? leads[existingIndex].created_at : now,
-    updated_at: now,
-  };
+  let id = existing ? (existing.id as string) : `lead-${Date.now()}-${Math.random().toString(36).substring(2, 7)}`;
+  let status = "nouveau";
+  let notes = "";
+  let downloads_count = 0;
+  let created_at = now;
 
-  if (existingIndex >= 0) {
-    leads[existingIndex] = newLead;
+  if (existing) {
+    // get existing to preserve some fields
+    const { results } = await db.prepare("SELECT status, notes, downloads_count, created_at FROM leads WHERE id = ?").bind(id).all();
+    if (results.length > 0) {
+      status = results[0].status as string || "nouveau";
+      notes = results[0].notes as string || "";
+      downloads_count = results[0].downloads_count as number || 0;
+      created_at = results[0].created_at as string || now;
+    }
+    
+    // Update
+    await db.prepare(`
+      UPDATE leads SET 
+        prenom = ?, country_code = ?, dial_code = ?, phone_number = ?, 
+        email = ?, social_url = ?, social_platform = ?, has_no_social = ?, 
+        platform = ?, wa_code = ?, token = ?, slug = ?, updated_at = ?
+      WHERE id = ?
+    `).bind(
+      leadData.prenom, leadData.country_code, leadData.dial_code, leadData.phone_number,
+      leadData.email, leadData.social_url, leadData.social_platform, leadData.has_no_social ? 1 : 0,
+      leadData.platform, leadData.wa_code, leadData.token, leadData.slug, now,
+      id
+    ).run();
   } else {
-    leads.unshift(newLead);
+    // Insert
+    await db.prepare(`
+      INSERT INTO leads (
+        id, prenom, whatsapp, country_code, dial_code, phone_number, 
+        email, social_url, social_platform, has_no_social, 
+        platform, wa_code, token, slug, status, notes, downloads_count, 
+        created_at, updated_at
+      ) VALUES (
+        ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?
+      )
+    `).bind(
+      id, leadData.prenom, leadData.whatsapp, leadData.country_code, leadData.dial_code, leadData.phone_number,
+      leadData.email, leadData.social_url, leadData.social_platform, leadData.has_no_social ? 1 : 0,
+      leadData.platform, leadData.wa_code, leadData.token, leadData.slug, status, notes, downloads_count,
+      created_at, now
+    ).run();
   }
-  inMemoryLeads = leads;
 
-  const node = getFs();
-  if (node) {
-    try {
-      const leadsFile = node.path.join(process.cwd(), ".data", "leads.json");
-      node.fs.writeFileSync(leadsFile, JSON.stringify(leads, null, 2), "utf-8");
-    } catch {
-      // ignore
-    }
-  }
-
-  return newLead;
+  return {
+    ...leadData,
+    id,
+    status: status as any,
+    notes,
+    downloads_count,
+    created_at,
+    updated_at: now
+  };
 }
 
-export function updateLeadStatus(id: string, status: LeadRecord["status"], notes?: string): LeadRecord | null {
-  const leads = getAllLeads();
-  const index = leads.findIndex((l) => l.id === id);
-  if (index === -1) return null;
-
-  leads[index].status = status;
+export async function updateLeadStatus(id: string, status: LeadRecord["status"], notes?: string): Promise<LeadRecord | null> {
+  const db = await getDB();
+  const now = new Date().toISOString();
+  
   if (notes !== undefined) {
-    leads[index].notes = notes;
-  }
-  leads[index].updated_at = new Date().toISOString();
-  inMemoryLeads = leads;
-
-  const node = getFs();
-  if (node) {
-    try {
-      const leadsFile = node.path.join(process.cwd(), ".data", "leads.json");
-      node.fs.writeFileSync(leadsFile, JSON.stringify(leads, null, 2), "utf-8");
-    } catch {
-      // ignore
-    }
+    await db.prepare("UPDATE leads SET status = ?, notes = ?, updated_at = ? WHERE id = ?")
+      .bind(status, notes, now, id).run();
+  } else {
+    await db.prepare("UPDATE leads SET status = ?, updated_at = ? WHERE id = ?")
+      .bind(status, now, id).run();
   }
 
-  return leads[index];
+  const { results } = await db.prepare("SELECT * FROM leads WHERE id = ?").bind(id).all();
+  if (results.length === 0) return null;
+  return rowToLeadRecord(results[0]);
 }
 
-export function incrementLeadDownloads(token: string): void {
-  const leads = getAllLeads();
-  const index = leads.findIndex((l) => l.token === token);
-  if (index !== -1) {
-    leads[index].downloads_count = (leads[index].downloads_count || 0) + 1;
-    leads[index].updated_at = new Date().toISOString();
-    inMemoryLeads = leads;
-    const node = getFs();
-    if (node) {
-      try {
-        const leadsFile = node.path.join(process.cwd(), ".data", "leads.json");
-        node.fs.writeFileSync(leadsFile, JSON.stringify(leads, null, 2), "utf-8");
-      } catch {
-        // ignore
-      }
-    }
-  }
+export async function incrementLeadDownloads(token: string): Promise<void> {
+  const db = await getDB();
+  const now = new Date().toISOString();
+  await db.prepare("UPDATE leads SET downloads_count = downloads_count + 1, updated_at = ? WHERE token = ?")
+    .bind(now, token).run();
 }
 
-export function deleteLead(id: string): boolean {
-  const leads = getAllLeads();
-  const filtered = leads.filter((l) => l.id !== id);
-  inMemoryLeads = filtered;
-  const node = getFs();
-  if (node) {
-    try {
-      const leadsFile = node.path.join(process.cwd(), ".data", "leads.json");
-      node.fs.writeFileSync(leadsFile, JSON.stringify(filtered, null, 2), "utf-8");
-    } catch {
-      // ignore
-    }
-  }
+export async function deleteLead(id: string): Promise<boolean> {
+  const db = await getDB();
+  await db.prepare("DELETE FROM leads WHERE id = ?").bind(id).run();
   return true;
+}
+
+// Helper to safely convert SQLite row to LeadRecord
+function rowToLeadRecord(row: any): LeadRecord {
+  return {
+    id: row.id,
+    prenom: row.prenom || row.first_name || "",
+    whatsapp: row.whatsapp || "",
+    country_code: row.country_code || "",
+    dial_code: row.dial_code || "",
+    phone_number: row.phone_number || "",
+    email: row.email || null,
+    social_url: row.social_url || null,
+    social_platform: row.social_platform || "autre",
+    has_no_social: Boolean(row.has_no_social),
+    platform: row.platform || "autres",
+    wa_code: row.wa_code || "",
+    token: row.token || "",
+    slug: row.slug || "",
+    status: row.status || "nouveau",
+    notes: row.notes || "",
+    downloads_count: row.downloads_count || 0,
+    created_at: row.created_at || "",
+    updated_at: row.updated_at || ""
+  };
 }

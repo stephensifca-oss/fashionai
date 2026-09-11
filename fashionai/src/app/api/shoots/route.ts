@@ -1,9 +1,14 @@
-import { NextRequest } from 'next/server';
+import { checkAuthAPI } from "@/lib/auth";
+import { NextRequest, NextResponse } from 'next/server';
+import { fal } from '@fal-ai/client';
 import { getAgent, AgentSlug } from '@/lib/agents/registry';
 import { llm, image, LLMMessage } from '@/lib/providers';
 import { validateInversion, validateContamination, validateMannequinConformity } from '@/lib/validators';
 
 export const runtime = 'edge';
+
+// Limite maximale de la taille du payload (5MB)
+const MAX_PAYLOAD_SIZE = 5 * 1024 * 1024;
 
 const encoder = new TextEncoder();
 
@@ -12,7 +17,23 @@ function sseMsg(event: string, data: any) {
 }
 
 export async function POST(req: NextRequest) {
+  const authError = await checkAuthAPI(req);
+  if (authError) return authError;
+
+  
   try {
+    const bodyText = await req.text();
+    if (bodyText.length > 5 * 1024 * 1024) { // 5MB limit
+      return new Response(JSON.stringify({ error: 'Payload too large' }), { status: 413, headers: { 'Content-Type': 'application/json' } });
+    }
+
+    let parsedBody;
+    try {
+      parsedBody = JSON.parse(bodyText);
+    } catch (e) {
+      return new Response(JSON.stringify({ error: 'Invalid JSON' }), { status: 400, headers: { 'Content-Type': 'application/json' } });
+    }
+
     const {
       uploadedGarments,
       garmentPrecisions,
@@ -20,10 +41,14 @@ export async function POST(req: NextRequest) {
       selectedModel,
       selectedTemplate,
       artisticModifs
-    } = await req.json();
+    } = parsedBody;
 
-    if (!uploadedGarments || uploadedGarments.length === 0) {
-      return new Response('No garments provided', { status: 400 });
+    if (!Array.isArray(uploadedGarments) || uploadedGarments.length === 0 || uploadedGarments.length > 5) {
+      return new Response(JSON.stringify({ error: 'Invalid garments array (max 5)' }), { status: 400, headers: { 'Content-Type': 'application/json' } });
+    }
+
+    if (String(garmentPrecisions).length > 2000) {
+      return new Response(JSON.stringify({ error: 'Garment precisions too long' }), { status: 400, headers: { 'Content-Type': 'application/json' } });
     }
 
     const stream = new ReadableStream({

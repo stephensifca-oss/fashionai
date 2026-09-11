@@ -104,7 +104,7 @@ export async function submitLead(formData: FormData) {
     // Persist to leads store
     try {
       const { saveLead } = await import("@/lib/leads-store");
-      saveLead({
+      await saveLead({
         prenom: validatedData.prenom,
         whatsapp: formattedPhone,
         country_code: countryCode || "CI",

@@ -1,13 +1,32 @@
+import { checkAuthAPI } from "@/lib/auth";
 import { NextRequest, NextResponse } from 'next/server';
 import { getAgent, AgentSlug } from '@/lib/agents/registry';
 import { llm, image, LLMMessage } from '@/lib/providers';
 import { validateInversion, validateContamination } from '@/lib/validators';
+import { fal } from "@fal-ai/client";
 
 export const runtime = 'edge';
 
+const MAX_PAYLOAD_SIZE = 5 * 1024 * 1024;
+
 export async function POST(req: NextRequest) {
+  const authError = await checkAuthAPI(req);
+  if (authError) return authError;
+
+  
   try {
-    const body = await req.json();
+    const bodyText = await req.text();
+    if (bodyText.length > 5 * 1024 * 1024) { // 5MB limit
+      return NextResponse.json({ success: false, error: 'Payload too large' }, { status: 413 });
+    }
+
+    let body;
+    try {
+      body = JSON.parse(bodyText);
+    } catch (e) {
+      return NextResponse.json({ success: false, error: 'Invalid JSON' }, { status: 400 });
+    }
+
     const { action } = body;
 
     // 1. Run LLM Agent

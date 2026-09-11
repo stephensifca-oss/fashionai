@@ -1,11 +1,14 @@
 "use server";
 
-import { getAllLeads, updateLeadStatus, deleteLead, LeadRecord } from "@/lib/leads-store";
+import { getAllLeads, updateLeadStatus, deleteLead } from "@/lib/leads-store";
+import type { LeadRecord } from "@/lib/leads-store";
 import { revalidatePath } from "next/cache";
+import { requireAuthPage } from "@/lib/auth";
 
 export async function getLeadsAction(): Promise<{ success: boolean; leads: LeadRecord[] }> {
   try {
-    const leads = getAllLeads();
+    if (!(await requireAuthPage())) throw new Error("Non autorisé");
+    const leads = await getAllLeads();
     return { success: true, leads };
   } catch (err: unknown) {
     console.error("Error fetching leads:", err);
@@ -15,30 +18,34 @@ export async function getLeadsAction(): Promise<{ success: boolean; leads: LeadR
 
 export async function updateLeadStatusAction(
   id: string,
-  status: LeadRecord["status"],
+  status: string,
   notes?: string
 ): Promise<{ success: boolean; lead?: LeadRecord; error?: string }> {
   try {
-    const updated = updateLeadStatus(id, status, notes);
+    if (!(await requireAuthPage())) throw new Error("Non autorisé");
+    const updated = await updateLeadStatus(id, status, notes);
     if (!updated) {
       return { success: false, error: "Lead introuvable" };
     }
     revalidatePath("/admin/leads");
     return { success: true, lead: updated };
-  } catch (err: unknown) {
-    return { success: false, error: err instanceof Error ? err.message : "Erreur mise à jour" };
+  } catch (err) {
+    console.error("Error updating lead:", err);
+    return { success: false };
   }
 }
 
 export async function deleteLeadAction(id: string): Promise<{ success: boolean; error?: string }> {
   try {
-    const success = deleteLead(id);
+    if (!(await requireAuthPage())) throw new Error("Non autorisé");
+    const success = await deleteLead(id);
     if (!success) {
       return { success: false, error: "Erreur suppression" };
     }
     revalidatePath("/admin/leads");
     return { success: true };
-  } catch (err: unknown) {
-    return { success: false, error: err instanceof Error ? err.message : "Erreur suppression" };
+  } catch (err) {
+    console.error("Error deleting lead:", err);
+    return { success: false };
   }
 }
