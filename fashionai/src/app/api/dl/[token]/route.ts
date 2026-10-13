@@ -21,7 +21,7 @@ export async function GET(
   const platform = (searchParams.get("platform") || "google").toLowerCase();
   const slug = searchParams.get("slug") || "";
 
-  // Cas spécial : Kit Atelier Collection (3 fichiers)
+  // Cas spécial : Kit Atelier Collection (Pack ZIP par modèle ou fichiers individuels)
   if (slug === "atelier-collection" || downloadType.startsWith("atelier_")) {
     if (downloadType === "atelier_chargeur") {
       return NextResponse.redirect(new URL("/kits/atelier-collection/CHARGEUR_ATELIER_COLLECTION.txt", req.url));
@@ -32,6 +32,14 @@ export async function GET(
     if (downloadType === "atelier_guide") {
       return NextResponse.redirect(new URL("/kits/atelier-collection/GUIDE_INSTALLATION_ATELIER_COLLECTION.md", req.url));
     }
+
+    if (platform === "chatgpt") {
+      return NextResponse.redirect(new URL("/atelier-collection_ChatGPT_V5.3.zip", req.url));
+    }
+    if (platform === "claude") {
+      return NextResponse.redirect(new URL("/atelier-collection_Claude_V5.3.zip", req.url));
+    }
+    return NextResponse.redirect(new URL("/atelier-collection_Gemini_V5.3.zip", req.url));
   }
 
   // 1. TÉLÉCHARGEMENT DE LA PLANCHE MANNEQUIN (REDIRECTION VERS ASSET STATIQUE)

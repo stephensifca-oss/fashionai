@@ -47,48 +47,32 @@ export default function MerciContent() {
   const dlModelUrl = "/models/fatou_character_sheet.png";
   const dlTenueUrl = "/models/tenue-test.jpg";
 
-  // URL des 3 pièces Atelier Collection
-  const dlChargeurUrl = "/kits/atelier-collection/CHARGEUR_ATELIER_COLLECTION.txt";
-  const dlSystemeUrl = "/kits/atelier-collection/SYSTEME_ATELIER_COLLECTION.md";
-  const dlGuideUrl = "/kits/atelier-collection/GUIDE_INSTALLATION_ATELIER_COLLECTION.md";
+  // URL des fichiers ZIP Atelier Collection selon le modèle
+  let atelierZipUrl = "/atelier-collection_Gemini_V5.3.zip";
+  let atelierZipName = "atelier-collection_Gemini_V5.3.zip";
+  let modelLabel = "Google Gemini";
 
-  // Lancement automatique du triple téléchargement
+  if (platform === "chatgpt") {
+    atelierZipUrl = "/atelier-collection_ChatGPT_V5.3.zip";
+    atelierZipName = "atelier-collection_ChatGPT_V5.3.zip";
+    modelLabel = "ChatGPT";
+  } else if (platform === "claude") {
+    atelierZipUrl = "/atelier-collection_Claude_V5.3.zip";
+    atelierZipName = "atelier-collection_Claude_V5.3.zip";
+    modelLabel = "Claude";
+  }
+
+  // Lancement automatique du téléchargement
   useEffect(() => {
     if (token && !hasAutoDownloaded.current) {
       if (isAtelierCollection) {
         hasAutoDownloaded.current = true;
-        // 1. Chargeur
-        const link1 = document.createElement("a");
-        link1.href = dlChargeurUrl;
-        link1.download = "CHARGEUR_ATELIER_COLLECTION.txt";
-        document.body.appendChild(link1);
-        link1.click();
-        document.body.removeChild(link1);
-
-        // 2. Système Base de Connaissances
-        const timer1 = setTimeout(() => {
-          const link2 = document.createElement("a");
-          link2.href = dlSystemeUrl;
-          link2.download = "SYSTEME_ATELIER_COLLECTION.md";
-          document.body.appendChild(link2);
-          link2.click();
-          document.body.removeChild(link2);
-        }, 350);
-
-        // 3. Guide d'installation
-        const timer2 = setTimeout(() => {
-          const link3 = document.createElement("a");
-          link3.href = dlGuideUrl;
-          link3.download = "GUIDE_INSTALLATION_ATELIER_COLLECTION.md";
-          document.body.appendChild(link3);
-          link3.click();
-          document.body.removeChild(link3);
-        }, 700);
-
-        return () => {
-          clearTimeout(timer1);
-          clearTimeout(timer2);
-        };
+        const link = document.createElement("a");
+        link.href = atelierZipUrl;
+        link.download = atelierZipName;
+        document.body.appendChild(link);
+        link.click();
+        document.body.removeChild(link);
       } else if (kitBlobUrl !== "#") {
         hasAutoDownloaded.current = true;
 
@@ -166,16 +150,16 @@ export default function MerciContent() {
           <div className="space-y-3 max-w-2xl mx-auto">
             <div className="inline-flex items-center gap-2 font-mono text-[11px] uppercase tracking-widest text-[#25D366] font-bold bg-[#25D366]/10 px-3 py-1 border border-[#25D366]/20">
               <span className="w-2 h-2 rounded-full bg-[#25D366] animate-pulse"></span>
-              <span>{isAtelierCollection ? "Triple téléchargement en cours" : "Téléchargement automatique en cours"}</span>
+              <span>{isAtelierCollection ? `Téléchargement du pack ${modelLabel} en cours` : "Téléchargement automatique en cours"}</span>
             </div>
             <h1 className="font-serif text-3xl md:text-4xl lg:text-5xl text-[#0B0B0D] leading-tight">
               {isAtelierCollection 
-                ? "Vos trois pièces d’Atelier Collection se téléchargent."
+                ? `Votre Pack Atelier Collection (${modelLabel}) se télécharge.`
                 : "Merci ! Vos fichiers de shooting sont en cours de téléchargement."}
             </h1>
             <p className="font-sans text-xs md:text-sm text-[#56565F] leading-relaxed">
               {isAtelierCollection ? (
-                <>Le <strong>Chargeur d’instructions</strong>, la <strong>Base Système</strong> et le <strong>Guide d’Installation</strong> arrivent dans votre navigateur.</>
+                <>Le pack complet <strong>Atelier Collection V5.3 (Édition {modelLabel})</strong> contenant le <strong>Chargeur</strong>, le <strong>Fichier Système</strong> et le <strong>Guide d’Installation</strong> arrive dans votre navigateur au format .zip.</>
               ) : (
                 <>Le <strong>Kit d’instructions IA (Édition {platform.toUpperCase()})</strong>, la <strong>Photo HD du Mannequin (@perso)</strong> et une <strong>Tenue de test (@tenue)</strong> se téléchargent automatiquement dans votre navigateur.</>
               )}
@@ -183,33 +167,63 @@ export default function MerciContent() {
           </div>
 
           {/* Boutons d'action / Liens de secours */}
-          <div className="border-t border-[#DCDCE2] pt-6 space-y-3">
+          <div className="border-t border-[#DCDCE2] pt-6 space-y-4">
             <p className="font-mono text-[11px] text-[#56565F] uppercase tracking-wider">
-              Un fichier ne s’est pas lancé automatiquement ?
+              Le fichier ne s’est pas lancé automatiquement ?
             </p>
             {isAtelierCollection ? (
-              <div className="flex flex-wrap justify-center items-center gap-3 font-mono text-xs">
-                <a
-                  href={dlChargeurUrl}
-                  download="CHARGEUR_ATELIER_COLLECTION.txt"
-                  className="px-5 py-3 bg-[#0B0B0D] text-white hover:bg-neutral-800 transition-colors uppercase tracking-wider text-[11px] font-bold flex items-center gap-2 cursor-pointer"
-                >
-                  <span>⬇ 1. Le Chargeur (.txt)</span>
-                </a>
-                <a
-                  href={dlSystemeUrl}
-                  download="SYSTEME_ATELIER_COLLECTION.md"
-                  className="px-5 py-3 border border-[#0B0B0D] bg-white text-[#0B0B0D] hover:bg-[#0B0B0D] hover:text-white transition-colors uppercase tracking-wider text-[11px] font-bold flex items-center gap-2 cursor-pointer"
-                >
-                  <span>⬇ 2. Fichier Système (.md)</span>
-                </a>
-                <a
-                  href={dlGuideUrl}
-                  download="GUIDE_INSTALLATION_ATELIER_COLLECTION.md"
-                  className="px-5 py-3 border border-[#0B0B0D] bg-white text-[#0B0B0D] hover:bg-[#0B0B0D] hover:text-white transition-colors uppercase tracking-wider text-[11px] font-bold flex items-center gap-2 cursor-pointer"
-                >
-                  <span>⬇ 3. Guide &amp; Tests (.md)</span>
-                </a>
+              <div className="space-y-4">
+                <div className="flex flex-wrap justify-center items-center gap-3 font-mono text-xs">
+                  <a
+                    href={atelierZipUrl}
+                    download={atelierZipName}
+                    className="px-6 py-3.5 bg-[#0B0B0D] text-white hover:bg-[#B7410E] transition-colors uppercase tracking-wider text-xs font-bold flex items-center gap-2 cursor-pointer shadow-sm"
+                  >
+                    <span>⬇ Télécharger le Pack {modelLabel} (.zip)</span>
+                  </a>
+                </div>
+
+                {/* Télécharger les autres éditions */}
+                <div className="pt-3 border-t border-[#DCDCE2] text-center space-y-2">
+                  <p className="font-mono text-[10px] text-[#56565F] uppercase tracking-wider">
+                    Besoin d’une autre version pour un assistant différent ?
+                  </p>
+                  <div className="flex flex-wrap justify-center items-center gap-2 font-mono text-[11px]">
+                    <a
+                      href="/atelier-collection_ChatGPT_V5.3.zip"
+                      download="atelier-collection_ChatGPT_V5.3.zip"
+                      className={`px-3 py-1.5 border transition-colors ${
+                        platform === "chatgpt" 
+                          ? "bg-[#0B0B0D] text-white border-[#0B0B0D]" 
+                          : "bg-white text-[#0B0B0D] border-[#DCDCE2] hover:border-[#0B0B0D]"
+                      }`}
+                    >
+                      Édition ChatGPT (.zip)
+                    </a>
+                    <a
+                      href="/atelier-collection_Gemini_V5.3.zip"
+                      download="atelier-collection_Gemini_V5.3.zip"
+                      className={`px-3 py-1.5 border transition-colors ${
+                        platform === "google" 
+                          ? "bg-[#0B0B0D] text-white border-[#0B0B0D]" 
+                          : "bg-white text-[#0B0B0D] border-[#DCDCE2] hover:border-[#0B0B0D]"
+                      }`}
+                    >
+                      Édition Gemini (.zip)
+                    </a>
+                    <a
+                      href="/atelier-collection_Claude_V5.3.zip"
+                      download="atelier-collection_Claude_V5.3.zip"
+                      className={`px-3 py-1.5 border transition-colors ${
+                        platform === "claude" 
+                          ? "bg-[#0B0B0D] text-white border-[#0B0B0D]" 
+                          : "bg-white text-[#0B0B0D] border-[#DCDCE2] hover:border-[#0B0B0D]"
+                      }`}
+                    >
+                      Édition Claude (.zip)
+                    </a>
+                  </div>
+                </div>
               </div>
             ) : (
               <div className="flex flex-wrap justify-center items-center gap-3 font-mono text-xs">
