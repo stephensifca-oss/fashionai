@@ -36,171 +36,10 @@ export default function AtelierCollectionPage() {
       {/* ── 3. LES SEPT ÉTAPES NUMÉROTÉES AVEC POP-UP DÉTAILLÉE ──────────── */}
       <CollectionStepsWithModal />
 
-      {/* ── 4. LE LINE-UP PLEINE LARGEUR & COHÉRENCE ─────────────────────── */}
-      <section className="border-b border-[#DCDCE2] pb-12 mb-12">
-        <div className="mb-4">
-          <span className="font-mono text-[11px] uppercase tracking-widest text-[#56565F] block mb-1">
-            COHÉRENCE VISUELLE ABSOLUE
-          </span>
-          <h2 className="font-serif text-2xl md:text-3xl text-[#0B0B0D]">
-            Le line-up réaliste : même muse, même décor, même lumière
-          </h2>
-        </div>
-
-        <div className="border border-[#DCDCE2] bg-white p-4 md:p-6 space-y-4">
-          <div className="grid grid-cols-2 sm:grid-cols-4 gap-3">
-            {[
-              { id: 1, src: "/Studio_template/STILL FRONT VIEW.png", label: "LOOK 01 · ROBE FONDATRICE" },
-              { id: 2, src: "/Studio_template/STILL PROFILE VIEW.png", label: "LOOK 02 · ENSEMBLE TAILLEUR" },
-              { id: 3, src: "/Studio_template/STILL BACK VIEW.png", label: "LOOK 03 · MANTEAU DRAPÉ" },
-              { id: 4, src: "/Studio_template/MAIN FULL-BODY VIEW.png", label: "LOOK 04 · PIÈCE FORTE" },
-            ].map((look) => (
-              <div key={look.id} className="border border-[#DCDCE2] bg-[#F6F6F8] p-2 flex flex-col gap-2">
-                <div className="aspect-[2/3] w-full overflow-hidden">
-                  <img src={look.src} alt={look.label} className="w-full h-full object-cover grayscale" />
-                </div>
-                <div className="font-mono text-[9px] uppercase tracking-wider text-[#0B0B0D] truncate">
-                  {look.label}
-                </div>
-              </div>
-            ))}
-          </div>
-          <div className="pt-2 border-t border-[#DCDCE2] flex flex-col sm:flex-row justify-between items-start sm:items-center gap-2 font-mono text-[11px] text-[#56565F]">
-            <span>Médaillons ADN circulaires posés par code sur chaque vue de face.</span>
-            <span className="uppercase text-[#0B0B0D] font-bold">Zéro dérive de carnation ou de décor</span>
-          </div>
-        </div>
-      </section>
-
-      {/* ── 5. VIDÉO DE DÉMONSTRATION (FAÇADE CLIQUABLE - LCP PRESERVÉ) ─── */}
+      {/* ── 4. VIDÉO DE DÉMONSTRATION (FAÇADE CLIQUABLE - LCP PRESERVÉ) ─── */}
       <VideoSection />
 
-      {/* ── 6. ENCART D'ENGAGEMENT : COMBIEN ÇA DEMANDE ──────────────────── */}
-      <section className="border border-[#0B0B0D] bg-[#F6F6F8] p-6 md:p-8 mb-12">
-        <div className="font-mono text-[11px] uppercase tracking-widest text-[#56565F] mb-2 font-bold">
-          ENGAGEMENT &amp; COÛT RÉEL ANNONCÉS
-        </div>
-        <h2 className="font-serif text-2xl sm:text-3xl text-[#0B0B0D] mb-3">
-          ≈ 20 générations pour 8 looks · 7 étapes · plusieurs séances de travail
-        </h2>
-        <p className="font-sans text-xs md:text-sm text-[#56565F] leading-relaxed max-w-3xl">
-          Ce n’est pas un test de 5 minutes. Une collection demande de valider l’univers, de tracer le plan, de valider chaque fiche technique et dessin à plat avant la première photo, puis de générer les dessins techniques au trait et calculer le patronnage coté (4 générations supplémentaires pour les paires de dessins techniques, le patron étant calculé sans génération d'image). L’agent recommande même de repartir dans une conversation neuve tous les 4 looks via un pack de reprise. Cette rigueur est la seule raison pour laquelle le dossier final tient debout.
-        </p>
-      </section>
-
-      {/* ── 7. COMPARATIF ÉDITORIAL : CE QU'IL VOUS FAUDRA (2 COLONNES) ─── */}
-      <section className="border-b border-[#DCDCE2] pb-12 mb-12">
-        <div className="mb-4">
-          <span className="font-mono text-[11px] uppercase tracking-widest text-[#56565F] block mb-1">
-            PRÉREQUIS MATÉRIELS
-          </span>
-          <h2 className="font-serif text-2xl md:text-3xl text-[#0B0B0D]">
-            Ce qu’il vous faudra chez vous (Choisissez votre mode d’usage)
-          </h2>
-          <p className="font-sans text-xs text-[#56565F] mt-1">
-            Section d’information éditoriale. Le fichier téléchargé est identique et contient le guide complet pour les deux modes.
-          </p>
-        </div>
-
-        <div className="grid grid-cols-1 md:grid-cols-2 border border-[#DCDCE2] bg-white divide-y md:divide-y-0 md:divide-x divide-[#DCDCE2]">
-          
-          {/* COLONNE A : MODE DIRECT */}
-          <div className="p-6 md:p-8 flex flex-col justify-between space-y-6">
-            <div className="space-y-4">
-              <div className="flex items-center justify-between border-b border-[#DCDCE2] pb-3">
-                <span className="font-mono text-sm font-bold text-[#0B0B0D] uppercase tracking-wider">
-                  MODE DIRECT ★
-                </span>
-                <span className="font-mono text-[10px] text-[#25D366] bg-[#25D366]/10 px-2 py-0.5 border border-[#25D366]/20 font-bold uppercase">
-                  Recommandé si vous débutez
-                </span>
-              </div>
-              <p className="font-sans text-xs text-[#56565F] leading-relaxed">
-                Votre assistant génère les images et compose les planches lui-même directement dans la conversation.
-              </p>
-              
-              <div className="space-y-1">
-                <div className="font-mono text-[10px] uppercase tracking-wider text-[#0B0B0D] font-bold">
-                  IL VOUS FAUT :
-                </div>
-                <div className="font-sans text-xs text-[#56565F]">
-                  Un assistant capable de générer des images <strong>ET d’exécuter du code Python</strong> (ChatGPT Plus/Team/Pro ou Gemini Advanced).
-                </div>
-              </div>
-
-              <div className="space-y-1">
-                <div className="font-mono text-[10px] uppercase tracking-wider text-[#0B0B0D] font-bold">
-                  VOS PLANCHES :
-                </div>
-                <div className="font-sans text-xs text-[#56565F]">
-                  Composées automatiquement en PNG haute définition et PDF téléchargeables.
-                </div>
-              </div>
-            </div>
-
-            <div className="pt-4 border-t border-[#DCDCE2] font-mono text-[11px] text-[#56565F]">
-              ★ Prise en main directe sans logiciel tiers.
-            </div>
-          </div>
-
-          {/* COLONNE B : MODE CARNET */}
-          <div className="p-6 md:p-8 flex flex-col justify-between space-y-6">
-            <div className="space-y-4">
-              <div className="flex items-center justify-between border-b border-[#DCDCE2] pb-3">
-                <span className="font-mono text-sm font-bold text-[#0B0B0D] uppercase tracking-wider">
-                  MODE CARNET
-                </span>
-                <span className="font-mono text-[10px] text-[#56565F] bg-[#F6F6F8] px-2 py-0.5 border border-[#DCDCE2] uppercase">
-                  Pour créateurs déjà équipés
-                </span>
-              </div>
-              <p className="font-sans text-xs text-[#56565F] leading-relaxed">
-                Vous générez vous-même dans l’outil de votre choix et vous renvoyez les images validées à l’assistant.
-              </p>
-              
-              <div className="space-y-1">
-                <div className="font-mono text-[10px] uppercase tracking-wider text-[#0B0B0D] font-bold">
-                  IL VOUS FAUT :
-                </div>
-                <div className="font-sans text-xs text-[#56565F]">
-                  Un assistant conversationnel (ChatGPT, Claude, Gemini) <strong>+ un générateur d’images</strong> externe (Midjourney, Seedream, etc.).
-                </div>
-              </div>
-
-              <div className="space-y-1">
-                <div className="font-mono text-[10px] uppercase tracking-wider text-[#0B0B0D] font-bold">
-                  VOS PLANCHES :
-                </div>
-                <div className="font-sans text-xs text-[#56565F]">
-                  L’agent donne l’ordre, les dimensions et les textes exacts pour un montage propre dans Canva ou PowerPoint.
-                </div>
-              </div>
-            </div>
-
-            <div className="pt-4 border-t border-[#DCDCE2] font-mono text-[11px] text-[#56565F]">
-              Idéal si vous avez déjà vos générateurs habituels.
-            </div>
-          </div>
-
-        </div>
-      </section>
-
-      {/* ── 8. CE QUE CE KIT NE FAIT PAS ─────────────────────────────────── */}
-      <section className="border-b border-[#DCDCE2] pb-10 mb-12">
-        <div className="bg-[#FFF5F5] border border-[#B7410E] p-6 space-y-3">
-          <div className="font-mono text-xs font-bold uppercase tracking-wider text-[#B7410E] flex items-center gap-2">
-            <span>LIMITES STRICTES DU KIT COMPACT (V5.3)</span>
-          </div>
-          <h3 className="font-serif text-xl text-[#0B0B0D]">
-            Ce que ce kit ne fait pas (C’est la suite, pas ce kit)
-          </h3>
-          <p className="font-sans text-xs md:text-sm text-[#56565F] leading-relaxed">
-            Ce kit produit désormais le dessin technique au trait et calcule le patronnage coté avec exports PDF 1:10, PDF A0/A4, SVG et DXF pour CLO 3D. En revanche, il ne gère <strong>ni les déclinaisons coloris A/B automatisées, ni les scripts CLO 3D via API directe</strong>. Ces fonctionnalités d'automatisation avancée relèvent de la version <em>Atelier Collection Hybride</em>, qui s’enclenche sur une fiche technique validée d'ici.
-          </p>
-        </div>
-      </section>
-
-      {/* ── 9. ZONE DE TÉLÉCHARGEMENT & FORMULAIRE ───────────────────────── */}
+      {/* ── 5. ZONE DE TÉLÉCHARGEMENT & FORMULAIRE ───────────────────────── */}
       <section className="grid grid-cols-1 lg:grid-cols-12 gap-8 border-b border-[#DCDCE2] pb-14 mb-14" id="telechargement">
         <div className="lg:col-span-6 space-y-6">
           <div className="space-y-2">
@@ -265,7 +104,7 @@ export default function AtelierCollectionPage() {
         </div>
       </section>
 
-      {/* ── 10. LE CHEMIN ÉCOLE (BLOC DISTINCT ENCRE - AC0-11) ───────────── */}
+      {/* ── 6. LE CHEMIN ÉCOLE (BLOC DISTINCT ENCRE - AC0-11) ───────────── */}
       <section className="w-full bg-[#0B0B0D] text-white p-8 md:p-12 border border-[#0B0B0D]">
         <div className="max-w-3xl space-y-4">
           <div className="font-mono text-[10px] uppercase tracking-widest text-[#25D366] font-bold bg-white/10 inline-block px-2.5 py-1">
