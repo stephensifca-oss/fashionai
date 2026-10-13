@@ -15,10 +15,9 @@ interface MasterKit {
   description: string;
   targetAudience: string;
   tools: string;
-  beforeImage: string;
-  beforeLabel: string;
-  afterImage: string;
-  afterLabel: string;
+  heroImage: string;
+  heroTag: string;
+  previewThumbnails: { src: string; label: string }[];
   deliverables: string[];
   ctaText: string;
 }
@@ -36,10 +35,14 @@ const MASTER_KITS: MasterKit[] = [
       "Transformez une simple photo de votre vêtement prise au smartphone en shooting de mode studio éditorial sans séance photo physique, sans modèle d’agence ni éclairage onéreux.",
     targetAudience: "Idéal pour les marques avec vêtements confectionnés et boutiques e-commerce.",
     tools: "ChatGPT, Gemini ou Claude · Gratuit & Payant",
-    beforeImage: "/sample_garment.png",
-    beforeLabel: "PHOTO BRUTE SMARTPHONE",
-    afterImage: "/Studio_template/main-full-body-view.png",
-    afterLabel: "RÉSULTAT STUDIO CYCLORAMA",
+    heroImage: "/kit-shooting-studio.jpg",
+    heroTag: "PLATEAU SHOOTING ÉDITORIAL IA",
+    previewThumbnails: [
+      { src: "/sample_garment.png", label: "Brut" },
+      { src: "/Studio_template/main-full-body-view.png", label: "Plein pied" },
+      { src: "/Studio_template/still-back-view.png", label: "Dos 180°" },
+      { src: "/Studio_template/still-profile-view.png", label: "Profil 3/4" },
+    ],
     deliverables: [
       "Normalisation textile & triptyque sur fond blanc pur (Agent Cloth)",
       "Égérie virtuelle exclusive verrouillée (Mannequin Fatou)",
@@ -60,10 +63,14 @@ const MASTER_KITS: MasterKit[] = [
       "Le système complet en 6 étapes ordonnées pour concevoir, structurer, patronner et prototyper toute votre collection, du premier croquis brut au lookbook haute couture final.",
     targetAudience: "Idéal pour les stylistes, directeurs artistiques et marques créant une collection complète.",
     tools: "ChatGPT Plus, Claude 3.7 Sonnet ou Gemini Advanced",
-    beforeImage: "/etape-03-dessin-plat.webp",
-    beforeLabel: "CROQUIS & PLAN 2D",
-    afterImage: "/atelier-collection-lookbook-planche.webp",
-    afterLabel: "LOOKBOOK HAUTE COUTURE",
+    heroImage: "/kit-atelier-collection.jpg",
+    heroTag: "DIRECTION & CONCEPTION DE COLLECTION",
+    previewThumbnails: [
+      { src: "/etape-01-planche-univers.webp", label: "Univers" },
+      { src: "/etape-02-lineup-2d.webp", label: "Plan 2D" },
+      { src: "/etape-05-lineup-realiste.webp", label: "Line-up" },
+      { src: "/atelier-collection-lookbook-planche.webp", label: "Lookbook" },
+    ],
     deliverables: [
       "Étape 01 : Univers de collection, storytelling, moodboard & palette Pantone",
       "Étape 02 : Plan de collection 2D (croquis silhouettes à plat)",
@@ -78,14 +85,14 @@ const MASTER_KITS: MasterKit[] = [
 
 // Visual gallery of results generated with both kits
 const SHOWCASE_VISUALS = [
+  { src: "/kit-shooting-studio.jpg", title: "Kit Studio · Plateau Shooting" },
+  { src: "/kit-atelier-collection.jpg", title: "Atelier Collection · Direction Créative" },
   { src: "/Studio_template/main-full-body-view.png", title: "Kit Studio · Silhouette Complète" },
   { src: "/Studio_template/still-profile-view.png", title: "Kit Studio · Profil 3/4" },
   { src: "/Studio_template/still-back-view.png", title: "Kit Studio · Vue Dos 180°" },
   { src: "/Studio_template/bust-and-face-closeup.png", title: "Kit Studio · Gros Plan Buste" },
-  { src: "/etape-01-planche-univers.webp", title: "Atelier · Univers & Moodboard" },
-  { src: "/etape-02-lineup-2d.webp", title: "Atelier · Line-up 2D Silhouettes" },
   { src: "/etape-05-lineup-realiste.webp", title: "Atelier · Line-up Réaliste Porté" },
-  { src: "/atelier-collection-lookbook-planche.webp", title: "Atelier · Lookbook Final Haute Couture" },
+  { src: "/atelier-collection-lookbook-planche.webp", title: "Atelier · Lookbook Haute Couture" },
 ];
 
 export default function KitsOverviewPage() {
@@ -103,7 +110,7 @@ export default function KitsOverviewPage() {
           <div className="flex flex-col lg:flex-row lg:items-end justify-between gap-6">
             <div>
               <h1 className="font-serif text-4xl sm:text-5xl lg:text-6xl uppercase font-normal tracking-tight text-[#0B0B0D] leading-none mb-4">
-                NOS DEUX KITS
+                NOS KITS
               </h1>
               <p className="font-sans text-base md:text-lg text-[#56565F] max-w-2xl leading-relaxed">
                 Deux méthodologies prêtes à l’emploi pour les créateurs et marques de mode. Choisissez le système correspondant exactement à votre stade de création.
@@ -123,32 +130,38 @@ export default function KitsOverviewPage() {
               key={kit.id}
               className="flex flex-col bg-white border border-[#DCDCE2] hover:border-[#0B0B0D] transition-colors duration-300 overflow-hidden shadow-xs"
             >
-              {/* TOP SPLIT BEFORE/AFTER IMAGE */}
-              <div className="w-full aspect-[4/3] sm:aspect-[16/10] relative flex overflow-hidden bg-neutral-100 border-b border-[#DCDCE2]">
-                {/* Left side: BEFORE */}
-                <div className="w-1/3 h-full relative overflow-hidden bg-[#ECEBF0] border-r border-[#0B0B0D]">
-                  <img
-                    src={kit.beforeImage}
-                    alt={kit.beforeLabel}
-                    className="w-full h-full object-cover object-center grayscale-[15%] brightness-95"
-                  />
-                  <div className="absolute top-3 left-3 bg-[#0B0B0D]/85 text-white font-mono text-[8px] md:text-[9px] uppercase px-2 py-0.5 tracking-wider backdrop-blur-xs">
-                    {kit.beforeLabel}
-                  </div>
+              {/* TOP HERO COVER IMAGE (IMAGE 1 & IMAGE 2) */}
+              <div className="w-full aspect-[16/10] sm:aspect-[16/9] relative overflow-hidden bg-neutral-100 border-b border-[#DCDCE2]">
+                <img
+                  src={kit.heroImage}
+                  alt={kit.title}
+                  className="w-full h-full object-cover object-center hover:scale-103 transition-transform duration-700"
+                />
+                <div className="absolute top-3 left-3 bg-[#0B0B0D]/85 text-white font-mono text-[9px] md:text-[10px] uppercase px-2.5 py-1 tracking-wider backdrop-blur-xs flex items-center gap-1.5">
+                  <span className="w-1.5 h-1.5 rounded-full bg-[#25D366]"></span>
+                  <span>{kit.heroTag}</span>
                 </div>
+              </div>
 
-                {/* Right side: AFTER */}
-                <div className="w-2/3 h-full relative overflow-hidden bg-neutral-100">
-                  <img
-                    src={kit.afterImage}
-                    alt={kit.afterLabel}
-                    className="w-full h-full object-cover object-center hover:scale-103 transition-transform duration-700"
-                  />
-                  <div className="absolute top-3 right-3 bg-[#0B0B0D]/85 text-white font-mono text-[8px] md:text-[9px] uppercase px-2 py-0.5 tracking-wider backdrop-blur-xs flex items-center gap-1.5">
-                    <span className="w-1.5 h-1.5 rounded-full bg-[#25D366]"></span>
-                    <span>{kit.afterLabel}</span>
+              {/* THUMBNAILS PREVIEW STRIP */}
+              <div className="grid grid-cols-4 border-b border-[#DCDCE2] bg-[#F6F6F8]">
+                {kit.previewThumbnails.map((thumb, tIdx) => (
+                  <div
+                    key={tIdx}
+                    className="p-2 border-r last:border-r-0 border-[#DCDCE2] flex items-center gap-2"
+                  >
+                    <div className="w-8 h-8 sm:w-10 sm:h-10 shrink-0 overflow-hidden bg-white border border-[#DCDCE2]">
+                      <img
+                        src={thumb.src}
+                        alt={thumb.label}
+                        className="w-full h-full object-cover object-center"
+                      />
+                    </div>
+                    <span className="font-mono text-[9px] uppercase tracking-wider text-[#56565F] truncate">
+                      {thumb.label}
+                    </span>
                   </div>
-                </div>
+                ))}
               </div>
 
               {/* CARD BODY */}
