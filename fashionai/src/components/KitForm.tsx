@@ -2,7 +2,6 @@
 
 import { useState, useEffect } from "react";
 import { useRouter } from "next/navigation";
-import { submitLead } from "@/app/actions/lead";
 
 interface CountryOption {
   code: string;
@@ -60,7 +59,9 @@ export default function KitForm({
   const [socialUrl, setSocialUrl] = useState("");
   const [hasNoSocial, setHasNoSocial] = useState(false);
   const [consent, setConsent] = useState(true);
-  const [platform, setPlatform] = useState<"google" | "chatgpt" | "claude" | "autres">(initialPlatform);
+  const [platform, setPlatform] = useState<"google" | "chatgpt" | "claude">(initialPlatform === "autres" ? "google" : initialPlatform);
+  const [segmentCreation, setSegmentCreation] = useState<"styliste" | "marque" | "ecole" | "etudiant" | "modeliste">("styliste");
+  const [etablissement, setEtablissement] = useState("");
 
   // 4. Auto-remplissage lors des prochaines visites
   useEffect(() => {
@@ -114,6 +115,12 @@ export default function KitForm({
     formData.append("platform", platform);
     formData.append("country_code", currentCountry.dial);
     formData.append("phone_number", phoneNumber);
+    if (slug === "atelier-collection") {
+      formData.append("segment_creation", segmentCreation);
+      if (segmentCreation === "ecole" && etablissement) {
+        formData.append("etablissement", etablissement);
+      }
+    }
 
     // Compute combined whatsapp field
     const rawNumber = phoneNumber.trim();
@@ -123,12 +130,22 @@ export default function KitForm({
     }
     formData.set("whatsapp", fullWhatsapp);
 
-    const result = await submitLead(formData);
+    try {
+      const res = await fetch("/api/lead", {
+        method: "POST",
+        body: formData,
+      });
+      const result = await res.json();
 
-    if (result.success) {
-      router.push(`/merci/${slug}?t=${result.token}&code=${result.code || ""}&platform=${platform}`);
-    } else {
-      setError(result.error || "Une erreur est survenue lors de l’envoi.");
+      if (result.success) {
+        router.push(`/merci/${slug}?t=${result.token}&code=${result.code || ""}&platform=${platform}`);
+      } else {
+        setError(result.error || "Une erreur est survenue lors de l’envoi.");
+        setLoading(false);
+      }
+    } catch (err: any) {
+      console.error("Action error:", err);
+      setError("Une erreur réseau ou serveur est survenue. Veuillez réessayer.");
       setLoading(false);
     }
   };
@@ -166,12 +183,11 @@ export default function KitForm({
             { id: "google", label: "Google", desc: "Imagen 3 / Gemini" },
             { id: "chatgpt", label: "ChatGPT / OpenAI", desc: "GPT-4o Vision" },
             { id: "claude", label: "Claude", desc: "Claude 3.7 Sonnet" },
-            { id: "autres", label: "Midjourney & +", desc: "Flux / Midjourney" },
           ].map((item) => (
             <button
               type="button"
               key={item.id}
-              onClick={() => setPlatform(item.id as "google" | "chatgpt" | "claude" | "autres")}
+              onClick={() => setPlatform(item.id as "google" | "chatgpt" | "claude")}
               className={`p-2.5 text-left border font-mono transition-all rounded-none cursor-pointer flex flex-col justify-between ${
                 platform === item.id
                   ? "bg-[#0B0B0D] text-white border-[#0B0B0D] shadow-xs"
@@ -203,6 +219,54 @@ export default function KitForm({
           className="w-full bg-white border border-[#DCDCE2] focus:border-[#0B0B0D] focus:ring-0 px-3 py-2 text-xs font-mono text-[#0B0B0D] transition-colors rounded-none"
         />
       </div>
+
+      {/* Profil de création (AC0-10 : styliste, marque, école, étudiant, modéliste) */}
+      {slug === "atelier-collection" && (
+        <div className="flex flex-col gap-2 border border-[#DCDCE2] p-3 bg-[#F6F6F8]">
+          <label className="font-mono text-[11px] uppercase tracking-wider text-[#0B0B0D] font-bold">
+            Vous êtes :
+          </label>
+          <div className="grid grid-cols-2 sm:grid-cols-3 gap-1.5 font-mono text-xs">
+            {[
+              { id: "styliste", label: "Styliste" },
+              { id: "marque", label: "Marque" },
+              { id: "ecole", label: "École de mode" },
+              { id: "etudiant", label: "Étudiant" },
+              { id: "modeliste", label: "Modéliste" },
+            ].map((seg) => (
+              <button
+                type="button"
+                key={seg.id}
+                onClick={() => setSegmentCreation(seg.id as any)}
+                className={`py-2 px-2 text-left border transition-all rounded-none cursor-pointer flex items-center justify-between text-[11px] ${
+                  segmentCreation === seg.id
+                    ? "bg-[#0B0B0D] text-white border-[#0B0B0D]"
+                    : "bg-white text-[#56565F] border-[#DCDCE2] hover:border-[#0B0B0D]"
+                }`}
+              >
+                <span>{seg.label}</span>
+                {segmentCreation === seg.id && <span className="text-[10px]">✓</span>}
+              </button>
+            ))}
+          </div>
+
+          {segmentCreation === "ecole" && (
+            <div className="mt-2 pt-2 border-t border-[#DCDCE2] flex flex-col gap-1">
+              <label className="font-mono text-[10px] uppercase text-[#56565F]" htmlFor="etablissement">
+                Nom de votre école / établissement :
+              </label>
+              <input
+                type="text"
+                id="etablissement"
+                value={etablissement}
+                onChange={(e) => setEtablissement(e.target.value)}
+                placeholder="Ex: École Supérieure de Mode..."
+                className="w-full bg-white border border-[#DCDCE2] px-2.5 py-1.5 text-xs font-mono text-[#0B0B0D] focus:border-[#0B0B0D]"
+              />
+            </div>
+          )}
+        </div>
+      )}
 
       {/* 2 & 3. Séparation Pays et Numéro WhatsApp */}
       <div className="grid grid-cols-1 sm:grid-cols-12 gap-3">

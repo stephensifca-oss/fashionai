@@ -10,6 +10,9 @@ CREATE TABLE leads (
   social_platform TEXT,      -- instagram | facebook | tiktok | site | autre
   has_no_social INTEGER NOT NULL DEFAULT 0,
   opt_in INTEGER NOT NULL DEFAULT 1,
+  mode_prefere TEXT,          -- direct | carnet
+  segment_creation TEXT,      -- styliste | marque | ecole | etudiant | modeliste
+  etablissement TEXT,         -- rempli uniquement si segment = 'ecole'
   created_at DATETIME DEFAULT CURRENT_TIMESTAMP
 );
 

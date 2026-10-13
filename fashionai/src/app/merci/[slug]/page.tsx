@@ -8,6 +8,7 @@ export function generateStaticParams() {
     { slug: "lookbook-brutaliste" },
     { slug: "serie-coherente-ecom" },
     { slug: "campagne-mouvement" },
+    { slug: "atelier-collection" },
   ];
 }
 

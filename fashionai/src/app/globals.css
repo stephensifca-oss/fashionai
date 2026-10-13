@@ -21,6 +21,10 @@
   --font-body-sm: var(--font-archivo), sans-serif;
   --font-body-md: var(--font-archivo), sans-serif;
 
+  --font-serif: var(--font-bodoni), Georgia, serif;
+  --font-sans: var(--font-archivo), system-ui, sans-serif;
+  --font-mono: var(--font-dm-mono), ui-monospace, monospace;
+
   --spacing-stack-sm: 12px;
   --spacing-stack-md: 24px;
   --spacing-stack-lg: 80px;

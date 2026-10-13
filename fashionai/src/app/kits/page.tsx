@@ -91,6 +91,24 @@ const KITS_LIST: KitCardData[] = [
       "/Studio_template/SIGNATURE DETAIL MACRO.png",
     ],
   },
+  {
+    id: "kit-5",
+    slug: "atelier-collection",
+    family: "PHOTO",
+    level: "AVANCÉ",
+    familyAndLevel: "PHOTO · AVANCÉ",
+    toolLine: "OUTIL REQUIS — CHATGPT PLUS OU GEMINI ADVANCED · DIRECTEUR DE COLLECTION",
+    title: "Dessinez une collection complète, de l'idée au lookbook",
+    description:
+      "Directeur de collection de mode IA en 6 étapes ordonnées : univers, plan 2D, fiches techniques en cm, prototypes portés, line-up et lookbook.",
+    beforeImage: "/sample_garment.png",
+    afterImage: "/Studio_template/MAIN FULL-BODY VIEW.png",
+    vignettes: [
+      "/Studio_template/STILL FRONT VIEW.png",
+      "/Studio_template/SIGNATURE DETAIL MACRO.png",
+      "/Studio_template/MAIN FULL-BODY VIEW.png",
+    ],
+  },
 ];
 
 // 14 high-fashion result visuals for Zone B Mosaic

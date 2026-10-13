@@ -5,7 +5,14 @@ import { useSearchParams } from "next/navigation";
 import Link from "next/link";
 import { generateKitMarkdown } from "@/lib/kit-generator";
 
+import { useParams } from "next/navigation";
+import { qualifyLeadAction } from "@/app/actions/lead";
+
 export default function MerciContent() {
+  const params = useParams();
+  const slug = (params?.slug as string) || "";
+  const isAtelierCollection = slug === "atelier-collection";
+
   const searchParams = useSearchParams();
   const token = searchParams.get("t");
   const initialCode = searchParams.get("code") || "A7K2M";
@@ -15,45 +22,111 @@ export default function MerciContent() {
   const [waCode] = useState(initialCode);
   const [kitBlobUrl, setKitBlobUrl] = useState<string>("#");
 
-  useEffect(() => {
-    const md = generateKitMarkdown(platform);
-    const blob = new Blob([md], { type: "text/markdown;charset=utf-8" });
-    const url = URL.createObjectURL(blob);
-    setKitBlobUrl(url);
+  // État qualification différée
+  const [modePrefere, setModePrefere] = useState<"direct" | "carnet">("direct");
+  const [qualificationSubmitted, setQualificationSubmitted] = useState(false);
+  const [qualificationLoading, setQualificationLoading] = useState(false);
 
-    return () => {
-      URL.revokeObjectURL(url);
-    };
-  }, [platform]);
+  useEffect(() => {
+    if (!isAtelierCollection) {
+      const md = generateKitMarkdown(platform);
+      const blob = new Blob([md], { type: "text/markdown;charset=utf-8" });
+      const url = URL.createObjectURL(blob);
+      setKitBlobUrl(url);
+
+      return () => {
+        URL.revokeObjectURL(url);
+      };
+    }
+  }, [platform, isAtelierCollection]);
+
+  let kitFilename = "SHOOTING_IA_GEMINI.md";
+  if (platform === "claude") kitFilename = "SHOOTING_IA_CLAUDE.md";
+  else if (platform === "chatgpt") kitFilename = "SHOOTING_IA_CHAT-GPT.md";
 
   const dlModelUrl = "/models/fatou_character_sheet.png";
+  const dlTenueUrl = "/models/tenue-test.jpg";
 
-  // 6. Lancement automatique et simultané du double téléchargement (Kit .md + Image Mannequin Fatou)
+  // URL des 3 pièces Atelier Collection
+  const dlChargeurUrl = "/kits/atelier-collection/CHARGEUR_ATELIER_COLLECTION.txt";
+  const dlSystemeUrl = "/kits/atelier-collection/SYSTEME_ATELIER_COLLECTION.md";
+  const dlGuideUrl = "/kits/atelier-collection/GUIDE_INSTALLATION_ATELIER_COLLECTION.md";
+
+  // Lancement automatique du triple téléchargement
   useEffect(() => {
-    if (token && kitBlobUrl !== "#" && !hasAutoDownloaded.current) {
-      hasAutoDownloaded.current = true;
+    if (token && !hasAutoDownloaded.current) {
+      if (isAtelierCollection) {
+        hasAutoDownloaded.current = true;
+        // 1. Chargeur
+        const link1 = document.createElement("a");
+        link1.href = dlChargeurUrl;
+        link1.download = "CHARGEUR_ATELIER_COLLECTION.txt";
+        document.body.appendChild(link1);
+        link1.click();
+        document.body.removeChild(link1);
 
-      // 1. Lancement du Kit .md
-      const linkKit = document.createElement("a");
-      linkKit.href = kitBlobUrl;
-      linkKit.download = `kit-shooting-mode-${platform}-v1.0.md`;
-      document.body.appendChild(linkKit);
-      linkKit.click();
-      document.body.removeChild(linkKit);
+        // 2. Système Base de Connaissances
+        const timer1 = setTimeout(() => {
+          const link2 = document.createElement("a");
+          link2.href = dlSystemeUrl;
+          link2.download = "SYSTEME_ATELIER_COLLECTION.md";
+          document.body.appendChild(link2);
+          link2.click();
+          document.body.removeChild(link2);
+        }, 350);
 
-      // 2. Lancement de la Planche Mannequin Fatou (@perso)
-      const timer = setTimeout(() => {
-        const linkModel = document.createElement("a");
-        linkModel.href = dlModelUrl;
-        linkModel.download = "planche-mannequin-fatou-reference.png";
-        document.body.appendChild(linkModel);
-        linkModel.click();
-        document.body.removeChild(linkModel);
-      }, 350);
+        // 3. Guide d'installation
+        const timer2 = setTimeout(() => {
+          const link3 = document.createElement("a");
+          link3.href = dlGuideUrl;
+          link3.download = "GUIDE_INSTALLATION_ATELIER_COLLECTION.md";
+          document.body.appendChild(link3);
+          link3.click();
+          document.body.removeChild(link3);
+        }, 700);
 
-      return () => clearTimeout(timer);
+        return () => {
+          clearTimeout(timer1);
+          clearTimeout(timer2);
+        };
+      } else if (kitBlobUrl !== "#") {
+        hasAutoDownloaded.current = true;
+
+        // 1. Lancement du Kit .md
+        const linkKit = document.createElement("a");
+        linkKit.href = kitBlobUrl;
+        linkKit.download = kitFilename;
+        document.body.appendChild(linkKit);
+        linkKit.click();
+        document.body.removeChild(linkKit);
+
+        // 2. Lancement de la Planche Mannequin Fatou (@perso)
+        const timer1 = setTimeout(() => {
+          const linkModel = document.createElement("a");
+          linkModel.href = dlModelUrl;
+          linkModel.download = "perso.png";
+          document.body.appendChild(linkModel);
+          linkModel.click();
+          document.body.removeChild(linkModel);
+        }, 350);
+
+        // 3. Lancement de la Tenue Test (@tenue)
+        const timer2 = setTimeout(() => {
+          const linkTenue = document.createElement("a");
+          linkTenue.href = dlTenueUrl;
+          linkTenue.download = "tenue.jpg";
+          document.body.appendChild(linkTenue);
+          linkTenue.click();
+          document.body.removeChild(linkTenue);
+        }, 700);
+
+        return () => {
+          clearTimeout(timer1);
+          clearTimeout(timer2);
+        };
+      }
     }
-  }, [token, kitBlobUrl, dlModelUrl, platform]);
+  }, [token, kitBlobUrl, dlModelUrl, dlTenueUrl, platform, isAtelierCollection]);
 
   return (
     <div className="min-h-screen bg-[#F6F6F8] text-[#0B0B0D] flex flex-col font-sans selection:bg-[#0B0B0D] selection:text-white">
@@ -83,7 +156,7 @@ export default function MerciContent() {
       <main className="flex-1 w-full max-w-4xl mx-auto px-4 md:px-8 py-8 md:py-16 space-y-12 md:space-y-16">
 
         {/* ═════════════════════════════════════════════════════════════════
-            01. SECTION CONFIRMATION & DOUBLE TÉLÉCHARGEMENT AUTOMATIQUE
+            01. SECTION CONFIRMATION & TÉLÉCHARGEMENT AUTOMATIQUE
             ═════════════════════════════════════════════════════════════════ */}
         <section className="bg-white border border-[#DCDCE2] p-8 md:p-12 text-center space-y-6 shadow-sm">
           <div className="w-14 h-14 bg-[#0B0B0D] text-white flex items-center justify-center mx-auto font-mono text-2xl shadow-md">
@@ -93,13 +166,19 @@ export default function MerciContent() {
           <div className="space-y-3 max-w-2xl mx-auto">
             <div className="inline-flex items-center gap-2 font-mono text-[11px] uppercase tracking-widest text-[#25D366] font-bold bg-[#25D366]/10 px-3 py-1 border border-[#25D366]/20">
               <span className="w-2 h-2 rounded-full bg-[#25D366] animate-pulse"></span>
-              <span>Double téléchargement automatique en cours</span>
+              <span>{isAtelierCollection ? "Triple téléchargement en cours" : "Téléchargement automatique en cours"}</span>
             </div>
             <h1 className="font-serif text-3xl md:text-4xl lg:text-5xl text-[#0B0B0D] leading-tight">
-              Merci ! Vos fichiers de shooting sont en cours de téléchargement.
+              {isAtelierCollection 
+                ? "Vos trois pièces d’Atelier Collection se téléchargent."
+                : "Merci ! Vos fichiers de shooting sont en cours de téléchargement."}
             </h1>
             <p className="font-sans text-xs md:text-sm text-[#56565F] leading-relaxed">
-              Le <strong>Kit d’instructions IA (Édition {platform.toUpperCase()})</strong> et la <strong>Photo HD du Mannequin Fatou (@perso)</strong> se téléchargent automatiquement dans votre navigateur.
+              {isAtelierCollection ? (
+                <>Le <strong>Chargeur (&lt;8 000 car.)</strong>, la <strong>Base Système (V5.2)</strong> et le <strong>Guide d’Installation</strong> arrivent dans votre navigateur.</>
+              ) : (
+                <>Le <strong>Kit d’instructions IA (Édition {platform.toUpperCase()})</strong>, la <strong>Photo HD du Mannequin (@perso)</strong> et une <strong>Tenue de test (@tenue)</strong> se téléchargent automatiquement dans votre navigateur.</>
+              )}
             </p>
           </div>
 
@@ -108,24 +187,128 @@ export default function MerciContent() {
             <p className="font-mono text-[11px] text-[#56565F] uppercase tracking-wider">
               Un fichier ne s’est pas lancé automatiquement ?
             </p>
-            <div className="flex flex-wrap justify-center items-center gap-3 font-mono text-xs">
-              <a
-                href={kitBlobUrl}
-                download={`kit-shooting-mode-${platform}-v1.0.md`}
-                className="px-5 py-3 bg-[#0B0B0D] text-white hover:bg-neutral-800 transition-colors uppercase tracking-wider text-[11px] font-bold flex items-center gap-2 cursor-pointer"
-              >
-                <span>⬇ 1. Télécharger le Kit Prompt (.MD)</span>
-              </a>
-              <a
-                href={dlModelUrl}
-                download="planche-mannequin-fatou-reference.png"
-                className="px-5 py-3 border border-[#0B0B0D] bg-white text-[#0B0B0D] hover:bg-[#0B0B0D] hover:text-white transition-colors uppercase tracking-wider text-[11px] font-bold flex items-center gap-2 cursor-pointer"
-              >
-                <span>⬇ 2. Télécharger la Photo HD Mannequin</span>
-              </a>
-            </div>
+            {isAtelierCollection ? (
+              <div className="flex flex-wrap justify-center items-center gap-3 font-mono text-xs">
+                <a
+                  href={dlChargeurUrl}
+                  download="CHARGEUR_ATELIER_COLLECTION.txt"
+                  className="px-5 py-3 bg-[#0B0B0D] text-white hover:bg-neutral-800 transition-colors uppercase tracking-wider text-[11px] font-bold flex items-center gap-2 cursor-pointer"
+                >
+                  <span>⬇ 1. Le Chargeur (.txt)</span>
+                </a>
+                <a
+                  href={dlSystemeUrl}
+                  download="SYSTEME_ATELIER_COLLECTION.md"
+                  className="px-5 py-3 border border-[#0B0B0D] bg-white text-[#0B0B0D] hover:bg-[#0B0B0D] hover:text-white transition-colors uppercase tracking-wider text-[11px] font-bold flex items-center gap-2 cursor-pointer"
+                >
+                  <span>⬇ 2. Fichier Système (.md)</span>
+                </a>
+                <a
+                  href={dlGuideUrl}
+                  download="GUIDE_INSTALLATION_ATELIER_COLLECTION.md"
+                  className="px-5 py-3 border border-[#0B0B0D] bg-white text-[#0B0B0D] hover:bg-[#0B0B0D] hover:text-white transition-colors uppercase tracking-wider text-[11px] font-bold flex items-center gap-2 cursor-pointer"
+                >
+                  <span>⬇ 3. Guide &amp; Tests (.md)</span>
+                </a>
+              </div>
+            ) : (
+              <div className="flex flex-wrap justify-center items-center gap-3 font-mono text-xs">
+                <a
+                  href={kitBlobUrl}
+                  download={kitFilename}
+                  className="px-5 py-3 bg-[#0B0B0D] text-white hover:bg-neutral-800 transition-colors uppercase tracking-wider text-[11px] font-bold flex items-center gap-2 cursor-pointer"
+                >
+                  <span>⬇ 1. Télécharger le Kit Prompt (.MD)</span>
+                </a>
+                <a
+                  href={dlModelUrl}
+                  download="perso.png"
+                  className="px-5 py-3 border border-[#0B0B0D] bg-white text-[#0B0B0D] hover:bg-[#0B0B0D] hover:text-white transition-colors uppercase tracking-wider text-[11px] font-bold flex items-center gap-2 cursor-pointer"
+                >
+                  <span>⬇ 2. Télécharger la Photo Mannequin</span>
+                </a>
+                <a
+                  href={dlTenueUrl}
+                  download="tenue.jpg"
+                  className="px-5 py-3 border border-[#0B0B0D] bg-white text-[#0B0B0D] hover:bg-[#0B0B0D] hover:text-white transition-colors uppercase tracking-wider text-[11px] font-bold flex items-center gap-2 cursor-pointer"
+                >
+                  <span>⬇ 3. Télécharger la Tenue Test</span>
+                </a>
+              </div>
+            )}
           </div>
         </section>
+
+        {/* ═════════════════════════════════════════════════════════════════
+            01 BIS. QUALIFICATION DIFFÉRÉE (AC0-6) POUR ATELIER COLLECTION
+            ═════════════════════════════════════════════════════════════════ */}
+        {isAtelierCollection && (
+          <section className="bg-white border border-[#DCDCE2] p-6 md:p-8 space-y-4">
+            <div className="space-y-1">
+              <span className="font-mono text-[10px] uppercase tracking-widest text-[#56565F] font-bold">
+                Question facultative pour personnaliser votre suivi
+              </span>
+              <h2 className="font-serif text-xl md:text-2xl text-[#0B0B0D]">
+                Quel mode comptez-vous utiliser chez vous ?
+              </h2>
+              <p className="font-sans text-xs text-[#56565F]">
+                Cela nous aide à vous orienter lors de la session de samedi si vous avez une question d’outillage.
+              </p>
+            </div>
+
+            {qualificationSubmitted ? (
+              <div className="p-3 bg-[#F6F6F8] border border-[#DCDCE2] font-mono text-xs text-[#25D366] font-bold flex items-center gap-2">
+                <span>✓ Préférence enregistrée ({modePrefere === "direct" ? "Mode Direct" : "Mode Carnet"}). Merci !</span>
+              </div>
+            ) : (
+              <div className="flex flex-col sm:flex-row gap-3 pt-2">
+                <button
+                  type="button"
+                  onClick={async () => {
+                    setModePrefere("direct");
+                    setQualificationLoading(true);
+                    if (token) {
+                      await qualifyLeadAction({ token, mode_prefere: "direct" });
+                    }
+                    setQualificationLoading(false);
+                    setQualificationSubmitted(true);
+                  }}
+                  disabled={qualificationLoading}
+                  className="flex-1 p-3 text-left border border-[#DCDCE2] hover:border-[#0B0B0D] transition-colors cursor-pointer bg-[#F6F6F8]"
+                >
+                  <div className="font-mono text-xs font-bold text-[#0B0B0D] uppercase mb-1">
+                    Mode Direct ★
+                  </div>
+                  <div className="font-sans text-[11px] text-[#56565F]">
+                    Génération et planches automatiques dans ChatGPT / Gemini (avec Python).
+                  </div>
+                </button>
+
+                <button
+                  type="button"
+                  onClick={async () => {
+                    setModePrefere("carnet");
+                    setQualificationLoading(true);
+                    if (token) {
+                      await qualifyLeadAction({ token, mode_prefere: "carnet" });
+                    }
+                    setQualificationLoading(false);
+                    setQualificationSubmitted(true);
+                  }}
+                  disabled={qualificationLoading}
+                  className="flex-1 p-3 text-left border border-[#DCDCE2] hover:border-[#0B0B0D] transition-colors cursor-pointer bg-[#F6F6F8]"
+                >
+                  <div className="font-mono text-xs font-bold text-[#0B0B0D] uppercase mb-1">
+                    Mode Carnet
+                  </div>
+                  <div className="font-sans text-[11px] text-[#56565F]">
+                    Génération externe dans mes propres générateurs (Midjourney, Seedream) + montage Canva.
+                  </div>
+                </button>
+              </div>
+            )}
+          </section>
+        )}
 
         {/* ═════════════════════════════════════════════════════════════════
             02. SECTION INVITATION À COLLABORER & ÉCHANGES WHATSAPP (+225 0757512959)

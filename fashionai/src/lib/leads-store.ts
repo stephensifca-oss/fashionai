@@ -16,6 +16,9 @@ export interface LeadRecord {
   status: "nouveau" | "contacte" | "audit_reserve" | "converti" | "archive";
   notes: string;
   downloads_count: number;
+  mode_prefere?: "direct" | "carnet" | null;
+  segment_creation?: "styliste" | "marque" | "ecole" | "etudiant" | "modeliste" | null;
+  etablissement?: string | null;
   created_at: string;
   updated_at: string;
 }
@@ -72,13 +75,18 @@ export async function saveLead(leadData: Omit<LeadRecord, "id" | "created_at" | 
       UPDATE leads SET 
         prenom = ?, country_code = ?, dial_code = ?, phone_number = ?, 
         email = ?, social_url = ?, social_platform = ?, has_no_social = ?, 
-        platform = ?, wa_code = ?, token = ?, slug = ?, updated_at = ?
+        platform = ?, wa_code = ?, token = ?, slug = ?,
+        mode_prefere = COALESCE(?, mode_prefere),
+        segment_creation = COALESCE(?, segment_creation),
+        etablissement = COALESCE(?, etablissement),
+        updated_at = ?
       WHERE id = ?
     `).bind(
       leadData.prenom, leadData.country_code, leadData.dial_code, leadData.phone_number,
       leadData.email, leadData.social_url, leadData.social_platform, leadData.has_no_social ? 1 : 0,
-      leadData.platform, leadData.wa_code, leadData.token, leadData.slug, now,
-      id
+      leadData.platform, leadData.wa_code, leadData.token, leadData.slug,
+      leadData.mode_prefere || null, leadData.segment_creation || null, leadData.etablissement || null,
+      now, id
     ).run();
   } else {
     // Insert
@@ -87,14 +95,16 @@ export async function saveLead(leadData: Omit<LeadRecord, "id" | "created_at" | 
         id, prenom, whatsapp, country_code, dial_code, phone_number, 
         email, social_url, social_platform, has_no_social, 
         platform, wa_code, token, slug, status, notes, downloads_count, 
+        mode_prefere, segment_creation, etablissement,
         created_at, updated_at
       ) VALUES (
-        ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?
+        ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?
       )
     `).bind(
       id, leadData.prenom, leadData.whatsapp, leadData.country_code, leadData.dial_code, leadData.phone_number,
       leadData.email, leadData.social_url, leadData.social_platform, leadData.has_no_social ? 1 : 0,
       leadData.platform, leadData.wa_code, leadData.token, leadData.slug, status, notes, downloads_count,
+      leadData.mode_prefere || null, leadData.segment_creation || null, leadData.etablissement || null,
       created_at, now
     ).run();
   }
@@ -160,6 +170,9 @@ function rowToLeadRecord(row: any): LeadRecord {
     status: row.status || "nouveau",
     notes: row.notes || "",
     downloads_count: row.downloads_count || 0,
+    mode_prefere: row.mode_prefere || null,
+    segment_creation: row.segment_creation || null,
+    etablissement: row.etablissement || null,
     created_at: row.created_at || "",
     updated_at: row.updated_at || ""
   };
