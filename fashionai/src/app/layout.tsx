@@ -44,18 +44,28 @@ export default function RootLayout({
             FASHIONAI.AGENCY
           </Link>
           <nav className="hidden md:flex items-center gap-stack-md">
-            <Link href="/studio" className="font-utility-label text-utility-label uppercase tracking-widest text-ink font-bold border-b border-ink pb-0.5">
+            <Link href="/studio" className="font-utility-label text-utility-label uppercase tracking-widest text-ink hover:opacity-70 transition-opacity">
               STUDIO
             </Link>
-            <span className="font-utility-label text-utility-label uppercase tracking-widest text-[#56565F] opacity-40 cursor-not-allowed select-none flex items-center gap-1.5" title="Disponible en Phase 2">
-              KITS <span className="text-[9px] bg-neutral-200 text-neutral-600 px-1 py-0.2 font-mono">BIENTÔT</span>
-            </span>
-            <span className="font-utility-label text-utility-label uppercase tracking-widest text-[#56565F] opacity-40 cursor-not-allowed select-none flex items-center gap-1.5" title="Disponible en Phase 2">
-              SÉANCE <span className="text-[9px] bg-neutral-200 text-neutral-600 px-1 py-0.2 font-mono">BIENTÔT</span>
-            </span>
-            <span className="font-utility-label text-utility-label uppercase tracking-widest text-[#56565F] opacity-40 cursor-not-allowed select-none flex items-center gap-1.5" title="Disponible en Phase 2">
-              TRAVAILLER ENSEMBLE <span className="text-[9px] bg-neutral-200 text-neutral-600 px-1 py-0.2 font-mono">BIENTÔT</span>
-            </span>
+            <Link href="/kits" className="font-utility-label text-utility-label uppercase tracking-widest text-ink font-bold border-b border-ink pb-0.5">
+              KITS
+            </Link>
+            <a 
+              href="https://wa.me/2250757512959?text=Bonjour,%20je%20souhaite%20m%27inscrire%20%C3%A0%20la%20s%C3%A9ance%20du%20jeudi%2018h" 
+              target="_blank" 
+              rel="noopener noreferrer" 
+              className="font-utility-label text-utility-label uppercase tracking-widest text-ink-soft hover:text-ink transition-colors"
+            >
+              SÉANCE
+            </a>
+            <a 
+              href="https://wa.me/2250757512959?text=Bonjour,%20je%20souhaite%20travailler%20avec%20FashionAI" 
+              target="_blank" 
+              rel="noopener noreferrer" 
+              className="font-utility-label text-utility-label uppercase tracking-widest text-ink-soft hover:text-ink transition-colors"
+            >
+              TRAVAILLER ENSEMBLE
+            </a>
           </nav>
         </header>
 
@@ -69,17 +79,27 @@ export default function RootLayout({
                 STUDIO
               </Link>
               <span className="text-rule hidden md:inline">|</span>
-              <span className="font-utility-label text-[10px] uppercase tracking-widest text-ink-soft opacity-40 cursor-not-allowed select-none">
-                KITS (BIENTÔT)
-              </span>
+              <Link href="/kits" className="font-utility-label text-[10px] uppercase tracking-widest text-ink hover:opacity-70 transition-opacity duration-600 font-bold">
+                KITS
+              </Link>
               <span className="text-rule hidden md:inline">|</span>
-              <span className="font-utility-label text-[10px] uppercase tracking-widest text-ink-soft opacity-40 cursor-not-allowed select-none">
-                SÉANCE (BIENTÔT)
-              </span>
+              <a 
+                href="https://wa.me/2250757512959?text=Bonjour,%20je%20souhaite%20m%27inscrire%20%C3%A0%20la%20s%C3%A9ance%20du%20jeudi%2018h" 
+                target="_blank" 
+                rel="noopener noreferrer" 
+                className="font-utility-label text-[10px] uppercase tracking-widest text-ink-soft hover:text-ink transition-colors"
+              >
+                SÉANCE (JEUDI 18H)
+              </a>
               <span className="text-rule hidden md:inline">|</span>
-              <span className="font-utility-label text-[10px] uppercase tracking-widest text-ink-soft opacity-40 cursor-not-allowed select-none">
-                TRAVAILLER ENSEMBLE (BIENTÔT)
-              </span>
+              <a 
+                href="https://wa.me/2250757512959?text=Bonjour,%20je%20souhaite%20collaborer%20avec%20FashionAI" 
+                target="_blank" 
+                rel="noopener noreferrer" 
+                className="font-utility-label text-[10px] uppercase tracking-widest text-ink-soft hover:text-ink transition-colors"
+              >
+                TRAVAILLER ENSEMBLE
+              </a>
             </nav>
           </div>
 
