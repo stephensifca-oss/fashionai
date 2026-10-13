@@ -83,18 +83,6 @@ const MASTER_KITS: MasterKit[] = [
   },
 ];
 
-// Visual gallery of results generated with both kits
-const SHOWCASE_VISUALS = [
-  { src: "/kit-shooting-studio.jpg", title: "Kit Studio · Plateau Shooting" },
-  { src: "/kit-atelier-collection.jpg", title: "Atelier Collection · Direction Créative" },
-  { src: "/Studio_template/main-full-body-view.png", title: "Kit Studio · Silhouette Complète" },
-  { src: "/Studio_template/still-profile-view.png", title: "Kit Studio · Profil 3/4" },
-  { src: "/Studio_template/still-back-view.png", title: "Kit Studio · Vue Dos 180°" },
-  { src: "/Studio_template/bust-and-face-closeup.png", title: "Kit Studio · Gros Plan Buste" },
-  { src: "/etape-05-lineup-realiste.webp", title: "Atelier · Line-up Réaliste Porté" },
-  { src: "/atelier-collection-lookbook-planche.webp", title: "Atelier · Lookbook Haute Couture" },
-];
-
 export default function KitsOverviewPage() {
   const [activeModalKit, setActiveModalKit] = useState<MasterKit | null>(null);
 
@@ -238,100 +226,7 @@ export default function KitsOverviewPage() {
           ))}
         </section>
 
-        {/* ── 3. DECISION GUIDE (QUEL KIT CHOISIR ?) ───────────────── */}
-        <section className="bg-white border border-[#DCDCE2] p-8 md:p-12 mb-20">
-          <div className="max-w-3xl mb-8">
-            <div className="font-mono text-[10px] text-[#56565F] uppercase tracking-[0.16em] mb-2 font-semibold">
-              GUIDE D’ORIENTATION RAPIDE
-            </div>
-            <h3 className="font-serif text-2xl md:text-3xl font-normal text-[#0B0B0D] uppercase leading-tight">
-              Quel kit choisir selon votre besoin actuel ?
-            </h3>
-          </div>
-
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-8 divide-y md:divide-y-0 md:divide-x divide-[#DCDCE2]">
-            {/* Guide Option 1 */}
-            <div className="flex flex-col justify-between pt-4 md:pt-0 md:pr-8">
-              <div>
-                <div className="font-mono text-xs text-[#B7410E] uppercase tracking-wider mb-2 font-semibold">
-                  OPTION A · PIÈCE RÉELLE EXISTANTE
-                </div>
-                <h4 className="font-serif text-xl text-[#0B0B0D] mb-3">
-                  Vous avez déjà le vêtement cousu ou le prototype physique
-                </h4>
-                <p className="font-sans text-sm text-[#56565F] leading-relaxed mb-6">
-                  Vous avez des vêtements sous la main, un smartphone, et vous voulez des visuels e-commerce ou éditoriaux de niveau international sans passer par un shooting physique payant.
-                </p>
-              </div>
-              <Link
-                href="/studio"
-                className="inline-flex items-center gap-2 font-mono text-xs uppercase tracking-widest text-[#0B0B0D] font-bold hover:underline"
-              >
-                <span>Ouvrir la page du Kit Studio</span>
-                <span>→</span>
-              </Link>
-            </div>
-
-            {/* Guide Option 2 */}
-            <div className="flex flex-col justify-between pt-8 md:pt-0 md:pl-8">
-              <div>
-                <div className="font-mono text-xs text-[#B7410E] uppercase tracking-wider mb-2 font-semibold">
-                  OPTION B · CONCEPTION GLOBALE DE COLLECTION
-                </div>
-                <h4 className="font-serif text-xl text-[#0B0B0D] mb-3">
-                  Vous partez d’une idée, d'une esquisse ou d'un thème
-                </h4>
-                <p className="font-sans text-sm text-[#56565F] leading-relaxed mb-6">
-                  Vous concevez une collection ou capsule de mode complète. Vous devez structurer l’univers, générer les silhouettes à plat, rédiger les fiches techniques en cm et assembler le lookbook.
-                </p>
-              </div>
-              <Link
-                href="/kits/atelier-collection"
-                className="inline-flex items-center gap-2 font-mono text-xs uppercase tracking-widest text-[#0B0B0D] font-bold hover:underline"
-              >
-                <span>Ouvrir la page de l'Atelier Collection</span>
-                <span>→</span>
-              </Link>
-            </div>
-          </div>
-        </section>
-
-        {/* ── 4. VISUAL MOSAIC SHOWCASE ────────────────────────────── */}
-        <section className="mb-20">
-          <div className="mb-8">
-            <div className="font-mono text-[10px] text-[#56565F] uppercase tracking-[0.16em] mb-2 font-semibold">
-              RÉSULTATS OBTENUS
-            </div>
-            <h3 className="font-serif text-2xl md:text-3xl font-normal text-[#0B0B0D] leading-tight">
-              Aperçu des rendus produits par ces deux kits
-            </h3>
-            <p className="font-sans text-sm text-[#56565F] mt-1">
-              Des angles studio individuels à la cohérence intégrale d’une collection.
-            </p>
-          </div>
-
-          <div className="grid grid-cols-2 sm:grid-cols-4 gap-3 md:gap-4">
-            {SHOWCASE_VISUALS.map((item, idx) => (
-              <div
-                key={idx}
-                className="group relative aspect-[3/4] overflow-hidden bg-white border border-[#DCDCE2]"
-              >
-                <img
-                  src={item.src}
-                  alt={item.title}
-                  className="w-full h-full object-cover object-center group-hover:scale-105 transition-transform duration-500"
-                />
-                <div className="absolute inset-0 bg-gradient-to-t from-[#0B0B0D]/80 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-end p-3">
-                  <span className="font-mono text-[10px] text-white uppercase tracking-wider">
-                    {item.title}
-                  </span>
-                </div>
-              </div>
-            ))}
-          </div>
-        </section>
-
-        {/* ── 5. FORMATION JEUDI 18H (WHATSAPP STEPHEN) ────────────── */}
+        {/* ── 3. FORMATION JEUDI 18H (WHATSAPP STEPHEN) ────────────── */}
         <section className="bg-[#0B0B0D] text-white py-14 px-6 md:px-12 border border-[#0B0B0D] flex flex-col md:flex-row items-start md:items-center justify-between gap-8">
           <div className="max-w-2xl">
             <div className="font-mono text-[10px] text-neutral-400 uppercase tracking-[0.18em] mb-2 font-semibold">
