@@ -42,26 +42,26 @@ export default function AtelierCollectionPage() {
       {/* ── 5. ZONE DE TÉLÉCHARGEMENT AVEC BOUTON & FORMULAIRE EN POP-UP ── */}
       <DownloadSectionWithModal />
 
-      {/* ── 6. LE CHEMIN ÉCOLE (BLOC DISTINCT ENCRE - AC0-11) ───────────── */}
+      {/* ── 6. COLLABORATION : MARQUES, ATELIERS & ÉCOLES DE MODE ───────── */}
       <section className="w-full bg-[#0B0B0D] text-white p-8 md:p-12 border border-[#0B0B0D]">
         <div className="max-w-3xl space-y-4">
           <div className="font-mono text-[10px] uppercase tracking-widest text-[#25D366] font-bold bg-white/10 inline-block px-2.5 py-1">
-            ÉCOLE DE MODE · FILIÈRE CRÉATION
+            COLLABORATION · MARQUES &amp; ÉCOLES DE MODE
           </div>
           <h2 className="font-serif text-2xl sm:text-3xl md:text-4xl text-white">
-            Vos étudiants doivent rendre une collection ?
+            Vous préparez votre prochaine collection ou formez de futurs talents ?
           </h2>
           <p className="font-sans text-xs md:text-sm text-neutral-300 leading-relaxed">
-            Le kit fonctionne parfaitement en format capsule — 2 à 6 looks — et sa méthode est conçue pour être enseignée et répliquée par une classe entière sur un semestre. Échangeons sur WhatsApp pour mettre en place une formation dédiée à vos promotions.
+            Que vous dirigiez une marque de mode, un atelier ou une filière de création, nous formons vos équipes et intégrons ce protocole en 7 étapes sous forme de workshop intensif ou d’accompagnement sur-mesure.
           </p>
           <div className="pt-2">
             <a
-              href="https://wa.me/2250757512959?text=Bonjour%20Stephen,%20je%20repr%C3%A9sente%20une%20%C3%A9cole%20de%20mode%20et%20je%20souhaite%20%C3%A9changer%20sur%20le%20kit%20Atelier%20Collection%20pour%20nos%20%C3%A9tudiants"
+              href="https://wa.me/2250757512959?text=Bonjour%20Stephen,%20je%20souhaite%20%C3%A9changer%20sur%20un%20accompagnement%20ou%20workshop%20autour%20du%20kit%20Atelier%20Collection%20pour%20mon%20projet"
               target="_blank"
               rel="noopener noreferrer"
               className="inline-flex items-center gap-2 bg-[#25D366] text-[#0B0B0D] px-6 py-3.5 font-mono text-xs uppercase tracking-wider font-bold hover:bg-white transition-colors cursor-pointer"
             >
-              <span>En parler sur WhatsApp (+225 07 57 51 29 59) →</span>
+              <span>Échanger sur votre projet sur WhatsApp (+225 07 57 51 29 59) →</span>
             </a>
           </div>
         </div>
