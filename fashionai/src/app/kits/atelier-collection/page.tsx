@@ -1,4 +1,4 @@
-import KitForm from "@/components/KitForm";
+import DownloadSectionWithModal from "@/components/DownloadSectionWithModal";
 import LookbookHeroSlide from "@/components/LookbookHeroSlide";
 import CollectionStepsWithModal from "@/components/CollectionStepsWithModal";
 import VideoSection from "@/components/VideoSection";
@@ -39,70 +39,8 @@ export default function AtelierCollectionPage() {
       {/* ── 4. VIDÉO DE DÉMONSTRATION (FAÇADE CLIQUABLE - LCP PRESERVÉ) ─── */}
       <VideoSection />
 
-      {/* ── 5. ZONE DE TÉLÉCHARGEMENT & FORMULAIRE ───────────────────────── */}
-      <section className="grid grid-cols-1 lg:grid-cols-12 gap-8 border-b border-[#DCDCE2] pb-14 mb-14" id="telechargement">
-        <div className="lg:col-span-6 space-y-6">
-          <div className="space-y-2">
-            <span className="font-mono text-[11px] uppercase tracking-widest text-[#56565F] font-bold">
-              CE QUI EST LIVRÉ DANS LE BUNDLE
-            </span>
-            <h2 className="font-serif text-3xl md:text-4xl text-[#0B0B0D]">
-              Recevez les 3 pièces complètes du Directeur de Collection
-            </h2>
-            <p className="font-sans text-xs md:text-sm text-[#56565F] leading-relaxed">
-              En raison de la richesse du skill (57 432 caractères), le livrable est découpé selon le protocole officiel : la logique procédurale dans le chargeur court, la base de connaissances dans le fichier système.
-            </p>
-          </div>
-
-          <div className="space-y-3 border border-[#DCDCE2] bg-white p-5">
-            <div className="flex items-start gap-3 border-b border-[#DCDCE2] pb-3">
-              <span className="font-mono text-xs font-bold text-[#0B0B0D] bg-[#F6F6F8] px-2 py-1 border border-[#DCDCE2]">01</span>
-              <div>
-                <div className="font-mono text-xs font-bold uppercase text-[#0B0B0D]">
-                  CHARGEUR_ATELIER_COLLECTION.txt (&lt; 8 000 car.)
-                </div>
-                <div className="font-sans text-[11px] text-[#56565F]">
-                  À coller dans le champ Instructions. Fixe l’ordre imposé, les règles absolues et le carnet de projet.
-                </div>
-              </div>
-            </div>
-
-            <div className="flex items-start gap-3 border-b border-[#DCDCE2] pb-3">
-              <span className="font-mono text-xs font-bold text-[#0B0B0D] bg-[#F6F6F8] px-2 py-1 border border-[#DCDCE2]">02</span>
-              <div>
-                <div className="font-mono text-xs font-bold uppercase text-[#0B0B0D]">
-                  SYSTEME_ATELIER_COLLECTION.md (~ 50 000 car.)
-                </div>
-                <div className="font-sans text-[11px] text-[#56565F]">
-                  À déposer dans la section Connaissances. Tous les gabarits de prompts, règles R1-R13 et contrôles.
-                </div>
-              </div>
-            </div>
-
-            <div className="flex items-start gap-3">
-              <span className="font-mono text-xs font-bold text-[#0B0B0D] bg-[#F6F6F8] px-2 py-1 border border-[#DCDCE2]">03</span>
-              <div>
-                <div className="font-mono text-xs font-bold uppercase text-[#0B0B0D]">
-                  GUIDE_INSTALLATION_ATELIER_COLLECTION.md
-                </div>
-                <div className="font-sans text-[11px] text-[#56565F]">
-                  Mode d’emploi pas à pas en français et protocole de test en 4 points pour valider l’agent dès le premier essai.
-                </div>
-              </div>
-            </div>
-          </div>
-        </div>
-
-        <div className="lg:col-span-6 bg-white border border-[#0B0B0D] p-6 md:p-8">
-          <h3 className="font-serif text-2xl text-[#0B0B0D] mb-1">
-            Télécharger le kit complet
-          </h3>
-          <p className="font-sans text-xs text-[#56565F] mb-6">
-            Remplissez ce formulaire pour déclencher immédiatement le téléchargement des 3 pièces.
-          </p>
-          <KitForm slug="atelier-collection" />
-        </div>
-      </section>
+      {/* ── 5. ZONE DE TÉLÉCHARGEMENT AVEC BOUTON & FORMULAIRE EN POP-UP ── */}
+      <DownloadSectionWithModal />
 
       {/* ── 6. LE CHEMIN ÉCOLE (BLOC DISTINCT ENCRE - AC0-11) ───────────── */}
       <section className="w-full bg-[#0B0B0D] text-white p-8 md:p-12 border border-[#0B0B0D]">

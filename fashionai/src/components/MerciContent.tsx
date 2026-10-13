@@ -175,7 +175,7 @@ export default function MerciContent() {
             </h1>
             <p className="font-sans text-xs md:text-sm text-[#56565F] leading-relaxed">
               {isAtelierCollection ? (
-                <>Le <strong>Chargeur (&lt;8 000 car.)</strong>, la <strong>Base Système (V5.2)</strong> et le <strong>Guide d’Installation</strong> arrivent dans votre navigateur.</>
+                <>Le <strong>Chargeur d’instructions</strong>, la <strong>Base Système</strong> et le <strong>Guide d’Installation</strong> arrivent dans votre navigateur.</>
               ) : (
                 <>Le <strong>Kit d’instructions IA (Édition {platform.toUpperCase()})</strong>, la <strong>Photo HD du Mannequin (@perso)</strong> et une <strong>Tenue de test (@tenue)</strong> se téléchargent automatiquement dans votre navigateur.</>
               )}
